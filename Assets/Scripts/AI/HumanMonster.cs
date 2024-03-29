@@ -10,7 +10,7 @@ public class HumanMonster : MonsterAI
     // 시간 사용시 주의 
     // 슬로우모션 영향 받는건 deltaTime
     // 안받는건 Time.unscaleddeltatime
-    public enum State { Idle, Trace, Avoid, Battle, Die, Gameover }
+    public enum State { Idle, Trace, Patrol, Avoid, Return, Battle, Die, Gameover }
 
     [Header("Component")]
     [SerializeField] Animator animator;
@@ -54,6 +54,11 @@ public class HumanMonster : MonsterAI
     [SerializeField] NavMeshAgent agent;
     private float ySpeed;
 
+    [Header("Patrol")]
+    [SerializeField] Transform patorolPoint1;
+    [SerializeField] Transform patorolPoint2;
+    [SerializeField] Transform returnPoint;
+
     //private Vector2 moveDir;
     //private float xSpeed;
 
@@ -86,8 +91,10 @@ public class HumanMonster : MonsterAI
     {
         stateMachine = gameObject.AddComponent<StateMachine>();
         stateMachine.AddState(State.Idle, new IdleState(this));
+        stateMachine.AddState(State.Patrol, new PatrolState(this));
         stateMachine.AddState(State.Trace, new TraceState(this));
         stateMachine.AddState(State.Avoid, new AvoidState(this));
+        stateMachine.AddState(State.Return, new ReturnState(this));
         stateMachine.AddState(State.Battle, new BattleState(this));
         stateMachine.AddState(State.Die, new DieState(this));
         stateMachine.AddState(State.Gameover, new GameoverState(this));
@@ -162,13 +169,7 @@ public class HumanMonster : MonsterAI
         {
             this.owner = owner;
         }
-        public void jumpMove()
-        {
-            owner.ySpeed += Physics.gravity.y * Time.deltaTime;
-            if (owner.controller.isGrounded)
-                owner.ySpeed = 0;
-            owner.controller.Move(Vector3.up * owner.ySpeed * Time.deltaTime);
-        }
+        
         public void FindTarget()
         {
             int size = Physics.OverlapSphereNonAlloc(viewPoint.position, range, atkColliders, targetLayerMask);
@@ -291,7 +292,25 @@ public class HumanMonster : MonsterAI
 
 
     }
+    private class PatrolState : HumanMonsterState
+    {
 
+        public PatrolState(HumanMonster owner) : base(owner) { }
+        public override void Enter()
+        {
+
+        }
+        public override void Update()
+        {
+            FindTarget();
+        }
+        public override void Transition()
+        {
+            
+        }
+
+
+    }
     private class TraceState : HumanMonsterState
     {
         public TraceState(HumanMonster owner) : base(owner) { }
@@ -347,6 +366,27 @@ public class HumanMonster : MonsterAI
             
         }
     }
+    private class ReturnState : HumanMonsterState
+    {
+
+
+        public ReturnState(HumanMonster owner) : base(owner) { }
+
+        public override void Enter()
+        {
+
+        }
+        public override void Update()
+        {
+
+        }
+
+        public override void Transition()
+        {
+
+        }
+    }
+
 
 
     private class BattleState : HumanMonsterState
