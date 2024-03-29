@@ -2,6 +2,7 @@ using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Windows;
 
 public class HumanMonster : MonsterAI
@@ -51,7 +52,7 @@ public class HumanMonster : MonsterAI
 
     [Header("Onjump")]
     [SerializeField] CharacterController controller;
-
+    [SerializeField] NavMeshAgent agent;
     private float ySpeed;
 
     //private Vector2 moveDir;
@@ -237,17 +238,14 @@ public class HumanMonster : MonsterAI
         }
         public void Move()
         {
-
-            Vector3 direction = (owner.firstTarget.position - transform.position).normalized;
-            transform.Translate(direction * moveSpeed * Time.deltaTime);
-
-            
-            if (direction.magnitude > 0) // if (lookDir != Vector3.zero) 이게 연산량은 적을듯
+            if ( firstTarget != null)
             {
-                Quaternion lookRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * 10);
+                owner.agent.destination = firstTarget.transform.position;
             }
-            // 언덕이동 구현하고 싶으면 Vector3.project, 투영 조사
+            if (firstTarget == null)
+            {
+                return;
+            }
         }
     }
     private class IdleState : HumanMonsterState
