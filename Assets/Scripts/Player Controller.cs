@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Component")]
     [SerializeField] CharacterController controller;
+    [SerializeField] Animator animator;
 
     [Header("Spec")]
     [SerializeField] float moveSpeed;
@@ -32,11 +33,17 @@ public class PlayerController : MonoBehaviour
         {
             controller.Move(transform.right * moveDir.x * walkSpeed * Time.deltaTime);
             controller.Move(transform.forward * moveDir.z * walkSpeed * Time.deltaTime);
+            animator.SetFloat("MoveSpeed", moveDir.magnitude * moveSpeed, 0.1f, Time.deltaTime);
+            animator.SetFloat("XSpeed", moveDir.x * moveSpeed, 0.1f, Time.deltaTime);
+            animator.SetFloat("YSpeed", moveDir.z * moveSpeed, 0.1f, Time.deltaTime);
         }
         else
         {
             controller.Move(transform.right * moveDir.x * moveSpeed * Time.deltaTime);
             controller.Move(transform.forward * moveDir.z * moveSpeed * Time.deltaTime);
+            animator.SetFloat("MoveSpeed", moveDir.magnitude * walkSpeed, 0.1f, Time.deltaTime);
+            animator.SetFloat("XSpeed", moveDir.x * walkSpeed, 0.1f, Time.deltaTime);
+            animator.SetFloat("YSpeed", moveDir.z * walkSpeed, 0.1f, Time.deltaTime);
         }
     }
 
