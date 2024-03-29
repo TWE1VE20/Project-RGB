@@ -11,6 +11,7 @@ public class TimeFlowManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI RealTimer;
     [SerializeField] TextMeshProUGUI InGameTimer;
     [SerializeField] TextMeshProUGUI TimeScale;
+    [SerializeField] TextMeshProUGUI FPSrate;
 
     [Header("SlowMotion")]
     public float lerpSpeed = 1f;        // Lerp 속도
@@ -38,6 +39,7 @@ public class TimeFlowManager : MonoBehaviour
         RealTimer.text = string.Format("Real Time\t{0:D2}:{1:D2}", 0, 0);
         InGameTimer.text = string.Format("Game Time\t{0:D2}:{1:D2}", 0, 0);
         TimeScale.text = string.Format("Time Scale\t{0:f5}", Time.timeScale);
+        FPSrate.text = string.Format("FPS \t{0:f1}", fps);
 
         Gsec = Time.time;
         Rsec = Time.time;
@@ -56,6 +58,7 @@ public class TimeFlowManager : MonoBehaviour
     {
         if(timerON)
             Timer();
+        Fps();
     }
     private void FixedUpdate()
     {
@@ -84,12 +87,15 @@ public class TimeFlowManager : MonoBehaviour
 
     private void Fps()
     {
-        fps++;
+        frame++;
         time += Time.deltaTime;
         if (time >= 1f)
         {
-            //fps = 
+            fps = frame / time;
+            frame = 0;
+            time = 0;
         }
+        FPSrate.text = string.Format("FPS \t{0:f1}", fps);
     }
 
     // 슬로우모션 함수
