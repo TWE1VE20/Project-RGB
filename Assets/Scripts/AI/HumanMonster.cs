@@ -50,8 +50,7 @@ public class HumanMonster : MonsterAI
     [Header("gizmo")]
     [SerializeField, Range(0, 360)] float angle;
 
-    [Header("Onjump")]
-    [SerializeField] CharacterController controller;
+    [Header("Move")]
     [SerializeField] NavMeshAgent agent;
     private float ySpeed;
 
@@ -240,10 +239,12 @@ public class HumanMonster : MonsterAI
         {
             if ( firstTarget != null)
             {
+                Debug.Log("moving");
                 owner.agent.destination = firstTarget.transform.position;
             }
             if (firstTarget == null)
             {
+                Debug.Log("not moving");
                 return;
             }
         }
@@ -258,7 +259,7 @@ public class HumanMonster : MonsterAI
         }
         public override void Update()
         {
-            jumpMove();
+            
             FindTarget();
         }
         public override void Transition()
@@ -298,7 +299,7 @@ public class HumanMonster : MonsterAI
 
         public override void Update()
         {
-            jumpMove();
+            
             FindTarget();
             Move();
         }
@@ -361,7 +362,7 @@ public class HumanMonster : MonsterAI
 
         public override void Update()
         {
-            jumpMove();
+            //jumpMove();
             FindTarget();
             Attack();
             
@@ -398,7 +399,7 @@ public class HumanMonster : MonsterAI
         public override void Update()
         {
             FindTarget();
-            jumpMove();
+            
         }
         //여기서 코루틴으로 부활 구현해야될것같은데 일단 나중에
         public override void Transition()
