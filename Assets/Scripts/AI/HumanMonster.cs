@@ -177,7 +177,6 @@ public class HumanMonster : MonsterAI
             {
                 for (int i = 0; i < size; i++)
                 {
-
                     {
                         Vector3 dirToTarget = (atkColliders[i].transform.position - viewPoint.position).normalized;
 
@@ -238,19 +237,14 @@ public class HumanMonster : MonsterAI
         }
         public void Move()
         {
+
+            Vector3 direction = (owner.firstTarget.position - transform.position).normalized;
+            transform.Translate(direction * moveSpeed * Time.deltaTime);
+
             
-            Vector3 forwardDir = Camera.main.transform.forward;
-            forwardDir = new Vector3(forwardDir.x, 0, forwardDir.z).normalized;
-            Vector3 rightDir = Camera.main.transform.right;
-            rightDir = new Vector3(rightDir.x, 0, rightDir.z).normalized;
-
-            owner.controller.Move(forwardDir * owner.moveDir.z * moveSpeed * Time.deltaTime);
-            owner.controller.Move(rightDir * owner.moveDir.x * moveSpeed * Time.deltaTime);
-
-            Vector3 lookDir = forwardDir * owner.moveDir.z + rightDir * owner.moveDir.x;
-            if (lookDir.magnitude > 0) // if (lookDir != Vector3.zero) 이게 연산량은 적을듯
+            if (direction.magnitude > 0) // if (lookDir != Vector3.zero) 이게 연산량은 적을듯
             {
-                Quaternion lookRotation = Quaternion.LookRotation(lookDir);
+                Quaternion lookRotation = Quaternion.LookRotation(direction);
                 transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * 10);
             }
             // 언덕이동 구현하고 싶으면 Vector3.project, 투영 조사
@@ -345,32 +339,13 @@ public class HumanMonster : MonsterAI
         }
         public override void Update()
         {
-            // 도망치는걸 여기다 구현
-            Vector2 dir = (enemyUlti.position - transform.position).normalized;
-            transform.Translate(-dir * moveSpeed * Time.deltaTime, Space.World);
-            Attack();
-            FindTarget();
+           
 
         }
 
         public override void Transition()
         {
-            if (hp <= 0)
-            {
-                ChangeState(State.Die);
-            }
-            else if (firstTarget == null)
-            {
-                ChangeState(State.Idle);
-            }
-            else if (Vector3.Distance(firstTarget.position, transform.position) <= attackRange)
-            {
-                ChangeState(State.Battle);
-            }
-            else if (Vector3.Distance(firstTarget.position, transform.position) > attackRange)
-            {
-                ChangeState(State.Trace);
-            }
+            
         }
     }
 
