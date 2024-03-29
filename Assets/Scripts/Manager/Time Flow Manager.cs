@@ -87,15 +87,22 @@ public class TimeFlowManager : MonoBehaviour
 
     private void Fps()
     {
-        frame++;
-        time += Time.deltaTime;
-        if (time >= 1f)
+        if (Time.timeScale  >= 0.99f)
         {
-            fps = frame / time;
-            frame = 0;
-            time = 0;
+            frame++;
+            time += Time.deltaTime;
+            if (time >= 1f)
+            {
+                fps = frame / time;
+                frame = 0;
+                time = 0;
+            }
+            FPSrate.text = string.Format("FPS \t{0:f1}", fps);
         }
-        FPSrate.text = string.Format("FPS \t{0:f1}", fps);
+        else
+        {
+            FPSrate.text = string.Format("FPS \t{0:f1} (Stoped)", fps);
+        }
     }
 
     // 슬로우모션 함수
