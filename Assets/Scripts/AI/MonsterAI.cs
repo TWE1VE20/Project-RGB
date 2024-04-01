@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterAI : MonoBehaviour, IDamagable, IAttackable
+public class MonsterAI : MonoBehaviour, IDamagable
 {
     //[Header("target tring")]
     //[SerializeField] LayerMask redTeam;
@@ -14,16 +14,17 @@ public class MonsterAI : MonoBehaviour, IDamagable, IAttackable
     public Animator battleAni;
     public int hitPoint;
 
-    public void Attack()
-    {
-        throw new System.NotImplementedException();
-    }
+
 
     public void TakeDamage(int damage)
     {
         Debug.Log("damaged");
         hitPoint -= damage;
-        //battleAni.Play(TakeDamage)
+        if (hitPoint <= 0)
+        {
+            //battleAni.Play()
+        }
+        
     }
 
 

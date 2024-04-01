@@ -201,7 +201,6 @@ public class HumanMonster : MonsterAI
                 {
                     owner.firstTarget = null;
                 }
-
             }
             
         }
@@ -218,22 +217,21 @@ public class HumanMonster : MonsterAI
             if (owner.attackCost == 1)
             {
                 owner.StopCoroutine(AttackCoroutine());
-                RaycastHit hit;
+                RaycastHit hit; // 레이 발사
+                Vector3 direction = (firstTarget.transform.position - viewPoint.position).normalized;
                 if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange, targetLayerMask))
                 {
                     // 레이가 IDamagable 인터페이스를 구현한 오브젝트에 충돌했다면
                     IDamagable damageable = hit.collider.gameObject.GetComponent<IDamagable>();
-                    if (damageable != null)
-                    {
-                        // TakeDamage 함수를 호출하여 피해를 입힙니다.
-                        damageable.TakeDamage(owner.deal);
-                    }
+                    // TakeDamage 함수를 호출하여 피해를 입힙니다.
+                    Debug.Log(hit.collider.gameObject.name);
+                    damageable?.TakeDamage(owner.deal);
+                   
                 }
+                Debug.Log("Attacking");
                 owner.attackCost--;
                 owner.StartCoroutine(AttackCoroutine());
             }
-
-
         }
         public void Move()
         {
@@ -280,20 +278,17 @@ public class HumanMonster : MonsterAI
                 ChangeState(State.Patrol);
                 
             }
-            else if (Vector3.Distance(firstTarget.position, transform.position) < owner.addTargetRange)
+            else if (firstTarget != null)
             {
-                owner.patrolTarget = owner.patorolPoint1.transform.position;
-                Debug.Log("returnPoint select");
                 owner.returnPoint = owner.transform.position;
                 ChangeState(State.Trace);
             }
-
-            else if (Vector3.Distance(firstTarget.position, transform.position) <= attackRange && owner.attackCost == 1)
-            {
-                Debug.Log("returnPoint select");
-                owner.returnPoint = owner.transform.position;
-                ChangeState(State.Battle);
-            }
+            //else if (Vector3.Distance(firstTarget.position, transform.position) <= attackRange && owner.attackCost == 1)
+            //{
+            //    Debug.Log("returnPoint select");
+            //    owner.returnPoint = owner.transform.position;
+            //    ChangeState(State.Battle);
+            //}
         }
 
 
@@ -326,7 +321,6 @@ public class HumanMonster : MonsterAI
                 owner.returnPoint = owner.transform.position;
                 ChangeState(State.Trace);
             }
-            
         }
 
 
@@ -355,8 +349,9 @@ public class HumanMonster : MonsterAI
             {
                 ChangeState(State.Return);                
             }
-            else if (Vector2.Distance(firstTarget.position, transform.position) <= attackRange)
+            else if (Vector3.Distance(firstTarget.position, transform.position) <= attackRange)
             {
+                owner.animator.SetBool("Walk", false);
                 ChangeState(State.Battle);
             }
         }
@@ -422,13 +417,14 @@ public class HumanMonster : MonsterAI
 
         public override void Enter()
         {
-            owner.returnPoint = owner.transform.position;
+            owner.agent.speed = 0;
         }
 
         public override void Update()
         {
             FindTarget();
             Attack();
+            
         }
 
         public override void Transition()
@@ -437,11 +433,11 @@ public class HumanMonster : MonsterAI
             {
                 ChangeState(State.Die);
             }
-            else if (firstTarget == null || (owner.attackCost == 0))
+            else if (firstTarget == null)
             {
-                ChangeState(State.Idle);
+                ChangeState(State.Return);
             }
-            else if (Vector2.Distance(firstTarget.position, transform.position) > attackRange)
+            else if (Vector3.Distance(firstTarget.position, transform.position) > attackRange)
             {
                 ChangeState(State.Trace);
             }
