@@ -16,7 +16,7 @@ public class MonsterAI : MonoBehaviour, IDamagable
     {
         Debug.Log("damaged");
         hitPoint -= damage;
-
+        
     }
 
 
