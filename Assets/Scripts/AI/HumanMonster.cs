@@ -303,6 +303,7 @@ public class HumanMonster : MonsterAI
         public PatrolState(HumanMonster owner) : base(owner) { }
         public override void Enter()
         {
+            owner.animator.SetBool("Walk", true);
             owner.agent.speed = 1;
         }
         public override void Update()
