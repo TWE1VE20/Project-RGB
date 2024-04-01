@@ -9,8 +9,9 @@ public class Melee : Weapons
         this.attackType = Weapons.AttackType.MELEE;
     }
 
-    public override void Attack()
+    public override bool Attack()
     {
         // 근접공격 모션
+        return true;
     }
 }

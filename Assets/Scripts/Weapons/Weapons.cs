@@ -1,31 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Weapons : MonoBehaviour
 {
     protected Colors colorState { get; private set; }
-    protected AttackType attackType;
+    public AttackType attackType { get; protected set; }
 
     public enum Colors { RED, BLUE, GREEN }
     public enum AttackType { MELEE, GUN }
 
+    public float reloadTime { get; private set; }
+    public float attackTime { get; private set; }
+
     public Weapons()
     {
         colorState = Colors.RED;
+        reloadTime = 0;
     }
 
-    public virtual void Attack(){ }
+    protected void Starting()
+    {
+        colorState = Colors.RED;
+        reloadTime = 0;
+    }
 
-    public void ChangeColor() 
+    public virtual bool Attack() { return false; }
+    public virtual void Reload() { }
+    public virtual bool CanReload() { return false; }
+
+    public void ChangeColor()
     {
         colorState = NextColor(colorState);
     }
 
+    public void SetReloadTime(float time)
+    {
+        reloadTime = time;
+    }
+    public void SetAttackTime(float time)
+    {
+        attackTime = time;
+    }
+
     private Colors NextColor(Colors color)
     {
-        switch(color)
+        switch (color)
         {
             case Colors.RED:
                 return Colors.BLUE;
