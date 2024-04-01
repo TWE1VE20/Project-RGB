@@ -38,7 +38,7 @@ public class HumanMonster : MonsterAI
     [Header("Spec")]
     [SerializeField] float moveSpeed;
     [SerializeField] float avoidRange;
-    [SerializeField] float hp;
+    [SerializeField] int hp;
     [SerializeField] bool isDied;
     [SerializeField] Transform viewPoint;
     [SerializeField] LayerMask targetLayerMask;
@@ -57,7 +57,8 @@ public class HumanMonster : MonsterAI
     [Header("Patrol")]
     [SerializeField] Transform patorolPoint1;
     [SerializeField] Transform patorolPoint2;
-    [SerializeField] Transform returnPoint;
+    [SerializeField] Vector3 patrolTarget;
+    [SerializeField] Vector3 returnPoint;
 
     //private Vector2 moveDir;
     //private float xSpeed;
@@ -170,7 +171,7 @@ public class HumanMonster : MonsterAI
             this.owner = owner;
         }
         
-        public void FindTarget()
+        public void FindTarget() // 적 탐색 하는 부분
         {
             int size = Physics.OverlapSphereNonAlloc(viewPoint.position, range, atkColliders, targetLayerMask);
             
@@ -190,6 +191,7 @@ public class HumanMonster : MonsterAI
 
                         Debug.DrawRay(viewPoint.position, dirToTarget * distToTarget, Color.red);
                         owner.firstTarget = owner.atkColliders[i].transform;
+                        owner.returnPoint = owner.transform.position;
                         owner.moveDir = dirToTarget;
                         return;
                     }
@@ -245,9 +247,17 @@ public class HumanMonster : MonsterAI
             }
             if (firstTarget == null)
             {
-                Debug.Log("not moving");
+                owner.agent.destination = owner.patrolTarget;
                 return;
             }
+        }
+        public void Patrol()
+        {
+            if (Vector3.Distance(transform.position, owner.patrolTarget) < 1f)
+            {
+                owner.patrolTarget = owner.patrolTarget == owner.patorolPoint1.position ? owner.patorolPoint2.position : owner.patorolPoint1.position;
+            }
+            transform.position = Vector3.MoveTowards(transform.position, owner.patrolTarget, moveSpeed * Time.deltaTime);
         }
     }
     private class IdleState : HumanMonsterState
@@ -268,25 +278,20 @@ public class HumanMonster : MonsterAI
             if (hp <= 0)
             {
                 ChangeState(State.Die);
-                
-                
             }
             else if (firstTarget == null)
             {
-                ChangeState(State.Idle);
+                ChangeState(State.Patrol);
                 
             }
             else if (Vector3.Distance(firstTarget.position, transform.position) < owner.addTargetRange)
             {
                 ChangeState(State.Trace);
-                Debug.Log("trace");
             }
 
             else if (Vector3.Distance(firstTarget.position, transform.position) <= attackRange && owner.attackCost == 1)
             {
                 ChangeState(State.Battle);
-                
-
             }
         }
 
@@ -298,15 +303,20 @@ public class HumanMonster : MonsterAI
         public PatrolState(HumanMonster owner) : base(owner) { }
         public override void Enter()
         {
-
+            owner.agent.speed = 1;
         }
         public override void Update()
         {
             FindTarget();
+            Patrol();
+            Move();
         }
         public override void Transition()
         {
-            
+            if (hp <= 0)
+            {
+                ChangeState(State.Die);
+            }
         }
 
 
@@ -318,7 +328,7 @@ public class HumanMonster : MonsterAI
 
         public override void Update()
         {
-            
+            owner.firstTarget = null;
             FindTarget();
             Move();
         }
