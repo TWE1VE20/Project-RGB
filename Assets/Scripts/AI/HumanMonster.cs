@@ -38,7 +38,7 @@ public class HumanMonster : MonsterAI
     [Header("Spec")]
     [SerializeField] float moveSpeed;
     [SerializeField] float avoidRange;
-    [SerializeField] float hp;
+    [SerializeField] int hp;
     [SerializeField] bool isDied;
     [SerializeField] Transform viewPoint;
     [SerializeField] LayerMask targetLayerMask;
@@ -170,7 +170,7 @@ public class HumanMonster : MonsterAI
             this.owner = owner;
         }
         
-        public void FindTarget()
+        public void FindTarget() // 적 탐색 하는 부분
         {
             int size = Physics.OverlapSphereNonAlloc(viewPoint.position, range, atkColliders, targetLayerMask);
             
@@ -268,8 +268,6 @@ public class HumanMonster : MonsterAI
             if (hp <= 0)
             {
                 ChangeState(State.Die);
-                
-                
             }
             else if (firstTarget == null)
             {
@@ -278,15 +276,15 @@ public class HumanMonster : MonsterAI
             }
             else if (Vector3.Distance(firstTarget.position, transform.position) < owner.addTargetRange)
             {
+                owner.returnPoint.position = owner.transform.position;
                 ChangeState(State.Trace);
                 Debug.Log("trace");
             }
 
             else if (Vector3.Distance(firstTarget.position, transform.position) <= attackRange && owner.attackCost == 1)
             {
+                owner.returnPoint.position = owner.transform.position;
                 ChangeState(State.Battle);
-                
-
             }
         }
 
@@ -318,7 +316,7 @@ public class HumanMonster : MonsterAI
 
         public override void Update()
         {
-            
+            owner.firstTarget = null;
             FindTarget();
             Move();
         }

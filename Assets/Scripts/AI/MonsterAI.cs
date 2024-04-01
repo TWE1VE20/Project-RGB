@@ -11,11 +11,12 @@ public class MonsterAI : MonoBehaviour, IDamagable
     //public List<BattleAI> blueAI = new List<BattleAI>();
     //public List<BattleAI> redAI = new List<BattleAI>(); 
 
-    public float hitPoint;
+    public int hitPoint;
     public void TakeDamage(int damage)
     {
         Debug.Log("damaged");
         hitPoint -= damage;
+
     }
 
 
