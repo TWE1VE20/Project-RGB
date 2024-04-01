@@ -6,7 +6,7 @@ using UnityEngine;
 public class WeaponHolder : MonoBehaviour
 {
     [Header("Weapons")]
-    [SerializeField] List<Weapons> weaponsList;
+    public List<Weapons> weaponsList;
 
     public int current = 0;
     private bool reloading = false;

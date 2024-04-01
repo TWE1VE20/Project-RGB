@@ -9,8 +9,17 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] WeaponHolder weaponHolder;
     [SerializeField] ShootingPoint shootingpoint;
 
+    [Header("Spec")]
+    [SerializeField] float ColorChangeSpeed;
+    private bool canColorChange;
+
     [Header("Debug")]
     [SerializeField] bool debug;
+
+    private void Start()
+    {
+        canColorChange = true;
+    }
     private void OnAttack(InputValue value)
     {
         if (value.isPressed)
@@ -24,5 +33,25 @@ public class PlayerAttack : MonoBehaviour
     private void OnReload(InputValue value)
     {
         weaponHolder.Reload();
+    }
+
+    private void OnChangeColor(InputValue value)
+    {
+        if (canColorChange != false && gameObject.GetComponent<PlayerController>().IsAlive)
+        {
+            Vector2 scroll = value.Get<Vector2>();
+            if (scroll.y > 0)
+                weaponHolder.weaponsList[weaponHolder.current].ChangeColor(false);
+            else
+                weaponHolder.weaponsList[weaponHolder.current].ChangeColor(true);
+            StartCoroutine(ColorChangeDuration(ColorChangeSpeed));
+        }
+    }
+
+    IEnumerator ColorChangeDuration(float time)
+    {
+        canColorChange = false;
+        yield return new WaitForSeconds(time);
+        canColorChange = true;
     }
 }

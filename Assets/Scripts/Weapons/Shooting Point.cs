@@ -5,6 +5,10 @@ using UnityEngine.UIElements;
 
 public class ShootingPoint : MonoBehaviour
 {
+    [Header("Component")]
+    [SerializeField] WeaponHolder weaponHolder;
+
+    [Header("Spec")]
     [SerializeField] float maxDistance;
 
     [Header("Debug")]
@@ -29,7 +33,12 @@ public class ShootingPoint : MonoBehaviour
                 Debug.Log(hitInfo.collider.gameObject.name);
                 Debug.Log(hitInfo.distance);
                 hitPoint.position = hitInfo.point;
-                Debug.DrawRay(transform.position, transform.forward * hitInfo.distance, Color.blue, 0.1f);
+                if (weaponHolder.weaponsList[weaponHolder.current].colorState == Weapons.Colors.RED)
+                    Debug.DrawRay(transform.position, transform.forward * hitInfo.distance, Color.red, 0.1f);
+                else if (weaponHolder.weaponsList[weaponHolder.current].colorState == Weapons.Colors.GREEN)
+                    Debug.DrawRay(transform.position, transform.forward * hitInfo.distance, Color.green, 0.1f);
+                else if (weaponHolder.weaponsList[weaponHolder.current].colorState == Weapons.Colors.BLUE)
+                    Debug.DrawRay(transform.position, transform.forward * hitInfo.distance, Color.blue, 0.1f);
             }
         }
         else

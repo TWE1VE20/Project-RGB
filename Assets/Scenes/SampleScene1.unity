@@ -648,6 +648,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d59fa5c11494c9b4c86236fd2f8b3fad, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1595290897}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d59fa5c11494c9b4c86236fd2f8b3fad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1200605316}
     - targetCorrespondingSourceObject: {fileID: 8700783698680967558, guid: d59fa5c11494c9b4c86236fd2f8b3fad, type: 3}
       insertIndex: -1
       addedObject: {fileID: 543443509}
@@ -729,6 +732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd09b5559bca5214dad32c0a2be6e3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponHolder: {fileID: 7392852456001409968}
   maxDistance: 10
   hitPoint: {fileID: 126079822}
   debug: 1
@@ -1306,6 +1310,7 @@ GameObject:
   - component: {fileID: 1115668186}
   - component: {fileID: 1115668188}
   - component: {fileID: 1115668187}
+  - component: {fileID: 1115668189}
   m_Layer: 5
   m_Name: Crosshair
   m_TagString: Untagged
@@ -1345,14 +1350,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a2cba8162de49df45884324677d64315, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a433744c73cebe44db1ba6c610a84a54, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1370,6 +1375,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1115668185}
   m_CullTransparentMesh: 1
+--- !u!114 &1115668189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115668185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36eae2ea90255b144bb1f2d8ee70be38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crosshairImage: {fileID: 1115668187}
+  weaponHolder: {fileID: 7392852456001409968}
 --- !u!1 &1142015261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1571,7 +1590,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1115668186}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1762388356}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1908,7 +1927,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762388355}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: c1a9a3ace110ccd4eae36c9a7de94a13, type: 3}
   m_Controller: {fileID: 9100000, guid: 908d22c2a6ef61049b5abaca40efa705, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -1974,9 +1993,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1762388359}
   animator: {fileID: 1762388357}
-  moveSpeed: 6
+  moveSpeed: 5
   walkSpeed: 3
   jumpSpeed: 5
+  IsAlive: 0
 --- !u!114 &1762388361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2021,6 +2041,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponHolder: {fileID: 7392852456001409968}
   shootingpoint: {fileID: 297007267}
+  ColorChangeSpeed: 0.3
+  debug: 0
 --- !u!4 &1773250147 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: d59fa5c11494c9b4c86236fd2f8b3fad, type: 3}
@@ -2304,9 +2326,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1760175858127946907, guid: f5a18a481d5ab0946b98ec604b6003b5, type: 3}
+      propertyPath: debug
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4214313001206328817, guid: f5a18a481d5ab0946b98ec604b6003b5, type: 3}
       propertyPath: m_Name
       value: Weapon Holder
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051758884636528674, guid: f5a18a481d5ab0946b98ec604b6003b5, type: 3}
+      propertyPath: AmmoLeft
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051758884636528674, guid: f5a18a481d5ab0946b98ec604b6003b5, type: 3}
+      propertyPath: timeforAttack
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051758884636528674, guid: f5a18a481d5ab0946b98ec604b6003b5, type: 3}
+      propertyPath: timeforReload
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2335,7 +2373,6 @@ SceneRoots:
   - {fileID: 1616995525}
   - {fileID: 963194228}
   - {fileID: 705507995}
-  - {fileID: 1200605316}
   - {fileID: 167484586}
   - {fileID: 1218546214}
   - {fileID: 1210466468}

@@ -19,7 +19,12 @@ public class PlayerController : MonoBehaviour
     private float ySpeed;
     private bool isWalk;
 
-    void Start(){}
+    public bool IsAlive;
+
+    void Start() 
+    {
+        IsAlive = true;
+    }
 
     void Update()
     {
