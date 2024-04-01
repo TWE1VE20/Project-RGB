@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterAI : MonoBehaviour
+public class MonsterAI : MonoBehaviour, IDamagable
 {
     //[Header("target tring")]
     //[SerializeField] LayerMask redTeam;
