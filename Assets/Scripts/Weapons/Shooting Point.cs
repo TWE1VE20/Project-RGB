@@ -82,9 +82,7 @@ public class ShootingPoint : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Vector3 forward = transform.forward;
-
         Gizmos.color = Color.red;
-
         Gizmos.DrawLine(transform.position, transform.position + forward * 1);
     }
 }

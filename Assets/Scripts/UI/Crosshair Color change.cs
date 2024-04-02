@@ -9,20 +9,14 @@ public class CrosshairColorchange : MonoBehaviour
     [SerializeField] Image crosshairImage;
     [SerializeField] WeaponHolder weaponHolder;
 
-    private Weapons.Colors curColor;
-
     private void Start()
     {
-        curColor = Weapons.Colors.RED;
+        crosshairImage.color = new Color(255, 0, 0);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (curColor != weaponHolder.weaponsList[weaponHolder.current].colorState)
-        {
-            curColor = weaponHolder.weaponsList[weaponHolder.current].colorState;
-        }
-        switch(curColor)
+        switch(weaponHolder.weaponsList[weaponHolder.current].colorState)
         {
             case Weapons.Colors.RED:
                 crosshairImage.color = new Color(255, 0, 0);

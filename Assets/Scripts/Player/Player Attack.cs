@@ -40,20 +40,20 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnChangeColor(InputValue value)
     {
-        if (canColorChange != false && gameObject.GetComponent<PlayerController>().IsAlive)
+        if (canColorChange != false)
         {
             Vector2 scroll = value.Get<Vector2>();
-            if (scroll.y > 0)
-                weaponHolder.weaponsList[weaponHolder.current].ChangeColor(false);
-            else
-                weaponHolder.weaponsList[weaponHolder.current].ChangeColor(true);
-            StartCoroutine(ColorChangeDuration(ColorChangeSpeed));
+            StartCoroutine(ColorChangeDuration(ColorChangeSpeed, scroll.y < 0));
         }
     }
 
-    IEnumerator ColorChangeDuration(float time)
+    IEnumerator ColorChangeDuration(float time, bool next)
     {
         canColorChange = false;
+        if (next)
+            weaponHolder.weaponsList[weaponHolder.current].ChangeColor(true);
+        else
+            weaponHolder.weaponsList[weaponHolder.current].ChangeColor(false);
         yield return new WaitForSeconds(time);
         canColorChange = true;
     }
