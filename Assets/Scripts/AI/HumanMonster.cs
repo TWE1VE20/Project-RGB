@@ -31,6 +31,8 @@ public class HumanMonster : MonsterAI, IStunable
     [SerializeField] Transform firstTarget;
     [SerializeField] Transform secondTarget;
     [SerializeField] float rotationSpeed;
+    private float cosRange;
+    Collider[] atkColliders = new Collider[20];
     private Vector3 moveDir;
     private Vector3 myPos;
 
@@ -43,9 +45,7 @@ public class HumanMonster : MonsterAI, IStunable
 
 
 
-    private float cosRange;
-
-    Collider[] atkColliders = new Collider[20];
+    
 
 
     [Header("Spec")]
@@ -74,9 +74,8 @@ public class HumanMonster : MonsterAI, IStunable
     [SerializeField] Vector3 returnPoint;
 
     [Header("Color")]
-
-    //private Vector2 moveDir;
-    //private float xSpeed;
+    [SerializeField] HaveColor haveColor;
+    
 
 
 
@@ -101,7 +100,7 @@ public class HumanMonster : MonsterAI, IStunable
 
     //private List<BattleAI> enemyList;
     //private float preAngle;
-
+    
 
     private void Awake()
     {
@@ -116,7 +115,7 @@ public class HumanMonster : MonsterAI, IStunable
         stateMachine.AddState(State.Gameover, new GameoverState(this));
         stateMachine.InitState(State.Idle);
 
-
+        haveColor = gameObject.AddComponent<HaveColor>();
     }
 
 

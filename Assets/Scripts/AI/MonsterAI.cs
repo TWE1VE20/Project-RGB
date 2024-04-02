@@ -12,8 +12,10 @@ public class MonsterAI : MonoBehaviour, IDamagable
     //public List<BattleAI> blueAI = new List<BattleAI>();
     //public List<BattleAI> redAI = new List<BattleAI>(); 
 
-    public Animator battleAni;
+    private Animator battleAni;
     public int hitPoint;
+
+    
 
     
 
@@ -34,6 +36,18 @@ public class MonsterAI : MonoBehaviour, IDamagable
 
     public void TakeDamage(Weapons.Colors color)
     {
+        if (color == Weapons.Colors.RED)
+        {
+
+        }
+        else if (color == Weapons.Colors.GREEN)
+        {
+
+        }
+        else if (color == Weapons.Colors.BLUE)
+        {
+
+        }
         return;
     }
 
