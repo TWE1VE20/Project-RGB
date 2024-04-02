@@ -16,9 +16,12 @@ public class PlayerAttack : MonoBehaviour
     [Header("Debug")]
     [SerializeField] bool debug;
 
+    public bool isGuard { get; private set; }
+
     private void Start()
     {
         canColorChange = true;
+        isGuard = false;
     }
     private void OnAttack(InputValue value)
     {

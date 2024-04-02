@@ -51,6 +51,30 @@ public class ShootingPoint : MonoBehaviour
         }
     }
 
+    [ContextMenu("Reflect")]
+    public void Reflect() 
+    {
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, maxDistance))
+        {
+            if (debug)
+            {
+                Debug.Log("Hit!");
+                Debug.Log(hitInfo.collider.gameObject.name);
+                Debug.Log(hitInfo.distance);
+                hitPoint.position = hitInfo.point;
+                Debug.DrawRay(transform.position, transform.forward * hitInfo.distance, new Color(1,0,1,1), 0.1f);
+            }
+        }
+        else
+        {
+            if (debug)
+            {
+                Debug.Log("Noting Hit");
+                Debug.DrawRay(transform.position, transform.forward * maxDistance, Color.gray, 0.1f);
+            }
+        }
+    }
+
     private void OnDrawGizmosSelected()
     {
         Vector3 forward = transform.forward;
