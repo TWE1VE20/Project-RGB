@@ -11,4 +11,9 @@ public class PlayerNPC : MonoBehaviour, IDamagable
         hp -= damage;
         Debug.Log("attacked");
     }
+
+    public void TakeDamage(int damage, Vector3 EnemyPosition)
+    {
+        return;
+    }
 }

@@ -2616,7 +2616,8 @@ MonoBehaviour:
   attackCooltime: 2
   firstTarget: {fileID: 0}
   secondTarget: {fileID: 0}
-  avoidRange: 0
+  rotationSpeed: 120
+  MaxHP: 2
   hp: 2
   isDied: 0
   viewPoint: {fileID: 1018427354}
@@ -2624,8 +2625,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   addTargetRange: 5
-  MaxHP: 2
-  traceRange: 7
+  traceRange: 10
+  avoidRange: 0
   angle: 60
   agent: {fileID: 1535553518}
   patorolPoint1: {fileID: 703971184}

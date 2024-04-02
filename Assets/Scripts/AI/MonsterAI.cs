@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MonsterAI : MonoBehaviour, IDamagable
 {
@@ -24,10 +25,12 @@ public class MonsterAI : MonoBehaviour, IDamagable
         {
             //battleAni.Play()
         }
-        
     }
 
-
+    public void TakeDamage(int damage, Vector3 EnemyPosition)
+    {
+        return;
+    }
 
     //private void OnTriggerEnter2D(Collider2D other)
     //{

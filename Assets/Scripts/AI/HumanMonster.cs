@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.Windows;
 using static UnityEngine.UI.GridLayoutGroup;
 
@@ -11,7 +12,7 @@ public class HumanMonster : MonsterAI
     // 시간 사용시 주의 
     // 슬로우모션 영향 받는건 deltaTime
     // 안받는건 Time.unscaleddeltatime
-    public enum State { Idle, Trace, Patrol, Avoid, Return, Battle, Die, Gameover }
+    public enum State { Idle, Trace, Patrol, Groggy, Avoid, Return, Battle, Die, Gameover }
 
     [Header("Component")]
     [SerializeField] Animator animator;
@@ -28,7 +29,10 @@ public class HumanMonster : MonsterAI
     [SerializeField] float attackCooltime;
     [SerializeField] Transform firstTarget;
     [SerializeField] Transform secondTarget;
+    [SerializeField] float rotationSpeed;
     private Vector3 moveDir;
+    private Vector3 myPos;
+    private LineRenderer lineRenderer;
 
 
     private float cosRange;
@@ -37,14 +41,16 @@ public class HumanMonster : MonsterAI
 
 
     [Header("Spec")]
-    [SerializeField] float avoidRange;
+    
+    [SerializeField] int MaxHP;
     [SerializeField] int hp;
     [SerializeField] bool isDied;
     [SerializeField] Transform viewPoint;
     [SerializeField] LayerMask obstacleLayerMask;
     [SerializeField] float addTargetRange;
-    [SerializeField] int MaxHP;
     [SerializeField] float traceRange;
+    [SerializeField] float avoidRange;
+    [SerializeField] bool groggyAble;
 
     [Header("gizmo")]
     [SerializeField, Range(0, 360)] float angle;
@@ -170,10 +176,11 @@ public class HumanMonster : MonsterAI
         
         public void FindTarget() // 적 탐색 하는 부분
         {
-            int size = Physics.OverlapSphereNonAlloc(viewPoint.position, addTargetrange, atkColliders, targetLayerMask);
+            
             
             if (firstTarget == null)
             {
+                int size = Physics.OverlapSphereNonAlloc(viewPoint.position, addTargetrange, atkColliders, targetLayerMask);
                 for (int i = 0; i < size; i++)
                 {
                     {
@@ -218,14 +225,13 @@ public class HumanMonster : MonsterAI
             {
                 owner.StopCoroutine(AttackCoroutine());
                 RaycastHit hit; // 레이 발사
-                Vector3 direction = (firstTarget.transform.position - viewPoint.position).normalized;
-                if (Physics.Raycast(transform.position, transform.forward, out hit, attackRange, targetLayerMask))
+                if (Physics.Raycast(viewPoint.position, viewPoint.forward, out hit, attackRange, targetLayerMask))
                 {
                     // 레이가 IDamagable 인터페이스를 구현한 오브젝트에 충돌했다면
                     IDamagable damageable = hit.collider.gameObject.GetComponent<IDamagable>();
                     // TakeDamage 함수를 호출하여 피해를 입힙니다.
                     Debug.Log(hit.collider.gameObject.name);
-                    damageable?.TakeDamage(owner.deal);
+                    damageable?.TakeDamage(owner.deal, owner.transform.position); 
                    
                 }
                 Debug.Log("Attacking");
@@ -252,6 +258,20 @@ public class HumanMonster : MonsterAI
             {
                 owner.patrolTarget = owner.patrolTarget == owner.patorolPoint1.position ? owner.patorolPoint2.position : owner.patorolPoint1.position;
             }
+        }
+        public void Direction()
+        {
+            if (firstTarget !=null)
+            {
+                //transform.LookAt(firstTarget);
+                Quaternion targetRotation = Quaternion.LookRotation(firstTarget.position - viewPoint.position);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, owner.rotationSpeed * Time.deltaTime);
+            }
+            else
+            {
+                return;
+            }
+            
         }
     }
     private class IdleState : HumanMonsterState
@@ -331,11 +351,16 @@ public class HumanMonster : MonsterAI
 
         public override void Enter()
         {
-            
+            Debug.Log("Trace");
+            owner.agent.speed = 5;
+            owner.addTargetRange = 7;
+            owner.animator.SetBool("Walk", true);
         }
         public override void Update()
         {
-            FindTarget();
+            Debug.Log("Tracing");
+            //FindTarget();
+            Direction();
             Move();
         }
 
@@ -345,18 +370,42 @@ public class HumanMonster : MonsterAI
             {
                 ChangeState(State.Die);
             }
-            else if (firstTarget == null)
+            else if (Vector3.Distance(transform.position, owner.firstTarget.transform.position) > owner.traceRange)
             {
+                owner.addTargetRange = 5;
+                owner.firstTarget = null;
+                owner.animator.SetBool("Walk", false);
                 ChangeState(State.Return);                
             }
             else if (Vector3.Distance(firstTarget.position, transform.position) <= attackRange)
             {
+                owner.addTargetRange = 5;
                 owner.animator.SetBool("Walk", false);
                 ChangeState(State.Battle);
             }
         }
     }
+    private class GroggyState : HumanMonsterState
+    {
 
+
+        public GroggyState(HumanMonster owner) : base(owner) { }
+
+        public override void Enter()
+        {
+
+        }
+        public override void Update()
+        {
+
+
+        }
+
+        public override void Transition()
+        {
+
+        }
+    }
     private class AvoidState : HumanMonsterState
     {
 
@@ -388,7 +437,7 @@ public class HumanMonster : MonsterAI
         {
             Debug.Log("Return");
             owner.firstTarget = null;
-            owner.agent.speed = 5;
+            owner.agent.speed = 7;
             owner.agent.destination = owner.returnPoint;
         }
         public override void Update()
@@ -417,14 +466,15 @@ public class HumanMonster : MonsterAI
 
         public override void Enter()
         {
+            owner.addTargetRange = 7;
             owner.agent.speed = 0;
         }
 
         public override void Update()
         {
             FindTarget();
+            Direction();
             Attack();
-            
         }
 
         public override void Transition()
@@ -433,14 +483,15 @@ public class HumanMonster : MonsterAI
             {
                 ChangeState(State.Die);
             }
+            else if (Vector3.Distance(firstTarget.position, transform.position) >= attackRange)
+            {
+                ChangeState(State.Trace);
+            }
             else if (firstTarget == null)
             {
                 ChangeState(State.Return);
             }
-            else if (Vector3.Distance(firstTarget.position, transform.position) > attackRange)
-            {
-                ChangeState(State.Trace);
-            }
+            
 
         }
     }
