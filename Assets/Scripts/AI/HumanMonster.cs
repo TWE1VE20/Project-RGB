@@ -8,7 +8,7 @@ using UnityEngine.Animations.Rigging;
 using UnityEngine.Windows;
 using static UnityEngine.UI.GridLayoutGroup;
 
-public class HumanMonster : MonsterAI
+public class HumanMonster : MonsterAI, IStunable
 {
     // 시간 사용시 주의 
     // 슬로우모션 영향 받는건 deltaTime
@@ -26,14 +26,21 @@ public class HumanMonster : MonsterAI
     [SerializeField] LayerMask targetLayerMask;
     [SerializeField] float attackRange;
     [SerializeField] int deal;
-    [SerializeField] int attackCost;
+    [SerializeField] float attackCost;
     [SerializeField] float attackCooltime;
     [SerializeField] Transform firstTarget;
     [SerializeField] Transform secondTarget;
     [SerializeField] float rotationSpeed;
     private Vector3 moveDir;
     private Vector3 myPos;
+
+    [Header("SnipeLine")]
+    [SerializeField] float showDuration;
+    [SerializeField] float hideDuration;
+    [SerializeField] float timer;
+    [SerializeField] bool isVisible;
     private LineRenderer lineRenderer;
+
 
 
     private float cosRange;
@@ -65,6 +72,8 @@ public class HumanMonster : MonsterAI
     [SerializeField] Transform patorolPoint2;
     [SerializeField] Vector3 patrolTarget;
     [SerializeField] Vector3 returnPoint;
+
+    [Header("Color")]
 
     //private Vector2 moveDir;
     //private float xSpeed;
@@ -146,8 +155,10 @@ public class HumanMonster : MonsterAI
         Debug.DrawRay(viewPoint.position, leftDir * addTargetRange, Color.cyan);
     }
 
-
-
+    public void Stun()
+    {
+        stateMachine.ChangeState(State.Groggy);
+    }
 
     private class HumanMonsterState : BaseState
     {
@@ -169,7 +180,8 @@ public class HumanMonster : MonsterAI
         protected float cosRange => owner.cosRange;
         protected float CosAngle => owner.CosAngle;
         protected LayerMask obstacleLayerMask => owner.obstacleLayerMask;
-        
+
+        protected LineRenderer lineRenderer => owner.gameObject.GetComponent<LineRenderer>();
         public HumanMonsterState(HumanMonster owner)
         {
             this.owner = owner;
@@ -177,8 +189,6 @@ public class HumanMonster : MonsterAI
         
         public void FindTarget() // 적 탐색 하는 부분
         {
-            
-            
             if (firstTarget == null)
             {
                 int size = Physics.OverlapSphereNonAlloc(viewPoint.position, addTargetrange, atkColliders, targetLayerMask);
@@ -222,9 +232,10 @@ public class HumanMonster : MonsterAI
         }
         public void Attack()
         {
-            if (owner.attackCost == 1)
+            owner.attackCost += Time.deltaTime;
+            if (owner.attackCost >= 3f)
             {
-                owner.StopCoroutine(AttackCoroutine());
+                //owner.StopCoroutine(AttackCoroutine());
                 RaycastHit hit; // 레이 발사
                 if (Physics.Raycast(viewPoint.position, viewPoint.forward, out hit, attackRange, targetLayerMask))
                 {
@@ -232,12 +243,12 @@ public class HumanMonster : MonsterAI
                     IDamagable damageable = hit.collider.gameObject.GetComponent<IDamagable>();
                     // TakeDamage 함수를 호출하여 피해를 입힙니다.
                     Debug.Log(hit.collider.gameObject.name);
-                    damageable?.TakeDamage(owner.deal, owner.transform.position); 
-                   
+                    damageable?.TakeDamage(owner.deal, owner.transform.position);
+                    owner.attackCost = 0;
                 }
                 Debug.Log("Attacking");
-                owner.attackCost--;
-                owner.StartCoroutine(AttackCoroutine());
+                //owner.attackCost--;
+                //owner.StartCoroutine(AttackCoroutine());
             }
         }
         public void Move()
@@ -274,6 +285,33 @@ public class HumanMonster : MonsterAI
             }
             
         }
+        public void Line()
+        {
+            if (firstTarget != null)
+            {
+                lineRenderer.enabled = true;
+                lineRenderer.positionCount = 2; // 두 개의 정점으로 선을 만듭니다.
+                lineRenderer.SetPosition(0, owner.viewPoint.transform.position);
+                lineRenderer.SetPosition(1, firstTarget.transform.position);
+
+                owner.timer += Time.deltaTime;
+
+                if (owner.timer >= (owner.isVisible ? owner.showDuration : owner.hideDuration))
+                {
+                    owner.timer = 0f;
+                    owner.isVisible = !owner.isVisible;
+
+                    //lineRenderer 활성화, 비활성화 토글
+                    lineRenderer.enabled = owner.isVisible;
+                }
+
+
+            }
+            else
+            {
+                lineRenderer.enabled = false;
+            }
+        }
     }
     private class IdleState : HumanMonsterState
     {
@@ -301,6 +339,7 @@ public class HumanMonster : MonsterAI
             }
             else if (firstTarget != null)
             {
+                owner.lineRenderer.enabled = true;
                 owner.returnPoint = owner.transform.position;
                 ChangeState(State.Trace);
             }
@@ -339,6 +378,7 @@ public class HumanMonster : MonsterAI
             }
             else if (owner.firstTarget != null)
             {
+                lineRenderer.enabled = true;
                 owner.returnPoint = owner.transform.position;
                 ChangeState(State.Trace);
             }
@@ -364,8 +404,8 @@ public class HumanMonster : MonsterAI
             FindTarget();
             Direction();
             Move();
-            //owner.lineRenderer.SetPosition(0, owner.firstTarget.transform.position);
-            //owner.lineRenderer.SetPosition(1, owner.transform.position);
+            Line();
+
         }
 
         public override void Transition()
@@ -378,7 +418,7 @@ public class HumanMonster : MonsterAI
             {
                 owner.addTargetRange = 5;
                 owner.firstTarget = null;
-                owner.animator.SetBool("Walk", false);
+                owner.animator.SetBool("Walk", true);
                 ChangeState(State.Return);                
             }
             else if (Vector3.Distance(transform.position, owner.firstTarget.transform.position) <= attackRange)
@@ -445,6 +485,7 @@ public class HumanMonster : MonsterAI
             owner.firstTarget = null;
             owner.agent.speed = 7f;
             owner.agent.destination = owner.returnPoint;
+            
         }
         public override void Update()
         {
@@ -481,6 +522,8 @@ public class HumanMonster : MonsterAI
             FindTarget();
             Direction();
             Attack();
+            Line();
+
         }
 
         public override void Transition()
@@ -495,6 +538,7 @@ public class HumanMonster : MonsterAI
             }
             else if (firstTarget == null)
             {
+                owner.lineRenderer.enabled = false;
                 ChangeState(State.Return);
             }
             
@@ -508,6 +552,7 @@ public class HumanMonster : MonsterAI
 
         public override void Enter()
         {
+            
             owner.animator.Play(0);
         }
         public override void Update()

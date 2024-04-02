@@ -15,7 +15,7 @@ public class MonsterAI : MonoBehaviour, IDamagable
     public Animator battleAni;
     public int hitPoint;
 
-
+    
 
     public void TakeDamage(int damage)
     {
