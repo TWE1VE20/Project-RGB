@@ -1,6 +1,7 @@
 using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Animations.Rigging;
@@ -280,7 +281,7 @@ public class HumanMonster : MonsterAI
         public IdleState(HumanMonster owner) : base(owner) { }
         public override void Enter()
         {
-            
+            owner.addTargetRange = 5f;
         }
         public override void Update()
         {
@@ -321,7 +322,7 @@ public class HumanMonster : MonsterAI
         {
             
             owner.animator.SetBool("Walk", true);
-            owner.agent.speed = 3f;
+            owner.agent.speed = 2f;
         }
         public override void Update()
         {
@@ -352,16 +353,19 @@ public class HumanMonster : MonsterAI
         public override void Enter()
         {
             Debug.Log("Trace");
-            owner.agent.speed = 5;
-            owner.addTargetRange = 7;
+            owner.agent.speed = 4f;
+            owner.addTargetRange = 7f;
             owner.animator.SetBool("Walk", true);
+            
         }
         public override void Update()
         {
             Debug.Log("Tracing");
-            //FindTarget();
+            FindTarget();
             Direction();
             Move();
+            //owner.lineRenderer.SetPosition(0, owner.firstTarget.transform.position);
+            //owner.lineRenderer.SetPosition(1, owner.transform.position);
         }
 
         public override void Transition()
@@ -370,19 +374,20 @@ public class HumanMonster : MonsterAI
             {
                 ChangeState(State.Die);
             }
-            else if (Vector3.Distance(transform.position, owner.firstTarget.transform.position) > owner.traceRange)
+            else if (firstTarget == null)
             {
                 owner.addTargetRange = 5;
                 owner.firstTarget = null;
                 owner.animator.SetBool("Walk", false);
                 ChangeState(State.Return);                
             }
-            else if (Vector3.Distance(firstTarget.position, transform.position) <= attackRange)
+            else if (Vector3.Distance(transform.position, owner.firstTarget.transform.position) <= attackRange)
             {
                 owner.addTargetRange = 5;
                 owner.animator.SetBool("Walk", false);
                 ChangeState(State.Battle);
             }
+
         }
     }
     private class GroggyState : HumanMonsterState
@@ -435,9 +440,10 @@ public class HumanMonster : MonsterAI
 
         public override void Enter()
         {
+            owner.animator.SetBool("Walk", true);
             Debug.Log("Return");
             owner.firstTarget = null;
-            owner.agent.speed = 7;
+            owner.agent.speed = 7f;
             owner.agent.destination = owner.returnPoint;
         }
         public override void Update()
@@ -466,7 +472,7 @@ public class HumanMonster : MonsterAI
 
         public override void Enter()
         {
-            owner.addTargetRange = 7;
+            owner.addTargetRange = 7f;
             owner.agent.speed = 0;
         }
 
