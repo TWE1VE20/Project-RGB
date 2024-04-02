@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SampleColoredBreakableObject : MonoBehaviour, IBreakable
+public class SampleColoredBreakableObject : HaveColor, IBreakable
 {
     private bool breaked;
 
