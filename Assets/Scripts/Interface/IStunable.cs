@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IStunable
 {
-    public void stun();
+    public void Stun();
 }

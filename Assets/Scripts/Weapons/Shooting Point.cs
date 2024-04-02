@@ -14,10 +14,11 @@ public class ShootingPoint : MonoBehaviour
     [Header("Debug")]
     [SerializeField] Transform hitPoint;
     [SerializeField] bool debug;
+    [SerializeField] bool showHitPoint;
 
     private void Start()
     {
-        if (debug)
+        if (debug && showHitPoint)
             hitPoint.gameObject.SetActive(true);
         else
             hitPoint.gameObject.SetActive(false);
@@ -40,6 +41,8 @@ public class ShootingPoint : MonoBehaviour
                 else if (weaponHolder.weaponsList[weaponHolder.current].colorState == Weapons.Colors.BLUE)
                     Debug.DrawRay(transform.position, transform.forward * hitInfo.distance, Color.blue, 0.1f);
             }
+            // 명중한 물체가 어떤 반응을 할지 추가
+            hitInfo.collider.gameObject.GetComponent<IBreakable>()?.Break(weaponHolder.weaponsList[weaponHolder.current].colorState);
         }
         else
         {
@@ -64,6 +67,7 @@ public class ShootingPoint : MonoBehaviour
                 hitPoint.position = hitInfo.point;
                 Debug.DrawRay(transform.position, transform.forward * hitInfo.distance, new Color(1,0,1,1), 0.1f);
             }
+            hitInfo.collider.gameObject.GetComponent<IStunable>()?.Stun();
         }
         else
         {

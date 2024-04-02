@@ -14,7 +14,7 @@ public class PlayerTakeDamage : IDamagable
 
     public void TakeDamage(int damage)
     {
-        
+        OnPlayerDead?.Invoke();
     }
 
     public void TakeDamage(int damage, Vector3 EnemyPosition)
