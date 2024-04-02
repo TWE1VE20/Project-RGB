@@ -18,4 +18,8 @@ public class PlayerNPC : MonoBehaviour, IDamagable
         Debug.Log("attacked");
         
     }
+    public void TakeDamage(Weapons.Colors color)
+    {
+        return;
+    }
 }

@@ -32,6 +32,11 @@ public class MonsterAI : MonoBehaviour, IDamagable
         return;
     }
 
+    public void TakeDamage(Weapons.Colors color)
+    {
+        return;
+    }
+
     //private void OnTriggerEnter2D(Collider2D other)
     //{
     //    Debug.Log("plus");

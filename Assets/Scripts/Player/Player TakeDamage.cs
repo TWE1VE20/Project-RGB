@@ -26,4 +26,9 @@ public class PlayerTakeDamage : IDamagable
         else
             OnPlayerDead?.Invoke();
     }
+
+    public void TakeDamage(Weapons.Colors color)
+    {
+        return;
+    }
 }
