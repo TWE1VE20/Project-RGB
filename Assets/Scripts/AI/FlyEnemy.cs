@@ -42,7 +42,6 @@ public class FlyEnemy : MonsterAI, IStunable
 
 
     [Header("Spec")]
-
     [SerializeField] int MaxHP;
     [SerializeField] int hp;
     [SerializeField] bool isDied;
@@ -52,27 +51,19 @@ public class FlyEnemy : MonsterAI, IStunable
     [SerializeField] float traceRange;
     [SerializeField] float avoidRange;
     [SerializeField] bool groggyAble;
+    
 
     [Header("gizmo")]
     [SerializeField, Range(0, 360)] float angle;
 
     [Header("Move")]
     [SerializeField] NavMeshAgent agent;
-    
 
     [Header("Patrol")]
     [SerializeField] Transform patorolPoint1;
     [SerializeField] Transform patorolPoint2;
     [SerializeField] Vector3 patrolTarget;
     [SerializeField] Vector3 returnPoint;
-
-    [Header("Color")]
-    [SerializeField] HaveColor haveColor;
-
-    
-
-
-
 
     private StateMachine stateMachine;
     private Transform enemyUlti;
@@ -110,7 +101,7 @@ public class FlyEnemy : MonsterAI, IStunable
         stateMachine.AddState(State.Gameover, new GameoverState(this));
         stateMachine.InitState(State.Idle);
 
-        haveColor = gameObject.AddComponent<HaveColor>();
+        base.Awakefirst();
     }
 
 
@@ -186,8 +177,8 @@ public class FlyEnemy : MonsterAI, IStunable
         {
             this.owner = owner;
         }
-
-        public void FindTarget() // 적 탐색 하는 부분
+        
+        public void FindTarget() 
         {
             if (firstTarget == null)
             {
@@ -222,14 +213,7 @@ public class FlyEnemy : MonsterAI, IStunable
             }
 
         }
-        IEnumerator AttackCoroutine()
-        {
-            while (owner.attackCost == 0)
-            {
-                yield return new WaitForSeconds(owner.attackCooltime);
-                owner.attackCost = 1;
-            }
-        }
+        // 적 탐색 하는 부분
         public void Attack()
         {
             owner.attackCost += Time.deltaTime;
@@ -251,6 +235,7 @@ public class FlyEnemy : MonsterAI, IStunable
                 //owner.StartCoroutine(AttackCoroutine());
             }
         }
+        // 공격
         public void Move()
         {
             if (firstTarget != null)
@@ -264,6 +249,7 @@ public class FlyEnemy : MonsterAI, IStunable
                 return;
             }
         }
+        // 네비 타겟 설정
         public void Patrol()
         {
             if (Vector3.Distance(transform.position, owner.patrolTarget) < 1f)
@@ -271,6 +257,7 @@ public class FlyEnemy : MonsterAI, IStunable
                 owner.patrolTarget = owner.patrolTarget == owner.patorolPoint1.position ? owner.patorolPoint2.position : owner.patorolPoint1.position;
             }
         }
+        // 순찰목표지점 전환
         public void Direction()
         {
             if (firstTarget != null)
@@ -286,6 +273,7 @@ public class FlyEnemy : MonsterAI, IStunable
             }
 
         }
+        // 바라보는 방향 전환
         public void Line()
         {
             if (firstTarget != null)
@@ -311,7 +299,7 @@ public class FlyEnemy : MonsterAI, IStunable
                 lineRenderer.enabled = false;
             }
         }
-        
+        // 타겟 찾으면 레이저
     }
     private class IdleState : FlyEnemyState
     {
@@ -343,12 +331,6 @@ public class FlyEnemy : MonsterAI, IStunable
                 owner.returnPoint = owner.transform.position;
                 ChangeState(State.Trace);
             }
-            //else if (Vector3.Distance(firstTarget.position, transform.position) <= attackRange && owner.attackCost == 1)
-            //{
-            //    Debug.Log("returnPoint select");
-            //    owner.returnPoint = owner.transform.position;
-            //    ChangeState(State.Battle);
-            //}
         }
 
 
@@ -371,7 +353,7 @@ public class FlyEnemy : MonsterAI, IStunable
         }
         public override void Transition()
         {
-            if (hp <= 0)
+            if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
             {
                 owner.animator.SetBool("Walk", false);
                 ChangeState(State.Die);
@@ -410,7 +392,7 @@ public class FlyEnemy : MonsterAI, IStunable
 
         public override void Transition()
         {
-            if (hp <= 0)
+            if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
             {
                 ChangeState(State.Die);
             }
@@ -448,7 +430,11 @@ public class FlyEnemy : MonsterAI, IStunable
 
         public override void Transition()
         {
-
+            if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
+            {
+                owner.StopCoroutine(owner.StunCoroutine());
+                ChangeState(State.Die);
+            }
         }
     }
     private class AvoidState : FlyEnemyState
@@ -496,6 +482,7 @@ public class FlyEnemy : MonsterAI, IStunable
         {
             if (Vector3.Distance(transform.position, owner.returnPoint) < 0.1f)
             {
+                owner.haveColor.SetColor(owner.InitColor);
                 owner.returnPoint = new Vector3(0, 0, 0);
                 owner.agent.speed = 3;
                 ChangeState(State.Patrol);
@@ -528,7 +515,7 @@ public class FlyEnemy : MonsterAI, IStunable
 
         public override void Transition()
         {
-            if (hp <= 0)
+            if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
             {
                 ChangeState(State.Die);
             }
@@ -538,6 +525,7 @@ public class FlyEnemy : MonsterAI, IStunable
             }
             else if (firstTarget == null)
             {
+                owner.haveColor.SetColor(owner.InitColor);
                 owner.lineRenderer.enabled = false;
                 ChangeState(State.Return);
             }
@@ -552,7 +540,7 @@ public class FlyEnemy : MonsterAI, IStunable
 
         public override void Enter()
         {
-
+            //유다이 화면?
             owner.animator.Play(0);
         }
         public override void Update()

@@ -45,7 +45,6 @@ public class HumanMonster : MonsterAI, IStunable
 
 
     [Header("Spec")]
-    
     [SerializeField] int MaxHP;
     [SerializeField] int hp;
     [SerializeField] bool isDied;
@@ -55,13 +54,13 @@ public class HumanMonster : MonsterAI, IStunable
     [SerializeField] float traceRange;
     [SerializeField] float avoidRange;
     [SerializeField] bool groggyAble;
+    
 
     [Header("gizmo")]
     [SerializeField, Range(0, 360)] float angle;
 
     [Header("Move")]
     [SerializeField] NavMeshAgent agent;
-    private float ySpeed;
 
     [Header("Patrol")]
     [SerializeField] Transform patorolPoint1;
@@ -69,11 +68,11 @@ public class HumanMonster : MonsterAI, IStunable
     [SerializeField] Vector3 patrolTarget;
     [SerializeField] Vector3 returnPoint;
 
-    [Header("Color")]
-    [SerializeField] HaveColor haveColor;
-    
-
-
+    [Header("Speed")]
+    [SerializeField] float patrolSpeed;
+    [SerializeField] float TraceSpeed;
+    [SerializeField] float BattleSpeed;
+    [SerializeField] float ReturnSpeed;
 
     private StateMachine stateMachine;
     private Transform enemyUlti;
@@ -94,8 +93,6 @@ public class HumanMonster : MonsterAI, IStunable
         }
     }
 
-    //private List<BattleAI> enemyList;
-    //private float preAngle;
     
 
     private void Awake()
@@ -111,13 +108,14 @@ public class HumanMonster : MonsterAI, IStunable
         stateMachine.AddState(State.Gameover, new GameoverState(this));
         stateMachine.InitState(State.Idle);
 
-        haveColor = gameObject.AddComponent<HaveColor>();
+        base.Awakefirst();
     }
 
 
     private void Start()
     {
         this.hitPoint = hp;
+        
         //ListChoice();
     }
     //public void ListChoice()
@@ -223,22 +221,14 @@ public class HumanMonster : MonsterAI, IStunable
             }
             
         }
-        IEnumerator AttackCoroutine()
-        {
-            while (owner.attackCost == 0)
-            {
-                yield return new WaitForSeconds(owner.attackCooltime);
-                owner.attackCost = 1;
-            }
-        }
         public void Attack()
         {
             owner.attackCost += Time.deltaTime;
             if (owner.attackCost >= 3f)
             {
                 //owner.StopCoroutine(AttackCoroutine());
-                RaycastHit hit; // 레이 발사
-                if (Physics.Raycast(viewPoint.position, viewPoint.forward, out hit, attackRange, targetLayerMask))
+                //RaycastHit hit; 레이 발사
+                if (Physics.Raycast(viewPoint.position, viewPoint.forward, out RaycastHit hit, attackRange, targetLayerMask))
                 {
                     // 레이가 IDamagable 인터페이스를 구현한 오브젝트에 충돌했다면
                     IDamagable damageable = hit.collider.gameObject.GetComponent<IDamagable>();
@@ -328,7 +318,7 @@ public class HumanMonster : MonsterAI, IStunable
         }
         public override void Transition()
         {
-            if (hp <= 0)
+            if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
             {
                 ChangeState(State.Die);
             }
@@ -344,12 +334,6 @@ public class HumanMonster : MonsterAI, IStunable
                 owner.returnPoint = owner.transform.position;
                 ChangeState(State.Trace);
             }
-            //else if (Vector3.Distance(firstTarget.position, transform.position) <= attackRange && owner.attackCost == 1)
-            //{
-            //    Debug.Log("returnPoint select");
-            //    owner.returnPoint = owner.transform.position;
-            //    ChangeState(State.Battle);
-            //}
         }
 
 
@@ -362,7 +346,7 @@ public class HumanMonster : MonsterAI, IStunable
         {
             
             owner.animator.SetBool("Walk", true);
-            owner.agent.speed = 2f;
+            owner.agent.speed = owner.patrolSpeed;
         }
         public override void Update()
         {
@@ -372,7 +356,7 @@ public class HumanMonster : MonsterAI, IStunable
         }
         public override void Transition()
         {
-            if (hp <= 0)
+            if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
             {
                 owner.animator.SetBool("Walk", false);
                 ChangeState(State.Die);
@@ -395,7 +379,7 @@ public class HumanMonster : MonsterAI, IStunable
         {
             Debug.Log("Trace");
             owner.agent.speed = 4f;
-            owner.addTargetRange = 7f;
+            owner.addTargetRange = owner.traceRange;
             owner.animator.SetBool("Walk", true);
             
         }
@@ -411,7 +395,7 @@ public class HumanMonster : MonsterAI, IStunable
 
         public override void Transition()
         {
-            if (hp <= 0)
+            if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
             {
                 ChangeState(State.Die);
             }
@@ -447,7 +431,12 @@ public class HumanMonster : MonsterAI, IStunable
 
         public override void Transition()
         {
-
+            if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
+            {
+                owner.StopCoroutine(owner.StunCoroutine());
+                owner.animator.Play(0);
+                ChangeState(State.Die);
+            }
         }
     }
     private class AvoidState : HumanMonsterState
@@ -482,8 +471,9 @@ public class HumanMonster : MonsterAI, IStunable
             owner.animator.SetBool("Walk", true);
             Debug.Log("Return");
             owner.firstTarget = null;
-            owner.agent.speed = 7f;
+            owner.agent.speed = owner.ReturnSpeed;
             owner.agent.destination = owner.returnPoint;
+            
             
         }
         public override void Update()
@@ -495,6 +485,7 @@ public class HumanMonster : MonsterAI, IStunable
         {
             if (Vector3.Distance(transform.position, owner.returnPoint) < 0.1f)
             {
+                owner.haveColor.SetColor(owner.InitColor);
                 owner.returnPoint = new Vector3(0, 0, 0);
                 owner.agent.speed = 3;
                 ChangeState(State.Patrol);
@@ -512,8 +503,8 @@ public class HumanMonster : MonsterAI, IStunable
 
         public override void Enter()
         {
-            owner.addTargetRange = 7f;
-            owner.agent.speed = 0;
+            owner.addTargetRange = owner.ReturnSpeed;
+            owner.agent.speed = owner.BattleSpeed;
         }
 
         public override void Update()
@@ -527,7 +518,7 @@ public class HumanMonster : MonsterAI, IStunable
 
         public override void Transition()
         {
-            if (hp <= 0)
+            if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
             {
                 ChangeState(State.Die);
             }
