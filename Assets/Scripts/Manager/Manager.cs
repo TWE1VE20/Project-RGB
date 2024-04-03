@@ -13,12 +13,14 @@ public class Manager : MonoBehaviour
     [Header("Managers")]
     [SerializeField] TimeFlowManager timeflowManager;
     [SerializeField] GameManager gameManager;
+    [SerializeField] UIManager UIManager;
 
     [Header("DebugUI")]
     [SerializeField] Canvas DebugCanvas;
 
     public static TimeFlowManager timeflow { get { return instance.timeflowManager; } }
-    public static GameManager game { get { return instance.gameManager; } } 
+    public static GameManager game { get { return instance.gameManager; } }
+    public static UIManager UI { get { return instance.UIManager; } }
     private void Awake()
     {
         if (instance == null)

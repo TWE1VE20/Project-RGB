@@ -14,10 +14,17 @@ public class MonsterAI : MonoBehaviour, IDamagable
 
     private Animator battleAni;
     public int hitPoint;
+    [Header("Color")]
+    [SerializeField] protected HaveColor haveColor;
+    [SerializeField] protected HaveColor.ThisColor InitColor;
 
-    
 
-    
+    protected void Awakefirst()
+    {
+        haveColor = gameObject.AddComponent<HaveColor>();
+        haveColor.SetColor(InitColor);
+    }
+
 
     public void TakeDamage(int damage)
     {
@@ -36,18 +43,7 @@ public class MonsterAI : MonoBehaviour, IDamagable
 
     public void TakeDamage(Weapons.Colors color)
     {
-        if (color == Weapons.Colors.RED)
-        {
-
-        }
-        else if (color == Weapons.Colors.GREEN)
-        {
-
-        }
-        else if (color == Weapons.Colors.BLUE)
-        {
-
-        }
+        haveColor.PeelColor(color);
         return;
     }
 
