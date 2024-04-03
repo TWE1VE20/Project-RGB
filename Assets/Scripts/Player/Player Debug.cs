@@ -6,8 +6,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerDebug : MonoBehaviour
 {
+    [Header("Components")]
+    [SerializeField] PlayerAttack playerAttack;
+
     [Header("Debug")]
     [SerializeField] bool debug;
+    [SerializeField] GameObject TestObject;
 
     [Header("Events")]
     public UnityEvent OnReflectdebuging;
@@ -21,5 +25,10 @@ public class PlayerDebug : MonoBehaviour
     private void OnReflectDebug() 
     {
         OnReflectdebuging?.Invoke();
+    }
+
+    private void OnGetHit()
+    {
+        playerAttack.TakeDamage(1, TestObject.transform.position);
     }
 }

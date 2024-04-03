@@ -19,7 +19,6 @@ public class Gun : Weapons
     {
         base.Starting();
         SetAttackTime(timeforAttack);
-
         this.attackType = Weapons.AttackType.GUN;
         if (ammoSystem == null)
         {

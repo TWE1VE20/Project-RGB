@@ -23,17 +23,30 @@ public class WeaponHolder : MonoBehaviour
 
     public bool Attack() 
     {
-        if(reloading == true)
+        switch (weaponsList[current].attackType)
         {
-            StopCoroutine(reload);
-            if (debug) Debug.Log("Reload failed");
-            reloading = false;
-        }
-        if (attacking != true) 
-        {
-            attack = AttackWait(weaponsList[current].attackTime);
-            StartCoroutine(attack);
-            return true;
+            case Weapons.AttackType.GUN:
+                if (reloading == true)
+                {
+                    StopCoroutine(reload);
+                    if (debug) Debug.Log("Reload failed");
+                    reloading = false;
+                }
+                if (attacking != true)
+                {
+                    attack = GunAttackWait(weaponsList[current].attackTime);
+                    StartCoroutine(attack);
+                    return true;
+                }
+                return false;
+            case Weapons.AttackType.MELEE:
+                if(attacking != true)
+                {
+                    attack = MeleeAttackWait(weaponsList[current].attackTime);
+                    StartCoroutine(attack);
+                    return true;
+                }
+                return false;
         }
         return false;
     }
@@ -49,6 +62,10 @@ public class WeaponHolder : MonoBehaviour
         else
             if (debug) Debug.Log("Melee Don't have Reload");
     }
+    public void Reflect() 
+    {
+        weaponsList[current].GetComponent<ReflectSystem>().Reflect();
+    }
     IEnumerator ReloadWait(float time)
     {
         reloading = true;
@@ -60,8 +77,7 @@ public class WeaponHolder : MonoBehaviour
         weaponsList[current].GetComponent<AmmoSystem>().Reload();
         reloading = false;
     }
-
-    IEnumerator AttackWait(float time)
+    IEnumerator GunAttackWait(float time)
     {
         attacking = true;
         if (weaponsList[current].Attack() == false)
@@ -72,6 +88,14 @@ public class WeaponHolder : MonoBehaviour
         }
         shootingpoint.Fire();
         if (debug) Debug.Log("Attack Success");
+        yield return new WaitForSeconds(time);
+        attacking = false;
+    }
+    IEnumerator MeleeAttackWait(float time)
+    {
+        attacking = true;
+        shootingpoint.CQC();
+        if (debug) Debug.Log("Melee Attack Success");
         yield return new WaitForSeconds(time);
         attacking = false;
     }

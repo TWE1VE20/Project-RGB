@@ -78,6 +78,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Guard",
+                    "type": "PassThrough",
+                    "id": "333bec93-1c7c-408b-b257-38d47b76c40e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Weapon1",
                     "type": "Button",
                     "id": "862dc8b8-221d-48b2-88fe-16aa48991e22",
@@ -250,6 +259,17 @@
                     "action": "Weapon2",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7951ccd7-826d-421e-bc44-4e405eaac446",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Guard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -302,6 +322,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "GetHit",
+                    "type": "Button",
+                    "id": "58403e03-12e3-4b66-80f1-e75ce561021e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -324,6 +353,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ReflectDebug",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d461acc1-eb1b-4b9d-895b-d112ca360331",
+                    "path": "<Keyboard>/period",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GetHit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

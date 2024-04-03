@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -10,6 +11,7 @@ public class ShootingPoint : MonoBehaviour
 
     [Header("Spec")]
     [SerializeField] float maxDistance;
+    [SerializeField] float maxDistance2;
 
     [Header("Debug")]
     [SerializeField] Transform hitPoint;
@@ -54,7 +56,36 @@ public class ShootingPoint : MonoBehaviour
         }
     }
 
-    [ContextMenu("Reflect")]
+    public void CQC()
+    {
+        if (Physics.SphereCast(transform.position, 0.3f, transform.forward, out RaycastHit hitInfo, maxDistance2))
+        {
+            if (debug)
+            {
+                Debug.Log("Hit!");
+                Debug.Log(hitInfo.collider.gameObject.name);
+                Debug.Log(hitInfo.distance);
+                hitPoint.position = hitInfo.point;
+                if (weaponHolder.weaponsList[weaponHolder.current].colorState == Weapons.Colors.RED)
+                    Debug.DrawRay(transform.position, transform.forward * hitInfo.distance, Color.red, 0.1f);
+                else if (weaponHolder.weaponsList[weaponHolder.current].colorState == Weapons.Colors.GREEN)
+                    Debug.DrawRay(transform.position, transform.forward * hitInfo.distance, Color.green, 0.1f);
+                else if (weaponHolder.weaponsList[weaponHolder.current].colorState == Weapons.Colors.BLUE)
+                    Debug.DrawRay(transform.position, transform.forward * hitInfo.distance, Color.blue, 0.1f);
+            }
+            // 명중한 물체가 어떤 반응을 할지 추가
+            hitInfo.collider.gameObject.GetComponent<IBreakable>()?.Break(weaponHolder.weaponsList[weaponHolder.current].colorState);
+        }
+        else
+        {
+            if (debug)
+            {
+                Debug.Log("Noting Hit");
+                Debug.DrawRay(transform.position, transform.forward * maxDistance2, Color.gray, 0.1f);
+            }
+        }
+    }
+
     public void Reflect() 
     {
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, maxDistance))
@@ -83,6 +114,6 @@ public class ShootingPoint : MonoBehaviour
     {
         Vector3 forward = transform.forward;
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + forward * 1);
+        Gizmos.DrawLine(transform.position, transform.position + forward * 0.5f);
     }
 }

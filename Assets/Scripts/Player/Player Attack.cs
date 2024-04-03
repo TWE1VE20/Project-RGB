@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttack : MonoBehaviour, IDamagable
 {
     [Header("GameObject")]
     [SerializeField] WeaponHolder weaponHolder;
 
     [Header("Spec")]
     [SerializeField] float ColorChangeSpeed;
+    [SerializeField] float angle;
     private bool canColorChange;
 
     [Header("Debug")]
@@ -22,6 +23,42 @@ public class PlayerAttack : MonoBehaviour
         canColorChange = true;
         isGuard = false;
     }
+
+    public void TakeDamage(int damage)
+    {
+        gameObject.GetComponent<PlayerController>().IsAlive = false;
+    }
+    public void TakeDamage(int damage, Vector3 EnemyPosition)
+    {
+        if (gameObject.GetComponent<PlayerController>().IsAlive)
+        {
+            if (isGuard)
+            {
+                Vector3 dirToTarget = (EnemyPosition - gameObject.transform.position).normalized;
+                if ((Vector3.Dot(transform.forward, dirToTarget) > Mathf.Cos(angle * 0.5f * Mathf.Deg2Rad)))
+                {
+                    Debug.Log("Deflect");
+                    weaponHolder.Reflect();
+                    Debug.DrawRay(transform.position, dirToTarget, Color.black);
+                }
+                else
+                {
+                    // gameObject.GetComponent<PlayerController>().IsAlive = false;
+                    Debug.Log("Dead");
+                }
+            }
+            else
+            {
+                // gameObject.GetComponent<PlayerController>().IsAlive = false;
+                Debug.Log("Dead");
+            }
+        }
+    }
+    public void TakeDamage(Weapons.Colors color)
+    {
+        return;
+    }
+
     private void OnAttack(InputValue value)
     {
         if (value.isPressed)
@@ -34,6 +71,15 @@ public class PlayerAttack : MonoBehaviour
     private void OnReload(InputValue value)
     {
         weaponHolder.Reload();
+    }
+
+    private void OnGuard(InputValue value)
+    {
+        if (value.isPressed)
+            if(weaponHolder.weaponsList[weaponHolder.current].attackType == Weapons.AttackType.MELEE)
+                isGuard = true;
+        else
+            isGuard = false;
     }
 
     private void OnChangeColor(InputValue value)
