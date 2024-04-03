@@ -1,19 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.XR;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Component")]
     [SerializeField] CharacterController controller;
     [SerializeField] Animator animator;
+    [SerializeField] GroundChecker groundChecker;
 
     [Header("Spec")]
     [SerializeField] float moveSpeed;
     [SerializeField] float walkSpeed;
     [SerializeField] float jumpSpeed;
+    [SerializeField] float MaxFallSpeed;
 
     private Vector3 moveDir;
     private float ySpeed;
@@ -21,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     public bool IsAlive;
 
-    void Start() 
+    void Start()
     {
         IsAlive = true;
     }
@@ -54,9 +53,8 @@ public class PlayerController : MonoBehaviour
 
     private void JumpMove()
     {
-        ySpeed += Physics.gravity.y * Time.deltaTime;
-        if (controller.isGrounded)
-            ySpeed = 0;
+        if(ySpeed > -MaxFallSpeed)
+            ySpeed += Physics.gravity.y * Time.deltaTime;
         controller.Move(Vector3.up * ySpeed * Time.deltaTime);
     }
 
@@ -69,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnJump(InputValue value)
     {
-        if (controller.isGrounded)
+        if (groundChecker.isGround)
             ySpeed = jumpSpeed;
     }
 

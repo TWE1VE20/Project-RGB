@@ -54,7 +54,7 @@ public class PlayerAttack : MonoBehaviour
             weaponHolder.weaponsList[weaponHolder.current].ChangeColor(true);
         else
             weaponHolder.weaponsList[weaponHolder.current].ChangeColor(false);
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSecondsRealtime(time);
         canColorChange = true;
     }
 }
