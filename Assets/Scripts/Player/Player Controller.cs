@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 moveDir;
     private float ySpeed;
-    private bool isWalk;
+    private bool isRun;
 
     public bool IsAlive;
 
@@ -33,18 +33,18 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if (isWalk && controller.isGrounded)
+        if (isRun && controller.isGrounded)
         {
-            controller.Move(transform.right * moveDir.x * walkSpeed * Time.deltaTime);
-            controller.Move(transform.forward * moveDir.z * walkSpeed * Time.deltaTime);
+            controller.Move(transform.right * moveDir.x * moveSpeed * Time.deltaTime);
+            controller.Move(transform.forward * moveDir.z * moveSpeed * Time.deltaTime);
             animator.SetFloat("MoveSpeed", moveDir.magnitude * moveSpeed, 0.1f, Time.deltaTime);
             animator.SetFloat("XSpeed", moveDir.x * moveSpeed, 0.1f, Time.deltaTime);
             animator.SetFloat("YSpeed", moveDir.z * moveSpeed, 0.1f, Time.deltaTime);
         }
         else
         {
-            controller.Move(transform.right * moveDir.x * moveSpeed * Time.deltaTime);
-            controller.Move(transform.forward * moveDir.z * moveSpeed * Time.deltaTime);
+            controller.Move(transform.right * moveDir.x * walkSpeed * Time.deltaTime);
+            controller.Move(transform.forward * moveDir.z * walkSpeed * Time.deltaTime);
             animator.SetFloat("MoveSpeed", moveDir.magnitude * walkSpeed, 0.1f, Time.deltaTime);
             animator.SetFloat("XSpeed", moveDir.x * walkSpeed, 0.1f, Time.deltaTime);
             animator.SetFloat("YSpeed", moveDir.z * walkSpeed, 0.1f, Time.deltaTime);
@@ -71,11 +71,11 @@ public class PlayerController : MonoBehaviour
             ySpeed = jumpSpeed;
     }
 
-    private void OnWalk(InputValue value)
+    private void OnRun(InputValue value)
     {
         if (value.isPressed)
-            isWalk = true;
+            isRun = true;
         else
-            isWalk = false;
+            isRun = false;
     }
 }

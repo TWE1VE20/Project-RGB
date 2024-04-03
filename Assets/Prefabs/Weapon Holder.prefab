@@ -49,6 +49,8 @@ MonoBehaviour:
   shootingpoint: {fileID: 0}
   weaponsList:
   - {fileID: 7505007228056091506}
+  GunUI: {fileID: 0}
+  MeleeUI: {fileID: 0}
   current: 0
   debug: 1
 --- !u!1 &8731619253766978640
@@ -69,7 +71,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7706117365583489064
 Transform:
   m_ObjectHideFlags: 0

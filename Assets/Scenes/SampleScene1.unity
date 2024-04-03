@@ -1058,7 +1058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponHolder: {fileID: 959842218}
-  maxDistance: 10
+  maxDistance: 20
   maxDistance2: 2
   hitPoint: {fileID: 126079822}
   debug: 1
@@ -5042,8 +5042,8 @@ MonoBehaviour:
   controller: {fileID: 1762388359}
   animator: {fileID: 1762388357}
   groundChecker: {fileID: 933516723}
-  moveSpeed: 5
-  walkSpeed: 2
+  moveSpeed: 6
+  walkSpeed: 3
   jumpSpeed: 5
   MaxFallSpeed: 15
   IsAlive: 0
