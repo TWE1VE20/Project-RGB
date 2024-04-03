@@ -32,8 +32,7 @@ public class TimeFlowManager : MonoBehaviour
     private float time;
     private int frame;
 
-    [Header("RespawnPoint")]
-    public Vector3 respawnPoint; // 리스폰지점
+    
 
     void Start()
     {

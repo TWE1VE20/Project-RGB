@@ -1,14 +1,11 @@
 using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Animations.Rigging;
-using UnityEngine.Windows;
 using static UnityEngine.UI.GridLayoutGroup;
 
-public class HumanMonster : MonsterAI, IStunable
+public class FlyEnemy : MonsterAI, IStunable
 {
     // 시간 사용시 주의 
     // 슬로우모션 영향 받는건 deltaTime
@@ -45,7 +42,7 @@ public class HumanMonster : MonsterAI, IStunable
 
 
     [Header("Spec")]
-    
+
     [SerializeField] int MaxHP;
     [SerializeField] int hp;
     [SerializeField] bool isDied;
@@ -61,7 +58,7 @@ public class HumanMonster : MonsterAI, IStunable
 
     [Header("Move")]
     [SerializeField] NavMeshAgent agent;
-    private float ySpeed;
+    
 
     [Header("Patrol")]
     [SerializeField] Transform patorolPoint1;
@@ -71,7 +68,9 @@ public class HumanMonster : MonsterAI, IStunable
 
     [Header("Color")]
     [SerializeField] HaveColor haveColor;
+
     
+
 
 
 
@@ -80,7 +79,7 @@ public class HumanMonster : MonsterAI, IStunable
     private float preAngle;
     private float cosAngle;
 
-    
+
     private float CosAngle
     {
         get
@@ -96,7 +95,7 @@ public class HumanMonster : MonsterAI, IStunable
 
     //private List<BattleAI> enemyList;
     //private float preAngle;
-    
+
 
     private void Awake()
     {
@@ -135,7 +134,7 @@ public class HumanMonster : MonsterAI, IStunable
     //        gravePos = new Vector3(12.9f, -5.74f, 0);
     //    }
     //}
-    
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -149,7 +148,7 @@ public class HumanMonster : MonsterAI, IStunable
         Debug.DrawRay(viewPoint.position, rightDir * addTargetRange, Color.cyan);
         Debug.DrawRay(viewPoint.position, leftDir * addTargetRange, Color.cyan);
     }
-
+    //abc
     public void Stun()
     {
         StartCoroutine(StunCoroutine());
@@ -160,10 +159,10 @@ public class HumanMonster : MonsterAI, IStunable
         yield return new WaitForSeconds(3f);
         stateMachine.ChangeState(State.Idle);
     }
-
-    private class HumanMonsterState : BaseState
+    
+    private class FlyEnemyState : BaseState
     {
-        protected HumanMonster owner;
+        protected FlyEnemy owner;
         protected Transform transform => owner.transform;
         protected float attackRange => owner.attackRange;
         protected float avoidRange => owner.avoidRange;
@@ -172,7 +171,7 @@ public class HumanMonster : MonsterAI, IStunable
         protected Animator animator => owner.animator;
         protected Transform firstTarget => owner.firstTarget;
         protected Transform enemyUlti => owner.enemyUlti;
-        
+
         protected Transform viewPoint => owner.viewPoint;
 
         protected float addTargetrange => owner.addTargetRange;
@@ -183,11 +182,11 @@ public class HumanMonster : MonsterAI, IStunable
         protected LayerMask obstacleLayerMask => owner.obstacleLayerMask;
 
         protected LineRenderer lineRenderer => owner.gameObject.GetComponent<LineRenderer>();
-        public HumanMonsterState(HumanMonster owner)
+        public FlyEnemyState(FlyEnemy owner)
         {
             this.owner = owner;
         }
-        
+
         public void FindTarget() // 적 탐색 하는 부분
         {
             if (firstTarget == null)
@@ -207,7 +206,7 @@ public class HumanMonster : MonsterAI, IStunable
 
                         Debug.DrawRay(viewPoint.position, dirToTarget * distToTarget, Color.red);
                         owner.firstTarget = owner.atkColliders[i].transform;
-                        
+
                         owner.moveDir = dirToTarget;
                         return;
                     }
@@ -221,7 +220,7 @@ public class HumanMonster : MonsterAI, IStunable
                     owner.firstTarget = null;
                 }
             }
-            
+
         }
         IEnumerator AttackCoroutine()
         {
@@ -237,8 +236,8 @@ public class HumanMonster : MonsterAI, IStunable
             if (owner.attackCost >= 3f)
             {
                 //owner.StopCoroutine(AttackCoroutine());
-                RaycastHit hit; // 레이 발사
-                if (Physics.Raycast(viewPoint.position, viewPoint.forward, out hit, attackRange, targetLayerMask))
+                //RaycastHit hit; 레이 발사
+                if (Physics.Raycast(viewPoint.position, viewPoint.forward, out RaycastHit hit, attackRange, targetLayerMask))
                 {
                     // 레이가 IDamagable 인터페이스를 구현한 오브젝트에 충돌했다면
                     IDamagable damageable = hit.collider.gameObject.GetComponent<IDamagable>();
@@ -254,7 +253,7 @@ public class HumanMonster : MonsterAI, IStunable
         }
         public void Move()
         {
-            if ( firstTarget != null)
+            if (firstTarget != null)
             {
                 Debug.Log("moving");
                 owner.agent.destination = firstTarget.transform.position;
@@ -274,17 +273,18 @@ public class HumanMonster : MonsterAI, IStunable
         }
         public void Direction()
         {
-            if (firstTarget !=null)
+            if (firstTarget != null)
             {
-                //transform.LookAt(firstTarget);
+                
                 Quaternion targetRotation = Quaternion.LookRotation(firstTarget.position - viewPoint.position);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, owner.rotationSpeed * Time.deltaTime);
+                //transform.LookAt(owner.firstTarget.transform.position);
             }
             else
             {
                 return;
             }
-            
+
         }
         public void Line()
         {
@@ -301,8 +301,6 @@ public class HumanMonster : MonsterAI, IStunable
                 {
                     owner.timer = 0f;
                     owner.isVisible = !owner.isVisible;
-
-                    //lineRenderer 활성화, 비활성화 토글
                     lineRenderer.enabled = owner.isVisible;
                 }
 
@@ -313,11 +311,12 @@ public class HumanMonster : MonsterAI, IStunable
                 lineRenderer.enabled = false;
             }
         }
+        
     }
-    private class IdleState : HumanMonsterState
+    private class IdleState : FlyEnemyState
     {
 
-        public IdleState(HumanMonster owner) : base(owner) { }
+        public IdleState(FlyEnemy owner) : base(owner) { }
         public override void Enter()
         {
             owner.addTargetRange = 5f;
@@ -336,7 +335,7 @@ public class HumanMonster : MonsterAI, IStunable
             {
                 owner.patrolTarget = owner.patorolPoint1.transform.position;
                 ChangeState(State.Patrol);
-                
+
             }
             else if (firstTarget != null)
             {
@@ -354,13 +353,13 @@ public class HumanMonster : MonsterAI, IStunable
 
 
     }
-    private class PatrolState : HumanMonsterState
+    private class PatrolState : FlyEnemyState
     {
 
-        public PatrolState(HumanMonster owner) : base(owner) { }
+        public PatrolState(FlyEnemy owner) : base(owner) { }
         public override void Enter()
         {
-            
+
             owner.animator.SetBool("Walk", true);
             owner.agent.speed = 2f;
         }
@@ -387,9 +386,9 @@ public class HumanMonster : MonsterAI, IStunable
 
 
     }
-    private class TraceState : HumanMonsterState
+    private class TraceState : FlyEnemyState
     {
-        public TraceState(HumanMonster owner) : base(owner) { }
+        public TraceState(FlyEnemy owner) : base(owner) { }
 
         public override void Enter()
         {
@@ -397,7 +396,7 @@ public class HumanMonster : MonsterAI, IStunable
             owner.agent.speed = 4f;
             owner.addTargetRange = 7f;
             owner.animator.SetBool("Walk", true);
-            
+
         }
         public override void Update()
         {
@@ -420,7 +419,7 @@ public class HumanMonster : MonsterAI, IStunable
                 owner.addTargetRange = 5;
                 owner.firstTarget = null;
                 owner.animator.SetBool("Walk", true);
-                ChangeState(State.Return);                
+                ChangeState(State.Return);
             }
             else if (Vector3.Distance(transform.position, owner.firstTarget.transform.position) <= attackRange)
             {
@@ -431,9 +430,11 @@ public class HumanMonster : MonsterAI, IStunable
 
         }
     }
-    private class GroggyState : HumanMonsterState
+    private class GroggyState : FlyEnemyState
     {
-        public GroggyState(HumanMonster owner) : base(owner) { }
+
+
+        public GroggyState(FlyEnemy owner) : base(owner) { }
 
         public override void Enter()
         {
@@ -450,11 +451,11 @@ public class HumanMonster : MonsterAI, IStunable
 
         }
     }
-    private class AvoidState : HumanMonsterState
+    private class AvoidState : FlyEnemyState
     {
 
 
-        public AvoidState(HumanMonster owner) : base(owner) { }
+        public AvoidState(FlyEnemy owner) : base(owner) { }
 
         public override void Enter()
         {
@@ -462,20 +463,20 @@ public class HumanMonster : MonsterAI, IStunable
         }
         public override void Update()
         {
-           
+
 
         }
 
         public override void Transition()
         {
-            
+
         }
     }
-    private class ReturnState : HumanMonsterState
+    private class ReturnState : FlyEnemyState
     {
 
 
-        public ReturnState(HumanMonster owner) : base(owner) { }
+        public ReturnState(FlyEnemy owner) : base(owner) { }
 
         public override void Enter()
         {
@@ -484,7 +485,7 @@ public class HumanMonster : MonsterAI, IStunable
             owner.firstTarget = null;
             owner.agent.speed = 7f;
             owner.agent.destination = owner.returnPoint;
-            
+
         }
         public override void Update()
         {
@@ -504,9 +505,9 @@ public class HumanMonster : MonsterAI, IStunable
 
 
 
-    private class BattleState : HumanMonsterState
+    private class BattleState : FlyEnemyState
     {
-        public BattleState(HumanMonster owner) : base(owner) { }
+        public BattleState(FlyEnemy owner) : base(owner) { }
 
 
 
@@ -540,33 +541,33 @@ public class HumanMonster : MonsterAI, IStunable
                 owner.lineRenderer.enabled = false;
                 ChangeState(State.Return);
             }
-            
+
 
         }
     }
 
-    private class DieState : HumanMonsterState
+    private class DieState : FlyEnemyState
     {
-        public DieState(HumanMonster owner) : base(owner) { }
+        public DieState(FlyEnemy owner) : base(owner) { }
 
         public override void Enter()
         {
-            
+
             owner.animator.Play(0);
         }
         public override void Update()
         {
-            
+
         }
         public override void Transition()
         {
-            
+
         }
     }
 
-    private class GameoverState : HumanMonsterState
+    private class GameoverState : FlyEnemyState
     {
-        public GameoverState(HumanMonster owner) : base(owner) { }
+        public GameoverState(FlyEnemy owner) : base(owner) { }
 
 
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Content;
 using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,12 +12,13 @@ public class Manager : MonoBehaviour
 
     [Header("Managers")]
     [SerializeField] TimeFlowManager timeflowManager;
+    [SerializeField] GameManager gameManager;
 
     [Header("DebugUI")]
     [SerializeField] Canvas DebugCanvas;
 
     public static TimeFlowManager timeflow { get { return instance.timeflowManager; } }
-
+    public static GameManager game { get { return instance.gameManager; } } 
     private void Awake()
     {
         if (instance == null)
