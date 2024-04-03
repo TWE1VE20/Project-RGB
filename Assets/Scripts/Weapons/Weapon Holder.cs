@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class WeaponHolder : MonoBehaviour
 {
+    [Header("Components")]
+    [SerializeField] ShootingPoint shootingpoint;
+
     [Header("Weapons")]
     public List<Weapons> weaponsList;
 
@@ -40,7 +43,7 @@ public class WeaponHolder : MonoBehaviour
         if (weaponsList[current].attackType == Weapons.AttackType.GUN)
         {
             if(debug) Debug.Log("Reloading");
-            reload = ReloadWait(weaponsList[current].reloadTime);
+            reload = ReloadWait(weaponsList[current].GetComponent<AmmoSystem>().reloadTime);
             StartCoroutine(reload);
         }
         else
@@ -49,12 +52,12 @@ public class WeaponHolder : MonoBehaviour
     IEnumerator ReloadWait(float time)
     {
         reloading = true;
-        if (weaponsList[current].CanReload() == false)
+        if (weaponsList[current].GetComponent<AmmoSystem>().CanReload() == false)
         {
             yield break;
         }
         yield return new WaitForSeconds(time);
-        weaponsList[current].Reload();
+        weaponsList[current].GetComponent<AmmoSystem>().Reload();
         reloading = false;
     }
 
@@ -64,10 +67,11 @@ public class WeaponHolder : MonoBehaviour
         if (weaponsList[current].Attack() == false)
         {
             attacking = false;
-            if (debug) Debug.Log("no ammo");
+            if (debug) Debug.Log("Attack failed");
             yield break;
         }
-        if (debug) Debug.Log("Bang!");
+        shootingpoint.Fire();
+        if (debug) Debug.Log("Attack Success");
         yield return new WaitForSeconds(time);
         attacking = false;
     }

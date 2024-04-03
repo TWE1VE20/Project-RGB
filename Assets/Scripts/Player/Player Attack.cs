@@ -7,7 +7,6 @@ public class PlayerAttack : MonoBehaviour
 {
     [Header("GameObject")]
     [SerializeField] WeaponHolder weaponHolder;
-    [SerializeField] ShootingPoint shootingpoint;
 
     [Header("Spec")]
     [SerializeField] float ColorChangeSpeed;
@@ -28,7 +27,6 @@ public class PlayerAttack : MonoBehaviour
         if (value.isPressed)
         {
             if(debug) Debug.Log("Player Attacks");
-            shootingpoint.Fire();
             weaponHolder.Attack();
         }
     }

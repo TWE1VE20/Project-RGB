@@ -7,26 +7,12 @@ public class Weapons : MonoBehaviour
 
     public enum Colors { RED, GREEN, BLUE }
     public enum AttackType { MELEE, GUN }
-
-    public float reloadTime { get; private set; }
     public float attackTime { get; private set; }
-
-    public Weapons()
-    {
-        colorState = Colors.RED;
-        reloadTime = 0;
-    }
-
     protected void Starting()
     {
         colorState = Colors.RED;
-        reloadTime = 0;
     }
-
     public virtual bool Attack() { return false; }
-    public virtual void Reload() { }
-    public virtual bool CanReload() { return false; }
-
     public void ChangeColor(bool isNext)
     {
         if (isNext)
@@ -34,16 +20,10 @@ public class Weapons : MonoBehaviour
         else
             colorState = PrevColor(colorState);
     }
-
-    public void SetReloadTime(float time)
-    {
-        reloadTime = time;
-    }
     public void SetAttackTime(float time)
     {
         attackTime = time;
     }
-
     private Colors NextColor(Colors color)
     {
         switch (color)
