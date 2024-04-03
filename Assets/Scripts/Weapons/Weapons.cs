@@ -8,6 +8,7 @@ public class Weapons : MonoBehaviour
     public enum Colors { RED, GREEN, BLUE }
     public enum AttackType { MELEE, GUN }
     public float attackTime { get; private set; }
+    public int range { get; private set; }
     protected void Starting()
     {
         colorState = Colors.RED;

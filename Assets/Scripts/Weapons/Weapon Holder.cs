@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WeaponHolder : MonoBehaviour
 {
@@ -10,6 +12,10 @@ public class WeaponHolder : MonoBehaviour
 
     [Header("Weapons")]
     public List<Weapons> weaponsList;
+
+    [Header("UI")]
+    [SerializeField] TextMeshProUGUI GunUI;
+    [SerializeField] TextMeshProUGUI MeleeUI;
 
     public int current = 0;
     private bool reloading = false;
@@ -20,6 +26,17 @@ public class WeaponHolder : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField] bool debug;
+
+    private void Start()
+    {
+        ChangeWeapon();
+    }
+
+    private void Update()
+    {
+        if(weaponsList[current].attackType == Weapons.AttackType.GUN)
+            UpdateUI();
+    }
 
     public bool Attack() 
     {
@@ -98,5 +115,37 @@ public class WeaponHolder : MonoBehaviour
         if (debug) Debug.Log("Melee Attack Success");
         yield return new WaitForSeconds(time);
         attacking = false;
+    }
+
+    private void ChangeWeapon()
+    {
+        for(int i = 0; i < weaponsList.Count; i++)
+        {
+            if (i != current)
+                weaponsList[i].gameObject.SetActive(false);
+            else
+                weaponsList[i].gameObject.SetActive(true);
+        }
+    }
+
+    private void UpdateUI()
+    {
+        GunUI.text = string.Format("{0} / {1}", weaponsList[current].GetComponent<AmmoSystem>().rounds, weaponsList[current].GetComponent<AmmoSystem>().AmmoLeft);
+    }
+
+    private void OnWeapon1(InputValue value)
+    {
+        current = 0;
+        ChangeWeapon();
+        GunUI.gameObject.SetActive(true);
+        MeleeUI.gameObject.SetActive(false);
+    }
+
+    private void OnWeapon2(InputValue value)
+    {
+        current = 1;
+        ChangeWeapon();
+        GunUI.gameObject.SetActive(false);
+        MeleeUI.gameObject.SetActive(true);
     }
 }
