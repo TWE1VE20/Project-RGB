@@ -48,11 +48,14 @@ public class SampleColoredBreakableObject : MonoBehaviour, IBreakable
     {
         haveColor.PeelColor(color);
         if (!breaked)
+        {
             if (haveColor.curColor == HaveColor.ThisColor.BLACK)
             {
                 // Died = true;
                 StartCoroutine(BreakWait());
             }
+            gameObject.GetComponent<Renderer>().material.color = haveColor.MaterialColor();
+        }
     }
 
     IEnumerator BreakWait()
