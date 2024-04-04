@@ -549,7 +549,7 @@ public class FlyEnemy : MonsterAI, IStunable
         public override void Enter()
         {
             //유다이 화면?
-            owner.animator.Play(0);
+            Destroy(owner.gameObject);
         }
         public override void Update()
         {

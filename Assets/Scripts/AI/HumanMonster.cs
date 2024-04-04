@@ -542,8 +542,8 @@ public class HumanMonster : MonsterAI, IStunable
 
         public override void Enter()
         {
-            
-            owner.animator.Play(0);
+            Debug.Log("Dead");
+            Destroy(owner.gameObject);
         }
         public override void Update()
         {

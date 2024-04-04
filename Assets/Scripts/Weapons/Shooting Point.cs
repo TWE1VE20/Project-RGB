@@ -14,16 +14,19 @@ public class ShootingPoint : MonoBehaviour
     [SerializeField] float maxDistance2;
 
     [Header("Debug")]
-    [SerializeField] Transform hitPoint;
+    [SerializeField] Transform? hitPoint;
     [SerializeField] bool debug;
     [SerializeField] bool showHitPoint;
 
     private void Start()
     {
-        if (debug && showHitPoint)
-            hitPoint.gameObject.SetActive(true);
-        else
-            hitPoint.gameObject.SetActive(false);
+        if (hitPoint != null)
+        {
+            if (debug && showHitPoint)
+                hitPoint?.gameObject.SetActive(true);
+            else
+                hitPoint?.gameObject.SetActive(false);
+        }
     }
 
     public void Fire()
@@ -45,6 +48,7 @@ public class ShootingPoint : MonoBehaviour
             }
             // 명중한 물체가 어떤 반응을 할지 추가
             hitInfo.collider.gameObject.GetComponent<IBreakable>()?.Break(weaponHolder.weaponsList[weaponHolder.current].colorState);
+            hitInfo.collider.gameObject.GetComponent<IDamagable>()?.TakeDamage(weaponHolder.weaponsList[weaponHolder.current].colorState);
         }
         else
         {
@@ -75,6 +79,7 @@ public class ShootingPoint : MonoBehaviour
             }
             // 명중한 물체가 어떤 반응을 할지 추가
             hitInfo.collider.gameObject.GetComponent<IBreakable>()?.Break(weaponHolder.weaponsList[weaponHolder.current].colorState);
+            hitInfo.collider.gameObject.GetComponent<IDamagable>()?.TakeDamage(weaponHolder.weaponsList[weaponHolder.current].colorState);
         }
         else
         {
