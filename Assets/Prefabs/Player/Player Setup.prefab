@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8919787240080593752
 Transform:
   m_ObjectHideFlags: 0
@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 32643963776223292}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.043352, y: 19.64089, z: 6.1771317}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.049999997, y: 0.049999997, z: 0.049999997}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 66800721543373787}
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7c7e2375b70b73c4a829a8a09f5645a5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -357,8 +357,8 @@ MonoBehaviour:
   weaponHolder: {fileID: 3401397572976644456}
   maxDistance: 20
   maxDistance2: 2
-  hitPoint: {fileID: 0}
-  debug: 1
+  hitPoint: {fileID: 8919787240080593752}
+  debug: 0
   showHitPoint: 0
 --- !u!1 &2950101957601409540
 GameObject:
@@ -2132,8 +2132,9 @@ MonoBehaviour:
   groundChecker: {fileID: 6549825894783163222}
   moveSpeed: 6
   walkSpeed: 3
-  jumpSpeed: 5
-  MaxFallSpeed: 15
+  jumpSpeed: 10
+  MaxFallSpeed: 600
+  gravity: 20
   IsAlive: 0
 --- !u!114 &2458254621102824862
 MonoBehaviour:

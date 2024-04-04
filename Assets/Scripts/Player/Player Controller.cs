@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float walkSpeed;
     [SerializeField] float jumpSpeed;
     [SerializeField] float MaxFallSpeed;
+    [SerializeField] float gravity;
+
     //ds
     private Vector3 moveDir;
     private float ySpeed;
@@ -53,8 +55,9 @@ public class PlayerController : MonoBehaviour
 
     private void JumpMove()
     {
-        if(ySpeed > -MaxFallSpeed)
-            ySpeed += Physics.gravity.y * Time.deltaTime;
+        if (ySpeed > -MaxFallSpeed)
+            ySpeed += -gravity * Time.deltaTime;
+        //ySpeed += Physics.gravity.y * Time.deltaTime;
         controller.Move(Vector3.up * ySpeed * Time.deltaTime);
     }
 

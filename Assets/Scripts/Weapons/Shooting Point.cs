@@ -14,7 +14,7 @@ public class ShootingPoint : MonoBehaviour
     [SerializeField] float maxDistance2;
 
     [Header("Debug")]
-    [SerializeField] Transform? hitPoint;
+    [SerializeField] Transform hitPoint;
     [SerializeField] bool debug;
     [SerializeField] bool showHitPoint;
 

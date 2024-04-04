@@ -11,7 +11,7 @@ public class PlayerDebug : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField] bool debug;
-    [SerializeField] GameObject TestObject;
+    [SerializeField] GameObject? TestObject;
 
     [Header("Events")]
     public UnityEvent OnReflectdebuging;
@@ -29,6 +29,7 @@ public class PlayerDebug : MonoBehaviour
 
     private void OnGetHit()
     {
-        playerAttack.TakeDamage(1, TestObject.transform.position);
+        if(TestObject != null)
+            playerAttack.TakeDamage(1, TestObject.transform.position);
     }
 }
