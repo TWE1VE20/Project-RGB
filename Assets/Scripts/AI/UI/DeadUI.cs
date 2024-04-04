@@ -11,14 +11,12 @@ public class DeadUI : PopUpUI
 
     protected override void Awake()
     {
-        base.Awake();
-        StartCoroutine(BlackOutCoroutine());
         //GetUI<Button>("ShotCutButton").onClick.AddListener(ShotCut);
         //GetUI<Button>("BackButton").onClick.AddListener(Close);
     }
     protected void OnEnable()
     {
-        
+        StartCoroutine(BlackOutCoroutine());
     }
     protected void OnDisable()
     {
@@ -30,7 +28,7 @@ public class DeadUI : PopUpUI
     }
     IEnumerator BlackOutCoroutine()
     {
-        while (blackScreen.color.a > 0.0f)
+        while (blackScreen.color.a < 255.0f)
         {
             // 불투명도를 점차 감소시킵니다.
             Color newColor = blackScreen.color;

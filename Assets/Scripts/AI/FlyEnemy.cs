@@ -262,9 +262,9 @@ public class FlyEnemy : MonsterAI, IStunable
         {
             if (firstTarget != null)
             {
-                
-                Quaternion targetRotation = Quaternion.LookRotation(firstTarget.position - viewPoint.position);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, owner.rotationSpeed * Time.deltaTime);
+                viewPoint.LookAt(firstTarget.position);
+                //Quaternion targetRotation = Quaternion.LookRotation(firstTarget.position - viewPoint.position);
+                //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, owner.rotationSpeed * Time.deltaTime);
                 //transform.LookAt(owner.firstTarget.transform.position);
             }
             else
@@ -384,10 +384,14 @@ public class FlyEnemy : MonsterAI, IStunable
         {
             Debug.Log("Tracing");
             FindTarget();
-            Direction();
             Move();
-            Line();
+           
+        }
 
+        public override void LateUpdate()
+        {
+            Direction();
+            Line();
         }
 
         public override void Transition()
@@ -507,10 +511,14 @@ public class FlyEnemy : MonsterAI, IStunable
         public override void Update()
         {
             FindTarget();
-            Direction();
             Attack();
-            Line();
+            
+        }
 
+        public override void LateUpdate()
+        {
+            Direction();
+            Line();
         }
 
         public override void Transition()
