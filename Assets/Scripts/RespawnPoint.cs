@@ -15,7 +15,7 @@ public class RespawnPoint : MonoBehaviour
         if(((1 << other.gameObject.layer) & Player) != 0)
 
         Manager.game.respawnPoint = grave.transform.position;
-        Manager.game.respwanScene = SceneManager.GetActiveScene().name;
+        //Manager.game.respwanScene = SceneManager.GetActiveScene().name;
     }
     
 
