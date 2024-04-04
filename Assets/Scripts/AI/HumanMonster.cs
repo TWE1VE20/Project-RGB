@@ -65,8 +65,8 @@ public class HumanMonster : MonsterAI, IStunable
     [Header("Patrol")]
     [SerializeField] GameObject patrolPointObject1;
     [SerializeField] GameObject patrolPointObject2;
-    [SerializeField] Vector3 patrolPosition1;
-    [SerializeField] Vector3 patrolPosition2;
+    public Vector3 patrolPosition1;
+    public Vector3 patrolPosition2;
     [SerializeField] Vector3 patrolTarget;
     [SerializeField] Vector3 returnPoint;
 
