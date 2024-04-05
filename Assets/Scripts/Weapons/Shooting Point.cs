@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.FilePathAttribute;
 
 public class ShootingPoint : MonoBehaviour
 {
-    [Header("Component")]
+    [Header("Components")]
     [SerializeField] WeaponHolder weaponHolder;
 
     [Header("Spec")]
     [SerializeField] float maxDistance;
     [SerializeField] float maxDistance2;
+
+    [Header("Particles")]
+    [SerializeField] ParticleSystem[]? particles;
 
     [Header("Debug")]
     [SerializeField] Transform hitPoint;
@@ -49,6 +53,8 @@ public class ShootingPoint : MonoBehaviour
             // 명중한 물체가 어떤 반응을 할지 추가
             hitInfo.collider.gameObject.GetComponent<IBreakable>()?.Break(weaponHolder.weaponsList[weaponHolder.current].colorState);
             hitInfo.collider.gameObject.GetComponent<IDamagable>()?.TakeDamage(weaponHolder.weaponsList[weaponHolder.current].colorState);
+            if(particles != null)
+                Instantiate(particles[0], hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
         }
         else
         {
