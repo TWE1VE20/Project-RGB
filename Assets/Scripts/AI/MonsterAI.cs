@@ -14,6 +14,7 @@ public class MonsterAI : MonoBehaviour, IDamagable
 
     private Animator battleAni;
     public int hitPoint;
+
     [Header("Color")]
     [SerializeField] protected HaveColor haveColor;
     [SerializeField] protected HaveColor.ThisColor InitColor;

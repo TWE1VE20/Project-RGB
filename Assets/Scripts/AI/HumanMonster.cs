@@ -63,8 +63,10 @@ public class HumanMonster : MonsterAI, IStunable
     [SerializeField] NavMeshAgent agent;
 
     [Header("Patrol")]
-    [SerializeField] Transform patorolPoint1;
-    [SerializeField] Transform patorolPoint2;
+    [SerializeField] GameObject patrolPointObject1;
+    [SerializeField] GameObject patrolPointObject2;
+    public Vector3 patrolPosition1;
+    public Vector3 patrolPosition2;
     [SerializeField] Vector3 patrolTarget;
     [SerializeField] Vector3 returnPoint;
 
@@ -115,7 +117,6 @@ public class HumanMonster : MonsterAI, IStunable
     private void Start()
     {
         this.hitPoint = hp;
-        
         //ListChoice();
     }
     //public void ListChoice()
@@ -259,7 +260,7 @@ public class HumanMonster : MonsterAI, IStunable
         {
             if (Vector3.Distance(transform.position, owner.patrolTarget) < 1f)
             {
-                owner.patrolTarget = owner.patrolTarget == owner.patorolPoint1.position ? owner.patorolPoint2.position : owner.patorolPoint1.position;
+                owner.patrolTarget = owner.patrolTarget == owner.patrolPosition1 ? owner.patrolPosition2 : owner.patrolPosition1;
             }
         }
         public void Direction()
@@ -324,7 +325,7 @@ public class HumanMonster : MonsterAI, IStunable
             }
             else if (firstTarget == null)
             {
-                owner.patrolTarget = owner.patorolPoint1.transform.position;
+                owner.patrolTarget = owner.patrolPosition1;
                 ChangeState(State.Patrol);
                 
             }
@@ -504,7 +505,7 @@ public class HumanMonster : MonsterAI, IStunable
         public override void Enter()
         {
             owner.addTargetRange = owner.ReturnSpeed;
-            owner.agent.speed = owner.BattleSpeed;
+            owner.agent.speed = 0f;
         }
 
         public override void Update()

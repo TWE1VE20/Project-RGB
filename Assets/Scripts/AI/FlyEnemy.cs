@@ -262,9 +262,9 @@ public class FlyEnemy : MonsterAI, IStunable
         {
             if (firstTarget != null)
             {
-                viewPoint.LookAt(firstTarget.position);
-                //Quaternion targetRotation = Quaternion.LookRotation(firstTarget.position - viewPoint.position);
-                //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, owner.rotationSpeed * Time.deltaTime);
+                //viewPoint.LookAt(firstTarget.position);
+                Quaternion targetRotation = Quaternion.LookRotation(firstTarget.position - viewPoint.position);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, owner.rotationSpeed * Time.deltaTime);
                 //transform.LookAt(owner.firstTarget.transform.position);
             }
             else
@@ -341,7 +341,7 @@ public class FlyEnemy : MonsterAI, IStunable
         public PatrolState(FlyEnemy owner) : base(owner) { }
         public override void Enter()
         {
-
+            Debug.Log("patrol");
             owner.animator.SetBool("Walk", true);
             owner.agent.speed = 2f;
         }
@@ -470,6 +470,7 @@ public class FlyEnemy : MonsterAI, IStunable
 
         public override void Enter()
         {
+            
             owner.animator.SetBool("Walk", true);
             Debug.Log("Return");
             owner.firstTarget = null;
@@ -479,7 +480,7 @@ public class FlyEnemy : MonsterAI, IStunable
         }
         public override void Update()
         {
-
+            Line();
         }
 
         public override void Transition()
@@ -505,7 +506,7 @@ public class FlyEnemy : MonsterAI, IStunable
         public override void Enter()
         {
             owner.addTargetRange = 7f;
-            owner.agent.speed = 0;
+            owner.agent.speed = 0f;
         }
 
         public override void Update()
@@ -534,7 +535,6 @@ public class FlyEnemy : MonsterAI, IStunable
             else if (firstTarget == null)
             {
                 owner.haveColor.SetColor(owner.InitColor);
-                owner.lineRenderer.enabled = false;
                 ChangeState(State.Return);
             }
 
