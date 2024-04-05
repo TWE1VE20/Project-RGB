@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.UI.GridLayoutGroup;
 
 public class HumanoidRobotEnemy : EnemyAI
 {
@@ -10,6 +11,7 @@ public class HumanoidRobotEnemy : EnemyAI
         stateMachine = gameObject.AddComponent<StateMachine>();
         stateMachine.AddState(State.Idle, new IdleState(this));
         stateMachine.AddState(State.Patrol, new PatrolState(this));
+        stateMachine.AddState(State.PatrolIdle, new PatrolIdleState(this));
         stateMachine.AddState(State.Trace, new TraceState(this));
         stateMachine.AddState(State.Avoid, new AvoidState(this));
         stateMachine.AddState(State.Return, new ReturnState(this));
@@ -139,9 +141,45 @@ public class HumanoidRobotEnemy : EnemyAI
                 owner.returnPoint = owner.transform.position;
                 ChangeState(State.Trace);
             }
+            else if (owner.arrive == true)
+            {
+                owner.animator.SetBool("Walk", false);
+                ChangeState(State.PatrolIdle);
+            }
         }
 
+    }
+    private class PatrolIdleState : HumanoidRobotEnemyState
+    {
+        public PatrolIdleState(HumanoidRobotEnemy owner) : base(owner) { }
 
+        public override void Enter()
+        {
+            owner.StartCoroutine(owner.PatrolIdle());
+            owner.agent.speed = 0;
+        }
+        public override void Update()
+        {
+            owner.FindTarget();
+        }
+
+        public override void Transition()
+        {
+            if (owner.arrive == false)
+            {
+                owner.animator.SetBool("Walk", true);
+                owner.agent.speed = owner.patrolSpeed;
+                ChangeState(State.Patrol);
+            }
+            else if (owner.firstTarget != null)
+            {
+                owner.animator.SetBool("Walk", true);
+                lineRenderer.enabled = true;
+                owner.agent.speed = owner.TraceSpeed;
+                owner.returnPoint = owner.transform.position;
+                ChangeState(State.Trace);
+            }
+        }
     }
     private class TraceState : HumanoidRobotEnemyState
     {

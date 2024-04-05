@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 using static UnityEngine.UI.GridLayoutGroup;
 
-public class EnemyAI : MonoBehaviour, IDamagable/*, IStunable*/
+public class EnemyAI : MonoBehaviour, IDamagable
 {
-    public enum State { Idle, Trace, Patrol, Groggy, Avoid, Return, Battle, Die, Gameover }
+    public enum State { Idle, Trace, Patrol, PatrolIdle, Groggy, Avoid, Return, Battle, Die, Gameover }
 
     [Header("Component")]
     [SerializeField] protected Animator animator;
@@ -65,6 +65,8 @@ public class EnemyAI : MonoBehaviour, IDamagable/*, IStunable*/
     [SerializeField] public Vector3 patrolPosition2;
     [SerializeField] protected Vector3 patrolTarget;
     [SerializeField] protected Vector3 returnPoint;
+    [SerializeField] protected bool arrive;
+    [SerializeField] protected float idleTime;
 
     [Header("Speed")]
     [SerializeField] protected float patrolSpeed;
@@ -191,13 +193,21 @@ public class EnemyAI : MonoBehaviour, IDamagable/*, IStunable*/
             return;
         }
     } // 적 이동
+
+    private float curSpeed;
     public void Patrol()
     {
         if (Vector3.Distance(transform.position, patrolTarget) < 1f)
         {
             patrolTarget = patrolTarget == patrolPosition1 ? patrolPosition2 : patrolPosition1;
+            arrive = true;
         }
     } // 적 순찰 목표
+    public IEnumerator PatrolIdle()
+    {
+        yield return new WaitForSeconds(idleTime);
+        arrive = false;
+    }
     public void Direction()
     {
         if (firstTarget != null)

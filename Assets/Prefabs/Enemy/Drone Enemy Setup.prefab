@@ -483,6 +483,8 @@ MonoBehaviour:
   patrolPosition2: {x: 0, y: 0, z: 0}
   patrolTarget: {x: 0, y: 0, z: 0}
   returnPoint: {x: 0, y: 0, z: 0}
+  arrive: 0
+  idleTime: 3
   patrolSpeed: 2
   TraceSpeed: 3
   BattleSpeed: 0

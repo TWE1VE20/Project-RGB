@@ -13,8 +13,10 @@ public class RespawnPoint : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         if(((1 << other.gameObject.layer) & Player) != 0)
-
-        Manager.game.respawnPoint = grave.transform.position;
+        { 
+            Manager.game.respawnPoint = grave.transform.position; 
+        }
+        
         //Manager.game.respwanScene = SceneManager.GetActiveScene().name;
     }
     
