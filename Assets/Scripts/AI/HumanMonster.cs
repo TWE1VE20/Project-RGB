@@ -10,9 +10,9 @@ using static UnityEngine.UI.GridLayoutGroup;
 
 public class HumanMonster : MonsterAI, IStunable
 {
-    // ½Ã°£ »ç¿ë½Ã ÁÖÀÇ 
-    // ½½·Î¿ì¸ð¼Ç ¿µÇâ ¹Þ´Â°Ç deltaTime
-    // ¾È¹Þ´Â°Ç Time.unscaleddeltatime
+    // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
+    // ï¿½ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´Â°ï¿½ deltaTime
+    // ï¿½È¹Þ´Â°ï¿½ Time.unscaleddeltatime
     public enum State { Idle, Trace, Patrol, Groggy, Avoid, Return, Battle, Die, Gameover }
 
     [Header("Component")]
@@ -143,7 +143,7 @@ public class HumanMonster : MonsterAI, IStunable
 
         Vector3 rightDir = Quaternion.Euler(0, angle * 0.5f, 0) * viewPoint.forward;
         Vector3 leftDir = Quaternion.Euler(0, angle * -0.5f, 0) * viewPoint.forward;
-        // ¿Ö »ç¶óÁü?
+        // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½?
         Debug.DrawRay(viewPoint.position, rightDir * addTargetRange, Color.cyan);
         Debug.DrawRay(viewPoint.position, leftDir * addTargetRange, Color.cyan);
     }
@@ -186,7 +186,7 @@ public class HumanMonster : MonsterAI, IStunable
             this.owner = owner;
         }
         
-        public void FindTarget() // Àû Å½»ö ÇÏ´Â ºÎºÐ
+        public void FindTarget() // ï¿½ï¿½ Å½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½Îºï¿½
         {
             if (firstTarget == null)
             {
@@ -227,12 +227,12 @@ public class HumanMonster : MonsterAI, IStunable
             if (owner.attackCost >= 3f)
             {
                 //owner.StopCoroutine(AttackCoroutine());
-                //RaycastHit hit; ·¹ÀÌ ¹ß»ç
+                //RaycastHit hit; ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
                 if (Physics.Raycast(viewPoint.position, viewPoint.forward, out RaycastHit hit, attackRange, targetLayerMask))
                 {
-                    // ·¹ÀÌ°¡ IDamagable ÀÎÅÍÆäÀÌ½º¸¦ ±¸ÇöÇÑ ¿ÀºêÁ§Æ®¿¡ Ãæµ¹Çß´Ù¸é
+                    // ï¿½ï¿½ï¿½Ì°ï¿½ IDamagable ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½æµ¹ï¿½ß´Ù¸ï¿½
                     IDamagable damageable = hit.collider.gameObject.GetComponent<IDamagable>();
-                    // TakeDamage ÇÔ¼ö¸¦ È£ÃâÇÏ¿© ÇÇÇØ¸¦ ÀÔÈü´Ï´Ù.
+                    // TakeDamage ï¿½Ô¼ï¿½ï¿½ï¿½ È£ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½Ø¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
                     Debug.Log(hit.collider.gameObject.name);
                     damageable?.TakeDamage(owner.deal, owner.transform.position);
                     owner.attackCost = 0;
@@ -281,7 +281,7 @@ public class HumanMonster : MonsterAI, IStunable
             if (firstTarget != null)
             {
                 lineRenderer.enabled = true;
-                lineRenderer.positionCount = 2; // µÎ °³ÀÇ Á¤Á¡À¸·Î ¼±À» ¸¸µì´Ï´Ù.
+                lineRenderer.positionCount = 2; // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
                 lineRenderer.SetPosition(0, owner.viewPoint.transform.position);
                 lineRenderer.SetPosition(1, firstTarget.transform.position);
 
@@ -292,7 +292,7 @@ public class HumanMonster : MonsterAI, IStunable
                     owner.timer = 0f;
                     owner.isVisible = !owner.isVisible;
 
-                    //lineRenderer È°¼ºÈ­, ºñÈ°¼ºÈ­ Åä±Û
+                    //lineRenderer È°ï¿½ï¿½È­, ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½ï¿½ï¿½
                     lineRenderer.enabled = owner.isVisible;
                 }
 
