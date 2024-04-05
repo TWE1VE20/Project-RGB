@@ -4175,14 +4175,6 @@ PrefabInstance:
       propertyPath: TestObject
       value: 
       objectReference: {fileID: 1110569325}
-    - target: {fileID: 4094499589562141179, guid: 9c75341509afbe048bb93b8dae5425ef, type: 3}
-      propertyPath: debug
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4094499589562141179, guid: 9c75341509afbe048bb93b8dae5425ef, type: 3}
-      propertyPath: showHitPoint
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6083406994869291563, guid: 9c75341509afbe048bb93b8dae5425ef, type: 3}
       propertyPath: m_Name
       value: Player Setup
