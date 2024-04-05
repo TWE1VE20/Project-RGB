@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class WindowUI : MonoBehaviour
+public class WindowUI : BaseUI
 {
     public void OnDrag(PointerEventData eventData)
     {
