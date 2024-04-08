@@ -620,6 +620,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1794981808561259646, guid: f312bd16a88a18146adc23ffe227e993, type: 3}
+      propertyPath: m_Damping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3406355054854236131, guid: f312bd16a88a18146adc23ffe227e993, type: 3}
       propertyPath: m_Name
       value: Player Setup (Body Invisible)
@@ -663,6 +667,14 @@ PrefabInstance:
     - target: {fileID: 3583905691764310761, guid: f312bd16a88a18146adc23ffe227e993, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6085838001690944278, guid: f312bd16a88a18146adc23ffe227e993, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7161499581456281928, guid: f312bd16a88a18146adc23ffe227e993, type: 3}
+      propertyPath: dampLerpSpeed
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -11,6 +11,8 @@ public class FPSCameraController : MonoBehaviour
     [SerializeField] Transform cameraRoot;
     [SerializeField] Camera handcam;
     [SerializeField] float mouseSensitivity;
+    [SerializeField] PlayerController playerController;
+    [SerializeField] GroundChecker groundChecker;
 
     [Header("Spec")]
     public float lerpSpeed = 1f;        // Lerp ¼Óµµ
@@ -23,17 +25,29 @@ public class FPSCameraController : MonoBehaviour
     private float yRotation;
     private float xRotation;
 
+    [Header("StackCameraDamping")]
+    [SerializeField] float MaxXDamp;
+    [SerializeField] float MaxYDamp;
+    [SerializeField] float XdampLerpSpeed;
+    [SerializeField] float YdampLerpSpeed;
+    [SerializeField] float initYpos;
+    private float XDamp;
+    private float YDamp;
+    private bool YDamping;
+
     private void Start()
     {
         cameraRoot.gameObject.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView = InitFOV;
         handcam.fieldOfView = InitFOV;
         SlowmotionFOV = InitFOV;
         Zoom = false;
+        YDamping = false;
     }
 
     private void FixedUpdate()
     {
         slowmotionZoom();
+        CamDamping();
     }
 
     private void OnEnable()
@@ -74,6 +88,40 @@ public class FPSCameraController : MonoBehaviour
                 cameraRoot.gameObject.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView = SlowmotionFOV;
                 handcam.fieldOfView = SlowmotionFOV;
             }
+        }
+    }
+
+    private void CamDamping()
+    {
+        if (playerController.GetMoveDir().x > 0.01 && XDamp != MaxXDamp)
+        {
+            XDamp = Mathf.Lerp(XDamp, MaxXDamp, XdampLerpSpeed * Time.fixedDeltaTime);
+            handcam.transform.position = new Vector3(XDamp, handcam.transform.position.y, handcam.transform.position.z);
+        }
+        else if(playerController.GetMoveDir().x < -0.01 && XDamp != -MaxXDamp)
+        {
+            XDamp = Mathf.Lerp(XDamp, -MaxXDamp, XdampLerpSpeed * Time.fixedDeltaTime);
+            handcam.transform.position = new Vector3(XDamp, handcam.transform.position.y, handcam.transform.position.z);
+        }
+        else if(XDamp != 0)
+        {
+            XDamp = Mathf.Lerp(XDamp, 0, XdampLerpSpeed * Time.fixedDeltaTime);
+            handcam.transform.position = new Vector3(XDamp, handcam.transform.position.y, handcam.transform.position.z);
+        }
+
+        if (!groundChecker.isGround && playerController.ySpeed > 0 && YDamp != MaxYDamp + initYpos)
+        {
+            if (!YDamping)
+                YDamping = true;
+            YDamp = Mathf.Lerp(YDamp, MaxYDamp + initYpos, YdampLerpSpeed * Time.fixedDeltaTime);
+            handcam.transform.position = new Vector3(handcam.transform.position.x, YDamp, handcam.transform.position.z);
+        }
+        else if(groundChecker.isGround && YDamp != initYpos)
+        {
+            if (YDamping)
+                YDamping = false;
+            YDamp = Mathf.Lerp(YDamp, initYpos, YdampLerpSpeed * Time.fixedDeltaTime);
+            handcam.transform.position = new Vector3(handcam.transform.position.x, YDamp, handcam.transform.position.z);
         }
     }
 
