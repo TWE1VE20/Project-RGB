@@ -628,6 +628,7 @@ MonoBehaviour:
   targetHeight: 3
   amplitude: 0.5
   period: 3
+  firstPoint: {fileID: 0}
 --- !u!120 &5851391007700466989
 LineRenderer:
   serializedVersion: 2

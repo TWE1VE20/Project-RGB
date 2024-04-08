@@ -13,7 +13,7 @@ public class HumanoidRobotEnemy : EnemyAI
         stateMachine.AddState(State.Patrol, new PatrolState(this));
         stateMachine.AddState(State.PatrolIdle, new PatrolIdleState(this));
         stateMachine.AddState(State.Trace, new TraceState(this));
-        stateMachine.AddState(State.Avoid, new AvoidState(this));
+        stateMachine.AddState(State.Alert, new AlertState(this));
         stateMachine.AddState(State.Return, new ReturnState(this));
         stateMachine.AddState(State.Battle, new BattleState(this));
         stateMachine.AddState(State.Die, new DieState(this));
@@ -88,6 +88,7 @@ public class HumanoidRobotEnemy : EnemyAI
         }
         public override void Update()
         {
+            owner.ColorChanger();
             owner.FindTarget();
         }
         public override void Transition()
@@ -124,6 +125,7 @@ public class HumanoidRobotEnemy : EnemyAI
         }
         public override void Update()
         {
+            owner.ColorChanger();
             owner.FindTarget();
             owner.Patrol();
             owner.Move();
@@ -160,6 +162,7 @@ public class HumanoidRobotEnemy : EnemyAI
         }
         public override void Update()
         {
+            owner.ColorChanger();
             owner.FindTarget();
         }
 
@@ -196,6 +199,7 @@ public class HumanoidRobotEnemy : EnemyAI
         public override void Update()
         {
             Debug.Log("Tracing");
+            owner.ColorChanger();
             owner.FindTarget();
             owner.Direction();
             owner.Move();
@@ -235,8 +239,7 @@ public class HumanoidRobotEnemy : EnemyAI
         }
         public override void Update()
         {
-
-
+            owner.ColorChanger();
         }
 
         public override void Transition()
@@ -244,16 +247,16 @@ public class HumanoidRobotEnemy : EnemyAI
             if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
             {
                 owner.StopCoroutine(owner.StunCoroutine());
-                owner.animator.Play(0);
+                //owner.animator.Play(0);
                 ChangeState(State.Die);
             }
         }
     }
-    private class AvoidState : HumanoidRobotEnemyState
+    private class AlertState : HumanoidRobotEnemyState
     {
 
 
-        public AvoidState(HumanoidRobotEnemy owner) : base(owner) { }
+        public AlertState(HumanoidRobotEnemy owner) : base(owner) { }
 
         public override void Enter()
         {
@@ -288,7 +291,7 @@ public class HumanoidRobotEnemy : EnemyAI
         }
         public override void Update()
         {
-
+            owner.ColorChange();
         }
 
         public override void Transition()
@@ -319,6 +322,7 @@ public class HumanoidRobotEnemy : EnemyAI
 
         public override void Update()
         {
+            owner.ColorChanger();
             owner.FindTarget();
             owner.Direction();
             owner.Attack();
@@ -357,7 +361,7 @@ public class HumanoidRobotEnemy : EnemyAI
         }
         public override void Update()
         {
-
+            owner.ColorChanger();
         }
         public override void Transition()
         {

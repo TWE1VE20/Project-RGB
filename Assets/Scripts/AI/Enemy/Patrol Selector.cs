@@ -8,10 +8,12 @@ public class PatrolSelector : MonoBehaviour
     public GameObject firstPoint;
     public GameObject secondPoint;
     public EnemyAI enemy;
+    
     private void Start()
     {
         enemy.patrolPosition1 = firstPoint.transform.position;
         enemy.patrolPosition2 = secondPoint.transform.position;
+        
         if (enemy.patrolPosition1 != null && enemy.patrolPosition2 != null)
         {
             firstPoint.GetComponentInChildren<Transform>().gameObject.SetActive(false);
