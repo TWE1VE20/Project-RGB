@@ -13,7 +13,7 @@ public class DroneEnemy : EnemyAI
         stateMachine.AddState(State.Patrol, new PatrolState(this));
         stateMachine.AddState(State.PatrolIdle, new PatrolIdleState(this));
         stateMachine.AddState(State.Trace, new TraceState(this));
-        stateMachine.AddState(State.Avoid, new AvoidState(this));
+        stateMachine.AddState(State.Alert, new AlertState(this));
         stateMachine.AddState(State.Return, new ReturnState(this));
         stateMachine.AddState(State.Battle, new BattleState(this));
         stateMachine.AddState(State.Die, new DieState(this));
@@ -88,6 +88,7 @@ public class DroneEnemy : EnemyAI
         }
         public override void Update()
         {
+            owner.ColorChange();
             owner.FindTarget();
         }
         public override void Transition()
@@ -124,6 +125,7 @@ public class DroneEnemy : EnemyAI
         }
         public override void Update()
         {
+            owner.ColorChange();
             owner.FindTarget();
             owner.Patrol();
             owner.Move();
@@ -159,6 +161,7 @@ public class DroneEnemy : EnemyAI
         }
         public override void Update()
         {
+            owner.ColorChange();
             owner.FindTarget();
         }
 
@@ -195,6 +198,7 @@ public class DroneEnemy : EnemyAI
         public override void Update()
         {
             Debug.Log("Tracing");
+            owner.ColorChange();
             owner.FindTarget();
             owner.Move();
 
@@ -240,7 +244,7 @@ public class DroneEnemy : EnemyAI
         public override void Update()
         {
 
-
+            owner.ColorChange();
         }
         public override void Transition()
         {
@@ -252,9 +256,9 @@ public class DroneEnemy : EnemyAI
             }
         }
     }
-    private class AvoidState : DroneEnemyState
+    private class AlertState : DroneEnemyState
     {
-        public AvoidState(DroneEnemy owner) : base(owner) { }
+        public AlertState(DroneEnemy owner) : base(owner) { }
 
         public override void Enter()
         {
@@ -288,7 +292,7 @@ public class DroneEnemy : EnemyAI
         }
         public override void Update()
         {
-
+            owner.ColorChange();
         }
 
         public override void Transition()
@@ -319,6 +323,7 @@ public class DroneEnemy : EnemyAI
 
         public override void Update()
         {
+            owner.ColorChange();
             owner.FindTarget();
             owner.Attack();
 
@@ -361,7 +366,7 @@ public class DroneEnemy : EnemyAI
         }
         public override void Update()
         {
-
+            owner.ColorChange();
         }
         public override void Transition()
         {

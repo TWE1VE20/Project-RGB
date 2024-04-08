@@ -16,7 +16,7 @@ public class HeightCheck : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, raycastLength))
         {
             // 충돌한 오브젝트의 Transform.position 값 출력
-            Debug.Log("충돌한 오브젝트 위치: " + hit.transform.position);
+            //Debug.Log("충돌한 오브젝트 위치: " + hit.transform.position);
             Debug.DrawRay(transform.position, HeightChecker.transform.forward, Color.red);
             fly.realHeight = hit.transform.position.y + fly.targetHeight;
         }

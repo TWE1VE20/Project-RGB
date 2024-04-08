@@ -75,7 +75,7 @@ public class HaveColor : MonoBehaviour
         UpdateColor();
     }
     /// <summary>
-    /// 현제 속성이 가진 색 속성에 대응하는 Color값을 반환합니다.
+    /// 현재 속성이 가진 색 속성에 대응하는 Color값을 반환합니다.
     /// Material의 색이나 Color를 변화시키는데 도움이 됩니다.
     /// </summary>
     public Color MaterialColor()

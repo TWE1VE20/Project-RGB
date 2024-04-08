@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using static UnityEngine.UI.GridLayoutGroup;
 
 public class EnemyAI : MonoBehaviour, IDamagable
 {
-    public enum State { Idle, Trace, Patrol, PatrolIdle, Groggy, Avoid, Return, Battle, Die, Gameover }
+    public enum State { Idle, Trace, Patrol, PatrolIdle, Groggy, Alert, Return, Battle, Die, Gameover }
 
     [Header("Component")]
     [SerializeField] protected Animator animator;
@@ -21,7 +22,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [SerializeField] protected float attackCost;
     [SerializeField] protected float attackCooltime;
     [SerializeField] protected Transform firstTarget;
-    [SerializeField] protected Transform secondTarget;
+    [SerializeField] protected Vector3 lostPosition;
 
     [Header("FindTarget")]
     private float preAngle;
@@ -31,6 +32,12 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [SerializeField] protected Collider[] atkColliders = new Collider[20];
     [SerializeField] protected Vector3 moveDir;
     [SerializeField] protected Vector3 myPos;
+
+    [Header("Alert")]
+    protected float Delay;
+    protected bool alertArrive;
+    [SerializeField] protected float findDelay;
+    [SerializeField] protected Vector3 findpostion;
 
     [Header("SnipeLine")]
     [SerializeField] protected LineRenderer lineRenderer;
@@ -77,9 +84,10 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [Header("Color")]
     [SerializeField] protected HaveColor haveColor;
     [SerializeField] protected HaveColor.ThisColor InitColor;
+    [SerializeField] protected Renderer[] renders;
+    [SerializeField] protected Material curColor;
 
 
-    
     public float CosAngle
     {
         get
@@ -122,8 +130,9 @@ public class EnemyAI : MonoBehaviour, IDamagable
     }
 
 
+    // 배틀모드 돌입시  firstTarget 과 attackPoint를 별개로 저장. firstTarget이 null이 될 시 attackPoint로 공격. firstTarget이 null 이고 attack가 0이면 alert모드로 전환
+    // alert 모드로 전환해서 attackPoint.position 으로 이동하는 스크립트가서 없으면 return 모드로 전환 예정
     
-
     public void FindTarget() // 적 탐색 하는 부분
     {
         if (firstTarget == null)
@@ -143,7 +152,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
 
                     Debug.DrawRay(viewPoint.position, dirToTarget * distToTarget, Color.red);
                     firstTarget = atkColliders[i].transform;
-
+                    lostPosition = atkColliders[i].transform.position;
                     moveDir = dirToTarget;
                     return;
                 }
@@ -162,7 +171,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
     public void Attack()
     {
         attackCost += Time.deltaTime;
-        if (attackCost >= 3f)
+        if (attackCost >= attackCooltime)
         {
             //owner.StopCoroutine(AttackCoroutine());
             //RaycastHit hit; 레이 발사
@@ -179,7 +188,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
             //owner.attackCost--;
             //owner.StartCoroutine(AttackCoroutine());
         }
-    } // 적 공격
+    } // 적 공격(시야 내)
     public void Move()
     {
         if (firstTarget != null)
@@ -193,6 +202,14 @@ public class EnemyAI : MonoBehaviour, IDamagable
             return;
         }
     } // 적 이동
+    public void search()
+    {
+        if ( Vector3.Distance(transform.position, lostPosition) < 2f)
+        {
+            animator.SetBool("Walk", false);
+            alertArrive = true;
+        }
+    } // 적 마지막 목격위치로 이동
 
     private float curSpeed;
     public void Patrol()
@@ -207,7 +224,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
     {
         yield return new WaitForSeconds(idleTime);
         arrive = false;
-    }
+    } // 순찰 대기 시간
     public void Direction()
     {
         if (firstTarget != null)
@@ -218,6 +235,8 @@ public class EnemyAI : MonoBehaviour, IDamagable
         }
         else
         {
+            Quaternion targetRotation = Quaternion.LookRotation(lostPosition - viewPoint.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             return;
         }
 
@@ -247,6 +266,40 @@ public class EnemyAI : MonoBehaviour, IDamagable
             lineRenderer.enabled = false;
         }
     } // 경고선
+    public void ColorChange()
+    {
+        renders = GetComponentsInChildren<MeshRenderer>();
+        
+
+        foreach (Renderer render in renders)
+        {
+            foreach (Material material in render.materials)
+            {
+                material.color = haveColor.MaterialColor();
+            }
+        }
+        
+    }// 색 반영 랜더러 가져오는 버전
+    public void ColorChanger()
+    {
+        curColor.color = haveColor.MaterialColor();
+        // 부모 오브젝트 가져오기
+        GameObject parentObject = this.gameObject; // 실제 부모 오브젝트로 교체
+
+        // 자식 오브젝트 반복 처리
+        foreach (Transform child in parentObject.transform)
+        {
+            // 자식 오브젝트의 Renderer 컴포넌트 접근
+            Renderer renderer = child.GetComponent<Renderer>();
+
+            // Renderer가 존재하면 색깔 설정
+            if (renderer != null)
+            {
+                renderer.material.color = curColor.color;
+            }
+        }
+    }// 마테리얼 가져오는 버전
+} 
 
     //public void ListChoice()
     //{
@@ -263,4 +316,4 @@ public class EnemyAI : MonoBehaviour, IDamagable
     //        gravePos = new Vector3(12.9f, -5.74f, 0);
     //    }
     //} // 적 리스트에서 탐색시 리스트 선택
-}
+
