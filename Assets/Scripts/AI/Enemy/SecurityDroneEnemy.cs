@@ -1,12 +1,12 @@
-using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.UI.GridLayoutGroup;
 
-public class HumanEnemy : EnemyAI, IStunable
+public class SecurityDroneEnemy : EnemyAI, IStunable
 {
     private StateMachine stateMachine;
+    private Quaternion startquaternion;
     private void Awake()
     {
         stateMachine = gameObject.AddComponent<StateMachine>();
@@ -27,7 +27,8 @@ public class HumanEnemy : EnemyAI, IStunable
 
     private void Start()
     {
-
+        startquaternion = transform.localRotation;
+        returnPoint = transform.position;
     }
     public void Stun()
     {
@@ -52,9 +53,9 @@ public class HumanEnemy : EnemyAI, IStunable
         Debug.DrawRay(viewPoint.position, rightDir * addTargetRange, Color.cyan);
         Debug.DrawRay(viewPoint.position, leftDir * addTargetRange, Color.cyan);
     }
-    private class HumanEnemyState : BaseState
+    private class SecurityDroneEnemyState : BaseState
     {
-        protected HumanEnemy owner;
+        protected SecurityDroneEnemy owner;
         protected Transform transform => owner.transform;
         protected float attackRange => owner.attackRange;
         protected float avoidRange => owner.avoidRange;
@@ -72,24 +73,26 @@ public class HumanEnemy : EnemyAI, IStunable
         protected LayerMask obstacleLayerMask => owner.obstacleLayerMask;
         protected LineRenderer lineRenderer => owner.gameObject.GetComponent<LineRenderer>();
 
-        public HumanEnemyState(HumanEnemy owner)
+        public SecurityDroneEnemyState(SecurityDroneEnemy owner)
         {
             this.owner = owner;
         }
 
 
     }
-    private class IdleState : HumanEnemyState
+    private class IdleState : SecurityDroneEnemyState
     {
 
-        public IdleState(HumanEnemy owner) : base(owner) { }
+        public IdleState(SecurityDroneEnemy owner) : base(owner) { }
         public override void Enter()
         {
+            //owner.transform.localRotation = owner.startquaternion;
+            owner.headBanging.enabled = true;
             owner.addTargetRange = 5f;
         }
         public override void Update()
         {
-            owner.ColorChanger();
+            owner.ColorChange();
             owner.FindTarget();
         }
         public override void Transition()
@@ -98,63 +101,45 @@ public class HumanEnemy : EnemyAI, IStunable
             {
                 ChangeState(State.Die);
             }
-            else if (firstTarget == null)
-            {
-                owner.patrolTarget = owner.patrolPosition1;
-                ChangeState(State.Patrol);
-
-            }
+            //else if (firstTarget == null)
+            //{
+            //    owner.StopAllCoroutines();
+            //    owner.headBanging.enabled = false;
+            //    ChangeState(State.Idle);
+            //}
             else if (firstTarget != null)
             {
+                owner.StopAllCoroutines();
                 owner.lineRenderer.enabled = true;
-                owner.returnPoint = owner.transform.position;
+                owner.headBanging.enabled = false;
                 ChangeState(State.Trace);
             }
         }
     }
-    private class PatrolState : HumanEnemyState
+    private class PatrolState : SecurityDroneEnemyState
     {
 
-        public PatrolState(HumanEnemy owner) : base(owner) { }
+        public PatrolState(SecurityDroneEnemy owner) : base(owner) { }
         public override void Enter()
         {
 
-            owner.animator.SetBool("Walk", true);
-            owner.agent.speed = owner.patrolSpeed;
+
         }
         public override void Update()
         {
-            Debug.Log("Patrol");
-            owner.ColorChanger();
-            owner.FindTarget();
-            owner.Patrol();
-            owner.Move();
+
         }
         public override void Transition()
         {
-            if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
-            {
-                owner.animator.SetBool("Walk", false);
-                ChangeState(State.Die);
-            }
-            else if (owner.firstTarget != null)
-            {
-                lineRenderer.enabled = true;
-                owner.returnPoint = owner.transform.position;
-                ChangeState(State.Trace);
-            }
-            else if (owner.arrive == true)
-            {
-                owner.animator.SetBool("Walk", false);
-                ChangeState(State.PatrolIdle);
-            }
+
         }
     }
-    private class PatrolIdleState : HumanEnemyState
+    private class PatrolIdleState : SecurityDroneEnemyState
     {
-        public PatrolIdleState(HumanEnemy owner) : base(owner) { }
+        public PatrolIdleState(SecurityDroneEnemy owner) : base(owner) { }
         public override void Enter()
         {
+            
             owner.arrive = true;
             owner.alertArrive = false;
             owner.StartCoroutine(owner.PatrolIdle());
@@ -163,17 +148,16 @@ public class HumanEnemy : EnemyAI, IStunable
         public override void Update()
         {
             Debug.Log("PatrolIdle");
-            owner.ColorChanger();
+            owner.ColorChange();
             owner.FindTarget();
         }
-
         public override void Transition()
         {
             if (owner.arrive == false)
             {
                 owner.animator.SetBool("Walk", true);
                 owner.agent.speed = owner.patrolSpeed;
-                ChangeState(State.Patrol);
+                ChangeState(State.Return);
             }
             else if (owner.firstTarget != null)
             {
@@ -185,9 +169,9 @@ public class HumanEnemy : EnemyAI, IStunable
             }
         }
     }
-    private class TraceState : HumanEnemyState
+    private class TraceState : SecurityDroneEnemyState
     {
-        public TraceState(HumanEnemy owner) : base(owner) { }
+        public TraceState(SecurityDroneEnemy owner) : base(owner) { }
 
         public override void Enter()
         {
@@ -195,19 +179,16 @@ public class HumanEnemy : EnemyAI, IStunable
             owner.agent.speed = 4f;
             owner.addTargetRange = owner.traceRange;
             owner.animator.SetBool("Walk", true);
-
         }
         public override void Update()
         {
             Debug.Log("Tracing");
-            owner.ColorChanger();
+            owner.ColorChange();
             owner.FindTarget();
             owner.Direction();
             owner.Move();
             owner.Line();
-
         }
-
         public override void Transition()
         {
             if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
@@ -230,9 +211,9 @@ public class HumanEnemy : EnemyAI, IStunable
 
         }
     }
-    private class GroggyState : HumanEnemyState
+    private class GroggyState : SecurityDroneEnemyState
     {
-        public GroggyState(HumanEnemy owner) : base(owner) { }
+        public GroggyState(SecurityDroneEnemy owner) : base(owner) { }
 
         public override void Enter()
         {
@@ -253,11 +234,11 @@ public class HumanEnemy : EnemyAI, IStunable
             }
         }
     }
-    private class AlertState : HumanEnemyState
+    private class AlertState : SecurityDroneEnemyState
     {
 
 
-        public AlertState(HumanEnemy owner) : base(owner) { }
+        public AlertState(SecurityDroneEnemy owner) : base(owner) { }
 
         public override void Enter()
         {
@@ -267,7 +248,7 @@ public class HumanEnemy : EnemyAI, IStunable
         public override void Update()
         {
             Debug.Log("Alert");
-            owner.ColorChanger();
+            owner.ColorChange();
             owner.FindTarget();
             owner.search();
             owner.Line();
@@ -290,11 +271,11 @@ public class HumanEnemy : EnemyAI, IStunable
             }
         }
     }
-    private class ReturnState : HumanEnemyState
+    private class ReturnState : SecurityDroneEnemyState
     {
 
 
-        public ReturnState(HumanEnemy owner) : base(owner) { }
+        public ReturnState(SecurityDroneEnemy owner) : base(owner) { }
 
         public override void Enter()
         {
@@ -303,8 +284,6 @@ public class HumanEnemy : EnemyAI, IStunable
             owner.firstTarget = null;
             owner.agent.speed = owner.ReturnSpeed;
             owner.agent.destination = owner.returnPoint;
-
-
         }
         public override void Update()
         {
@@ -318,16 +297,16 @@ public class HumanEnemy : EnemyAI, IStunable
                 owner.haveColor.SetColor(owner.InitColor);
                 owner.returnPoint = new Vector3(0, 0, 0);
                 owner.agent.speed = 3;
-                ChangeState(State.Patrol);
+                ChangeState(State.Idle);
             }
         }
     }
 
 
 
-    private class BattleState : HumanEnemyState
+    private class BattleState : SecurityDroneEnemyState
     {
-        public BattleState(HumanEnemy owner) : base(owner) { }
+        public BattleState(SecurityDroneEnemy owner) : base(owner) { }
 
 
 
@@ -368,9 +347,9 @@ public class HumanEnemy : EnemyAI, IStunable
         }
     }
 
-    private class DieState : HumanEnemyState
+    private class DieState : SecurityDroneEnemyState
     {
-        public DieState(HumanEnemy owner) : base(owner) { }
+        public DieState(SecurityDroneEnemy owner) : base(owner) { }
 
         public override void Enter()
         {
@@ -387,9 +366,9 @@ public class HumanEnemy : EnemyAI, IStunable
         }
     }
 
-    private class GameoverState : HumanEnemyState
+    private class GameoverState : SecurityDroneEnemyState
     {
-        public GameoverState(HumanEnemy owner) : base(owner) { }
+        public GameoverState(SecurityDroneEnemy owner) : base(owner) { }
 
 
     }
