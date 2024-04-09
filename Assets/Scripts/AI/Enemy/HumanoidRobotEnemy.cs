@@ -218,7 +218,7 @@ public class HumanoidRobotEnemy : EnemyAI
                 owner.addTargetRange = 5;
                 owner.firstTarget = null;
                 owner.animator.SetBool("Walk", true);
-                ChangeState(State.Return);
+                ChangeState(State.Alert);
             }
             else if (Vector3.Distance(transform.position, owner.firstTarget.transform.position) <= attackRange)
             {
