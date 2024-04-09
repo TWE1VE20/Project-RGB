@@ -47,7 +47,8 @@ public class FPSCameraController : MonoBehaviour
     private void FixedUpdate()
     {
         slowmotionZoom();
-        CamDamping();
+        if(!Zoom)
+            CamDamping();
     }
 
     private void OnEnable()
@@ -132,10 +133,12 @@ public class FPSCameraController : MonoBehaviour
 
     private void OnZoom(InputValue value)
     {
-        if (value.isPressed)
-            Zoom = true;
-        else
-            Zoom = false;
-        
+        if (Manager.timeflow.SlowMotionEnable)
+        {
+            if (value.isPressed)
+                Zoom = true;
+            else
+                Zoom = false;
+        }
     }
 }

@@ -7,6 +7,9 @@ using UnityEngine.InputSystem;
 
 public class TimeFlowManager : MonoBehaviour
 {
+    [Header("Components")]
+    [SerializeField] TimeControlStamina timeControlStamina;
+
     [Header("Timer")]
     [SerializeField] TextMeshProUGUI RealTimer;
     [SerializeField] TextMeshProUGUI InGameTimer;
@@ -17,7 +20,8 @@ public class TimeFlowManager : MonoBehaviour
     public float lerpSpeed = 1f;        // Lerp 속도
     public float targetTimeScale = 1f;  // 목표 시간 흐름 속도
     private float slowFactor;           // 현 TimeScale
-    private bool Slow;                  // 슬로우모션하고있어야 하는지 유무
+    public bool Slow { get; private set; }  // 슬로우모션하고있어야 하는지 유무
+    public bool SlowMotionEnable { get; private set; }
 
     // Real Time    실제 타임
     private int Rmin;
@@ -31,8 +35,6 @@ public class TimeFlowManager : MonoBehaviour
     private float fps;
     private float time;
     private int frame;
-
-    
 
     void Start()
     {
@@ -61,12 +63,20 @@ public class TimeFlowManager : MonoBehaviour
         if(timerON)
             Timer();
         Fps();
+
+        if (timeControlStamina.staminaSlider != null && !SlowMotionEnable)
+            SlowMotionEnable = true;
+        else if (timeControlStamina.staminaSlider == null)
+            SlowMotionEnable = false;
     }
     private void FixedUpdate()
     {
         SlowMotion();
     }
-
+    private void EnableSlowMotion()
+    {
+        SlowMotionEnable = true;
+    }
     // 시간 출력 함수
     private void Timer()
     {
@@ -110,7 +120,7 @@ public class TimeFlowManager : MonoBehaviour
     // 슬로우모션 함수
     private void SlowMotion()
     {
-        if (Slow)
+        if (Slow && timeControlStamina.CanSlow())
         {
             if (Time.timeScale != targetTimeScale)
             {
