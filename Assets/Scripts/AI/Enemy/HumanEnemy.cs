@@ -264,8 +264,6 @@ public class HumanEnemy : EnemyAI, IStunable
     }
     private class AlertState : HumanEnemyState
     {
-
-
         public AlertState(HumanEnemy owner) : base(owner) { }
 
         public override void Enter()
@@ -341,6 +339,7 @@ public class HumanEnemy : EnemyAI, IStunable
 
         public override void Enter()
         {
+            owner.playerDetecter.targetting = true;
             owner.addTargetRange = 7f;
             owner.agent.speed = 0f;
         }
@@ -359,14 +358,17 @@ public class HumanEnemy : EnemyAI, IStunable
         {
             if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
             {
+                owner.playerDetecter.targetting = false;
                 ChangeState(State.Die);
             }
             else if (Vector3.Distance(firstTarget.position, transform.position) >= attackRange)
             {
+                owner.playerDetecter.targetting = false;
                 ChangeState(State.Trace);
             }
-            else if (firstTarget == null)
+            else if (firstTarget == null && owner.attackCost <= 0.1f)
             {
+                owner.playerDetecter.targetting = false;
                 owner.lineRenderer.enabled = false;
                 ChangeState(State.Alert);
             }

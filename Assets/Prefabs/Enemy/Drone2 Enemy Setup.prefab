@@ -3207,7 +3207,7 @@ MonoBehaviour:
   attackCost: 0
   attackCooltime: 3
   firstTarget: {fileID: 0}
-  secondTarget: {fileID: 0}
+  lostPosition: {x: 0, y: 0, z: 0}
   rotationSpeed: 360
   cosRange: 0
   atkColliders:
@@ -3233,6 +3233,9 @@ MonoBehaviour:
   - {fileID: 0}
   moveDir: {x: 0, y: 0, z: 0}
   myPos: {x: 0, y: 0, z: 0}
+  findDelay: 0
+  findpostion: {x: 0, y: 0, z: 0}
+  playerDetecter: {fileID: 0}
   lineRenderer: {fileID: 3007724856915138680}
   showDuration: 0.9
   hideDuration: 0.1
@@ -3265,6 +3268,7 @@ MonoBehaviour:
   ReturnSpeed: 7
   haveColor: {fileID: 0}
   InitColor: 2
+  renders: []
   curColor: {fileID: 2100000, guid: 8e686d68cd6aeec48af02810e558cb16, type: 2}
 --- !u!95 &2489880115732821291
 Animator:
