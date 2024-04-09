@@ -1,9 +1,9 @@
 using QFX.SFX;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-public class PlayerDetecter : SFX_ControlledObject
+public class LaserSummoner : SFX_ControlledObject
 {
     public GameObject Weapon;
     public Transform WeaponPosition;
@@ -21,7 +21,9 @@ public class PlayerDetecter : SFX_ControlledObject
     public SFX_AnimationModule LaserRotationOverLifeTime;
     public SFX_AnimationModule LaserRadiusOverLifeTime;
 
-    public SFX_ObjectFinder ObjectFinder;
+
+    [Header("Find")]
+    [SerializeField] EnemyAI enemy;
 
     private float _enemyEnteredRadiusTime;
 
@@ -31,7 +33,7 @@ public class PlayerDetecter : SFX_ControlledObject
     private float _radiusTime;
     private float _rotationTime;
 
-    private GameObject _target;
+    private Transform _target;
 
     private readonly List<LaserInstance> _lineInstances = new List<LaserInstance>();
 
@@ -77,8 +79,7 @@ public class PlayerDetecter : SFX_ControlledObject
         if (!IsRunning)
             return;
 
-        var foundObjects = ObjectFinder.FindObjects(transform.position);
-
+        
         if (_target != null)
             _weapon.transform.LookAt(_target.transform);
 
@@ -92,17 +93,9 @@ public class PlayerDetecter : SFX_ControlledObject
             if (_weapon.IsRunning)
                 _weapon.Stop();
         }
-        else if (!foundObjects.Any())
-        {
-            if (_isLasersActive)
-                DeactivateLasers();
-
-            if (_weapon.IsRunning)
-                _weapon.Stop();
-        }
         else
         {
-            _target = foundObjects[0].gameObject;
+            _target = enemy.firstTarget;
 
             if (_isLasersActive && Time.time - _enemyEnteredRadiusTime > AllowedTimeInProtectionRadius)
             {
@@ -147,7 +140,7 @@ public class PlayerDetecter : SFX_ControlledObject
     {
         RaycastHit raycastHit;
 
-        var raycast = Physics.Raycast(transform.position, Vector3.down, out raycastHit, LaserMaxDistance,LaserLayerMask);
+        var raycast = Physics.Raycast(transform.position, Vector3.down, out raycastHit, LaserMaxDistance, LaserLayerMask);
 
         if (raycast)
         {

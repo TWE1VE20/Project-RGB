@@ -110,8 +110,6 @@ public class HumanoidRobotEnemy : EnemyAI
                 ChangeState(State.Trace);
             }
         }
-
-
     }
     private class PatrolState : HumanoidRobotEnemyState
     {
@@ -125,6 +123,7 @@ public class HumanoidRobotEnemy : EnemyAI
         }
         public override void Update()
         {
+            Debug.Log("Patrol");
             owner.ColorChanger();
             owner.FindTarget();
             owner.Patrol();
@@ -149,19 +148,20 @@ public class HumanoidRobotEnemy : EnemyAI
                 ChangeState(State.PatrolIdle);
             }
         }
-
     }
     private class PatrolIdleState : HumanoidRobotEnemyState
     {
         public PatrolIdleState(HumanoidRobotEnemy owner) : base(owner) { }
-
         public override void Enter()
         {
+            owner.arrive = true;
+            owner.alertArrive = false;
             owner.StartCoroutine(owner.PatrolIdle());
             owner.agent.speed = 0;
         }
         public override void Update()
         {
+            Debug.Log("PatrolIdle");
             owner.ColorChanger();
             owner.FindTarget();
         }
@@ -260,17 +260,33 @@ public class HumanoidRobotEnemy : EnemyAI
 
         public override void Enter()
         {
-
+            Debug.Log("Alert start");
+            owner.agent.destination = owner.lostPosition;
         }
         public override void Update()
         {
-
-
+            Debug.Log("Alert");
+            owner.ColorChanger();
+            owner.FindTarget();
+            owner.search();
+            owner.Line();
         }
-
         public override void Transition()
         {
-
+            if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
+            {
+                ChangeState(State.Die);
+            }
+            else if (firstTarget != null)
+            {
+                ChangeState(State.Battle);
+            }
+            else if (owner.alertArrive == true && owner.firstTarget == null)
+            {
+                owner.lostPosition = new Vector3(0, 0, 0);
+                Debug.Log("Alert to patrolIdle");
+                ChangeState(State.PatrolIdle);
+            }
         }
     }
     private class ReturnState : HumanoidRobotEnemyState
@@ -343,7 +359,7 @@ public class HumanoidRobotEnemy : EnemyAI
             else if (firstTarget == null)
             {
                 owner.lineRenderer.enabled = false;
-                ChangeState(State.Return);
+                ChangeState(State.Alert);
             }
 
 

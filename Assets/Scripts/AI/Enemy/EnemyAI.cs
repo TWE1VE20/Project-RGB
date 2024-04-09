@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [SerializeField] protected int deal;
     [SerializeField] protected float attackCost;
     [SerializeField] protected float attackCooltime;
-    [SerializeField] protected Transform firstTarget;
+    [SerializeField] public Transform firstTarget;
     [SerializeField] protected Vector3 lostPosition;
 
     [Header("FindTarget")]
@@ -40,6 +40,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [SerializeField] protected Vector3 findpostion;
 
     [Header("SnipeLine")]
+    [SerializeField] protected PlayerDetecter playerDetecter;
     [SerializeField] protected LineRenderer lineRenderer;
     [SerializeField] protected float showDuration;
     [SerializeField] protected float hideDuration;

@@ -110,8 +110,6 @@ public class DroneEnemy : EnemyAI
                 ChangeState(State.Trace);
             }
         }
-
-
     }
     private class PatrolState : DroneEnemyState
     {
@@ -125,6 +123,7 @@ public class DroneEnemy : EnemyAI
         }
         public override void Update()
         {
+            Debug.Log("Patrol");
             owner.ColorChange();
             owner.FindTarget();
             owner.Patrol();
@@ -156,11 +155,14 @@ public class DroneEnemy : EnemyAI
 
         public override void Enter()
         {
+            owner.arrive = true;
+            owner.alertArrive = false;
             owner.StartCoroutine(owner.PatrolIdle());
             owner.agent.speed = 0;
         }
         public override void Update()
         {
+            Debug.Log("PatrolIdle");
             owner.ColorChange();
             owner.FindTarget();
         }
@@ -191,7 +193,7 @@ public class DroneEnemy : EnemyAI
         {
             Debug.Log("Trace");
             owner.agent.speed = 4f;
-            owner.addTargetRange = 7f;
+            owner.addTargetRange = owner.traceRange;
             owner.animator.SetBool("Walk", true);
 
         }
@@ -200,14 +202,10 @@ public class DroneEnemy : EnemyAI
             Debug.Log("Tracing");
             owner.ColorChange();
             owner.FindTarget();
-            owner.Move();
-
-        }
-
-        public override void LateUpdate()
-        {
             owner.Direction();
+            owner.Move();
             owner.Line();
+
         }
 
         public override void Transition()
@@ -218,7 +216,6 @@ public class DroneEnemy : EnemyAI
             }
             else if (firstTarget == null)
             {
-                lineRenderer.enabled = false;
                 owner.addTargetRange = 5;
                 owner.firstTarget = null;
                 owner.animator.SetBool("Walk", true);
@@ -243,7 +240,6 @@ public class DroneEnemy : EnemyAI
         }
         public override void Update()
         {
-
             owner.ColorChange();
         }
         public override void Transition()
@@ -251,7 +247,7 @@ public class DroneEnemy : EnemyAI
             if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
             {
                 owner.StopCoroutine(owner.StunCoroutine());
-                owner.animator.Play(0);
+                //owner.animator.Play(0);
                 ChangeState(State.Die);
             }
         }
@@ -262,16 +258,33 @@ public class DroneEnemy : EnemyAI
 
         public override void Enter()
         {
-
+            Debug.Log("Alert start");
+            owner.agent.destination = owner.lostPosition;
         }
         public override void Update()
         {
-
-
+            Debug.Log("Alert");
+            owner.ColorChange();
+            owner.FindTarget();
+            owner.search();
+            owner.Line();
         }
         public override void Transition()
         {
-
+            if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
+            {
+                ChangeState(State.Die);
+            }
+            else if (firstTarget != null)
+            {
+                ChangeState(State.Battle);
+            }
+            else if (owner.alertArrive == true && owner.firstTarget == null)
+            {
+                owner.lostPosition = new Vector3(0, 0, 0);
+                Debug.Log("Alert to patrolIdle");
+                ChangeState(State.PatrolIdle);
+            }
         }
     }
     private class ReturnState : DroneEnemyState
@@ -287,8 +300,6 @@ public class DroneEnemy : EnemyAI
             owner.firstTarget = null;
             owner.agent.speed = owner.ReturnSpeed;
             owner.agent.destination = owner.returnPoint;
-
-
         }
         public override void Update()
         {
@@ -312,12 +323,9 @@ public class DroneEnemy : EnemyAI
     private class BattleState : DroneEnemyState
     {
         public BattleState(DroneEnemy owner) : base(owner) { }
-
-
-
         public override void Enter()
         {
-            owner.addTargetRange = 7f;
+            owner.addTargetRange = owner.ReturnSpeed;
             owner.agent.speed = 0f;
         }
 
@@ -326,15 +334,7 @@ public class DroneEnemy : EnemyAI
             owner.ColorChange();
             owner.FindTarget();
             owner.Attack();
-
         }
-
-        public override void LateUpdate()
-        {
-            owner.Direction();
-            owner.Line();
-        }
-
         public override void Transition()
         {
             if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
@@ -347,11 +347,14 @@ public class DroneEnemy : EnemyAI
             }
             else if (firstTarget == null)
             {
-                owner.haveColor.SetColor(owner.InitColor);
-                ChangeState(State.Return);
+                owner.lineRenderer.enabled = false;
+                ChangeState(State.Alert);
             }
-
-
+        }
+        public override void LateUpdate()
+        {
+            owner.Direction();
+            owner.Line();
         }
     }
 
