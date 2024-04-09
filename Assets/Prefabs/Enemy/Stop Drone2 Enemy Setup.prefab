@@ -2600,7 +2600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstPoint: {fileID: 8883597522591044816}
   secondPoint: {fileID: 2022776546597641798}
-  enemy: {fileID: 2843961039521781571}
+  enemy: {fileID: 0}
 --- !u!1 &5727357486576584590
 GameObject:
   m_ObjectHideFlags: 0
@@ -3153,7 +3153,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6725162812506680578}
-  - component: {fileID: 2843961039521781571}
+  - component: {fileID: 522425186138588605}
+  - component: {fileID: 4752164926375113651}
   - component: {fileID: 2489880115732821291}
   - component: {fileID: 109372377142121966}
   - component: {fileID: 3678977032185864277}
@@ -3183,7 +3184,7 @@ Transform:
   - {fileID: 8872391122723975954}
   m_Father: {fileID: 5101257355242517837}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2843961039521781571
+--- !u!114 &522425186138588605
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3192,7 +3193,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 6909938795327905826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a17c27d21c4eb3847b5f005cb0123d33, type: 3}
+  m_Script: {fileID: 11500000, guid: 611d71ca268168b44a0cdb0e1d118d55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 1
+  rotationAngle: 30
+  rotationWait: 3
+--- !u!114 &4752164926375113651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6909938795327905826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a68488638a1bd5b4aae33c8e41e8cb8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2489880115732821291}
@@ -3203,12 +3219,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   attackRange: 8
-  deal: 1
+  deal: 2
   attackCost: 0
   attackCooltime: 3
   firstTarget: {fileID: 0}
   lostPosition: {x: 0, y: 0, z: 0}
-  rotationSpeed: 360
+  rotationSpeed: 180
   cosRange: 0
   atkColliders:
   - {fileID: 0}
@@ -3240,10 +3256,10 @@ MonoBehaviour:
   showDuration: 0.9
   hideDuration: 0.1
   timer: 0
-  isVisible: 1
+  isVisible: 0
   MaxHP: 5
   hp: 5
-  isDied: 1
+  isDied: 0
   viewPoint: {fileID: 6673601850423050165}
   obstacleLayerMask:
     serializedVersion: 2
@@ -3252,7 +3268,7 @@ MonoBehaviour:
   traceRange: 10
   avoidRange: 0
   groggyAble: 0
-  angle: 60
+  angle: 90
   agent: {fileID: 3678977032185864277}
   patrolPointObject1: {fileID: 8883597522591044816}
   patrolPointObject2: {fileID: 2022776546597641798}
@@ -3261,11 +3277,11 @@ MonoBehaviour:
   patrolTarget: {x: 0, y: 0, z: 0}
   returnPoint: {x: 0, y: 0, z: 0}
   arrive: 0
-  idleTime: 3
-  patrolSpeed: 2
-  TraceSpeed: 3
+  idleTime: 0
+  patrolSpeed: 0
+  TraceSpeed: 0
   BattleSpeed: 0
-  ReturnSpeed: 7
+  ReturnSpeed: 0
   haveColor: {fileID: 0}
   InitColor: 2
   renders: []
@@ -3356,7 +3372,7 @@ MonoBehaviour:
   realHeight: 0
   amplitude: 0.5
   period: 3
-  enemy: {fileID: 2843961039521781571}
+  enemy: {fileID: 0}
 --- !u!120 &3007724856915138680
 LineRenderer:
   serializedVersion: 2
