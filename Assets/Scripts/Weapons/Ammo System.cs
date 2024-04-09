@@ -7,6 +7,7 @@ public class AmmoSystem: MonoBehaviour
 {
     public Animator animator;
     public AudioSource audioSource;
+    [SerializeField] FireEffect? fireEffect;
 
     public float reloadTime;
     public int AmmoLeft;    // ³²Àº ÃÑ¾Ë °¹¼ö
@@ -69,6 +70,8 @@ public class AmmoSystem: MonoBehaviour
         {
             rounds--;
             // Shoot Animation and Sound
+            if (fireEffect != null)
+                fireEffect.GunFireEffect();
             return true;
         }
         else
