@@ -97,17 +97,17 @@ public class FPSCameraController : MonoBehaviour
         if (playerController.GetMoveDir().x > 0.01 && XDamp != MaxXDamp)
         {
             XDamp = Mathf.Lerp(XDamp, MaxXDamp, XdampLerpSpeed * Time.fixedDeltaTime);
-            handcam.transform.position = new Vector3(XDamp, handcam.transform.position.y, handcam.transform.position.z);
+            handcam.transform.localPosition = new Vector3(XDamp, handcam.transform.localPosition.y, handcam.transform.localPosition.z);
         }
         else if(playerController.GetMoveDir().x < -0.01 && XDamp != -MaxXDamp)
         {
             XDamp = Mathf.Lerp(XDamp, -MaxXDamp, XdampLerpSpeed * Time.fixedDeltaTime);
-            handcam.transform.position = new Vector3(XDamp, handcam.transform.position.y, handcam.transform.position.z);
+            handcam.transform.localPosition = new Vector3(XDamp, handcam.transform.localPosition.y, handcam.transform.localPosition.z);
         }
         else if(XDamp != 0)
         {
             XDamp = Mathf.Lerp(XDamp, 0, XdampLerpSpeed * Time.fixedDeltaTime);
-            handcam.transform.position = new Vector3(XDamp, handcam.transform.position.y, handcam.transform.position.z);
+            handcam.transform.localPosition = new Vector3(XDamp, handcam.transform.localPosition.y, handcam.transform.localPosition.z);
         }
 
         if (!groundChecker.isGround && playerController.ySpeed > 0 && YDamp != MaxYDamp + initYpos)
@@ -115,14 +115,14 @@ public class FPSCameraController : MonoBehaviour
             if (!YDamping)
                 YDamping = true;
             YDamp = Mathf.Lerp(YDamp, MaxYDamp + initYpos, YdampLerpSpeed * Time.fixedDeltaTime);
-            handcam.transform.position = new Vector3(handcam.transform.position.x, YDamp, handcam.transform.position.z);
+            handcam.transform.localPosition = new Vector3(handcam.transform.localPosition.x, YDamp, handcam.transform.localPosition.z);
         }
         else if(groundChecker.isGround && YDamp != initYpos)
         {
             if (YDamping)
                 YDamping = false;
             YDamp = Mathf.Lerp(YDamp, initYpos, YdampLerpSpeed * Time.fixedDeltaTime);
-            handcam.transform.position = new Vector3(handcam.transform.position.x, YDamp, handcam.transform.position.z);
+            handcam.transform.localPosition = new Vector3(handcam.transform.localPosition.x, YDamp, handcam.transform.localPosition.z);
         }
     }
 
