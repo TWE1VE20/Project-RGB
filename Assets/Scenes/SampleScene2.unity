@@ -3907,7 +3907,7 @@ Transform:
   m_GameObject: {fileID: 1122122249}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.01, y: 1.16, z: 21.9}
+  m_LocalPosition: {x: 79.52, y: 1.16, z: 21.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6643,6 +6643,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853953682}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1856398238 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4752164926375113651, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
+  m_PrefabInstance: {fileID: 1929713567}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a68488638a1bd5b4aae33c8e41e8cb8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1856398239 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 522425186138588605, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
+  m_PrefabInstance: {fileID: 1929713567}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611d71ca268168b44a0cdb0e1d118d55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1857572689
 GameObject:
   m_ObjectHideFlags: 0
@@ -6792,6 +6814,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stop Drone2 Enemy Setup
       objectReference: {fileID: 0}
+    - target: {fileID: 522425186138588605, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007724856915138680, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e4bc7b8af889be40b4cbe44528ec580, type: 2}
+    - target: {fileID: 4751074493661899874, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
+      propertyPath: targetHeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752164926375113651, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
+      propertyPath: traceRange
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752164926375113651, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
+      propertyPath: attackRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752164926375113651, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
+      propertyPath: headBanging
+      value: 
+      objectReference: {fileID: 1856398239}
+    - target: {fileID: 4752164926375113651, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
+      propertyPath: addTargetRange
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5101257355242517837, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
       propertyPath: m_LocalPosition.x
       value: 72.76248
@@ -6836,6 +6886,10 @@ PrefabInstance:
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: 73cce2511caa3824596df3714b02ab86, type: 2}
+    - target: {fileID: 8442575731149304045, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 1856398238}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.UI.GridLayoutGroup;
 
 public class SecurityDroneEnemy : EnemyAI, IStunable
 {
     private StateMachine stateMachine;
+    private Quaternion startquaternion;
     private void Awake()
     {
         stateMachine = gameObject.AddComponent<StateMachine>();
@@ -25,7 +27,8 @@ public class SecurityDroneEnemy : EnemyAI, IStunable
 
     private void Start()
     {
-
+        startquaternion = transform.localRotation;
+        returnPoint = transform.position;
     }
     public void Stun()
     {
@@ -83,6 +86,8 @@ public class SecurityDroneEnemy : EnemyAI, IStunable
         public IdleState(SecurityDroneEnemy owner) : base(owner) { }
         public override void Enter()
         {
+            //owner.transform.localRotation = owner.startquaternion;
+            owner.headBanging.enabled = true;
             owner.addTargetRange = 5f;
         }
         public override void Update()
@@ -96,14 +101,17 @@ public class SecurityDroneEnemy : EnemyAI, IStunable
             {
                 ChangeState(State.Die);
             }
-            else if (firstTarget == null)
-            {
-                ChangeState(State.Idle);
-            }
+            //else if (firstTarget == null)
+            //{
+            //    owner.StopAllCoroutines();
+            //    owner.headBanging.enabled = false;
+            //    ChangeState(State.Idle);
+            //}
             else if (firstTarget != null)
             {
+                owner.StopAllCoroutines();
                 owner.lineRenderer.enabled = true;
-                owner.returnPoint = owner.transform.position;
+                owner.headBanging.enabled = false;
                 ChangeState(State.Trace);
             }
         }
@@ -131,6 +139,7 @@ public class SecurityDroneEnemy : EnemyAI, IStunable
         public PatrolIdleState(SecurityDroneEnemy owner) : base(owner) { }
         public override void Enter()
         {
+            
             owner.arrive = true;
             owner.alertArrive = false;
             owner.StartCoroutine(owner.PatrolIdle());
@@ -148,7 +157,7 @@ public class SecurityDroneEnemy : EnemyAI, IStunable
             {
                 owner.animator.SetBool("Walk", true);
                 owner.agent.speed = owner.patrolSpeed;
-                ChangeState(State.Idle);
+                ChangeState(State.Return);
             }
             else if (owner.firstTarget != null)
             {
@@ -275,8 +284,6 @@ public class SecurityDroneEnemy : EnemyAI, IStunable
             owner.firstTarget = null;
             owner.agent.speed = owner.ReturnSpeed;
             owner.agent.destination = owner.returnPoint;
-
-
         }
         public override void Update()
         {
@@ -290,7 +297,7 @@ public class SecurityDroneEnemy : EnemyAI, IStunable
                 owner.haveColor.SetColor(owner.InitColor);
                 owner.returnPoint = new Vector3(0, 0, 0);
                 owner.agent.speed = 3;
-                ChangeState(State.Patrol);
+                ChangeState(State.Idle);
             }
         }
     }

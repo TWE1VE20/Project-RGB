@@ -3153,8 +3153,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6725162812506680578}
-  - component: {fileID: 522425186138588605}
   - component: {fileID: 4752164926375113651}
+  - component: {fileID: 522425186138588605}
   - component: {fileID: 2489880115732821291}
   - component: {fileID: 109372377142121966}
   - component: {fileID: 3678977032185864277}
@@ -3184,21 +3184,6 @@ Transform:
   - {fileID: 8872391122723975954}
   m_Father: {fileID: 5101257355242517837}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &522425186138588605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6909938795327905826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 611d71ca268168b44a0cdb0e1d118d55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 1
-  rotationAngle: 30
-  rotationWait: 3
 --- !u!114 &4752164926375113651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3286,6 +3271,21 @@ MonoBehaviour:
   InitColor: 2
   renders: []
   curColor: {fileID: 2100000, guid: 8e686d68cd6aeec48af02810e558cb16, type: 2}
+--- !u!114 &522425186138588605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6909938795327905826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611d71ca268168b44a0cdb0e1d118d55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 1
+  rotationAngle: 30
+  rotationWait: 3
 --- !u!95 &2489880115732821291
 Animator:
   serializedVersion: 5
