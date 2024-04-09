@@ -1836,7 +1836,7 @@ MonoBehaviour:
   MaxYDamp: 0.03
   XdampLerpSpeed: 10
   YdampLerpSpeed: 10
-  initYpos: -3
+  initYpos: -1
 --- !u!1 &3273195161159537456
 GameObject:
   m_ObjectHideFlags: 0
