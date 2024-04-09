@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 using static UnityEngine.UI.GridLayoutGroup;
 
 public class EnemyAI : MonoBehaviour, IDamagable
@@ -88,7 +89,9 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [SerializeField] protected Renderer[] renders;
     [SerializeField] protected Material curColor;
 
-
+    [Header("headBanging")]
+    [SerializeField] protected HeadBanging headBanging;
+    
     public float CosAngle
     {
         get
@@ -300,6 +303,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
             }
         }
     }// 마테리얼 가져오는 버전
+   
 } 
 
     //public void ListChoice()
