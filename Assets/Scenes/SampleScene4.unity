@@ -237,10 +237,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1160138748138523075, guid: 83524268f432a2049bc1169f8eb22de0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1852485610869374704, guid: 83524268f432a2049bc1169f8eb22de0, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2044795294453495057, guid: 83524268f432a2049bc1169f8eb22de0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2044795294453495057, guid: 83524268f432a2049bc1169f8eb22de0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b50c54b560968eb439c60453fb890311, type: 2}
     - target: {fileID: 4642976026567810147, guid: 83524268f432a2049bc1169f8eb22de0, type: 3}
       propertyPath: m_Name
       value: Lobby Idle
@@ -289,6 +301,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6863150357902155660, guid: 83524268f432a2049bc1169f8eb22de0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6863150357902155660, guid: 83524268f432a2049bc1169f8eb22de0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7049720687379e548a8384d9199ce5a6, type: 2}
     - target: {fileID: 8223113745595788896, guid: 83524268f432a2049bc1169f8eb22de0, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -325,7 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RunAtStart: 1
-  Delay: 0
+  Delay: 1
   ControlledObjects:
   - {fileID: 395717332}
   - {fileID: 395717331}
@@ -341,7 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3ae7585f3624b20936ef066db4aebfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RunAtStart: 0
+  RunAtStart: 1
   Delay: 0
   DynamicShaderParameters:
   - AnimationModule:
@@ -385,10 +405,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 107dffb16d764262a505e413257f731d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RunAtStart: 0
+  RunAtStart: 1
   Delay: 0
   Material: {fileID: 2100000, guid: 8db903da24df43108ea29de21b14c046, type: 2}
-  LifeTime: 2
+  LifeTime: 3
   Targets: []
 --- !u!114 &675946321 stripped
 MonoBehaviour:
