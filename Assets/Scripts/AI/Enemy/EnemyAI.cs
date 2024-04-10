@@ -245,6 +245,32 @@ public class EnemyAI : MonoBehaviour, IDamagable
         }
 
     } // 적 바라보는 방향
+
+    public void Directionex()// 아직 수정 적용 해봐야 함
+    {
+        if (firstTarget != null)
+        {
+            // y축 기준 타겟 방향 벡터 계산
+            Vector3 targetDirection = new Vector3(firstTarget.position.x, transform.position.y, firstTarget.position.z) - viewPoint.position;
+
+            // 쿼터니언 회전값 계산 (y축만 회전)
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
+
+            // 부드러운 회전 (Slerp)
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
+        else
+        {
+            // y축 기준 사라진 위치 방향 벡터 계산
+            Vector3 targetDirection = new Vector3(lostPosition.x, transform.position.y, lostPosition.z) - viewPoint.position;
+
+            // 쿼터니언 회전값 계산 (y축만 회전)
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
+
+            // 부드러운 회전 (Slerp)
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
+    }
     public void Line()
     {
         if (firstTarget != null)
