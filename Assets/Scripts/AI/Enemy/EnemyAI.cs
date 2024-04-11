@@ -18,7 +18,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [Header("Attack")]
     [SerializeField] protected bool debug;
     [SerializeField] protected LayerMask targetLayerMask;
-    [SerializeField] protected float attackRange;
+    [SerializeField] protected float attackRange = 8f;
     [SerializeField] protected int deal;
     [SerializeField] protected float attackCost;
     [SerializeField] protected float attackCooltime;
@@ -56,9 +56,10 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [SerializeField] protected bool isDied;
     [SerializeField] protected Transform viewPoint;
     [SerializeField] protected LayerMask obstacleLayerMask;
-    [SerializeField] protected float addTargetRange;
-    [SerializeField] protected float traceRange;
-    [SerializeField] protected float avoidRange;
+    [SerializeField] protected float addTargetRange = 6f;
+    [SerializeField] protected float traceRange = 10f;
+    [SerializeField] protected float idleRange = 6f;
+    [SerializeField] protected float alertRange = 8f;
     [SerializeField] protected bool groggyAble;
 
 
@@ -79,10 +80,10 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [SerializeField] protected float idleTime;
 
     [Header("Speed")]
-    [SerializeField] protected float patrolSpeed;
-    [SerializeField] protected float TraceSpeed;
-    [SerializeField] protected float BattleSpeed;
-    [SerializeField] protected float ReturnSpeed;
+    [SerializeField] protected float patrolSpeed = 2f;
+    [SerializeField] protected float TraceSpeed = 3f;
+    [SerializeField] protected float BattleSpeed = 3f;
+    [SerializeField] protected float ReturnSpeed = 5f;
 
     [Header("Color")]
     [SerializeField] protected HaveColor haveColor;
@@ -97,8 +98,8 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [SerializeField] private float rotationWait = 3.0f; // 회전 끝나고 대기시간
     private bool isRotating = false; // 회전 중인지 여부
     private float currentRotationAngle = 0.0f; // 현재 회전 각도
+    public Quaternion initialLocalRotation;
 
-    
     public float CosAngle
     {
         get
@@ -174,16 +175,10 @@ public class EnemyAI : MonoBehaviour, IDamagable
         {
             float distToTarget = Vector3.Distance(firstTarget.transform.position, viewPoint.position);
             Vector3 dirToTarget = (firstTarget.transform.position - viewPoint.position).normalized;
-            if (Physics.Raycast(viewPoint.position, dirToTarget, distToTarget, obstacleLayerMask))
+            if (Physics.Raycast(viewPoint.position, dirToTarget, distToTarget, obstacleLayerMask) || distToTarget > traceRange)
             {
                 firstTarget = null;
             }
-            if (distToTarget > traceRange)
-            {
-                firstTarget = null;
-            }
-            
-            
         }
 
     }
@@ -270,8 +265,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
         }
 
     } // 적 바라보는 방향
-
-    public void Directionex()// 방향 회전 구버전
+    public void Directionex()
     {
         if (firstTarget != null)
         {
@@ -285,8 +279,8 @@ public class EnemyAI : MonoBehaviour, IDamagable
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             return;
         }
-        
-    }
+
+    }// 방향 회전 구버전
     public void Line()
     {
         if (firstTarget != null)
@@ -311,7 +305,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
         {
             lineRenderer.enabled = false;
         }
-    } // 경고선
+    } // 경고선 구버전
     public void LaserOn()
     {
         playerDetecter2s = GetComponentsInChildren<PlayerDetecter2>();

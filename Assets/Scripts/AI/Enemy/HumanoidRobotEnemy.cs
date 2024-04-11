@@ -57,9 +57,7 @@ public class HumanoidRobotEnemy : EnemyAI
         protected HumanoidRobotEnemy owner;
         protected Transform transform => owner.transform;
         protected float attackRange => owner.attackRange;
-        protected float avoidRange => owner.avoidRange;
         protected float hp => owner.hp;
-
         protected Animator animator => owner.animator;
         protected Transform firstTarget => owner.firstTarget;
         protected Transform viewPoint => owner.viewPoint;

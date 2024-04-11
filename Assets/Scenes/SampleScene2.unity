@@ -916,14 +916,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 292012139879258844, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2889859273857279561, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -8.07
-      objectReference: {fileID: 0}
     - target: {fileID: 3031690604665139124, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.94
@@ -964,26 +956,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3962211426651061742, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3962211426651061742, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 5331381525468972624, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5990289724712337852, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -7.97
-      objectReference: {fileID: 0}
-    - target: {fileID: 6113704862472025811, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 23800000, guid: 47a9300442e10fa4d8610a9c097560cb, type: 2}
     - target: {fileID: 6881417576976101183, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
       propertyPath: m_Name
       value: Patrol Human2 Enemy Setup
@@ -1792,6 +1764,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2896906317128125850, guid: 66d344c4e11020d48b91f4cc78c80af3, type: 3}
+      propertyPath: TraceSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896906317128125850, guid: 66d344c4e11020d48b91f4cc78c80af3, type: 3}
+      propertyPath: traceRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896906317128125850, guid: 66d344c4e11020d48b91f4cc78c80af3, type: 3}
+      propertyPath: BattleSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896906317128125850, guid: 66d344c4e11020d48b91f4cc78c80af3, type: 3}
+      propertyPath: ReturnSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896906317128125850, guid: 66d344c4e11020d48b91f4cc78c80af3, type: 3}
+      propertyPath: attackRange
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896906317128125850, guid: 66d344c4e11020d48b91f4cc78c80af3, type: 3}
+      propertyPath: patrolSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3031690604665139124, guid: 66d344c4e11020d48b91f4cc78c80af3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.6
@@ -1835,7 +1831,7 @@ PrefabInstance:
     - target: {fileID: 6113704862472025811, guid: 66d344c4e11020d48b91f4cc78c80af3, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: c14a3492173b68540936612a0ad40250, type: 2}
+      objectReference: {fileID: 23800000, guid: cd536e85b10b7574abc6e53d20d3c354, type: 2}
     - target: {fileID: 6399026922055478271, guid: 66d344c4e11020d48b91f4cc78c80af3, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1848,65 +1844,11 @@ PrefabInstance:
     - {fileID: 6399026922055478271, guid: 66d344c4e11020d48b91f4cc78c80af3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7059279060166500357, guid: 66d344c4e11020d48b91f4cc78c80af3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 626464865}
   m_SourcePrefab: {fileID: 100100000, guid: 66d344c4e11020d48b91f4cc78c80af3, type: 3}
---- !u!1001 &487728526
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1958081758972906, guid: fd484f7df08d46b289005e2be42d77ef, type: 3}
-      propertyPath: m_Name
-      value: Area Protector
-      objectReference: {fileID: 0}
-    - target: {fileID: 4338525210973678, guid: fd484f7df08d46b289005e2be42d77ef, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 4338525210973678, guid: fd484f7df08d46b289005e2be42d77ef, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 4338525210973678, guid: fd484f7df08d46b289005e2be42d77ef, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4338525210973678, guid: fd484f7df08d46b289005e2be42d77ef, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5352096
-      objectReference: {fileID: 0}
-    - target: {fileID: 4338525210973678, guid: fd484f7df08d46b289005e2be42d77ef, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4338525210973678, guid: fd484f7df08d46b289005e2be42d77ef, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.84471935
-      objectReference: {fileID: 0}
-    - target: {fileID: 4338525210973678, guid: fd484f7df08d46b289005e2be42d77ef, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4338525210973678, guid: fd484f7df08d46b289005e2be42d77ef, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4338525210973678, guid: fd484f7df08d46b289005e2be42d77ef, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4338525210973678, guid: fd484f7df08d46b289005e2be42d77ef, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fd484f7df08d46b289005e2be42d77ef, type: 3}
 --- !u!1 &505382946
 GameObject:
   m_ObjectHideFlags: 0
@@ -2318,250 +2260,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 984555538949962681, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 23800000, guid: a6d5802e62852b541baa430c40f9589a, type: 2}
-    - target: {fileID: 1728949473527323543, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ViewPoint
-      value: 
-      objectReference: {fileID: 2089487849}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LasersCount
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserContactOffset
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ObjectFinder.Radius
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ObjectFinder.LayerMask.m_Bits
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.ValueMultiplier
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRadiusOverLifeTime.TimeMultiplier
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRotationOverLifeTime.ValueMultiplier
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_PostInfinity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[0].time
-      value: -0.00008010864
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[1].time
-      value: 0.1508789
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[2].time
-      value: 0.3001721
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[3].time
-      value: 0.4976106
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[4].time
-      value: 0.60120535
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[5].time
-      value: 0.7995023
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[6].time
-      value: 0.99744624
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRotationOverLifeTime.AnimationCurve.m_Curve.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[0].value
-      value: -0.98876953
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[1].value
-      value: 1.014492
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[2].value
-      value: -0.9929831
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[3].value
-      value: 0.99768496
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[4].value
-      value: -0.99510574
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[5].value
-      value: 0.98782265
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[6].value
-      value: -0.9922807
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[6].inSlope
-      value: -0.024668021
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[0].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[1].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[2].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[3].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[4].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[5].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[6].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[6].outSlope
-      value: -0.024668021
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[0].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[1].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[2].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[3].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[4].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[5].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: ForceOverLifeTime.AnimationCurve.m_Curve.Array.data[6].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRotationOverLifeTime.AnimationCurve.m_Curve.Array.data[0].time
-      value: -0.002811432
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRotationOverLifeTime.AnimationCurve.m_Curve.Array.data[1].time
-      value: 0.4003296
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRotationOverLifeTime.AnimationCurve.m_Curve.Array.data[2].time
-      value: 0.80181134
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRotationOverLifeTime.AnimationCurve.m_Curve.Array.data[3].time
-      value: 1.0008938
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRotationOverLifeTime.AnimationCurve.m_Curve.Array.data[0].value
-      value: 0.002319336
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRotationOverLifeTime.AnimationCurve.m_Curve.Array.data[1].value
-      value: 1.0023155
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRotationOverLifeTime.AnimationCurve.m_Curve.Array.data[2].value
-      value: 0.9931629
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRotationOverLifeTime.AnimationCurve.m_Curve.Array.data[3].value
-      value: 0.6959014
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRotationOverLifeTime.AnimationCurve.m_Curve.Array.data[2].inSlope
-      value: -0.002926044
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRotationOverLifeTime.AnimationCurve.m_Curve.Array.data[0].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRotationOverLifeTime.AnimationCurve.m_Curve.Array.data[1].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRotationOverLifeTime.AnimationCurve.m_Curve.Array.data[2].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRotationOverLifeTime.AnimationCurve.m_Curve.Array.data[2].outSlope
-      value: -0.002926044
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRotationOverLifeTime.AnimationCurve.m_Curve.Array.data[3].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRotationOverLifeTime.AnimationCurve.m_Curve.Array.data[0].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRotationOverLifeTime.AnimationCurve.m_Curve.Array.data[1].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRotationOverLifeTime.AnimationCurve.m_Curve.Array.data[2].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874062926086155629, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: LaserRotationOverLifeTime.AnimationCurve.m_Curve.Array.data[3].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
     - target: {fileID: 3482177037681928602, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2602,33 +2300,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6331501782964371286, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 6692000573673923756, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -19.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 6692000573673923756, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 6692000573673923756, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 8769664350126801656, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9153007565093043042, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
       propertyPath: m_Name
       value: Robot Enemy Setup
       objectReference: {fileID: 0}
     - target: {fileID: 9153007565093043042, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2741,6 +2419,193 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 596184775}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &626464863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7059279060166500357, guid: 66d344c4e11020d48b91f4cc78c80af3, type: 3}
+  m_PrefabInstance: {fileID: 473674694}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &626464864 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8371884072359916130, guid: 66d344c4e11020d48b91f4cc78c80af3, type: 3}
+  m_PrefabInstance: {fileID: 473674694}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &626464865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626464863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fab33bed012874799cb6ba8f49221b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RunAtStart: 1
+  Delay: 0
+  Weapon: {fileID: 626464863}
+  WeaponPosition: {fileID: 626464864}
+  AllowedTimeInProtectionRadius: 3
+  LaserMaxDistance: 500
+  LaserLayerMask:
+    serializedVersion: 2
+    m_Bits: 511
+  LaserContactOffset: 0.05
+  LaserImpact: {fileID: 198752230788091884, guid: f8735da396374e94adf45ccd2b66b430, type: 3}
+  LaserLine: {fileID: 120498612255562424, guid: 75c33675697d484e97b717ccfbde39ad, type: 3}
+  LasersCount: 20
+  ForceOverLifeTime:
+    AnimationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: -0.00008010864
+        value: -0.98876953
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.1508789
+        value: 1.014492
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.3001721
+        value: -0.9929831
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.4976106
+        value: 0.99768496
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.60120535
+        value: -0.99510574
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7995023
+        value: 0.98782265
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.99744624
+        value: -0.9922807
+        inSlope: -0.024668021
+        outSlope: -0.024668021
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 1
+      m_RotationOrder: 4
+    ValueMultiplier: 0
+    TimeMultiplier: 1
+  LaserRotationOverLifeTime:
+    AnimationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: -0.002811432
+        value: 0.002319336
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.4003296
+        value: 1.0023155
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.80181134
+        value: 0.9931629
+        inSlope: -0.002926044
+        outSlope: -0.002926044
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1.0008938
+        value: 0.6959014
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ValueMultiplier: 250
+    TimeMultiplier: 1
+  LaserRadiusOverLifeTime:
+    AnimationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: -0.0000012085075
+        value: 1.0046387
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.99816895
+        value: 0.102939606
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ValueMultiplier: 1
+    TimeMultiplier: 3
+  ObjectFinder:
+    Radius: 8
+    LayerMask:
+      serializedVersion: 2
+      m_Bits: 16
+    Tag: 
+  targetting: 0
+  ViewPoint: {fileID: 626464864}
 --- !u!1 &640786482
 GameObject:
   m_ObjectHideFlags: 0
@@ -5438,6 +5303,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Patrol Human2 Enemy Setup (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6881417576976101183, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8241425485178974486, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
       propertyPath: lineRenderer
       value: 
@@ -6550,6 +6419,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7681917215725399076, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
+      propertyPath: NoDeath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8725521418602189055, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
       propertyPath: m_Name
       value: Player Setup (Body Invisible) With UI
@@ -7401,6 +7274,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stop Drone2 Enemy Setup
       objectReference: {fileID: 0}
+    - target: {fileID: 203085970550206608, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5101257355242517837, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
       propertyPath: m_LocalPosition.x
       value: 72.76248
@@ -8007,11 +7884,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 436185831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &2089487849 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5273854187634910048, guid: 5f39f24a628e44140baa11568e26751f, type: 3}
-  m_PrefabInstance: {fileID: 569797265}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2105357486
 GameObject:
   m_ObjectHideFlags: 0
@@ -8316,4 +8188,3 @@ SceneRoots:
   - {fileID: 1741963729}
   - {fileID: 1415854962}
   - {fileID: 473674694}
-  - {fileID: 487728526}

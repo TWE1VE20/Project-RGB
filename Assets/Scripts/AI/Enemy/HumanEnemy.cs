@@ -58,7 +58,7 @@ public class HumanEnemy : EnemyAI, IStunable
         protected HumanEnemy owner;
         protected Transform transform => owner.transform;
         protected float attackRange => owner.attackRange;
-        protected float avoidRange => owner.avoidRange;
+        
         protected float hp => owner.hp;
 
         protected Animator animator => owner.animator;
@@ -292,8 +292,6 @@ public class HumanEnemy : EnemyAI, IStunable
     }
     private class ReturnState : HumanEnemyState
     {
-
-
         public ReturnState(HumanEnemy owner) : base(owner) { }
 
         public override void Enter()
@@ -303,8 +301,6 @@ public class HumanEnemy : EnemyAI, IStunable
             owner.firstTarget = null;
             owner.agent.speed = owner.ReturnSpeed;
             owner.agent.destination = owner.returnPoint;
-
-
         }
         public override void Update()
         {
@@ -344,23 +340,23 @@ public class HumanEnemy : EnemyAI, IStunable
             owner.FindTarget();
             owner.Direction();
             owner.Attack();
-            
-
         }
 
         public override void Transition()
         {
             if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
             {
+                owner.LaserOff();
                 ChangeState(State.Die);
             }
             else if (Vector3.Distance(firstTarget.position, transform.position) >= attackRange)
             {
+                owner.LaserOff();
                 ChangeState(State.Trace);
             }
             else if (firstTarget == null)
             {
-                
+                owner.LaserOff();
                 ChangeState(State.Alert);
             }
 

@@ -56,7 +56,7 @@ public class DroneEnemy : EnemyAI
         protected DroneEnemy owner;
         protected Transform transform => owner.transform;
         protected float attackRange => owner.attackRange;
-        protected float avoidRange => owner.avoidRange;
+        
         protected float hp => owner.hp;
 
         protected Animator animator => owner.animator;
