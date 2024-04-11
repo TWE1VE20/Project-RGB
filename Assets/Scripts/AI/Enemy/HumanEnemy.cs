@@ -349,16 +349,17 @@ public class HumanEnemy : EnemyAI, IStunable
                 owner.LaserOff();
                 ChangeState(State.Die);
             }
-            else if (Vector3.Distance(firstTarget.position, transform.position) >= attackRange)
-            {
-                owner.LaserOff();
-                ChangeState(State.Trace);
-            }
             else if (firstTarget == null)
             {
                 owner.LaserOff();
                 ChangeState(State.Alert);
             }
+            else if (Vector3.Distance(firstTarget.position, transform.position) >= attackRange)
+            {
+                owner.LaserOff();
+                ChangeState(State.Trace);
+            }
+            
 
 
         }
