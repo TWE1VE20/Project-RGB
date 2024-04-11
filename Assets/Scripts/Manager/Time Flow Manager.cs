@@ -71,8 +71,7 @@ public class TimeFlowManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (timeControlStamina.CanSlow())
-            SlowMotion();
+        SlowMotion();
     }
     private void EnableSlowMotion()
     {
