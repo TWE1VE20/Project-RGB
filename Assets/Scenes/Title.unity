@@ -522,6 +522,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_ceilingLigh_long (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2946208375767189446, guid: 274d27211c2e750438cbf93626121993, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5057,9 +5061,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2923168295774609379, guid: 274d27211c2e750438cbf93626121993, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2946208375767189446, guid: 274d27211c2e750438cbf93626121993, type: 3}
       propertyPath: m_Name
       value: deco_ceilingLigh_long (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946208375767189446, guid: 274d27211c2e750438cbf93626121993, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13624,6 +13636,22 @@ PrefabInstance:
     - target: {fileID: 2946208375767189446, guid: 274d27211c2e750438cbf93626121993, type: 3}
       propertyPath: m_Name
       value: deco_ceilingLigh_long
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505279863033598589, guid: 274d27211c2e750438cbf93626121993, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505279863033598589, guid: 274d27211c2e750438cbf93626121993, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505279863033598589, guid: 274d27211c2e750438cbf93626121993, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505279863033598589, guid: 274d27211c2e750438cbf93626121993, type: 3}
+      propertyPath: m_Intensity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

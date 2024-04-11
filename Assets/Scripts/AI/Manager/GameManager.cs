@@ -12,6 +12,6 @@ public class GameManager : MonoBehaviour
     public void Respawn()
     {
         //플레이어 체력회복, 위치변경 스크립트만 넣으면 될듯.
-        SceneManager.LoadScene(respwanScene);
+        // SceneManager.LoadScene(respwanScene);
     }
 }
