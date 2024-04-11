@@ -82,6 +82,9 @@ public class PlayerDetecter2 : SFX_ControlledObject
         if (!IsRunning)
             return;
 
+        if (targetting)
+            Hit = false;
+
         var foundObjects = ObjectFinder.FindObjects(transform.position);
 
         /*
@@ -99,7 +102,11 @@ public class PlayerDetecter2 : SFX_ControlledObject
         else if (!foundObjects.Any())
         {
             if (_isLasersActive)
+            {
                 DeactivateLasers();
+                targetting = false;
+                Hit = false;
+            }
         }
         else
         {
@@ -110,6 +117,7 @@ public class PlayerDetecter2 : SFX_ControlledObject
                 if (_isLasersActive)
                     DeactivateLasers();
                 targetting = false;
+                Hit = true;
             }
 
             if (!_isLasersActive && !Hit)
