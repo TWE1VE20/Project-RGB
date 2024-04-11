@@ -318,6 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeflowManager: {fileID: 7754537073265683867}
+  timestaminaManage: {fileID: 0}
   gameManager: {fileID: 9075735785631609233}
   UIManager: {fileID: 3438548844757861934}
   DebugCanvas: {fileID: 1154827304958270635}
@@ -360,8 +361,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6612592475348272592}
-  - component: {fileID: 7754537073265683867}
   - component: {fileID: 8161408569352742850}
+  - component: {fileID: 7754537073265683867}
+  - component: {fileID: 7832739268799252198}
   m_Layer: 0
   m_Name: TimeFlowManager
   m_TagString: Untagged
@@ -384,24 +386,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8403001075385030115}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7754537073265683867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7127256545702574178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 915ec7af9e9af764d84a0e1ec59bf182, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RealTimer: {fileID: 3206621069950378594}
-  InGameTimer: {fileID: 251449118529889722}
-  TimeScale: {fileID: 7874277793841454251}
-  FPSrate: {fileID: 2378015785785830457}
-  lerpSpeed: 15
-  targetTimeScale: 0.1
 --- !u!114 &8161408569352742850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,6 +416,42 @@ MonoBehaviour:
   m_DefaultActionMap: Time
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &7754537073265683867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7127256545702574178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 915ec7af9e9af764d84a0e1ec59bf182, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeControlStamina: {fileID: 7832739268799252198}
+  RealTimer: {fileID: 3206621069950378594}
+  InGameTimer: {fileID: 251449118529889722}
+  TimeScale: {fileID: 7874277793841454251}
+  FPSrate: {fileID: 2378015785785830457}
+  lerpSpeed: 15
+  targetTimeScale: 0.1
+--- !u!114 &7832739268799252198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7127256545702574178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4da6c07be41797f42ac2b32c3e114f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeFlowManager: {fileID: 7754537073265683867}
+  staminaSlider: {fileID: 0}
+  staminaCapacity: 100
+  staminaShrinkAmount: 20
+  staminaRegainAmount: 15
 --- !u!1 &8948224914180905489
 GameObject:
   m_ObjectHideFlags: 0

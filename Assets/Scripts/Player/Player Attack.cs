@@ -15,6 +15,7 @@ public class PlayerAttack : MonoBehaviour, IDamagable
 
     [Header("Debug")]
     [SerializeField] bool debug;
+    [SerializeField] bool NoDeath;
 
     public bool isGuard { get; private set; }
 
@@ -43,13 +44,15 @@ public class PlayerAttack : MonoBehaviour, IDamagable
                 }
                 else
                 {
-                    // gameObject.GetComponent<PlayerController>().IsAlive = false;
+                    if(!NoDeath)
+                        gameObject.GetComponent<PlayerController>().IsAlive = false;
                     Debug.Log("Dead");
                 }
             }
             else
             {
-                // gameObject.GetComponent<PlayerController>().IsAlive = false;
+                if (!NoDeath)
+                    gameObject.GetComponent<PlayerController>().IsAlive = false;
                 Debug.Log("Dead");
             }
         }

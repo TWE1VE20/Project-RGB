@@ -12,6 +12,7 @@ public class Manager : MonoBehaviour
 
     [Header("Managers")]
     [SerializeField] TimeFlowManager timeflowManager;
+    [SerializeField] TimeControlStamina timestaminaManage;
     [SerializeField] GameManager gameManager;
     [SerializeField] UIManager UIManager;
 
@@ -19,6 +20,7 @@ public class Manager : MonoBehaviour
     [SerializeField] Canvas DebugCanvas;
 
     public static TimeFlowManager timeflow { get { return instance.timeflowManager; } }
+    public static TimeControlStamina timestamina { get { return instance.timestaminaManage; } }
     public static GameManager game { get { return instance.gameManager; } }
     public static UIManager UI { get { return instance.UIManager; } }
     private void Awake()

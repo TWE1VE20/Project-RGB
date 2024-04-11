@@ -28,7 +28,8 @@ public class UIManager : MonoBehaviour
             return;
 
         EventSystem eventSystem = Resources.Load<EventSystem>("UI/EventSystem");
-        Instantiate(eventSystem);
+        if(eventSystem != null)
+            Instantiate(eventSystem);
     }
 
     public T ShowPopUpUI<T>(T popUpUI) where T : PopUpUI
