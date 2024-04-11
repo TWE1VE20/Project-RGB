@@ -233,6 +233,33 @@ public class EnemyAI : MonoBehaviour, IDamagable
     {
         if (firstTarget != null)
         {
+            // x축 기준 타겟 방향 벡터 계산
+            Vector3 targetDirection = new Vector3(firstTarget.position.x - transform.position.x, 0.0f, firstTarget.position.z - transform.position.z);
+
+            // 쿼터니언 회전값 계산 (x축만 회전)
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
+
+            // 부드러운 회전 (Slerp)
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
+        else
+        {
+            // x축 기준 사라진 위치 방향 벡터 계산
+            Vector3 targetDirection = new Vector3(lostPosition.x - transform.position.x, 0.0f, lostPosition.z - transform.position.z);
+
+            // 쿼터니언 회전값 계산 (x축만 회전)
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
+
+            // 부드러운 회전 (Slerp)
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
+
+    } // 적 바라보는 방향
+
+    public void Directionex()// 방향 회전 구버전
+    {
+        if (firstTarget != null)
+        {
             //transform.LookAt(firstTarget);
             Quaternion targetRotation = Quaternion.LookRotation(firstTarget.position - viewPoint.position);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
@@ -243,8 +270,8 @@ public class EnemyAI : MonoBehaviour, IDamagable
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             return;
         }
-
-    } // 적 바라보는 방향
+        
+    }
     public void Line()
     {
         if (firstTarget != null)
