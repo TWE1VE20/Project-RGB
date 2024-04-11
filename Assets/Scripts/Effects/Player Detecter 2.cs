@@ -77,7 +77,7 @@ public class PlayerDetecter2 : SFX_ControlledObject
         }
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (!IsRunning)
             return;

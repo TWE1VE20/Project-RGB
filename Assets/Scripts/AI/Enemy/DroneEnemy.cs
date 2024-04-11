@@ -56,7 +56,7 @@ public class DroneEnemy : EnemyAI
         protected DroneEnemy owner;
         protected Transform transform => owner.transform;
         protected float attackRange => owner.attackRange;
-        protected float avoidRange => owner.avoidRange;
+        
         protected float hp => owner.hp;
 
         protected Animator animator => owner.animator;
@@ -69,7 +69,7 @@ public class DroneEnemy : EnemyAI
         protected float cosRange => owner.cosRange;
         protected float CosAngle => owner.CosAngle;
         protected LayerMask obstacleLayerMask => owner.obstacleLayerMask;
-        protected LineRenderer lineRenderer => owner.gameObject.GetComponent<LineRenderer>();
+        //protected LineRenderer lineRenderer => owner.gameObject.GetComponent<LineRenderer>();
 
         public DroneEnemyState(DroneEnemy owner)
         {
@@ -105,7 +105,7 @@ public class DroneEnemy : EnemyAI
             }
             else if (firstTarget != null)
             {
-                owner.lineRenderer.enabled = true;
+                
                 owner.returnPoint = owner.transform.position;
                 ChangeState(State.Trace);
             }
@@ -138,7 +138,7 @@ public class DroneEnemy : EnemyAI
             }
             else if (owner.firstTarget != null)
             {
-                lineRenderer.enabled = true;
+                
                 owner.returnPoint = owner.transform.position;
                 ChangeState(State.Trace);
             }
@@ -178,7 +178,7 @@ public class DroneEnemy : EnemyAI
             else if (owner.firstTarget != null)
             {
                 owner.animator.SetBool("Walk", true);
-                lineRenderer.enabled = true;
+                
                 owner.agent.speed = owner.TraceSpeed;
                 owner.returnPoint = owner.transform.position;
                 ChangeState(State.Trace);
@@ -204,8 +204,6 @@ public class DroneEnemy : EnemyAI
             owner.FindTarget();
             owner.Direction();
             owner.Move();
-            owner.Line();
-
         }
 
         public override void Transition()
@@ -267,7 +265,6 @@ public class DroneEnemy : EnemyAI
             owner.ColorChange();
             owner.FindTarget();
             owner.search();
-            owner.Line();
         }
         public override void Transition()
         {
@@ -282,7 +279,7 @@ public class DroneEnemy : EnemyAI
             else if (owner.alertArrive == true && owner.firstTarget == null)
             {
                 owner.lostPosition = new Vector3(0, 0, 0);
-                Debug.Log("Alert to patrolIdle");
+                
                 ChangeState(State.PatrolIdle);
             }
         }
@@ -327,6 +324,7 @@ public class DroneEnemy : EnemyAI
         {
             owner.addTargetRange = owner.ReturnSpeed;
             owner.agent.speed = 0f;
+            owner.LaserOn();
         }
 
         public override void Update()
@@ -339,22 +337,24 @@ public class DroneEnemy : EnemyAI
         {
             if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
             {
+                owner.LaserOff();
                 ChangeState(State.Die);
-            }
-            else if (Vector3.Distance(firstTarget.position, transform.position) >= attackRange)
-            {
-                ChangeState(State.Trace);
             }
             else if (firstTarget == null)
             {
-                owner.lineRenderer.enabled = false;
+                owner.LaserOff();
                 ChangeState(State.Alert);
             }
+            else if (Vector3.Distance(firstTarget.position, transform.position) >= attackRange)
+            {
+                owner.LaserOff();
+                ChangeState(State.Trace);
+            }
+            
         }
         public override void LateUpdate()
         {
             owner.Direction();
-            owner.Line();
         }
     }
 

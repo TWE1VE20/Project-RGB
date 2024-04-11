@@ -154,7 +154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203085970550206608}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13.01, y: 0, z: 19.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2600,7 +2600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstPoint: {fileID: 8883597522591044816}
   secondPoint: {fileID: 2022776546597641798}
-  enemy: {fileID: 0}
+  enemy: {fileID: 4752164926375113651}
 --- !u!1 &5727357486576584590
 GameObject:
   m_ObjectHideFlags: 0
@@ -3154,12 +3154,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6725162812506680578}
   - component: {fileID: 4752164926375113651}
-  - component: {fileID: 522425186138588605}
   - component: {fileID: 2489880115732821291}
   - component: {fileID: 109372377142121966}
   - component: {fileID: 3678977032185864277}
   - component: {fileID: 4751074493661899874}
-  - component: {fileID: 3007724856915138680}
+  - component: {fileID: 8719655609687330093}
   m_Layer: 0
   m_Name: Dron2Enemy
   m_TagString: Untagged
@@ -3175,7 +3174,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6909938795327905826}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 0.49, y: 0.49, z: 0.49}
   m_ConstrainProportionsScale: 1
@@ -3183,7 +3182,7 @@ Transform:
   - {fileID: 6673601850423050165}
   - {fileID: 8872391122723975954}
   m_Father: {fileID: 5101257355242517837}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &4752164926375113651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3203,7 +3202,7 @@ MonoBehaviour:
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 8
-  attackRange: 8
+  attackRange: 10
   deal: 2
   attackCost: 0
   attackCooltime: 3
@@ -3234,10 +3233,11 @@ MonoBehaviour:
   - {fileID: 0}
   moveDir: {x: 0, y: 0, z: 0}
   myPos: {x: 0, y: 0, z: 0}
+  Delay: 0
   findDelay: 0
   findpostion: {x: 0, y: 0, z: 0}
-  playerDetecter: {fileID: 0}
-  lineRenderer: {fileID: 3007724856915138680}
+  playerDetecter2s: []
+  lineRenderer: {fileID: 0}
   showDuration: 0.9
   hideDuration: 0.1
   timer: 0
@@ -3249,43 +3249,34 @@ MonoBehaviour:
   obstacleLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  addTargetRange: 7
+  addTargetRange: 9
   traceRange: 10
-  avoidRange: 0
+  idleRange: 6
+  alertRange: 8
   groggyAble: 0
   angle: 90
   agent: {fileID: 3678977032185864277}
-  patrolPointObject1: {fileID: 8883597522591044816}
-  patrolPointObject2: {fileID: 2022776546597641798}
+  patrolPointObject1: {fileID: 0}
+  patrolPointObject2: {fileID: 0}
   patrolPosition1: {x: 0, y: 0, z: 0}
   patrolPosition2: {x: 0, y: 0, z: 0}
   patrolTarget: {x: 0, y: 0, z: 0}
   returnPoint: {x: 0, y: 0, z: 0}
   arrive: 0
   idleTime: 0
-  patrolSpeed: 0
-  TraceSpeed: 0
-  BattleSpeed: 0
-  ReturnSpeed: 0
+  patrolSpeed: 2
+  TraceSpeed: 3
+  BattleSpeed: 3
+  ReturnSpeed: 4
   haveColor: {fileID: 0}
   InitColor: 2
   renders: []
   curColor: {fileID: 2100000, guid: 8e686d68cd6aeec48af02810e558cb16, type: 2}
---- !u!114 &522425186138588605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6909938795327905826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 611d71ca268168b44a0cdb0e1d118d55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 1
+  headBanging: {fileID: 0}
+  securityRotationSpeed: 1
   rotationAngle: 30
   rotationWait: 3
+  initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!95 &2489880115732821291
 Animator:
   serializedVersion: 5
@@ -3355,7 +3346,7 @@ NavMeshAgent:
   m_Height: 0.5
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 1
 --- !u!114 &4751074493661899874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3368,115 +3359,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86477ed45377b1443bbea70d5446063e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetHeight: 3
+  targetHeight: 2
   realHeight: 0
   amplitude: 0.5
   period: 3
-  enemy: {fileID: 0}
---- !u!120 &3007724856915138680
-LineRenderer:
-  serializedVersion: 2
+  enemy: {fileID: 4752164926375113651}
+--- !u!65 &8719655609687330093
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6909938795327905826}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 0
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 8e686d68cd6aeec48af02810e558cb16, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  m_Parameters:
-    serializedVersion: 3
-    widthMultiplier: 1
-    widthCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0.26874924
-        value: 0.07857132
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    colorGradient:
-      serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_ColorSpace: -1
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
-    numCornerVertices: 0
-    numCapVertices: 0
-    alignment: 0
-    textureMode: 0
-    textureScale: {x: 1, y: 1}
-    shadowBias: 0.5
-    generateLightingData: 0
-  m_MaskInteraction: 0
-  m_UseWorldSpace: 1
-  m_Loop: 0
-  m_ApplyActiveColorSpace: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2, y: 1, z: 1.3}
+  m_Center: {x: 0, y: 0.2, z: 0.5}
 --- !u!1 &7248225848167557007
 GameObject:
   m_ObjectHideFlags: 0
@@ -3580,6 +3488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6673601850423050165}
+  - component: {fileID: 7468117301976364122}
   m_Layer: 0
   m_Name: ViewPoint
   m_TagString: Untagged
@@ -3603,6 +3512,183 @@ Transform:
   - {fileID: 8026008400745750803}
   m_Father: {fileID: 6725162812506680578}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &7468117301976364122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7383019544258502776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fab33bed012874799cb6ba8f49221b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RunAtStart: 1
+  Delay: 0
+  Weapon: {fileID: 7383019544258502776}
+  WeaponPosition: {fileID: 6673601850423050165}
+  AllowedTimeInProtectionRadius: 3
+  LaserMaxDistance: 500
+  LaserLayerMask:
+    serializedVersion: 2
+    m_Bits: 511
+  LaserContactOffset: 0.05
+  LaserImpact: {fileID: 198752230788091884, guid: f8735da396374e94adf45ccd2b66b430, type: 3}
+  LaserLine: {fileID: 120498612255562424, guid: 75c33675697d484e97b717ccfbde39ad, type: 3}
+  LasersCount: 20
+  ForceOverLifeTime:
+    AnimationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: -0.00008010864
+        value: -0.98876953
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.1508789
+        value: 1.014492
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.3001721
+        value: -0.9929831
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.4976106
+        value: 0.99768496
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.60120535
+        value: -0.99510574
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.7995023
+        value: 0.98782265
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.99744624
+        value: -0.9922807
+        inSlope: -0.024668021
+        outSlope: -0.024668021
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 1
+      m_RotationOrder: 4
+    ValueMultiplier: 0
+    TimeMultiplier: 1
+  LaserRotationOverLifeTime:
+    AnimationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: -0.002811432
+        value: 0.002319336
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.4003296
+        value: 1.0023155
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.80181134
+        value: 0.9931629
+        inSlope: -0.002926044
+        outSlope: -0.002926044
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1.0008938
+        value: 0.6959014
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ValueMultiplier: 250
+    TimeMultiplier: 1
+  LaserRadiusOverLifeTime:
+    AnimationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ValueMultiplier: 1
+    TimeMultiplier: 3
+  ObjectFinder:
+    Radius: 8
+    LayerMask:
+      serializedVersion: 2
+      m_Bits: 16
+    Tag: 
+  targetting: 0
+  ViewPoint: {fileID: 6673601850423050165}
 --- !u!1 &7427527836959660072
 GameObject:
   m_ObjectHideFlags: 0
@@ -4168,7 +4254,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: a3c9cb91d4ca72a4c9f3c942aeac2361, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 2bd8745af85866044870ae99f235d8fa, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &8819287780898682302
 GameObject:
@@ -4460,7 +4546,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7013877022566331480}
-  - component: {fileID: 2586812111325918352}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -4495,27 +4580,6 @@ Transform:
   - {fileID: 8476404081793005564}
   m_Father: {fileID: 9014345422188130208}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2586812111325918352
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8925743133411639332}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.010004947, y: 0.013927018, z: 0.008067233}
-  m_Center: {x: -0.000099483106, y: 0.003567881, z: 0.00019799058}
 --- !u!1 &9056568058534654247
 GameObject:
   m_ObjectHideFlags: 0

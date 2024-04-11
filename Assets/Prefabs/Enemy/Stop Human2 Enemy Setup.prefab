@@ -742,9 +742,7 @@ GameObject:
   - component: {fileID: 292012139879258844}
   - component: {fileID: 5084997263847126053}
   - component: {fileID: 5331381525468972624}
-  - component: {fileID: 7611999497603666427}
   - component: {fileID: 3042068057230545367}
-  - component: {fileID: 6399026922055478271}
   m_Layer: 0
   m_Name: SecurityEnemy
   m_TagString: Untagged
@@ -822,10 +820,11 @@ MonoBehaviour:
   - {fileID: 0}
   moveDir: {x: 0, y: 0, z: 0}
   myPos: {x: 0, y: 0, z: 0}
+  Delay: 0
   findDelay: 0
   findpostion: {x: 0, y: 0, z: 0}
-  playerDetecter: {fileID: 0}
-  lineRenderer: {fileID: 7611999497603666427}
+  playerDetecter2s: []
+  lineRenderer: {fileID: 0}
   showDuration: 0.9
   hideDuration: 0.1
   timer: 0
@@ -839,9 +838,10 @@ MonoBehaviour:
     m_Bits: 128
   addTargetRange: 8
   traceRange: 12
-  avoidRange: 0
+  idleRange: 6
+  alertRange: 8
   groggyAble: 0
-  angle: 60
+  angle: 120
   agent: {fileID: 5331381525468972624}
   patrolPointObject1: {fileID: 0}
   patrolPointObject2: {fileID: 0}
@@ -859,6 +859,11 @@ MonoBehaviour:
   InitColor: 5
   renders: []
   curColor: {fileID: 2100000, guid: 8e686d68cd6aeec48af02810e558cb16, type: 2}
+  headBanging: {fileID: 0}
+  securityRotationSpeed: 1
+  rotationAngle: 30
+  rotationWait: 3
+  initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!54 &292012139879258844
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -929,110 +934,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 1
---- !u!120 &7611999497603666427
-LineRenderer:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2459626545073940804}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 0
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 6e4bc7b8af889be40b4cbe44528ec580, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  m_Parameters:
-    serializedVersion: 3
-    widthMultiplier: 1
-    widthCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0.17187347
-        value: 0.05000305
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    colorGradient:
-      serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_ColorSpace: -1
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
-    numCornerVertices: 0
-    numCapVertices: 0
-    alignment: 0
-    textureMode: 0
-    textureScale: {x: 1, y: 1}
-    shadowBias: 0.5
-    generateLightingData: 0
-  m_MaskInteraction: 0
-  m_UseWorldSpace: 1
-  m_Loop: 0
-  m_ApplyActiveColorSpace: 1
 --- !u!136 &3042068057230545367
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1056,21 +957,6 @@ CapsuleCollider:
   m_Height: 1.7533617
   m_Direction: 1
   m_Center: {x: 0.0004823506, y: 0.9563234, z: 0.022613823}
---- !u!114 &6399026922055478271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2459626545073940804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 611d71ca268168b44a0cdb0e1d118d55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 1
-  rotationAngle: 30
-  rotationWait: 3
 --- !u!1 &2573576390469251137
 GameObject:
   m_ObjectHideFlags: 0

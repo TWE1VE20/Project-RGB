@@ -18,7 +18,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [Header("Attack")]
     [SerializeField] protected bool debug;
     [SerializeField] protected LayerMask targetLayerMask;
-    [SerializeField] protected float attackRange;
+    [SerializeField] protected float attackRange = 8f;
     [SerializeField] protected int deal;
     [SerializeField] protected float attackCost;
     [SerializeField] protected float attackCooltime;
@@ -33,6 +33,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [SerializeField] protected Collider[] atkColliders = new Collider[20];
     [SerializeField] protected Vector3 moveDir;
     [SerializeField] protected Vector3 myPos;
+    [SerializeField] 
 
     [Header("Alert")]
     protected float Delay;
@@ -41,7 +42,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [SerializeField] protected Vector3 findpostion;
 
     [Header("SnipeLine")]
-    [SerializeField] protected PlayerDetecter playerDetecter;
+    [SerializeField] protected PlayerDetecter2[] playerDetecter2s;
     [SerializeField] protected LineRenderer lineRenderer;
     [SerializeField] protected float showDuration;
     [SerializeField] protected float hideDuration;
@@ -55,9 +56,10 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [SerializeField] protected bool isDied;
     [SerializeField] protected Transform viewPoint;
     [SerializeField] protected LayerMask obstacleLayerMask;
-    [SerializeField] protected float addTargetRange;
-    [SerializeField] protected float traceRange;
-    [SerializeField] protected float avoidRange;
+    [SerializeField] protected float addTargetRange = 6f;
+    [SerializeField] protected float traceRange = 10f;
+    [SerializeField] protected float idleRange = 6f;
+    [SerializeField] protected float alertRange = 8f;
     [SerializeField] protected bool groggyAble;
 
 
@@ -78,10 +80,10 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [SerializeField] protected float idleTime;
 
     [Header("Speed")]
-    [SerializeField] protected float patrolSpeed;
-    [SerializeField] protected float TraceSpeed;
-    [SerializeField] protected float BattleSpeed;
-    [SerializeField] protected float ReturnSpeed;
+    [SerializeField] protected float patrolSpeed = 2f;
+    [SerializeField] protected float TraceSpeed = 3f;
+    [SerializeField] protected float BattleSpeed = 3f;
+    [SerializeField] protected float ReturnSpeed = 5f;
 
     [Header("Color")]
     [SerializeField] protected HaveColor haveColor;
@@ -89,9 +91,15 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [SerializeField] protected Renderer[] renders;
     [SerializeField] protected Material curColor;
 
-    [Header("headBanging")]
+    [Header("Security")]
     [SerializeField] protected HeadBanging headBanging;
-    
+    [SerializeField] private float securityRotationSpeed = 1.0f; // 회전 속도
+    [SerializeField] private float rotationAngle = 30.0f; // 회전 각도 (도)
+    [SerializeField] private float rotationWait = 3.0f; // 회전 끝나고 대기시간
+    private bool isRotating = false; // 회전 중인지 여부
+    private float currentRotationAngle = 0.0f; // 현재 회전 각도
+    public Quaternion initialLocalRotation;
+
     public float CosAngle
     {
         get
@@ -153,7 +161,8 @@ public class EnemyAI : MonoBehaviour, IDamagable
                     float distToTarget = Vector3.Distance(atkColliders[i].transform.position, viewPoint.position);
                     if (Physics.Raycast(viewPoint.position, dirToTarget, distToTarget, obstacleLayerMask))
                         continue;
-
+                    
+                        
                     Debug.DrawRay(viewPoint.position, dirToTarget * distToTarget, Color.red);
                     firstTarget = atkColliders[i].transform;
                     lostPosition = atkColliders[i].transform.position;
@@ -165,7 +174,8 @@ public class EnemyAI : MonoBehaviour, IDamagable
         else if (firstTarget != null)
         {
             float distToTarget = Vector3.Distance(firstTarget.transform.position, viewPoint.position);
-            if (distToTarget > traceRange)
+            Vector3 dirToTarget = (firstTarget.transform.position - viewPoint.position).normalized;
+            if (Physics.Raycast(viewPoint.position, dirToTarget, distToTarget, obstacleLayerMask) || distToTarget > traceRange)
             {
                 firstTarget = null;
             }
@@ -255,8 +265,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
         }
 
     } // 적 바라보는 방향
-
-    public void Directionex()// 방향 회전 구버전
+    public void Directionex()
     {
         if (firstTarget != null)
         {
@@ -270,8 +279,8 @@ public class EnemyAI : MonoBehaviour, IDamagable
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             return;
         }
-        
-    }
+
+    }// 방향 회전 구버전
     public void Line()
     {
         if (firstTarget != null)
@@ -296,7 +305,23 @@ public class EnemyAI : MonoBehaviour, IDamagable
         {
             lineRenderer.enabled = false;
         }
-    } // 경고선
+    } // 경고선 구버전
+    public void LaserOn()
+    {
+        playerDetecter2s = GetComponentsInChildren<PlayerDetecter2>();
+        foreach (PlayerDetecter2 playerDetecter2 in playerDetecter2s)
+        {
+            playerDetecter2.targetting = true;
+        }
+    } // 경고선 레이저
+    public void LaserOff()
+    {
+        playerDetecter2s = GetComponentsInChildren<PlayerDetecter2>();
+        foreach (PlayerDetecter2 playerDetecter2 in playerDetecter2s)
+        {
+            playerDetecter2.targetting = false;
+        }
+    } // 경고선 레이저
     public void ColorChange()
     {
         renders = GetComponentsInChildren<MeshRenderer>();
@@ -330,7 +355,54 @@ public class EnemyAI : MonoBehaviour, IDamagable
             }
         }
     }// 마테리얼 가져오는 버전
-   
+    public void Security()
+    {
+        if (isRotating == false)
+        {
+            StartCoroutine(RotateObject());
+        }
+        
+    }
+    private IEnumerator RotateObject()
+    {
+        isRotating = true;
+
+        // 회전 방향 설정
+        bool isForward = true;
+
+        while (true)
+        {
+            // 현재 바라보고 있는 방향 계산
+            Vector3 forward = transform.forward;
+            forward.y = 0.0f; // Y축 방향 제외
+
+            // 현재 회전 각도 계산
+            float targetRotationAngle;
+            if (isForward)
+            {
+                targetRotationAngle = Vector3.Angle(forward, transform.forward) + rotationAngle;
+            }
+            else
+            {
+                targetRotationAngle = Vector3.Angle(forward, transform.forward) - rotationAngle;
+            }
+
+            // Lerp 함수를 사용하여 회전 보간
+            while (Mathf.Abs(currentRotationAngle - targetRotationAngle) > 0.1f)
+            {
+                currentRotationAngle = Mathf.Lerp(currentRotationAngle, targetRotationAngle, securityRotationSpeed * Time.deltaTime);
+                transform.localRotation = Quaternion.Euler(0f, currentRotationAngle, 0f);
+                yield return null;
+            }
+
+            // 회전 방향 반전
+            isForward = !isForward;
+
+            // 잠시 대기
+            yield return new WaitForSeconds(rotationWait);
+            //isRotating = false;
+        }
+    }
 } 
 
     //public void ListChoice()
