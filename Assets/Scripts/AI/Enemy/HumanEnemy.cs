@@ -71,7 +71,7 @@ public class HumanEnemy : EnemyAI, IStunable
         protected float cosRange => owner.cosRange;
         protected float CosAngle => owner.CosAngle;
         protected LayerMask obstacleLayerMask => owner.obstacleLayerMask;
-        protected LineRenderer lineRenderer => owner.gameObject.GetComponent<LineRenderer>();
+        
 
         public HumanEnemyState(HumanEnemy owner)
         {
@@ -107,7 +107,7 @@ public class HumanEnemy : EnemyAI, IStunable
             }
             else if (firstTarget != null)
             {
-                owner.lineRenderer.enabled = true;
+                
                 owner.returnPoint = owner.transform.position;
                 ChangeState(State.Trace);
             }
@@ -140,7 +140,7 @@ public class HumanEnemy : EnemyAI, IStunable
             }
             else if (owner.firstTarget != null)
             {
-                lineRenderer.enabled = true;
+                
                 owner.returnPoint = owner.transform.position;
                 ChangeState(State.Trace);
             }
@@ -179,7 +179,7 @@ public class HumanEnemy : EnemyAI, IStunable
             else if (owner.firstTarget != null)
             {
                 owner.animator.SetBool("Walk", true);
-                lineRenderer.enabled = true;
+                
                 owner.agent.speed = owner.TraceSpeed;
                 owner.returnPoint = owner.transform.position;
                 ChangeState(State.Trace);
@@ -205,7 +205,7 @@ public class HumanEnemy : EnemyAI, IStunable
             owner.FindTarget();
             owner.Direction();
             owner.Move();
-            owner.Line();
+            
 
         }
 
@@ -243,7 +243,7 @@ public class HumanEnemy : EnemyAI, IStunable
         public override void Update()
         {
             Debug.Log("stun!!!");
-            lineRenderer.enabled = false;
+            
             owner.ColorChanger();
         }
 
@@ -274,7 +274,7 @@ public class HumanEnemy : EnemyAI, IStunable
             owner.ColorChanger();
             owner.FindTarget();
             owner.search();
-            owner.Line();
+            
         }
         public override void Transition()
         {
@@ -339,6 +339,7 @@ public class HumanEnemy : EnemyAI, IStunable
         {
             owner.addTargetRange = owner.ReturnSpeed;
             owner.agent.speed = 0f;
+            owner.Laser();
         }
 
         public override void Update()
@@ -347,7 +348,7 @@ public class HumanEnemy : EnemyAI, IStunable
             owner.FindTarget();
             owner.Direction();
             owner.Attack();
-            owner.Line();
+            
 
         }
 
@@ -364,7 +365,7 @@ public class HumanEnemy : EnemyAI, IStunable
             else if (firstTarget == null)
             {
                 Debug.Log("why");
-                owner.lineRenderer.enabled = false;
+                
                 ChangeState(State.Alert);
             }
 

@@ -33,6 +33,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [SerializeField] protected Collider[] atkColliders = new Collider[20];
     [SerializeField] protected Vector3 moveDir;
     [SerializeField] protected Vector3 myPos;
+    [SerializeField] 
 
     [Header("Alert")]
     protected float Delay;
@@ -41,7 +42,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [SerializeField] protected Vector3 findpostion;
 
     [Header("SnipeLine")]
-    [SerializeField] protected PlayerDetecter playerDetecter;
+    [SerializeField] protected PlayerDetecter2[] playerDetecter2s;
     [SerializeField] protected LineRenderer lineRenderer;
     [SerializeField] protected float showDuration;
     [SerializeField] protected float hideDuration;
@@ -175,6 +176,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
             {
                 firstTarget = null;
             }
+            
         }
 
     }
@@ -303,6 +305,14 @@ public class EnemyAI : MonoBehaviour, IDamagable
             lineRenderer.enabled = false;
         }
     } // 경고선
+    public void Laser()
+    {
+        playerDetecter2s = GetComponentsInChildren<PlayerDetecter2>();
+        foreach (PlayerDetecter2 playerDetecter2 in playerDetecter2s)
+        {
+            playerDetecter2.targetting = true;
+        }
+    } // 경고선 레이저로
     public void ColorChange()
     {
         renders = GetComponentsInChildren<MeshRenderer>();
