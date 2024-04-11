@@ -89,9 +89,15 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [SerializeField] protected Renderer[] renders;
     [SerializeField] protected Material curColor;
 
-    [Header("headBanging")]
+    [Header("Security")]
     [SerializeField] protected HeadBanging headBanging;
-    
+    [SerializeField] private float securityRotationSpeed = 1.0f; // 회전 속도
+    [SerializeField] private float rotationAngle = 30.0f; // 회전 각도 (도)
+    [SerializeField] private float rotationWait = 3.0f; // 회전 끝나고 대기시간
+    private bool isRotating = false; // 회전 중인지 여부
+    private float currentRotationAngle = 0.0f; // 현재 회전 각도
+
+
     public float CosAngle
     {
         get
@@ -330,7 +336,54 @@ public class EnemyAI : MonoBehaviour, IDamagable
             }
         }
     }// 마테리얼 가져오는 버전
-   
+    public void Security()
+    {
+        if (isRotating == false)
+        {
+            StartCoroutine(RotateObject());
+        }
+        
+    }
+    private IEnumerator RotateObject()
+    {
+        isRotating = true;
+
+        // 회전 방향 설정
+        bool isForward = true;
+
+        while (true)
+        {
+            // 현재 바라보고 있는 방향 계산
+            Vector3 forward = transform.forward;
+            forward.y = 0.0f; // Y축 방향 제외
+
+            // 현재 회전 각도 계산
+            float targetRotationAngle;
+            if (isForward)
+            {
+                targetRotationAngle = Vector3.Angle(forward, transform.forward) + rotationAngle;
+            }
+            else
+            {
+                targetRotationAngle = Vector3.Angle(forward, transform.forward) - rotationAngle;
+            }
+
+            // Lerp 함수를 사용하여 회전 보간
+            while (Mathf.Abs(currentRotationAngle - targetRotationAngle) > 0.1f)
+            {
+                currentRotationAngle = Mathf.Lerp(currentRotationAngle, targetRotationAngle, securityRotationSpeed * Time.deltaTime);
+                transform.localRotation = Quaternion.Euler(0f, currentRotationAngle, 0f);
+                yield return null;
+            }
+
+            // 회전 방향 반전
+            isForward = !isForward;
+
+            // 잠시 대기
+            yield return new WaitForSeconds(rotationWait);
+            //isRotating = false;
+        }
+    }
 } 
 
     //public void ListChoice()

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -301,10 +301,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6834800264203598870, guid: 3a2d8f35a3d44ca4197f2fe303b87970, type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 23800000, guid: 93a51fa122debe04e86a6e655f69aad6, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1848,7 +1844,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stop Human2 Enemy Setup (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6399026922055478271, guid: 66d344c4e11020d48b91f4cc78c80af3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5191,7 +5188,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7059279060166500357, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2146492271}
   m_SourcePrefab: {fileID: 100100000, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
 --- !u!1 &1420989831
 GameObject:
@@ -6299,6 +6299,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Setup (Body Invisible) With UI
       objectReference: {fileID: 0}
+    - target: {fileID: 8725521418602189055, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6993,28 +6997,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853953682}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1856398238 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4752164926375113651, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
-  m_PrefabInstance: {fileID: 1929713567}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a68488638a1bd5b4aae33c8e41e8cb8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1856398239 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 522425186138588605, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
-  m_PrefabInstance: {fileID: 1929713567}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 611d71ca268168b44a0cdb0e1d118d55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1857572689
 GameObject:
   m_ObjectHideFlags: 0
@@ -7164,34 +7146,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stop Drone2 Enemy Setup
       objectReference: {fileID: 0}
-    - target: {fileID: 522425186138588605, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3007724856915138680, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6e4bc7b8af889be40b4cbe44528ec580, type: 2}
-    - target: {fileID: 4751074493661899874, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
-      propertyPath: targetHeight
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752164926375113651, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
-      propertyPath: traceRange
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752164926375113651, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
-      propertyPath: attackRange
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752164926375113651, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
-      propertyPath: headBanging
-      value: 
-      objectReference: {fileID: 1856398239}
-    - target: {fileID: 4752164926375113651, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
-      propertyPath: addTargetRange
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 5101257355242517837, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
       propertyPath: m_LocalPosition.x
       value: 72.76248
@@ -7232,14 +7186,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6834800264203598870, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 23800000, guid: 73cce2511caa3824596df3714b02ab86, type: 2}
-    - target: {fileID: 8442575731149304045, guid: 62fe0dacc2ae2be4fba0748a77787885, type: 3}
-      propertyPath: enemy
-      value: 
-      objectReference: {fileID: 1856398238}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7912,6 +7858,130 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2105357486}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2146492269 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7059279060166500357, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
+  m_PrefabInstance: {fileID: 1415854962}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2146492270 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8371884072359916130, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
+  m_PrefabInstance: {fileID: 1415854962}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2146492271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146492269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13fab33bed012874799cb6ba8f49221b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RunAtStart: 1
+  Delay: 0
+  Weapon: {fileID: 2146492269}
+  WeaponPosition: {fileID: 2146492270}
+  AllowedTimeInProtectionRadius: 0
+  LaserMaxDistance: 0
+  LaserLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  LaserContactOffset: 0
+  LaserImpact: {fileID: 0}
+  LaserLine: {fileID: 0}
+  LasersCount: 0
+  ForceOverLifeTime:
+    AnimationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ValueMultiplier: 1
+    TimeMultiplier: 1
+  LaserRotationOverLifeTime:
+    AnimationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ValueMultiplier: 1
+    TimeMultiplier: 1
+  LaserRadiusOverLifeTime:
+    AnimationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ValueMultiplier: 1
+    TimeMultiplier: 1
+  ObjectFinder:
+    Radius: 0
+    LayerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    Tag: 
+  targetting: 0
+  ViewPoint: {fileID: 2146492270}
 --- !u!1001 &3986604073380288784
 PrefabInstance:
   m_ObjectHideFlags: 0

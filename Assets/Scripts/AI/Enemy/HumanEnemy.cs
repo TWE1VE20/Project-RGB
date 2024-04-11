@@ -14,6 +14,7 @@ public class HumanEnemy : EnemyAI, IStunable
         stateMachine.AddState(State.Patrol, new PatrolState(this));
         stateMachine.AddState(State.PatrolIdle, new PatrolIdleState(this));
         stateMachine.AddState(State.Trace, new TraceState(this));
+        stateMachine.AddState(State.Groggy, new GroggyState(this));
         stateMachine.AddState(State.Alert, new AlertState(this));
         stateMachine.AddState(State.Return, new ReturnState(this));
         stateMachine.AddState(State.Battle, new BattleState(this));
@@ -31,11 +32,11 @@ public class HumanEnemy : EnemyAI, IStunable
     }
     public void Stun()
     {
-        StartCoroutine(StunCoroutine());
+        Debug.Log("stunstate");
+        stateMachine.ChangeState(State.Groggy);
     }
     IEnumerator StunCoroutine()
     {
-        stateMachine.ChangeState(State.Groggy);
         yield return new WaitForSeconds(3f);
         stateMachine.ChangeState(State.Idle);
     }
@@ -236,10 +237,13 @@ public class HumanEnemy : EnemyAI, IStunable
 
         public override void Enter()
         {
-            owner.Stun();
+            owner.StartCoroutine(owner.StunCoroutine());
+
         }
         public override void Update()
         {
+            Debug.Log("stun!!!");
+            lineRenderer.enabled = false;
             owner.ColorChanger();
         }
 

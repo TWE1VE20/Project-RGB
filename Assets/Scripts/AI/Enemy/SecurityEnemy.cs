@@ -89,16 +89,13 @@ public class SecurityEnemy : EnemyAI, IStunable
         {
             owner.ColorChanger();
             owner.FindTarget();
+            owner.Security();// ¹¹ ¿Ö
         }
         public override void Transition()
         {
             if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
             {
                 ChangeState(State.Die);
-            }
-            else if (firstTarget == null)
-            {
-                ChangeState(State.Idle);
             }
             else if (firstTarget != null)
             {

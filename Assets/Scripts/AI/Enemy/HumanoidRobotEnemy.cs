@@ -13,6 +13,7 @@ public class HumanoidRobotEnemy : EnemyAI
         stateMachine.AddState(State.Patrol, new PatrolState(this));
         stateMachine.AddState(State.PatrolIdle, new PatrolIdleState(this));
         stateMachine.AddState(State.Trace, new TraceState(this));
+        stateMachine.AddState(State.Groggy, new GroggyState(this));
         stateMachine.AddState(State.Alert, new AlertState(this));
         stateMachine.AddState(State.Return, new ReturnState(this));
         stateMachine.AddState(State.Battle, new BattleState(this));
