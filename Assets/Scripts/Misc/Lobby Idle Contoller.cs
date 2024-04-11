@@ -7,33 +7,26 @@ using UnityEngine;
 
 public class LobbyIdleContoller : MonoBehaviour
 {
-    [SerializeField] SkinnedMeshRenderer[] invisibleObjects;
     [SerializeField] SFX_ComponentsStartupController VFX;
     [SerializeField] float Delay;
+    [SerializeField] GameObject VisibleIdle;
+
     private IEnumerator appeared;
     private bool appear;
     private void Start()
     {
         appear = false;
-        foreach (SkinnedMeshRenderer obj in invisibleObjects)
-        {
-            Color objMaterial = obj.materials[0].color;
-            obj.materials[0].color = new Color(objMaterial.r, objMaterial.g, objMaterial.b, 0);
-        }
         VFX.Delay = this.Delay;
         VFX.enabled = true;
-        appeared = WaitToAppear(Delay);
+        appeared = WaitToAppear(2);
         StartCoroutine(appeared);
     }
 
     private void Update()
     {
-        if(appear)
-            foreach (SkinnedMeshRenderer obj in invisibleObjects)
-            {
-                Color objMaterial = obj.materials[0].color;
-                obj.materials[0].color = new Color(objMaterial.r, objMaterial.g, objMaterial.b, 255);
-            }
+        if (appear)
+            VisibleIdle.SetActive(true);
+            // InvisibleIdle.SetActive(false);
     }
 
     IEnumerator WaitToAppear(float time)
