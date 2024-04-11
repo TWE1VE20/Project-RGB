@@ -23,8 +23,6 @@ public class SecurityEnemy : EnemyAI, IStunable
 
         base.Awakefirst();
     }
-
-
     private void Start()
     {
         initialLocalRotation = transform.localRotation;
@@ -87,7 +85,7 @@ public class SecurityEnemy : EnemyAI, IStunable
         }
         public override void Update()
         {
-            
+
             Debug.Log("Idle");
             owner.ColorChanger();
             owner.FindTarget();
@@ -114,15 +112,15 @@ public class SecurityEnemy : EnemyAI, IStunable
         public override void Enter()
         {
 
-           
+
         }
         public override void Update()
         {
-            
+
         }
         public override void Transition()
         {
-            
+
         }
     }
     private class PatrolIdleState : SecurityEnemyState
@@ -134,7 +132,7 @@ public class SecurityEnemy : EnemyAI, IStunable
             owner.arrive = true;
             owner.agent.speed = 0;
             owner.StartCoroutine(owner.PatrolIdle());
-            
+
         }
         public override void Update()
         {
@@ -166,8 +164,8 @@ public class SecurityEnemy : EnemyAI, IStunable
         public override void Enter()
         {
             Debug.Log("Trace");
-            owner.agent.speed = owner.TraceSpeed;
-            owner.addTargetRange = owner.traceRange;
+            owner.agent.speed = 4f;
+            owner.addTargetRange = 8f;
             owner.animator.SetBool("Walk", true);
         }
         public override void Update()
@@ -230,6 +228,7 @@ public class SecurityEnemy : EnemyAI, IStunable
         public override void Enter()
         {
             Debug.Log("Alert start");
+            owner.agent.speed = 5f;
             owner.agent.destination = owner.lostPosition;
             owner.addTargetRange = owner.traceRange;
             owner.alertArrive = false;
@@ -276,7 +275,7 @@ public class SecurityEnemy : EnemyAI, IStunable
         }
         public override void Update()
         {
-            owner.ColorChange();
+            owner.ColorChanger();
         }
 
         public override void Transition()
@@ -321,16 +320,17 @@ public class SecurityEnemy : EnemyAI, IStunable
             {
                 ChangeState(State.Die);
             }
-            else if (Vector3.Distance(firstTarget.position, transform.position) >= attackRange)
-            {
-                owner.LaserOff();
-                ChangeState(State.Trace);
-            }
             else if (firstTarget == null)
             {
                 owner.LaserOff();
                 ChangeState(State.Alert);
             }
+            else if (Vector3.Distance(firstTarget.position, transform.position) >= attackRange)
+            {
+                owner.LaserOff();
+                ChangeState(State.Trace);
+            }
+
         }
     }
 
@@ -356,7 +356,5 @@ public class SecurityEnemy : EnemyAI, IStunable
     private class GameoverState : SecurityEnemyState
     {
         public GameoverState(SecurityEnemy owner) : base(owner) { }
-
-
     }
 }
