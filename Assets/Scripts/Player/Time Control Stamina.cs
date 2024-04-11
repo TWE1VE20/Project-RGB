@@ -82,7 +82,9 @@ public class TimeControlStamina : MonoBehaviour
 
     public bool CanSlow()
     {
-        if (overHeat)
+        if (staminaSlider == null)
+            return false;
+        else if (overHeat)
             return false;
         return true;
     }

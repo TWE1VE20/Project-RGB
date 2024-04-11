@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeflowManager: {fileID: 7754537073265683867}
-  timestaminaManage: {fileID: 0}
+  timestaminaManage: {fileID: 7832739268799252198}
   gameManager: {fileID: 9075735785631609233}
   UIManager: {fileID: 3438548844757861934}
   DebugCanvas: {fileID: 1154827304958270635}
