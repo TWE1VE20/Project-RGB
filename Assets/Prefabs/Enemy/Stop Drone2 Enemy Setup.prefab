@@ -154,7 +154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203085970550206608}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13.01, y: 0, z: 19.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2600,7 +2600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstPoint: {fileID: 8883597522591044816}
   secondPoint: {fileID: 2022776546597641798}
-  enemy: {fileID: 0}
+  enemy: {fileID: 4752164926375113651}
 --- !u!1 &5727357486576584590
 GameObject:
   m_ObjectHideFlags: 0
@@ -3160,6 +3160,7 @@ GameObject:
   - component: {fileID: 3678977032185864277}
   - component: {fileID: 4751074493661899874}
   - component: {fileID: 3007724856915138680}
+  - component: {fileID: 8719655609687330093}
   m_Layer: 0
   m_Name: Dron2Enemy
   m_TagString: Untagged
@@ -3203,7 +3204,7 @@ MonoBehaviour:
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 8
-  attackRange: 8
+  attackRange: 10
   deal: 2
   attackCost: 0
   attackCooltime: 3
@@ -3249,8 +3250,8 @@ MonoBehaviour:
   obstacleLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  addTargetRange: 7
-  traceRange: 10
+  addTargetRange: 9
+  traceRange: 12
   avoidRange: 0
   groggyAble: 0
   angle: 90
@@ -3271,6 +3272,7 @@ MonoBehaviour:
   InitColor: 2
   renders: []
   curColor: {fileID: 2100000, guid: 8e686d68cd6aeec48af02810e558cb16, type: 2}
+  headBanging: {fileID: 522425186138588605}
 --- !u!114 &522425186138588605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3278,7 +3280,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6909938795327905826}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 611d71ca268168b44a0cdb0e1d118d55, type: 3}
   m_Name: 
@@ -3368,7 +3370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86477ed45377b1443bbea70d5446063e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetHeight: 3
+  targetHeight: 2
   realHeight: 0
   amplitude: 0.5
   period: 3
@@ -3394,7 +3396,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e686d68cd6aeec48af02810e558cb16, type: 2}
+  - {fileID: 2100000, guid: 6e4bc7b8af889be40b4cbe44528ec580, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3477,6 +3479,27 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!65 &8719655609687330093
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6909938795327905826}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2, y: 1, z: 1.3}
+  m_Center: {x: 0, y: 0.2, z: 0.5}
 --- !u!1 &7248225848167557007
 GameObject:
   m_ObjectHideFlags: 0
@@ -4168,7 +4191,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: a3c9cb91d4ca72a4c9f3c942aeac2361, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 73cce2511caa3824596df3714b02ab86, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &8819287780898682302
 GameObject:
@@ -4460,7 +4483,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7013877022566331480}
-  - component: {fileID: 2586812111325918352}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -4495,27 +4517,6 @@ Transform:
   - {fileID: 8476404081793005564}
   m_Father: {fileID: 9014345422188130208}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2586812111325918352
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8925743133411639332}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.010004947, y: 0.013927018, z: 0.008067233}
-  m_Center: {x: -0.000099483106, y: 0.003567881, z: 0.00019799058}
 --- !u!1 &9056568058534654247
 GameObject:
   m_ObjectHideFlags: 0
