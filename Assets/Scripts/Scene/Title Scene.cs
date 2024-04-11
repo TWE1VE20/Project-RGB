@@ -142,5 +142,6 @@ public class TitleScene : BaseScene
             light.intensity = 1f;
         yield return new WaitForSeconds(1);
         OpenEnd = true;
+        titleCanvas.gameObject.SetActive(true);
     }
 }
