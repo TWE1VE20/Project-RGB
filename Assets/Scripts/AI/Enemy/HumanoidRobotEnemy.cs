@@ -31,11 +31,11 @@ public class HumanoidRobotEnemy : EnemyAI
     }
     public void Stun()
     {
-        StartCoroutine(StunCoroutine());
+        Debug.Log("stunstate");
+        stateMachine.ChangeState(State.Groggy);
     }
     IEnumerator StunCoroutine()
     {
-        stateMachine.ChangeState(State.Groggy);
         yield return new WaitForSeconds(3f);
         stateMachine.ChangeState(State.Idle);
     }
@@ -70,7 +70,7 @@ public class HumanoidRobotEnemy : EnemyAI
         protected float cosRange => owner.cosRange;
         protected float CosAngle => owner.CosAngle;
         protected LayerMask obstacleLayerMask => owner.obstacleLayerMask;
-        protected LineRenderer lineRenderer => owner.gameObject.GetComponent<LineRenderer>();
+        
 
         public HumanoidRobotEnemyState(HumanoidRobotEnemy owner)
         {
@@ -106,7 +106,6 @@ public class HumanoidRobotEnemy : EnemyAI
             }
             else if (firstTarget != null)
             {
-                owner.lineRenderer.enabled = true;
                 owner.returnPoint = owner.transform.position;
                 ChangeState(State.Trace);
             }
@@ -139,7 +138,7 @@ public class HumanoidRobotEnemy : EnemyAI
             }
             else if (owner.firstTarget != null)
             {
-                lineRenderer.enabled = true;
+                
                 owner.returnPoint = owner.transform.position;
                 ChangeState(State.Trace);
             }
@@ -178,7 +177,7 @@ public class HumanoidRobotEnemy : EnemyAI
             else if (owner.firstTarget != null)
             {
                 owner.animator.SetBool("Walk", true);
-                lineRenderer.enabled = true;
+                
                 owner.agent.speed = owner.TraceSpeed;
                 owner.returnPoint = owner.transform.position;
                 ChangeState(State.Trace);
@@ -204,7 +203,7 @@ public class HumanoidRobotEnemy : EnemyAI
             owner.FindTarget();
             owner.Direction();
             owner.Move();
-            owner.Line();
+            
 
         }
 
@@ -236,10 +235,12 @@ public class HumanoidRobotEnemy : EnemyAI
 
         public override void Enter()
         {
-            owner.Stun();
+            owner.StartCoroutine(owner.StunCoroutine());
         }
         public override void Update()
         {
+            Debug.Log("stun!!!");
+
             owner.ColorChanger();
         }
 
@@ -270,7 +271,7 @@ public class HumanoidRobotEnemy : EnemyAI
             owner.ColorChanger();
             owner.FindTarget();
             owner.search();
-            owner.Line();
+            
         }
         public override void Transition()
         {
@@ -335,6 +336,7 @@ public class HumanoidRobotEnemy : EnemyAI
         {
             owner.addTargetRange = owner.ReturnSpeed;
             owner.agent.speed = 0f;
+            owner.LaserOn();
         }
 
         public override void Update()
@@ -343,7 +345,7 @@ public class HumanoidRobotEnemy : EnemyAI
             owner.FindTarget();
             owner.Direction();
             owner.Attack();
-            owner.Line();
+            
 
         }
 
@@ -353,15 +355,19 @@ public class HumanoidRobotEnemy : EnemyAI
             {
                 ChangeState(State.Die);
             }
-            else if (Vector3.Distance(firstTarget.position, transform.position) >= attackRange)
-            {
-                ChangeState(State.Trace);
-            }
             else if (firstTarget == null)
             {
-                owner.lineRenderer.enabled = false;
+                Debug.Log("battle to Alert");
+                owner.LaserOff();
                 ChangeState(State.Alert);
             }
+            else if (Vector3.Distance(firstTarget.position, transform.position) >= attackRange)
+            {
+                Debug.Log("battle to trace");
+                owner.LaserOff();
+                ChangeState(State.Trace);
+            }
+            
 
 
         }

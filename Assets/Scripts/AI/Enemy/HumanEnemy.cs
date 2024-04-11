@@ -179,7 +179,6 @@ public class HumanEnemy : EnemyAI, IStunable
             else if (owner.firstTarget != null)
             {
                 owner.animator.SetBool("Walk", true);
-                
                 owner.agent.speed = owner.TraceSpeed;
                 owner.returnPoint = owner.transform.position;
                 ChangeState(State.Trace);
@@ -205,8 +204,6 @@ public class HumanEnemy : EnemyAI, IStunable
             owner.FindTarget();
             owner.Direction();
             owner.Move();
-            
-
         }
 
         public override void Transition()
@@ -243,7 +240,6 @@ public class HumanEnemy : EnemyAI, IStunable
         public override void Update()
         {
             Debug.Log("stun!!!");
-            
             owner.ColorChanger();
         }
 
@@ -339,7 +335,7 @@ public class HumanEnemy : EnemyAI, IStunable
         {
             owner.addTargetRange = owner.ReturnSpeed;
             owner.agent.speed = 0f;
-            owner.Laser();
+            owner.LaserOn();
         }
 
         public override void Update()
@@ -364,7 +360,6 @@ public class HumanEnemy : EnemyAI, IStunable
             }
             else if (firstTarget == null)
             {
-                Debug.Log("why");
                 
                 ChangeState(State.Alert);
             }

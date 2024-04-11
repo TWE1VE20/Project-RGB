@@ -160,7 +160,8 @@ public class EnemyAI : MonoBehaviour, IDamagable
                     float distToTarget = Vector3.Distance(atkColliders[i].transform.position, viewPoint.position);
                     if (Physics.Raycast(viewPoint.position, dirToTarget, distToTarget, obstacleLayerMask))
                         continue;
-
+                    
+                        
                     Debug.DrawRay(viewPoint.position, dirToTarget * distToTarget, Color.red);
                     firstTarget = atkColliders[i].transform;
                     lostPosition = atkColliders[i].transform.position;
@@ -172,10 +173,16 @@ public class EnemyAI : MonoBehaviour, IDamagable
         else if (firstTarget != null)
         {
             float distToTarget = Vector3.Distance(firstTarget.transform.position, viewPoint.position);
+            Vector3 dirToTarget = (firstTarget.transform.position - viewPoint.position).normalized;
+            if (Physics.Raycast(viewPoint.position, dirToTarget, distToTarget, obstacleLayerMask))
+            {
+                firstTarget = null;
+            }
             if (distToTarget > traceRange)
             {
                 firstTarget = null;
             }
+            
             
         }
 
@@ -305,14 +312,22 @@ public class EnemyAI : MonoBehaviour, IDamagable
             lineRenderer.enabled = false;
         }
     } // 경고선
-    public void Laser()
+    public void LaserOn()
     {
         playerDetecter2s = GetComponentsInChildren<PlayerDetecter2>();
         foreach (PlayerDetecter2 playerDetecter2 in playerDetecter2s)
         {
             playerDetecter2.targetting = true;
         }
-    } // 경고선 레이저로
+    } // 경고선 레이저
+    public void LaserOff()
+    {
+        playerDetecter2s = GetComponentsInChildren<PlayerDetecter2>();
+        foreach (PlayerDetecter2 playerDetecter2 in playerDetecter2s)
+        {
+            playerDetecter2.targetting = false;
+        }
+    } // 경고선 레이저
     public void ColorChange()
     {
         renders = GetComponentsInChildren<MeshRenderer>();
