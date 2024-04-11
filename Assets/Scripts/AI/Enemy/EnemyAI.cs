@@ -98,7 +98,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
     private bool isRotating = false; // 회전 중인지 여부
     private float currentRotationAngle = 0.0f; // 현재 회전 각도
 
-
+    
     public float CosAngle
     {
         get
