@@ -13,19 +13,20 @@ public class EmmoRefill : MonoBehaviour
             foreach (Transform child in other.gameObject.transform)
             {
                 // 자식 오브젝트가 B 오브젝트인지 확인
-                //if (child.gameObject.GetComponent<Gun>() != null)
-                //{
+                if (child.gameObject.GetComponent<AmmoSystem>() != null)
+                {
                     // B 오브젝트의 탄약 증가
-                    Gun gun = child.gameObject.GetComponent<Gun>();
-                    if (gun != null)
-                    {
-                        //gun.initAmmoAmount = gun.maxRounds;
-                    }
-                //}
+                    AmmoSystem ammo = child.gameObject.GetComponent<AmmoSystem>();
+                  if (ammo != null)
+                  {
+                      //ammo.AmmoLeft = ammo.maxRounds;
+                      // 소지가능 탄약 최대값 입력 요망(플레이어측)
+                  }
+                }
             }
 
-            // A 오브젝트 소멸
-            // Destroy(gameObject);
+            //A 오브젝트 소멸여부 선택
+            Destroy(gameObject);
         }
     }
 }

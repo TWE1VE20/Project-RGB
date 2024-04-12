@@ -820,7 +820,6 @@ MonoBehaviour:
   - {fileID: 0}
   moveDir: {x: 0, y: 0, z: 0}
   myPos: {x: 0, y: 0, z: 0}
-  Delay: 0
   findDelay: 0
   findpostion: {x: 0, y: 0, z: 0}
   playerDetecter2s: []
@@ -860,6 +859,7 @@ MonoBehaviour:
   InitColor: 5
   renders: []
   curColor: {fileID: 2100000, guid: 8e686d68cd6aeec48af02810e558cb16, type: 2}
+  deathCollider: []
   headBanging: {fileID: 0}
   securityRotationSpeed: 1
   rotationAngle: 30
@@ -869,6 +869,7 @@ MonoBehaviour:
   enemyDeath: {fileID: 2779833133880766835, guid: 547f132a6f112564c99bd60617e96f2b, type: 3}
   enemyLockon: {fileID: 7815186698320288765, guid: 6910ce112682cec40b21ee0c378692b5, type: 3}
   enemyShoot: {fileID: 2756382384504683136, guid: d728d107c2864fa46bf9a5f90d46ed3e, type: 3}
+  deadDelay: 0
 --- !u!54 &292012139879258844
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2986,12 +2987,12 @@ MonoBehaviour:
   Delay: 0
   Weapon: {fileID: 7059279060166500357}
   WeaponPosition: {fileID: 8371884072359916130}
-  AllowedTimeInProtectionRadius: 0
-  LaserMaxDistance: 0
+  AllowedTimeInProtectionRadius: 3
+  LaserMaxDistance: 500
   LaserLayerMask:
     serializedVersion: 2
     m_Bits: 511
-  LaserContactOffset: 0
+  LaserContactOffset: 0.05
   LaserImpact: {fileID: 198752230788091884, guid: f8735da396374e94adf45ccd2b66b430, type: 3}
   LaserLine: {fileID: 120498612255562424, guid: 75c33675697d484e97b717ccfbde39ad, type: 3}
   LasersCount: 20
