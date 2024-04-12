@@ -542,6 +542,8 @@ MonoBehaviour:
     m_Bits: 128
   addTargetRange: 5
   traceRange: 9
+  battleRange: 8
+  patrolRange: 8
   idleRange: 6
   alertRange: 8
   groggyAble: 1
@@ -557,7 +559,6 @@ MonoBehaviour:
   idleTime: 3
   patrolSpeed: 2
   TraceSpeed: 3
-  BattleSpeed: 0
   ReturnSpeed: 7
   haveColor: {fileID: 0}
   InitColor: 4
@@ -568,6 +569,10 @@ MonoBehaviour:
   rotationAngle: 30
   rotationWait: 3
   initialLocalRotation: {x: 0, y: 0, z: 0, w: 0}
+  enemyIdle: {fileID: 3293438177863793302, guid: 9c43d6e3758c1e94b814f2d982dc28b0, type: 3}
+  enemyDeath: {fileID: 2779833133880766835, guid: 547f132a6f112564c99bd60617e96f2b, type: 3}
+  enemyLockon: {fileID: 7815186698320288765, guid: 6910ce112682cec40b21ee0c378692b5, type: 3}
+  enemyShoot: {fileID: 2756382384504683136, guid: d728d107c2864fa46bf9a5f90d46ed3e, type: 3}
 --- !u!95 &113213440808827328
 Animator:
   serializedVersion: 5

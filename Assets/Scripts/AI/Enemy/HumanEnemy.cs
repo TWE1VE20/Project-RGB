@@ -86,7 +86,13 @@ public class HumanEnemy : EnemyAI, IStunable
         public IdleState(HumanEnemy owner) : base(owner) { }
         public override void Enter()
         {
-            owner.addTargetRange = 5f;
+            owner.addTargetRange = owner.idleRange;
+            owner.agent.speed = owner.patrolSpeed;
+            owner.enemyIdle.Play();
+            owner.enemyDeath.Stop();
+            owner.enemyLockon.Stop();
+            owner.enemyShoot.Stop();
+            owner.enemyIdle.loop = true;
         }
         public override void Update()
         {
@@ -101,6 +107,7 @@ public class HumanEnemy : EnemyAI, IStunable
             }
             else if (firstTarget == null)
             {
+
                 owner.patrolTarget = owner.patrolPosition1;
                 ChangeState(State.Patrol);
 
@@ -121,7 +128,12 @@ public class HumanEnemy : EnemyAI, IStunable
         {
 
             owner.animator.SetBool("Walk", true);
+            owner.addTargetRange = owner.patrolRange;
             owner.agent.speed = owner.patrolSpeed;
+            owner.enemyIdle.Stop();
+            owner.enemyDeath.Stop();
+            owner.enemyLockon.Stop();
+            owner.enemyShoot.Stop();
         }
         public override void Update()
         {
@@ -159,7 +171,12 @@ public class HumanEnemy : EnemyAI, IStunable
             owner.arrive = true;
             owner.alertArrive = false;
             owner.StartCoroutine(owner.PatrolIdle());
+            owner.addTargetRange = owner.patrolRange;
             owner.agent.speed = 0;
+            owner.enemyIdle.Stop();
+            owner.enemyDeath.Stop();
+            owner.enemyLockon.Stop();
+            owner.enemyShoot.Stop();
         }
         public override void Update()
         {
@@ -192,10 +209,13 @@ public class HumanEnemy : EnemyAI, IStunable
         public override void Enter()
         {
             Debug.Log("Trace");
-            owner.agent.speed = 4f;
+            owner.agent.speed = owner.TraceSpeed;
             owner.addTargetRange = owner.traceRange;
             owner.animator.SetBool("Walk", true);
-
+            owner.enemyIdle.Stop();
+            owner.enemyDeath.Stop();
+            owner.enemyLockon.Stop();
+            owner.enemyShoot.Stop();
         }
         public override void Update()
         {
@@ -214,7 +234,6 @@ public class HumanEnemy : EnemyAI, IStunable
             }
             else if (firstTarget == null)
             {
-                owner.addTargetRange = 5;
                 owner.firstTarget = null;
                 owner.animator.SetBool("Walk", true);
                 ChangeState(State.Alert);
@@ -235,7 +254,10 @@ public class HumanEnemy : EnemyAI, IStunable
         public override void Enter()
         {
             owner.StartCoroutine(owner.StunCoroutine());
-
+            owner.enemyIdle.Stop();
+            owner.enemyDeath.Stop();
+            owner.enemyLockon.Stop();
+            owner.enemyShoot.Stop();
         }
         public override void Update()
         {
@@ -263,6 +285,11 @@ public class HumanEnemy : EnemyAI, IStunable
         {
             Debug.Log("Alert start");
             owner.agent.destination = owner.lostPosition;
+            owner.addTargetRange = owner.alertRange;
+            owner.enemyIdle.Stop();
+            owner.enemyDeath.Stop();
+            owner.enemyLockon.Stop();
+            owner.enemyShoot.Stop();
         }
         public override void Update()
         {
@@ -301,6 +328,10 @@ public class HumanEnemy : EnemyAI, IStunable
             owner.firstTarget = null;
             owner.agent.speed = owner.ReturnSpeed;
             owner.agent.destination = owner.returnPoint;
+            owner.enemyIdle.Stop();
+            owner.enemyDeath.Stop();
+            owner.enemyLockon.Stop();
+            owner.enemyShoot.Stop();
         }
         public override void Update()
         {
@@ -313,7 +344,6 @@ public class HumanEnemy : EnemyAI, IStunable
             {
                 owner.haveColor.SetColor(owner.InitColor);
                 owner.returnPoint = new Vector3(0, 0, 0);
-                owner.agent.speed = 3;
                 ChangeState(State.Patrol);
             }
         }
@@ -329,9 +359,13 @@ public class HumanEnemy : EnemyAI, IStunable
 
         public override void Enter()
         {
-            owner.addTargetRange = owner.ReturnSpeed;
+            owner.addTargetRange = owner.battleRange;
             owner.agent.speed = 0f;
             owner.LaserOn();
+            owner.enemyIdle.Stop();
+            owner.enemyDeath.Stop();
+            owner.enemyLockon.Play();
+            owner.enemyShoot.Stop();
         }
 
         public override void Update()
@@ -372,6 +406,11 @@ public class HumanEnemy : EnemyAI, IStunable
         public override void Enter()
         {
             Debug.Log("Dead");
+            owner.enemyIdle.Stop();
+            owner.enemyDeath.Play();
+            owner.enemyLockon.Stop();
+            owner.enemyShoot.Stop();
+            owner.Dead();
             Destroy(owner.gameObject);
         }
         public override void Update()

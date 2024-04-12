@@ -15,7 +15,7 @@ public class ShootingPoint : MonoBehaviour
     [SerializeField] float maxDistance2;
 
     [Header("Particles")]
-    [SerializeField] ParticleSystem[]? particles;
+    [SerializeField] ParticleSystem[] particles;
 
     [Header("Debug")]
     [SerializeField] Transform hitPoint;

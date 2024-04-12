@@ -7,7 +7,7 @@ public class AmmoSystem: MonoBehaviour
 {
     public Animator animator;
     public AudioSource audioSource;
-    [SerializeField] FireEffect? fireEffect;
+    [SerializeField] FireEffect fireEffect;
 
     public float reloadTime;
     public int AmmoLeft;    // ³²Àº ÃÑ¾Ë °¹¼ö

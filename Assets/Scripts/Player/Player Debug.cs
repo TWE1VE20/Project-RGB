@@ -11,7 +11,7 @@ public class PlayerDebug : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField] bool debug;
-    [SerializeField] GameObject? TestObject;
+    [SerializeField] GameObject TestObject;
 
     [Header("Events")]
     public UnityEvent OnReflectdebuging;
