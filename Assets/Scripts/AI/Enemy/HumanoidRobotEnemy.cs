@@ -83,7 +83,8 @@ public class HumanoidRobotEnemy : EnemyAI
         public IdleState(HumanoidRobotEnemy owner) : base(owner) { }
         public override void Enter()
         {
-            owner.addTargetRange = 5f;
+            owner.addTargetRange = owner.idleRange;
+            owner.agent.speed = owner.patrolSpeed;
         }
         public override void Update()
         {
@@ -117,6 +118,7 @@ public class HumanoidRobotEnemy : EnemyAI
         {
 
             owner.animator.SetBool("Walk", true);
+            owner.addTargetRange = owner.traceRange;
             owner.agent.speed = owner.patrolSpeed;
         }
         public override void Update()
@@ -169,14 +171,12 @@ public class HumanoidRobotEnemy : EnemyAI
             if (owner.arrive == false)
             {
                 owner.animator.SetBool("Walk", true);
-                owner.agent.speed = owner.patrolSpeed;
+                
                 ChangeState(State.Patrol);
             }
             else if (owner.firstTarget != null)
             {
                 owner.animator.SetBool("Walk", true);
-                
-                owner.agent.speed = owner.TraceSpeed;
                 owner.returnPoint = owner.transform.position;
                 ChangeState(State.Trace);
             }
@@ -189,7 +189,7 @@ public class HumanoidRobotEnemy : EnemyAI
         public override void Enter()
         {
             Debug.Log("Trace");
-            owner.agent.speed = 4f;
+            owner.agent.speed = owner.TraceSpeed;
             owner.addTargetRange = owner.traceRange;
             owner.animator.SetBool("Walk", true);
 
@@ -213,14 +213,12 @@ public class HumanoidRobotEnemy : EnemyAI
             }
             else if (firstTarget == null)
             {
-                owner.addTargetRange = 5;
                 owner.firstTarget = null;
                 owner.animator.SetBool("Walk", true);
                 ChangeState(State.Alert);
             }
             else if (Vector3.Distance(transform.position, owner.firstTarget.transform.position) <= attackRange)
             {
-                owner.addTargetRange = 5;
                 owner.animator.SetBool("Walk", false);
                 ChangeState(State.Battle);
             }
@@ -260,6 +258,8 @@ public class HumanoidRobotEnemy : EnemyAI
 
         public override void Enter()
         {
+            owner.agent.speed = owner.TraceSpeed;
+            owner.addTargetRange = owner.alertRange;
             Debug.Log("Alert start");
             owner.agent.destination = owner.lostPosition;
         }
@@ -301,6 +301,7 @@ public class HumanoidRobotEnemy : EnemyAI
             Debug.Log("Return");
             owner.firstTarget = null;
             owner.agent.speed = owner.ReturnSpeed;
+            owner.addTargetRange = owner.alertRange;
             owner.agent.destination = owner.returnPoint;
 
 
@@ -332,7 +333,7 @@ public class HumanoidRobotEnemy : EnemyAI
 
         public override void Enter()
         {
-            owner.addTargetRange = owner.ReturnSpeed;
+            owner.addTargetRange = owner.battleRange;
             owner.agent.speed = 0f;
             owner.LaserOn();
         }

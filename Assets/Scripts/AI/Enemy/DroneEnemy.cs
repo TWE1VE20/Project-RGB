@@ -84,7 +84,8 @@ public class DroneEnemy : EnemyAI
         public IdleState(DroneEnemy owner) : base(owner) { }
         public override void Enter()
         {
-
+            owner.addTargetRange = owner.idleRange;
+            owner.agent.speed = owner.patrolSpeed;
         }
         public override void Update()
         {
@@ -119,6 +120,7 @@ public class DroneEnemy : EnemyAI
         {
 
             owner.animator.SetBool("Walk", true);
+            owner.addTargetRange = owner.idleRange;
             owner.agent.speed = owner.patrolSpeed;
         }
         public override void Update()
@@ -158,7 +160,8 @@ public class DroneEnemy : EnemyAI
             owner.arrive = true;
             owner.alertArrive = false;
             owner.StartCoroutine(owner.PatrolIdle());
-            owner.agent.speed = 0;
+            owner.addTargetRange = owner.idleRange;
+            owner.agent.speed = 0f;
         }
         public override void Update()
         {
@@ -172,7 +175,6 @@ public class DroneEnemy : EnemyAI
             if (owner.arrive == false)
             {
                 owner.animator.SetBool("Walk", true);
-                owner.agent.speed = owner.patrolSpeed;
                 ChangeState(State.Patrol);
             }
             else if (owner.firstTarget != null)
@@ -192,8 +194,8 @@ public class DroneEnemy : EnemyAI
         public override void Enter()
         {
             Debug.Log("Trace");
-            owner.agent.speed = 4f;
             owner.addTargetRange = owner.traceRange;
+            owner.agent.speed = owner.TraceSpeed;
             owner.animator.SetBool("Walk", true);
 
         }
@@ -258,6 +260,8 @@ public class DroneEnemy : EnemyAI
         {
             Debug.Log("Alert start");
             owner.agent.destination = owner.lostPosition;
+            owner.addTargetRange = owner.alertRange;
+            owner.agent.speed = owner.TraceSpeed;
         }
         public override void Update()
         {
@@ -309,7 +313,6 @@ public class DroneEnemy : EnemyAI
             {
                 owner.haveColor.SetColor(owner.InitColor);
                 owner.returnPoint = new Vector3(0, 0, 0);
-                owner.agent.speed = 3;
                 ChangeState(State.Patrol);
             }
         }
@@ -322,8 +325,8 @@ public class DroneEnemy : EnemyAI
         public BattleState(DroneEnemy owner) : base(owner) { }
         public override void Enter()
         {
-            owner.addTargetRange = owner.ReturnSpeed;
-            owner.agent.speed = 0f;
+            owner.addTargetRange = owner.battleRange;
+            owner.agent.speed = owner.BattleSpeed;
             owner.LaserOn();
         }
 
