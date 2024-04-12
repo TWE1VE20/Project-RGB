@@ -64,19 +64,23 @@ public class PlayerAttack : MonoBehaviour, IDamagable
 
     private void OnAttack(InputValue value)
     {
-        if (gameObject.GetComponent<PlayerController>().IsAlive)
+        if (!Manager.timeflow.timeStop)
         {
-            if (value.isPressed)
+            if (gameObject.GetComponent<PlayerController>().IsAlive)
             {
-                if (debug) Debug.Log("Player Attacks");
-                weaponHolder.Attack();
+                if (value.isPressed)
+                {
+                    if (debug) Debug.Log("Player Attacks");
+                    weaponHolder.Attack();
+                }
             }
         }
     }
 
     private void OnReload(InputValue value)
     {
-        weaponHolder.Reload();
+        if (!Manager.timeflow.timeStop)
+            weaponHolder.Reload();
     }
 
     private void OnGuard(InputValue value)
