@@ -33,7 +33,6 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [SerializeField] protected Collider[] atkColliders = new Collider[20];
     [SerializeField] protected Vector3 moveDir;
     [SerializeField] protected Vector3 myPos;
-    [SerializeField] 
 
     [Header("Alert")]
     protected float Delay;
@@ -84,7 +83,6 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [Header("Speed")]
     [SerializeField] protected float patrolSpeed = 2f;
     [SerializeField] protected float TraceSpeed = 3f;
-    
     [SerializeField] protected float ReturnSpeed = 5f;
 
     [Header("Color")]
@@ -92,16 +90,25 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [SerializeField] protected HaveColor.ThisColor InitColor;
     [SerializeField] protected Renderer[] renders;
     [SerializeField] protected Material curColor;
+    [SerializeField] protected Collider[] deathCollider;
 
     [Header("Security")]
     [SerializeField] protected HeadBanging headBanging;
-    [SerializeField] private float securityRotationSpeed = 1.0f; // È¸Àü ¼Óµµ
-    [SerializeField] private float rotationAngle = 30.0f; // È¸Àü °¢µµ (µµ)
-    [SerializeField] private float rotationWait = 3.0f; // È¸Àü ³¡³ª°í ´ë±â½Ã°£
-    private bool isRotating = false; // È¸Àü ÁßÀÎÁö ¿©ºÎ
-    private float currentRotationAngle = 0.0f; // ÇöÀç È¸Àü °¢µµ
+    [SerializeField] private float securityRotationSpeed = 1.0f; // È¸ï¿½ï¿½ ï¿½Óµï¿½
+    [SerializeField] private float rotationAngle = 30.0f; // È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½)
+    [SerializeField] private float rotationWait = 3.0f; // È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã°ï¿½
+    private bool isRotating = false; // È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private float currentRotationAngle = 0.0f; // ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public Quaternion initialLocalRotation;
 
+    [Header("AudioSource")]
+    [SerializeField] protected AudioSource enemyIdle;
+    [SerializeField] protected AudioSource enemyDeath;
+    [SerializeField] protected AudioSource enemyLockon;
+    [SerializeField] protected AudioSource enemyShoot;
+
+    [Header("deadDelay")]
+    [SerializeField] protected float deadDelay;
     public float CosAngle
     {
         get
@@ -144,10 +151,10 @@ public class EnemyAI : MonoBehaviour, IDamagable
     }
 
 
-    // ¹èÆ²¸ðµå µ¹ÀÔ½Ã  firstTarget °ú attackPoint¸¦ º°°³·Î ÀúÀå. firstTargetÀÌ nullÀÌ µÉ ½Ã attackPoint·Î °ø°Ý. firstTargetÀÌ null ÀÌ°í attack°¡ 0ÀÌ¸é alert¸ðµå·Î ÀüÈ¯
-    // alert ¸ðµå·Î ÀüÈ¯ÇØ¼­ attackPoint.position À¸·Î ÀÌµ¿ÇÏ´Â ½ºÅ©¸³Æ®°¡¼­ ¾øÀ¸¸é return ¸ðµå·Î ÀüÈ¯ ¿¹Á¤
+    // ï¿½ï¿½Æ²ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô½ï¿½  firstTarget ï¿½ï¿½ attackPointï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. firstTargetï¿½ï¿½ nullï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ attackPointï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. firstTargetï¿½ï¿½ null ï¿½Ì°ï¿½ attackï¿½ï¿½ 0ï¿½Ì¸ï¿½ alertï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
+    // alert ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ø¼ï¿½ attackPoint.position ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ return ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½ï¿½ï¿½ï¿½
     
-    public void FindTarget() // Àû Å½»ö ÇÏ´Â ºÎºÐ
+    public void FindTarget() // ï¿½ï¿½ Å½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½Îºï¿½
     {
         if (firstTarget == null)
         {
@@ -190,21 +197,22 @@ public class EnemyAI : MonoBehaviour, IDamagable
         if (attackCost >= attackCooltime)
         {
             //owner.StopCoroutine(AttackCoroutine());
-            //RaycastHit hit; ·¹ÀÌ ¹ß»ç
+            //RaycastHit hit; ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
             if (Physics.Raycast(viewPoint.position, viewPoint.forward, out RaycastHit hit, attackRange, targetLayerMask))
             {
-                // ·¹ÀÌ°¡ IDamagable ÀÎÅÍÆäÀÌ½º¸¦ ±¸ÇöÇÑ ¿ÀºêÁ§Æ®¿¡ Ãæµ¹Çß´Ù¸é
+                // ï¿½ï¿½ï¿½Ì°ï¿½ IDamagable ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½æµ¹ï¿½ß´Ù¸ï¿½
                 IDamagable damageable = hit.collider.gameObject.GetComponent<IDamagable>();
-                // TakeDamage ÇÔ¼ö¸¦ È£ÃâÇÏ¿© ÇÇÇØ¸¦ ÀÔÈü´Ï´Ù.
+                // TakeDamage ï¿½Ô¼ï¿½ï¿½ï¿½ È£ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½Ø¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
                 Debug.Log(hit.collider.gameObject.name);
                 damageable?.TakeDamage(deal, transform.position);
+                enemyShoot.Play();
                 attackCost = 0;
             }
             Debug.Log("Attacking");
             //owner.attackCost--;
             //owner.StartCoroutine(AttackCoroutine());
         }
-    } // Àû °ø°Ý(½Ã¾ß ³»)
+    } // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½Ã¾ï¿½ ï¿½ï¿½)
     public void Move()
     {
         if (firstTarget != null)
@@ -217,7 +225,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
             agent.destination = patrolTarget;
             return;
         }
-    } // Àû ÀÌµ¿
+    } // ï¿½ï¿½ ï¿½Ìµï¿½
     public void search()
     {
         if ( Vector3.Distance(transform.position, lostPosition) < 2f)
@@ -225,7 +233,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
             animator.SetBool("Walk", false);
             alertArrive = true;
         }
-    } // Àû ¸¶Áö¸· ¸ñ°ÝÀ§Ä¡·Î ÀÌµ¿
+    } // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ìµï¿½
 
     private float curSpeed;
     public void Patrol()
@@ -235,38 +243,38 @@ public class EnemyAI : MonoBehaviour, IDamagable
             patrolTarget = patrolTarget == patrolPosition1 ? patrolPosition2 : patrolPosition1;
             arrive = true;
         }
-    } // Àû ¼øÂû ¸ñÇ¥
+    } // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥
     public IEnumerator PatrolIdle()
     {
         yield return new WaitForSeconds(idleTime);
         arrive = false;
-    } // ¼øÂû ´ë±â ½Ã°£
+    } // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
     public void Direction()
     {
         if (firstTarget != null)
         {
-            // xÃà ±âÁØ Å¸°Ù ¹æÇâ º¤ÅÍ °è»ê
+            // xï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             Vector3 targetDirection = new Vector3(firstTarget.position.x - transform.position.x, 0.0f, firstTarget.position.z - transform.position.z);
 
-            // ÄõÅÍ´Ï¾ð È¸Àü°ª °è»ê (xÃà¸¸ È¸Àü)
+            // ï¿½ï¿½ï¿½Í´Ï¾ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ (xï¿½à¸¸ È¸ï¿½ï¿½)
             Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
 
-            // ºÎµå·¯¿î È¸Àü (Slerp)
+            // ï¿½Îµå·¯ï¿½ï¿½ È¸ï¿½ï¿½ (Slerp)
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
         else
         {
-            // xÃà ±âÁØ »ç¶óÁø À§Ä¡ ¹æÇâ º¤ÅÍ °è»ê
+            // xï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             Vector3 targetDirection = new Vector3(lostPosition.x - transform.position.x, 0.0f, lostPosition.z - transform.position.z);
 
-            // ÄõÅÍ´Ï¾ð È¸Àü°ª °è»ê (xÃà¸¸ È¸Àü)
+            // ï¿½ï¿½ï¿½Í´Ï¾ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ (xï¿½à¸¸ È¸ï¿½ï¿½)
             Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
 
-            // ºÎµå·¯¿î È¸Àü (Slerp)
+            // ï¿½Îµå·¯ï¿½ï¿½ È¸ï¿½ï¿½ (Slerp)
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
-    } // Àû ¹Ù¶óº¸´Â ¹æÇâ
+    } // ï¿½ï¿½ ï¿½Ù¶óº¸´ï¿½ ï¿½ï¿½ï¿½ï¿½
     public void Directionex()
     {
         if (firstTarget != null)
@@ -282,13 +290,13 @@ public class EnemyAI : MonoBehaviour, IDamagable
             return;
         }
 
-    }// ¹æÇâ È¸Àü ±¸¹öÀü
+    }// ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void Line()
     {
         if (firstTarget != null)
         {
             lineRenderer.enabled = true;
-            lineRenderer.positionCount = 2; // µÎ °³ÀÇ Á¤Á¡À¸·Î ¼±À» ¸¸µì´Ï´Ù.
+            lineRenderer.positionCount = 2; // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
             lineRenderer.SetPosition(0, viewPoint.transform.position);
             lineRenderer.SetPosition(1, firstTarget.transform.position);
             timer += Time.deltaTime;
@@ -297,7 +305,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
                 timer = 0f;
                 isVisible = !isVisible;
 
-                //lineRenderer È°¼ºÈ­, ºñÈ°¼ºÈ­ Åä±Û
+                //lineRenderer È°ï¿½ï¿½È­, ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½ï¿½ï¿½
                 lineRenderer.enabled = isVisible;
             }
 
@@ -307,7 +315,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
         {
             lineRenderer.enabled = false;
         }
-    } // °æ°í¼± ±¸¹öÀü
+    } // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void LaserOn()
     {
         playerDetecter2s = GetComponentsInChildren<PlayerDetecter2>();
@@ -315,7 +323,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
         {
             playerDetecter2.targetting = true;
         }
-    } // °æ°í¼± ·¹ÀÌÀú
+    } // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void LaserOff()
     {
         playerDetecter2s = GetComponentsInChildren<PlayerDetecter2>();
@@ -323,7 +331,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
         {
             playerDetecter2.targetting = false;
         }
-    } // °æ°í¼± ·¹ÀÌÀú
+    } // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void ColorChange()
     {
         renders = GetComponentsInChildren<MeshRenderer>();
@@ -337,26 +345,26 @@ public class EnemyAI : MonoBehaviour, IDamagable
             }
         }
         
-    }// »ö ¹Ý¿µ ·£´õ·¯ °¡Á®¿À´Â ¹öÀü
+    }// ï¿½ï¿½ ï¿½Ý¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public void ColorChanger()
     {
         curColor.color = haveColor.MaterialColor();
-        // ºÎ¸ð ¿ÀºêÁ§Æ® °¡Á®¿À±â
-        GameObject parentObject = this.gameObject; // ½ÇÁ¦ ºÎ¸ð ¿ÀºêÁ§Æ®·Î ±³Ã¼
+        // ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        GameObject parentObject = this.gameObject; // ï¿½ï¿½ï¿½ï¿½ ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½Ã¼
 
-        // ÀÚ½Ä ¿ÀºêÁ§Æ® ¹Ýº¹ Ã³¸®
+        // ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ýºï¿½ Ã³ï¿½ï¿½
         foreach (Transform child in parentObject.transform)
         {
-            // ÀÚ½Ä ¿ÀºêÁ§Æ®ÀÇ Renderer ÄÄÆ÷³ÍÆ® Á¢±Ù
+            // ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ Renderer ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
             Renderer renderer = child.GetComponent<Renderer>();
 
-            // Renderer°¡ Á¸ÀçÇÏ¸é »ö±ò ¼³Á¤
+            // Rendererï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             if (renderer != null)
             {
                 renderer.material.color = curColor.color;
             }
         }
-    }// ¸¶Å×¸®¾ó °¡Á®¿À´Â ¹öÀü
+    }// ï¿½ï¿½ï¿½×¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public void Security()
     {
         if (isRotating == false)
@@ -369,16 +377,16 @@ public class EnemyAI : MonoBehaviour, IDamagable
     {
         isRotating = true;
 
-        // È¸Àü ¹æÇâ ¼³Á¤
+        // È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         bool isForward = true;
 
         while (true)
         {
-            // ÇöÀç ¹Ù¶óº¸°í ÀÖ´Â ¹æÇâ °è»ê
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¶óº¸°ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             Vector3 forward = transform.forward;
-            forward.y = 0.0f; // YÃà ¹æÇâ Á¦¿Ü
+            forward.y = 0.0f; // Yï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-            // ÇöÀç È¸Àü °¢µµ °è»ê
+            // ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             float targetRotationAngle;
             if (isForward)
             {
@@ -389,7 +397,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
                 targetRotationAngle = Vector3.Angle(forward, transform.forward) - rotationAngle;
             }
 
-            // Lerp ÇÔ¼ö¸¦ »ç¿ëÇÏ¿© È¸Àü º¸°£
+            // Lerp ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             while (Mathf.Abs(currentRotationAngle - targetRotationAngle) > 0.1f)
             {
                 currentRotationAngle = Mathf.Lerp(currentRotationAngle, targetRotationAngle, securityRotationSpeed * Time.deltaTime);
@@ -397,13 +405,29 @@ public class EnemyAI : MonoBehaviour, IDamagable
                 yield return null;
             }
 
-            // È¸Àü ¹æÇâ ¹ÝÀü
+            // È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             isForward = !isForward;
 
-            // Àá½Ã ´ë±â
+            // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             yield return new WaitForSeconds(rotationWait);
             //isRotating = false;
         }
+    }
+    public void Dead()
+    {
+        StartCoroutine (DeadCount());
+    }
+    private IEnumerator DeadCount()
+    {
+        deathCollider = GetComponentsInChildren<Collider>();
+
+        foreach (Collider collider in deathCollider)
+        {
+            collider.enabled = false;
+        }
+        yield return new WaitForSeconds(deadDelay);
+
+        Destroy(gameObject);
     }
 } 
 
@@ -421,5 +445,5 @@ public class EnemyAI : MonoBehaviour, IDamagable
     //        layerMask = 256;
     //        gravePos = new Vector3(12.9f, -5.74f, 0);
     //    }
-    //} // Àû ¸®½ºÆ®¿¡¼­ Å½»ö½Ã ¸®½ºÆ® ¼±ÅÃ
+    //} // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ Å½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 

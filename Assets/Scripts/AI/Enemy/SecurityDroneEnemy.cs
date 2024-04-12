@@ -346,6 +346,7 @@ public class SecurityDroneEnemy : EnemyAI, IStunable
         public override void Enter()
         {
             Debug.Log("Dead");
+            owner.Dead();
             Destroy(owner.gameObject);
         }
         public override void Update()
