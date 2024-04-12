@@ -275,6 +275,7 @@ public class SecurityEnemy : EnemyAI, IStunable
         }
         public override void Update()
         {
+            Debug.Log("Return");
             owner.ColorChanger();
         }
 
