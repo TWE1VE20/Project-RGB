@@ -18,6 +18,8 @@ public class TitleScene : BaseScene
     [SerializeField] Light[] CellingLight;
     [SerializeField] float LightchangeSpeed;
 
+    public bool skipIntro;
+
     private LightColor curColor;
     enum LightColor { R, G, B };
 
@@ -26,9 +28,16 @@ public class TitleScene : BaseScene
 
     private void Start()
     {
-        OpenEnd = false;
-        curColor = LightColor.R;
-        StartCoroutine(FirstOpening());
+        if (!skipIntro)
+        {
+            OpenEnd = false;
+            curColor = LightColor.R;
+            StartCoroutine(FirstOpening());
+        }
+        else
+        {
+            OpenEnd = true;
+        }
     }
 
     private void Update()
@@ -39,30 +48,31 @@ public class TitleScene : BaseScene
         }
         else
         {
+            // lightchange = Mathf.Lerp(lightchange, 1f, LightchangeSpeed * Time.deltaTime);
+            lightchange += LightchangeSpeed * Time.deltaTime;
+            if (lightchange >= 1f)
+                lightchange = 1f;
             switch (curColor)
             {
                 case LightColor.R:
-                    lightchange = Mathf.Lerp(lightchange, 1f, LightchangeSpeed * Time.deltaTime);
                     foreach (Light light in CellingLight)
-                        light.color = new Color(1 - lightchange, lightchange, 0);
-                    FloorLight.color = new Color(1 - lightchange, lightchange, 0);
+                        light.color = new Color(1f - lightchange, lightchange, 0);
+                    FloorLight.color = new Color(1f - lightchange, lightchange, 0);
                     break;
                 case LightColor.G:
-                    lightchange = Mathf.Lerp(lightchange, 1f, LightchangeSpeed * Time.deltaTime);
                     foreach (Light light in CellingLight)
-                        light.color = new Color(0, 1 - lightchange, lightchange);
-                    FloorLight.color = new Color(0, 1 - lightchange, lightchange);
+                        light.color = new Color(0, 1f - lightchange, lightchange);
+                    FloorLight.color = new Color(0, 1f - lightchange, lightchange);
                     break;
                 case LightColor.B:
-                    lightchange = Mathf.Lerp(lightchange, 1f, LightchangeSpeed * Time.deltaTime);
                     foreach (Light light in CellingLight)
-                        light.color = new Color(lightchange, 0, 1 - lightchange);
-                    FloorLight.color = new Color(0, 1 - lightchange, lightchange);
+                        light.color = new Color(lightchange, 0, 1f - lightchange);
+                    FloorLight.color = new Color(0, 1f - lightchange, lightchange);
                     break;
             }
-            if (lightchange >= 0.9f)
+            if (lightchange >= 1f)
             {
-                lightchange = 0;
+                lightchange = 0f;
                 switch (curColor)
                 {
                     case LightColor.R:

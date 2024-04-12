@@ -9633,7 +9633,8 @@ MonoBehaviour:
   CellingLight:
   - {fileID: 878950490}
   - {fileID: 1547709864}
-  LightchangeSpeed: 0.1
+  LightchangeSpeed: 0.5
+  skipIntro: 0
 --- !u!4 &1496382587
 Transform:
   m_ObjectHideFlags: 0
