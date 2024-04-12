@@ -84,6 +84,8 @@ public class SecurityDroneEnemy : EnemyAI, IStunable
         public override void Enter()
         {
             transform.localRotation = owner.initialLocalRotation;
+            owner.addTargetRange = owner.idleRange;
+            owner.agent.speed = owner.patrolSpeed;
         }
         public override void Update()
         {
@@ -132,6 +134,7 @@ public class SecurityDroneEnemy : EnemyAI, IStunable
         {
             owner.animator.SetBool("Walk", false);
             owner.arrive = true;
+            owner.addTargetRange = owner.patrolRange;
             owner.agent.speed = 0;
             owner.StartCoroutine(owner.PatrolIdle());
 
@@ -166,8 +169,8 @@ public class SecurityDroneEnemy : EnemyAI, IStunable
         public override void Enter()
         {
             Debug.Log("Trace");
-            owner.agent.speed = 4f;
-            owner.addTargetRange = 8f;
+            owner.addTargetRange = owner.traceRange;
+            owner.agent.speed = owner.TraceSpeed;
             owner.animator.SetBool("Walk", true);
         }
         public override void Update()
@@ -186,13 +189,11 @@ public class SecurityDroneEnemy : EnemyAI, IStunable
             }
             else if (firstTarget == null)
             {
-                owner.addTargetRange = owner.alertRange;
                 owner.animator.SetBool("Walk", true);
                 ChangeState(State.Alert);
             }
             else if (Vector3.Distance(transform.position, owner.firstTarget.transform.position) < attackRange)
             {
-                owner.addTargetRange = owner.traceRange;
                 owner.animator.SetBool("Walk", false);
                 ChangeState(State.Battle);
             }
@@ -230,9 +231,12 @@ public class SecurityDroneEnemy : EnemyAI, IStunable
         public override void Enter()
         {
             Debug.Log("Alert start");
-            owner.agent.speed = 5f;
+            
             owner.agent.destination = owner.lostPosition;
-            owner.addTargetRange = owner.traceRange;
+
+            owner.addTargetRange = owner.alertRange;
+            owner.agent.speed = owner.TraceSpeed;
+
             owner.alertArrive = false;
         }
         public override void Update()
@@ -271,9 +275,8 @@ public class SecurityDroneEnemy : EnemyAI, IStunable
             Debug.Log("Return");
             owner.firstTarget = null;
             owner.agent.speed = owner.ReturnSpeed;
+            owner.addTargetRange = owner.alertRange;
             owner.agent.destination = owner.returnPoint;
-
-
         }
         public override void Update()
         {
@@ -302,7 +305,7 @@ public class SecurityDroneEnemy : EnemyAI, IStunable
 
         public override void Enter()
         {
-            owner.addTargetRange = owner.traceRange;
+            owner.addTargetRange = owner.battleRange;
             owner.agent.speed = 0f;
             owner.LaserOn();
         }
@@ -343,6 +346,7 @@ public class SecurityDroneEnemy : EnemyAI, IStunable
         public override void Enter()
         {
             Debug.Log("Dead");
+            owner.Dead();
             Destroy(owner.gameObject);
         }
         public override void Update()

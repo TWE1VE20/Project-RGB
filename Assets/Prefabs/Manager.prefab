@@ -369,6 +369,7 @@ MonoBehaviour:
   gameManager: {fileID: 9075735785631609233}
   UIManager: {fileID: 3438548844757861934}
   SceneManager: {fileID: 3851901711827478052}
+  dataManager: {fileID: 2888968913129004764, guid: d8bd3fbeeb1ade1418b09495397b78fb, type: 3}
   DebugCanvas: {fileID: 1154827304958270635}
 --- !u!114 &6647252123485494005
 MonoBehaviour:
