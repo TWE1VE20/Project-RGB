@@ -64,10 +64,13 @@ public class PlayerAttack : MonoBehaviour, IDamagable
 
     private void OnAttack(InputValue value)
     {
-        if (value.isPressed)
+        if (gameObject.GetComponent<PlayerController>().IsAlive)
         {
-            if(debug) Debug.Log("Player Attacks");
-            weaponHolder.Attack();
+            if (value.isPressed)
+            {
+                if (debug) Debug.Log("Player Attacks");
+                weaponHolder.Attack();
+            }
         }
     }
 
