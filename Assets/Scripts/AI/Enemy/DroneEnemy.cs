@@ -84,7 +84,7 @@ public class DroneEnemy : EnemyAI
         public IdleState(DroneEnemy owner) : base(owner) { }
         public override void Enter()
         {
-            owner.addTargetRange = 5f;
+
         }
         public override void Update()
         {

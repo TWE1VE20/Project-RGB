@@ -19,7 +19,8 @@ public class Fly : MonoBehaviour
         float time = Time.time;
 
         // y 값 계산
-        float y = realHeight + amplitude * Mathf.Sin(2 * Mathf.PI * time / period);
+        //float y = realHeight + amplitude * Mathf.Sin(2 * Mathf.PI * time / period);
+        float y = targetHeight + amplitude * Mathf.Sin(2 * Mathf.PI * time / period);
 
         // 위치 업데이트
         transform.position = new Vector3(transform.position.x, y, transform.position.z);

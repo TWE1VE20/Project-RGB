@@ -5,15 +5,16 @@ using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RespawnPoint : MonoBehaviour 
+public class SavePoint : MonoBehaviour 
 {
     [SerializeField] GameObject grave;
-    [SerializeField] LayerMask Player;
+    [SerializeField] LayerMask playerLayer;
     private string sceneNameText;
     public void OnTriggerEnter(Collider other)
     {
-        if(((1 << other.gameObject.layer) & Player) != 0)
-        { 
+        if(((1 << other.gameObject.layer) & playerLayer) != 0)
+        {
+            Debug.Log("respawnPoint change");
             Manager.game.respawnPoint = grave.transform.position; 
         }
         

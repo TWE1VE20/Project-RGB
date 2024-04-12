@@ -58,6 +58,8 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [SerializeField] protected LayerMask obstacleLayerMask;
     [SerializeField] protected float addTargetRange = 6f;
     [SerializeField] protected float traceRange = 10f;
+    [SerializeField] protected float battleRange = 8f;
+    [SerializeField] protected float patrolRange = 8f;
     [SerializeField] protected float idleRange = 6f;
     [SerializeField] protected float alertRange = 8f;
     [SerializeField] protected bool groggyAble;
