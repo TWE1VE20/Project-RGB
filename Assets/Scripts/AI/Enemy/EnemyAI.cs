@@ -84,7 +84,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [Header("Speed")]
     [SerializeField] protected float patrolSpeed = 2f;
     [SerializeField] protected float TraceSpeed = 3f;
-    [SerializeField] protected float BattleSpeed = 3f;
+    
     [SerializeField] protected float ReturnSpeed = 5f;
 
     [Header("Color")]

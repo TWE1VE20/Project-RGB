@@ -326,7 +326,7 @@ public class DroneEnemy : EnemyAI
         public override void Enter()
         {
             owner.addTargetRange = owner.battleRange;
-            owner.agent.speed = owner.BattleSpeed;
+            owner.agent.speed = 0f;
             owner.LaserOn();
         }
 

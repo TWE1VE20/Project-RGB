@@ -331,7 +331,7 @@ public class HumanEnemy : EnemyAI, IStunable
         public override void Enter()
         {
             owner.addTargetRange = owner.battleRange;
-            owner.agent.speed = owner.BattleSpeed;
+            owner.agent.speed = 0f;
             owner.LaserOn();
         }
 
