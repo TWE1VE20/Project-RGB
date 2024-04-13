@@ -121,10 +121,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3184141809739649126}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 4736046092456658736}
+        m_TargetAssemblyTypeName: InGamePopUi, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -355,6 +355,7 @@ GameObject:
   - component: {fileID: 2366305049728990484}
   - component: {fileID: 9020850514865443728}
   - component: {fileID: 4096879607805519838}
+  - component: {fileID: 4736046092456658736}
   m_Layer: 5
   m_Name: moveHelpUI
   m_TagString: Untagged
@@ -498,6 +499,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4736046092456658736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3184141809739649126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdc7f46be7aeefa4e824d4ba80973da3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4745638172316112188
 GameObject:
   m_ObjectHideFlags: 0
