@@ -91,9 +91,9 @@ public class TitleScene : BaseScene
         }
     }
 
-    public void DemoScene()
+    public void GameScene()
     {
-        // Manager.Scene.LoadScene("DemoScene");
+        Manager.Scene.LoadScene("Game Scene");
     }
 
     public override IEnumerator LoadingRoutine()
