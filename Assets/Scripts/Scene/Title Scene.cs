@@ -11,8 +11,6 @@ public class TitleScene : BaseScene
     [SerializeField] GameObject LobbyIdle;
     [SerializeField] Camera mainCamera;
     [SerializeField] GameObject titleCanvas;
-    [SerializeField] Image titleImage;
-    [SerializeField] GameObject titleButtons;
 
     [Header("Light")]
     [SerializeField] Light FloorLight;
@@ -106,8 +104,6 @@ public class TitleScene : BaseScene
         Shade.gameObject.SetActive(true);
         LobbyIdle.SetActive(false);
         titleCanvas.gameObject.SetActive(false);
-        titleButtons.SetActive(false);
-        titleImage.fillAmount = 0;
         mainCamera.fieldOfView = 80;
         FloorLight.intensity = 0;
         foreach (Light light in WallLight)
@@ -157,12 +153,5 @@ public class TitleScene : BaseScene
         yield return new WaitForSeconds(1);
         OpenEnd = true;
         titleCanvas.gameObject.SetActive(true);
-        for (float t = 1f; t > 0f; t -= Time.deltaTime)
-        {
-            float fill = Mathf.Lerp(1, 0, t);
-            titleImage.fillAmount = fill;
-            yield return null;
-        }
-        titleButtons.SetActive(true);
     }
 }

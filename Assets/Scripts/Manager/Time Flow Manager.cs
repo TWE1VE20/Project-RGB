@@ -22,7 +22,6 @@ public class TimeFlowManager : MonoBehaviour
     private float slowFactor;           // 현 TimeScale
     public bool Slow { get; private set; }  // 슬로우모션하고있어야 하는지 유무
     public bool SlowMotionEnable { get; private set; }
-    public bool timeStop;
 
     // Real Time    실제 타임
     private int Rmin;
@@ -39,8 +38,6 @@ public class TimeFlowManager : MonoBehaviour
 
     void Start()
     {
-        timeStop = false;
-
         // 시간 관련
         slowFactor = 1f;
         RealTimer.text = string.Format("Real Time\t{0:D2}:{1:D2}", 0, 0);
@@ -74,10 +71,7 @@ public class TimeFlowManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (timeStop)
-            Pause();
-        else
-            SlowMotion();
+        SlowMotion();
     }
     private void EnableSlowMotion()
     {
@@ -131,6 +125,7 @@ public class TimeFlowManager : MonoBehaviour
             if (Time.timeScale != targetTimeScale)
             {
                 slowFactor = Mathf.Lerp(slowFactor, targetTimeScale, lerpSpeed * Time.fixedDeltaTime);
+                Time.timeScale = slowFactor;
             }
         }
         else
@@ -138,9 +133,9 @@ public class TimeFlowManager : MonoBehaviour
             if (Time.timeScale != 1)
             {
                 slowFactor = Mathf.Lerp(slowFactor, 1f, lerpSpeed * Time.fixedDeltaTime);
+                Time.timeScale = slowFactor;
             }
         }
-        Time.timeScale = slowFactor;
     }
 
     private void OnSlowMotion(InputValue value)
@@ -151,25 +146,10 @@ public class TimeFlowManager : MonoBehaviour
             Slow = false;
     }
 
-    private void Pause()
-    {
-        if (Time.timeScale != 0)
-        {
-            Time.timeScale = 0;
-            StartCoroutine("WaitForStart");
-        }
-    }
-
     // 기다리는 코루틴
     IEnumerator WaitForSeconds()
     {
         yield return new WaitForSeconds(1f);
         timerON = true;
-    }
-
-    IEnumerator WaitForStart()
-    {
-        yield return new WaitUntil(() => timeStop == false);
-        Time.timeScale = slowFactor;
     }
 }

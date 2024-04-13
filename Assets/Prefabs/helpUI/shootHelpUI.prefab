@@ -588,10 +588,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7156298669469920563}
-        m_TargetAssemblyTypeName: InGamePopUi, Assembly-CSharp
-        m_MethodName: Close
-        m_Mode: 1
+      - m_Target: {fileID: 2799620182688922338}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -687,7 +687,6 @@ GameObject:
   - component: {fileID: 7841808118102867325}
   - component: {fileID: 3606491684331960317}
   - component: {fileID: 4842565423851750102}
-  - component: {fileID: 7156298669469920563}
   - component: {fileID: 5094980752348870795}
   m_Layer: 5
   m_Name: shootHelpUI
@@ -780,18 +779,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7156298669469920563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2799620182688922338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdc7f46be7aeefa4e824d4ba80973da3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &5094980752348870795
 SpriteRenderer:
   m_ObjectHideFlags: 0
