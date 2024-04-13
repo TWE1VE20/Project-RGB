@@ -10,10 +10,13 @@ public class GameData
 
     public GameSceneData gameScene;
 
+    public int savePosition;
+
     public GameData()
     {
         // Set default value
         sceneSaved = new bool[32];
         gameScene = new GameSceneData();
+        savePosition = new int();
     }
 }
