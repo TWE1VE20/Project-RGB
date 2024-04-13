@@ -9,6 +9,8 @@ public class GameScene : BaseScene
     public override IEnumerator LoadingRoutine()
     {
         Debug.Log("GameScene Load");
+        yield return new WaitForSeconds(0.5f);
+
     }
 
     public override void SceneLoad()

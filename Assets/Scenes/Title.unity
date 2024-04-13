@@ -4436,6 +4436,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3851901711827478052, guid: 85dba584dc6197842af103a59de68d3e, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 590869445}
+    - target: {fileID: 3851901711827478052, guid: 85dba584dc6197842af103a59de68d3e, type: 3}
+      propertyPath: loadingimage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5230640890208746943, guid: 85dba584dc6197842af103a59de68d3e, type: 3}
       propertyPath: m_Name
       value: Manager
@@ -4489,6 +4497,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85dba584dc6197842af103a59de68d3e, type: 3}
+--- !u!223 &590869445 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 3783637959127328000, guid: 85dba584dc6197842af103a59de68d3e, type: 3}
+  m_PrefabInstance: {fileID: 590869444}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &598315111 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 7a9f1cc61aae624469149b5bd10ae1f1, type: 3}

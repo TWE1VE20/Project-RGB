@@ -16,6 +16,9 @@ public class WeaponHolder : MonoBehaviour
     [Header("UI")]
     [SerializeField] TextMeshProUGUI GunUI;
     [SerializeField] TextMeshProUGUI MeleeUI;
+    [SerializeField] GameObject ReloadTexts;
+    [SerializeField] GameObject noAmmoText;
+    [SerializeField] GameObject reloadText;
 
     public int current = 0;
     private bool reloading = false;
@@ -34,8 +37,14 @@ public class WeaponHolder : MonoBehaviour
 
     private void Update()
     {
-        if(weaponsList[current].attackType == Weapons.AttackType.GUN)
+        if (weaponsList[current].attackType == Weapons.AttackType.GUN)
+        {
             UpdateUI();
+            if (weaponsList[current].GetComponent<AmmoSystem>().rounds == 0 && noAmmoText.activeSelf == false && !reloading)
+                noAmmoText.SetActive(true);
+            else if (noAmmoText.activeSelf == true && weaponsList[current].GetComponent<AmmoSystem>().rounds > 0 || reloading)
+                noAmmoText.SetActive(false);
+        }
     }
 
     public bool Attack() 
@@ -46,6 +55,7 @@ public class WeaponHolder : MonoBehaviour
                 if (reloading == true)
                 {
                     StopCoroutine(reload);
+                    reloadText.SetActive(false);
                     if (debug) Debug.Log("Reload failed");
                     reloading = false;
                 }
@@ -90,8 +100,11 @@ public class WeaponHolder : MonoBehaviour
         {
             yield break;
         }
+        reloadText.SetActive(true);
+        weaponsList[current].GetComponent<AmmoSystem>().ReloadSound();
         yield return new WaitForSeconds(time);
         weaponsList[current].GetComponent<AmmoSystem>().Reload();
+        reloadText.SetActive(false);
         reloading = false;
     }
     IEnumerator GunAttackWait(float time)

@@ -55,6 +55,11 @@ public class FireEffect : SFX_ControlledObject
             StartCoroutine("Fire");
     }
 
+    private void OnDisable()
+    {
+        StopCoroutine("Fire");
+    }
+
     private IEnumerator Fire()
     {
         _isFireAllowed = false;

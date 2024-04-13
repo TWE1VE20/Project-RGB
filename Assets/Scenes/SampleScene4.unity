@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -305,6 +305,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 309198349122092658, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
+      propertyPath: RunAtStart
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 314620882659634674, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00005197525
@@ -361,11 +365,45 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3601849831779072248, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00005197525
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601849831779072248, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6864996
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601849831779072248, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.08395647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601849831779072248, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601849831779072248, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.000000018623107
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601849831779072248, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.00000010179349
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601849831779072248, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000043633012
+      objectReference: {fileID: 0}
     - target: {fileID: 8725521418602189055, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
       propertyPath: m_Name
       value: Player Setup (Body Invisible) With UI
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9005717666067578341, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6754051797095132057, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
+    - {fileID: 6887690828852429939, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
