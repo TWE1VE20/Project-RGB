@@ -44,7 +44,11 @@ public class AudioManager : MonoBehaviour
         Instance = this;
         Init();
     }
-
+    private void Start()
+    {
+        //AudioManager.Instance.PlayBgm(true);
+        AudioManager.Instance.PlayBgm(AudioManager.BGM.InGame);
+    }
     private void Init()
     {
         // 배경음 플레이어 초기화
@@ -82,7 +86,7 @@ public class AudioManager : MonoBehaviour
             sfxPlayers[index].volume = sfxVolume;
         }
     }
-    public void PlayBgm(BGM bgm/*bool isPlay*/)
+    public void PlayBgm(BGM bgm)
     {
         
         for (int index = 0; index < bgmPlayers.Length; index++)
@@ -102,6 +106,38 @@ public class AudioManager : MonoBehaviour
             bgmChannelIndex = loopIndex;
             bgmPlayers[0].clip = bgmClips[(int)bgm + ranIndex];
             bgmPlayers[0].Play();
+            Debug.Log("bgm");
+            break;
+        }
+        //if (isPlay)
+        //{
+        //    bgmPlayer.Play();
+        //}
+        //else
+        //{
+        //    bgmPlayer.Stop();
+        //}
+    }
+    public void StopBgm(BGM bgm)
+    {
+
+        for (int index = 0; index < bgmPlayers.Length; index++)
+        {
+            int loopIndex = (index + bgmChannelIndex) % bgmPlayers.Length;
+
+            if (bgmPlayers[loopIndex].isPlaying)
+            {
+                continue;
+            }
+            int ranIndex = 0;
+            //if (bgm == BGM.Lobby)
+            //{
+            //    ranIndex = Random.Range(0, 2);
+            //}
+
+            bgmChannelIndex = loopIndex;
+            bgmPlayers[0].clip = bgmClips[(int)bgm + ranIndex];
+            bgmPlayers[0].Stop();
             Debug.Log("bgm");
             break;
         }

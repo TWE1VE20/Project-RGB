@@ -4120,7 +4120,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 2, y: 18.882883, z: 60.804577}
-  m_Center: {x: 0, y: 5, z: 0.54699516}
+  m_Center: {x: 0, y: 0, z: 0.54699516}
 --- !u!23 &436185829
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4180,7 +4180,7 @@ Transform:
   m_GameObject: {fileID: 436185826}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.25, y: -1.8, z: -71.5}
+  m_LocalPosition: {x: 6.25, y: 2, z: -71.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15238,11 +15238,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1dd1a847236234cb1cc599ac88958a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmClip:
+  bgmClips:
   - {fileID: 8300000, guid: 050fb566c7b08a04292eadc20549ebe7, type: 3}
   - {fileID: 8300000, guid: a0efe9a6c7ae4d1459e41029db240432, type: 3}
-  bgmVolume: 10
-  bgmChannels: 0
+  bgmVolume: 3
+  bgmChannels: 2
   sfxClips:
   - {fileID: 8300000, guid: b231e9acc1e49e3448203cf9be44596f, type: 3}
   - {fileID: 8300000, guid: 900b8db5e14d74d499d1eb9c6071589a, type: 3}
@@ -15843,7 +15843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3881270439934531744, guid: d426f6bdd64d8fa499fa31aae7c26ad0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -46.72
+      value: -75.8
       objectReference: {fileID: 0}
     - target: {fileID: 3881270439934531744, guid: d426f6bdd64d8fa499fa31aae7c26ad0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15879,7 +15879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8924439991322164640, guid: d426f6bdd64d8fa499fa31aae7c26ad0, type: 3}
       propertyPath: m_Center.z
-      value: -20
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
