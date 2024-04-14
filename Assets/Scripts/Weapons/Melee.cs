@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Melee : Weapons
@@ -7,6 +5,7 @@ public class Melee : Weapons
     [Header("Componets")]
     [SerializeField] Animator animator;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip[] meleeAudioClip;
     [SerializeField] ReflectSystem reflectSystem;
 
     [Header("meleeStatus")]
@@ -25,9 +24,21 @@ public class Melee : Weapons
         reflectSystem.audioSource = this.audioSource;
     }
 
+    public void OnEnable()
+    {
+        audioSource.clip = meleeAudioClip[0];
+        if (audioSource.clip != null)
+            audioSource.Play();
+    }
+
     public override bool Attack()
     {
-        // ±ÙÁ¢°ø°Ý ¸ð¼Ç
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+        /*
+        audioSource.clip = meleeAudioClip[1];
+        if (audioSource.clip != null)
+            audioSource.Play();
+        */
         return true;
     }
 }
