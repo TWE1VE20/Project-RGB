@@ -16,6 +16,8 @@ public class SavePoint : MonoBehaviour
     void Start()
     {
         graveTransform = grave.transform;
+        //AudioManager.Instance.PlayBgm(true);
+        AudioManager.Instance.PlayBgm(AudioManager.BGM.InGame);
     }
     public void OnTriggerEnter(Collider other)
     {

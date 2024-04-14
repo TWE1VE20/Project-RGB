@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     [Header("save")]
     public int savePos = 0;
     [SerializeField] GameObject[] Enemy;
-    
+
     public void Dead()
     {
         

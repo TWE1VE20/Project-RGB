@@ -205,7 +205,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
                 // TakeDamage �Լ��� ȣ���Ͽ� ���ظ� �����ϴ�.
                 Debug.Log(hit.collider.gameObject.name);
                 damageable?.TakeDamage(deal, transform.position);
-                enemyShoot.Play();
+                AudioManager.Instance.PlaySfx(AudioManager.SFX.EnemyShoot);
                 attackCost = 0;
             }
             Debug.Log("Attacking");
@@ -423,10 +423,11 @@ public class EnemyAI : MonoBehaviour, IDamagable
 
         foreach (Collider collider in deathCollider)
         {
+            agent.speed = 0;
             collider.enabled = false;
         }
         yield return new WaitForSeconds(deadDelay);
-
+        
         Destroy(gameObject);
     }
 } 
