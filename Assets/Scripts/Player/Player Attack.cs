@@ -46,6 +46,7 @@ public class PlayerAttack : MonoBehaviour, IDamagable
                 {
                     if(!NoDeath)
                         gameObject.GetComponent<PlayerController>().IsAlive = false;
+                    gameObject.GetComponent<PlayerController>().DeathSound();
                     Debug.Log("Dead");
                 }
             }
@@ -53,6 +54,7 @@ public class PlayerAttack : MonoBehaviour, IDamagable
             {
                 if (!NoDeath)
                     gameObject.GetComponent<PlayerController>().IsAlive = false;
+                gameObject.GetComponent<PlayerController>().DeathSound();
                 Debug.Log("Dead");
             }
         }
@@ -79,7 +81,7 @@ public class PlayerAttack : MonoBehaviour, IDamagable
 
     private void OnReload(InputValue value)
     {
-        if (!Manager.timeflow.timeStop)
+        if (!Manager.timeflow.timeStop && gameObject.GetComponent<PlayerController>().IsAlive)
             weaponHolder.Reload();
     }
 
