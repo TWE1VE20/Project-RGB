@@ -205,7 +205,7 @@ public class DroneEnemy : EnemyAI
             Debug.Log("Tracing");
             owner.ColorChange();
             owner.FindTarget();
-            owner.Direction();
+            owner.DirectionDrone();
             owner.Move();
         }
 
@@ -358,7 +358,7 @@ public class DroneEnemy : EnemyAI
         }
         public override void LateUpdate()
         {
-            owner.Direction();
+            owner.DirectionDrone();
         }
     }
 

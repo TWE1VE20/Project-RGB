@@ -101,8 +101,12 @@ public class EnemyAI : MonoBehaviour, IDamagable
     private float currentRotationAngle = 0.0f; // ���� ȸ�� ����
     public Quaternion initialLocalRotation;
 
-    [Header("deadDelay")]
+    [Header("Dead")]
     [SerializeField] protected float deadDelay;
+    [SerializeField] protected Collider[] regCols;
+    [SerializeField] protected Rigidbody[] regRigids;
+    [SerializeField] protected CharacterJoint[] regJoints;
+
     public float CosAngle
     {
         get
@@ -269,7 +273,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
         }
 
     } // �� �ٶ󺸴� ����
-    public void Directionex()
+    public void DirectionDrone()
     {
         if (firstTarget != null)
         {
@@ -416,15 +420,30 @@ public class EnemyAI : MonoBehaviour, IDamagable
     {
         deathCollider = GetComponentsInChildren<Collider>();
         AudioManager.Instance.PlaySfx(AudioManager.SFX.EnemyDeath);
+        agent.speed = 0;
         foreach (Collider collider in deathCollider)
         {
-            agent.speed = 0;
+           
             collider.enabled = false;
         }
         yield return new WaitForSeconds(deadDelay);
         
         Destroy(gameObject);
     }
+    //public void readyDead()
+    //{
+    //    regCols = GetComponentInChildren<Collider>(colchild => colchild != gameObject);
+    //    foreach (Collider col in regCols)
+    //    {
+    //        col.enabled = false;
+    //    }
+    //    regRigids = GetComponentInChildren<Rigidbody>(rigidchild => rigidchild != gameObject);
+    //    foreach (Rigidbody rb in regRigids)
+    //    {
+    //        rb.useGravity = true;
+    //        rb.isKinematic = false;
+    //    }
+    //}
 } 
 
     //public void ListChoice()
