@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] CharacterController controller;
     [SerializeField] Animator animator;
     [SerializeField] GroundChecker groundChecker;
+    [SerializeField] PlayerPauseController pauseController;
 
     [Header("Spec")]
     [SerializeField] float moveSpeed;
@@ -133,6 +134,18 @@ public class PlayerController : MonoBehaviour
             isRun = true;
         else
             isRun = false;
+    }
+
+    private void OnPause(InputValue value)
+    {
+        if (IsAlive)
+        {
+            if (!Manager.timeflow.Paused)
+                pauseController.Paused();
+            else
+                pauseController.PauseEnd();
+            Manager.timeflow.Paused = !Manager.timeflow.Paused;
+        }
     }
 
     public Vector3 GetMoveDir()
