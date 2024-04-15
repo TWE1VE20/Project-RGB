@@ -11,15 +11,14 @@ public class TitleScene : BaseScene
     [SerializeField] GameObject LobbyIdle;
     [SerializeField] Camera mainCamera;
     [SerializeField] GameObject titleCanvas;
+    [SerializeField] Image titleImage;
+    [SerializeField] GameObject titleButtons;
 
     [Header("Light")]
     [SerializeField] Light FloorLight;
     [SerializeField] Light[] WallLight;
     [SerializeField] Light[] CellingLight;
     [SerializeField] float LightchangeSpeed;
-
-    [Header("Sound")]
-    [SerializeField] AudioSource audioSource;
 
     public bool skipIntro;
 
@@ -40,7 +39,6 @@ public class TitleScene : BaseScene
         else
         {
             OpenEnd = true;
-            audioSource.Play();
         }
     }
 
@@ -93,9 +91,9 @@ public class TitleScene : BaseScene
         }
     }
 
-    public void GameScene()
+    public void DemoScene()
     {
-        Manager.Scene.LoadScene("Game Scene");
+        // Manager.Scene.LoadScene("DemoScene");
     }
 
     public override IEnumerator LoadingRoutine()
@@ -108,6 +106,8 @@ public class TitleScene : BaseScene
         Shade.gameObject.SetActive(true);
         LobbyIdle.SetActive(false);
         titleCanvas.gameObject.SetActive(false);
+        titleButtons.SetActive(false);
+        titleImage.fillAmount = 0;
         mainCamera.fieldOfView = 80;
         FloorLight.intensity = 0;
         foreach (Light light in WallLight)
@@ -154,9 +154,15 @@ public class TitleScene : BaseScene
             light.intensity = 0.5f;
         foreach (Light light in CellingLight)
             light.intensity = 1f;
-        audioSource.Play();
         yield return new WaitForSeconds(1);
         OpenEnd = true;
         titleCanvas.gameObject.SetActive(true);
+        for (float t = 1f; t > 0f; t -= Time.deltaTime)
+        {
+            float fill = Mathf.Lerp(1, 0, t);
+            titleImage.fillAmount = fill;
+            yield return null;
+        }
+        titleButtons.SetActive(true);
     }
 }

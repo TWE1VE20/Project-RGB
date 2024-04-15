@@ -44,11 +44,28 @@ public class FPSCameraController : MonoBehaviour
         YDamping = false;
     }
 
+    void Update()
+    {
+        if (!Manager.timeflow.timeStop)
+        {
+            // unscaledDeltaTime으로 TimeScale 즉 슬로우모션의 영향에서 벗어난다.
+            xRotation -= inputDir.y * mouseSensitivity * Time.unscaledDeltaTime;
+            // 범위내에서만 있을수 있도록 조정하는 함수
+            xRotation = Mathf.Clamp(xRotation, -80f, 80f);
+
+            transform.Rotate(Vector3.up, inputDir.x * mouseSensitivity * Time.unscaledDeltaTime);
+            cameraRoot.localRotation = Quaternion.Euler(xRotation, 0, 0);
+        }
+    }
+
     private void FixedUpdate()
     {
-        slowmotionZoom();
-        if(!Zoom)
-            CamDamping();
+        if (!Manager.timeflow.timeStop)
+        {
+            slowmotionZoom();
+            if (!Zoom)
+                CamDamping();
+        }
     }
 
     private void OnEnable()
@@ -58,16 +75,6 @@ public class FPSCameraController : MonoBehaviour
     private void OnDisable()
     {
         Cursor.lockState = CursorLockMode.None;
-    }
-    void Update()
-    {
-        // unscaledDeltaTime으로 TimeScale 즉 슬로우모션의 영향에서 벗어난다.
-        xRotation -= inputDir.y * mouseSensitivity * Time.unscaledDeltaTime;
-        // 범위내에서만 있을수 있도록 조정하는 함수
-        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
-
-        transform.Rotate(Vector3.up, inputDir.x * mouseSensitivity * Time.unscaledDeltaTime);
-        cameraRoot.localRotation = Quaternion.Euler(xRotation, 0, 0);
     }
 
     private void slowmotionZoom()

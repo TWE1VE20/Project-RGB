@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9582,6 +9582,8 @@ MonoBehaviour:
   LobbyIdle: {fileID: 1822856858}
   mainCamera: {fileID: 313803781}
   titleCanvas: {fileID: 1209214958}
+  titleImage: {fileID: 0}
+  titleButtons: {fileID: 1448024438}
   FloorLight: {fileID: 628074335}
   WallLight:
   - {fileID: 1780726201}
@@ -9594,7 +9596,6 @@ MonoBehaviour:
   - {fileID: 878950490}
   - {fileID: 1547709864}
   LightchangeSpeed: 0.5
-  audioSource: {fileID: 1496382588}
   skipIntro: 0
 --- !u!4 &1496382587
 Transform:

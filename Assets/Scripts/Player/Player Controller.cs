@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if (isRun && controller.isGrounded)
+        if (isRun && groundChecker.isGround)
         {
             if (playerAudioSource.clip != playerAudioClips[1])
                 playerAudioSource.clip = playerAudioClips[1];
@@ -67,11 +67,11 @@ public class PlayerController : MonoBehaviour
             // animator.SetFloat("YSpeed", moveDir.z * walkSpeed, 0.1f, Time.deltaTime);
         }
 
-        /*
+
         Debug.Log(moveDir.y);
         Debug.Log(moveDir.z);
 
-        if (controller.isGrounded)
+        if (groundChecker.isGround)
         {
             if (playerAudioSource.isPlaying == false && (moveDir.x > 0.01 || moveDir.x < -0.01 || moveDir.z > 0.01 || moveDir.z < -0.01))
             {
@@ -84,20 +84,26 @@ public class PlayerController : MonoBehaviour
             }
             else if (playerAudioSource.isPlaying == true && moveDir.x < 0.01 && moveDir.x > -0.01 && moveDir.z < 0.01 && moveDir.z > -0.01)
             {
-                StopCoroutine(soundCorutine);
-                soundCorutine = null;
+                if (soundCorutine != null)
+                {
+                    StopCoroutine(soundCorutine);
+                    soundCorutine = null;
+                }
                 playerAudioSource.Stop();
                 Debug.Log("Stop");
             }
         }
         else
         {
-            StopCoroutine(soundCorutine);
-            soundCorutine = null;
+            if (soundCorutine != null)
+            {
+                StopCoroutine(soundCorutine);
+                soundCorutine = null;
+            }
             playerAudioSource.Stop();
             Debug.Log("Stop");
         }
-        */
+
     }
 
     private void JumpMove()

@@ -44,9 +44,8 @@ public class PlayerAttack : MonoBehaviour, IDamagable
                 }
                 else
                 {
-                    if(!NoDeath)
+                    if (!NoDeath)
                         gameObject.GetComponent<PlayerController>().IsAlive = false;
-                    gameObject.GetComponent<PlayerController>().DeathSound();
                     Debug.Log("Dead");
                 }
             }
@@ -54,7 +53,6 @@ public class PlayerAttack : MonoBehaviour, IDamagable
             {
                 if (!NoDeath)
                     gameObject.GetComponent<PlayerController>().IsAlive = false;
-                gameObject.GetComponent<PlayerController>().DeathSound();
                 Debug.Log("Dead");
             }
         }
@@ -66,29 +64,32 @@ public class PlayerAttack : MonoBehaviour, IDamagable
 
     private void OnAttack(InputValue value)
     {
-        if (gameObject.GetComponent<PlayerController>().IsAlive)
+        if (!Manager.timeflow.timeStop)
         {
-            if (value.isPressed)
+            if (gameObject.GetComponent<PlayerController>().IsAlive)
             {
-                if (debug) Debug.Log("Player Attacks");
-                weaponHolder.Attack();
+                if (value.isPressed)
+                {
+                    if (debug) Debug.Log("Player Attacks");
+                    weaponHolder.Attack();
+                }
             }
         }
     }
 
     private void OnReload(InputValue value)
     {
-        if (!Manager.timeflow.timeStop && gameObject.GetComponent<PlayerController>().IsAlive)
+        if (!Manager.timeflow.timeStop)
             weaponHolder.Reload();
     }
 
     private void OnGuard(InputValue value)
     {
         if (value.isPressed)
-            if(weaponHolder.weaponsList[weaponHolder.current].attackType == Weapons.AttackType.MELEE)
+            if (weaponHolder.weaponsList[weaponHolder.current].attackType == Weapons.AttackType.MELEE)
                 isGuard = true;
-        else
-            isGuard = false;
+            else
+                isGuard = false;
     }
 
     private void OnChangeColor(InputValue value)
