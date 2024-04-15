@@ -3911,6 +3911,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9075735785631609233, guid: 85dba584dc6197842af103a59de68d3e, type: 3}
+      propertyPath: respawnPoint.x
+      value: 12.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 9075735785631609233, guid: 85dba584dc6197842af103a59de68d3e, type: 3}
+      propertyPath: respawnPoint.y
+      value: 227
+      objectReference: {fileID: 0}
+    - target: {fileID: 9075735785631609233, guid: 85dba584dc6197842af103a59de68d3e, type: 3}
+      propertyPath: respawnPoint.z
+      value: 8.52
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
