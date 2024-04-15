@@ -44,7 +44,7 @@ public class PlayerAttack : MonoBehaviour, IDamagable
                 }
                 else
                 {
-                    if (!NoDeath)
+                    if(!NoDeath)
                         gameObject.GetComponent<PlayerController>().IsAlive = false;
                     Debug.Log("Dead");
                 }
@@ -86,10 +86,10 @@ public class PlayerAttack : MonoBehaviour, IDamagable
     private void OnGuard(InputValue value)
     {
         if (value.isPressed)
-            if (weaponHolder.weaponsList[weaponHolder.current].attackType == Weapons.AttackType.MELEE)
+            if(weaponHolder.weaponsList[weaponHolder.current].attackType == Weapons.AttackType.MELEE)
                 isGuard = true;
-            else
-                isGuard = false;
+        else
+            isGuard = false;
     }
 
     private void OnChangeColor(InputValue value)

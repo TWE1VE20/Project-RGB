@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
 
 public class SceneManager : MonoBehaviour
 {
     [SerializeField] Canvas canvas;
     [SerializeField] GameObject loadingimage;
-    // [SerializeField] Slider loadingBar;
-    // [SerializeField] Image Shade;
+    [SerializeField] Image loadingBar;
+    [SerializeField] Image Shade;
+
+    public bool titleSkip; 
 
     private BaseScene curScene;
     public BaseScene GetCurScene()
@@ -40,14 +43,10 @@ public class SceneManager : MonoBehaviour
     {
         canvas.gameObject.SetActive(true);
         // Fade In
-        //Shade.color = new Color(Shade.color.r, Shade.color.g, Shade.color.b, 0f);
-        for (float t = 0f; t < 1f; t += Time.deltaTime / 2)
-        {
-            float alpha = Mathf.Lerp(0f, 1f, t);
-            //Shade.color = new Color(Shade.color.r, Shade.color.g, Shade.color.b, alpha);
-            yield return null;
-        }
+        Shade.color = new Color(Shade.color.r, Shade.color.g, Shade.color.b, 1f);
 
+        loadingBar.gameObject.SetActive(true);
+        loadingBar.fillAmount = 0;
         loadingimage.gameObject.SetActive(true);
         BaseScene prevScene = GetCurScene();
         AsyncOperation oper = UnitySceneManager.LoadSceneAsync(sceneName);
@@ -55,25 +54,27 @@ public class SceneManager : MonoBehaviour
         while (oper.isDone == false)
         {
             Debug.Log(oper.progress);
-            //loadingBar.value = Mathf.Lerp(0f, 0.2f, oper.progress);
-            yield return null;
+            if (loadingBar.fillAmount < 1)
+                loadingBar.fillAmount += 0.5f * Time.unscaledDeltaTime;
+            else if (loadingBar.fillAmount > 0)
+                loadingBar.fillAmount -= 0.5f * Time.unscaledDeltaTime;
+            yield return new WaitForSeconds(Time.unscaledDeltaTime);
         }
 
-        //Shade.gameObject.SetActive(true);
-        //Shade.color = new Color(Shade.color.r, Shade.color.g, Shade.color.b, 1f);
+        // Fade out
+        loadingBar.gameObject.SetActive(false);
+        Shade.gameObject.SetActive(true);
+        Shade.color = new Color(Shade.color.r, Shade.color.g, Shade.color.b, 1f);
         BaseScene curScene = GetCurScene();
         yield return curScene.LoadingRoutine();
         //loadingBar.value = 1f;
-        loadingimage.gameObject.SetActive(false);
-
-
-        // Fade out
         for (float t = 1f; t > 0f; t -= Time.deltaTime / 1)
         {
             float alpha = Mathf.Lerp(0f, 1f, t);
-            //Shade.color = new Color(Shade.color.r, Shade.color.g, Shade.color.b, alpha);
+            Shade.color = new Color(Shade.color.r, Shade.color.g, Shade.color.b, alpha);
             yield return null;
         }
+        loadingimage.gameObject.SetActive(false);
     }
 
     private void Upadate()

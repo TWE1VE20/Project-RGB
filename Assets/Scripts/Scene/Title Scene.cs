@@ -30,6 +30,9 @@ public class TitleScene : BaseScene
 
     private void Start()
     {
+        if (Manager.Scene.titleSkip)
+            skipIntro = true;
+
         if (!skipIntro)
         {
             OpenEnd = false;
@@ -91,14 +94,15 @@ public class TitleScene : BaseScene
         }
     }
 
-    public void DemoScene()
+    public void GameSceneLoad()
     {
-        // Manager.Scene.LoadScene("DemoScene");
+        Manager.Scene.LoadScene("Game Scene");
     }
 
     public override IEnumerator LoadingRoutine()
     {
         yield return null;
+        yield return new WaitForSeconds(2f);
     }
 
     IEnumerator FirstOpening()
@@ -163,6 +167,7 @@ public class TitleScene : BaseScene
             titleImage.fillAmount = fill;
             yield return null;
         }
+        Manager.Scene.titleSkip = true;
         titleButtons.SetActive(true);
     }
 }
