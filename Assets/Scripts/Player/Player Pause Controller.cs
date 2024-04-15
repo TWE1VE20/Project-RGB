@@ -17,6 +17,7 @@ public class PlayerPauseController : MonoBehaviour
         canvas.SetActive(true);
         foreach(AnalogGlitch cameras in analogGlitch)
         {
+            cameras.enabled = true;
             cameras.scanLineJitter = 0.3f;
             cameras.verticalJump = 0.1f;
             cameras.horizontalShake = 0.1f;
@@ -29,6 +30,7 @@ public class PlayerPauseController : MonoBehaviour
         canvas.SetActive(false);
         foreach (AnalogGlitch cameras in analogGlitch)
         {
+            cameras.enabled = false;
             cameras.scanLineJitter = 0;
             cameras.verticalJump = 0;
             cameras.horizontalShake = 0;
