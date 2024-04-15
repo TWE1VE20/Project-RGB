@@ -67,20 +67,30 @@ public class PlayerController : MonoBehaviour
             // animator.SetFloat("YSpeed", moveDir.z * walkSpeed, 0.1f, Time.deltaTime);
         }
 
+        /*
         Debug.Log(moveDir.y);
         Debug.Log(moveDir.z);
 
-        /*
-        if (playerAudioSource.isPlaying == false && (moveDir.x > 0.01 || moveDir.x < -0.01 || moveDir.z > 0.01 || moveDir.z < -0.01))
+        if (controller.isGrounded)
         {
-            if (soundCorutine == null)
+            if (playerAudioSource.isPlaying == false && (moveDir.x > 0.01 || moveDir.x < -0.01 || moveDir.z > 0.01 || moveDir.z < -0.01))
             {
-                soundCorutine = MoveSound(0.4f);
-                StartCoroutine(soundCorutine);
+                if (soundCorutine == null)
+                {
+                    soundCorutine = MoveSound(0.4f);
+                    StartCoroutine(soundCorutine);
+                }
+                Debug.Log("Play");
             }
-            Debug.Log("Play");
+            else if (playerAudioSource.isPlaying == true && moveDir.x < 0.01 && moveDir.x > -0.01 && moveDir.z < 0.01 && moveDir.z > -0.01)
+            {
+                StopCoroutine(soundCorutine);
+                soundCorutine = null;
+                playerAudioSource.Stop();
+                Debug.Log("Stop");
+            }
         }
-        else if (playerAudioSource.isPlaying == true && moveDir.x < 0.01 && moveDir.x > -0.01 && moveDir.z < 0.01 && moveDir.z > -0.01)
+        else
         {
             StopCoroutine(soundCorutine);
             soundCorutine = null;
