@@ -32,5 +32,6 @@ public class TriggerUI : MonoBehaviour
     {
         Canvas popUI = Instantiate(PopUpUI, transform.position, transform.rotation);
         popUI.transform.SetParent(this.player.transform);
+        Manager.timeflow.timeStop = true;
     }
 }

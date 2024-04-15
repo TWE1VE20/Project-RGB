@@ -353,6 +353,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1891669529523944408, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 7774348943778960746, guid: e583e3b2649b0e0408419cdce4c6f49e, type: 2}
     - target: {fileID: 2528732150571580995, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -365,6 +369,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3466502728611529692, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 7774348943778960746, guid: e583e3b2649b0e0408419cdce4c6f49e, type: 2}
     - target: {fileID: 3601849831779072248, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00005197525
@@ -393,10 +401,18 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.000043633012
       objectReference: {fileID: 0}
+    - target: {fileID: 4146927108203706256, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 7774348943778960746, guid: e583e3b2649b0e0408419cdce4c6f49e, type: 2}
     - target: {fileID: 4383595961956430650, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
       propertyPath: m_Pitch
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4383595961956430650, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 7774348943778960746, guid: e583e3b2649b0e0408419cdce4c6f49e, type: 2}
     - target: {fileID: 8725521418602189055, guid: 6768d904769de0c40a1b2a7dd2996eb0, type: 3}
       propertyPath: m_Name
       value: Player Setup (Body Invisible) With UI

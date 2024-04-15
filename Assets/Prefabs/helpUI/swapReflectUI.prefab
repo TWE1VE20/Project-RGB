@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 5908226332348917640}
   - component: {fileID: 6677272068757081877}
   - component: {fileID: 4529814348139604498}
+  - component: {fileID: 7623043086108546519}
   m_Layer: 5
   m_Name: swapReflectUI
   m_TagString: Untagged
@@ -366,6 +367,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7623043086108546519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2417765748317104328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdc7f46be7aeefa4e824d4ba80973da3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3377490201994263352
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,10 +633,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2417765748317104328}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 7623043086108546519}
+        m_TargetAssemblyTypeName: InGamePopUi, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
