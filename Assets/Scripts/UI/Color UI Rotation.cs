@@ -12,6 +12,9 @@ public class ColorUIRotation : MonoBehaviour
     [Header("Spec")]
     [SerializeField] float rotationLerpSpeed;
 
+    [Header("Sound")]
+    [SerializeField] AudioSource colorChangeAudioSource;
+
     private Weapons.Colors rotationCurColor;
     private float targetRotation;
     private float curRotation;
@@ -48,6 +51,7 @@ public class ColorUIRotation : MonoBehaviour
         {
             rotationCurColor = weaponHolder.weaponsList[weaponHolder.current].colorState;
             targetRotation = Rotation(rotationCurColor);
+            colorChangeAudioSource.Play();
         }
         if (targetRotation != curRotation)
         {

@@ -10,10 +10,14 @@ public class ReflectSystem : MonoBehaviour
 
     public Animator animator;
     public AudioSource audioSource;
+    public AudioClip reflectSoundClip;
 
     public void Reflect()
     {
-        // ¹Ý»ç ¾Ö´Ï¸ÞÀÌ¼Ç
+        // ï¿½Ý»ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
+        audioSource.clip = reflectSoundClip;
+        if (audioSource.clip != null)
+            audioSource.Play();
         OnReflection?.Invoke();
     }
 }

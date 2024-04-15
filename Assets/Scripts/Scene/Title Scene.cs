@@ -18,6 +18,9 @@ public class TitleScene : BaseScene
     [SerializeField] Light[] CellingLight;
     [SerializeField] float LightchangeSpeed;
 
+    [Header("Sound")]
+    [SerializeField] AudioSource audioSource;
+
     public bool skipIntro;
 
     private LightColor curColor;
@@ -37,6 +40,7 @@ public class TitleScene : BaseScene
         else
         {
             OpenEnd = true;
+            audioSource.Play();
         }
     }
 
@@ -89,9 +93,9 @@ public class TitleScene : BaseScene
         }
     }
 
-    public void DemoScene()
+    public void GameScene()
     {
-        // Manager.Scene.LoadScene("DemoScene");
+        Manager.Scene.LoadScene("Game Scene");
     }
 
     public override IEnumerator LoadingRoutine()
@@ -150,6 +154,7 @@ public class TitleScene : BaseScene
             light.intensity = 0.5f;
         foreach (Light light in CellingLight)
             light.intensity = 1f;
+        audioSource.Play();
         yield return new WaitForSeconds(1);
         OpenEnd = true;
         titleCanvas.gameObject.SetActive(true);

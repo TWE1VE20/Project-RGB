@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class AmmoSystem: MonoBehaviour
 {
-    public Animator animator;
+    // public Animator animator;
     public AudioSource audioSource;
+    public AudioClip reloadSoundClip;
     [SerializeField] FireEffect fireEffect;
 
     public float reloadTime;
-    public int AmmoLeft;    // ³²Àº ÃÑ¾Ë °¹¼ö
-    public int maxRounds;   // ÅºÃ¢ ÃÖ´ë Å©±â
-    public int rounds { get; private set; }     // ÇöÁ¦ ÃÑ¿¡ µé¾îÀÖ´Â ÃÑ¾Ë °¹¼ö
+    public int AmmoLeft;    // ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½
+    public int maxRounds;   // ÅºÃ¢ ï¿½Ö´ï¿½ Å©ï¿½ï¿½
+    public int rounds { get; private set; }     // ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¿ï¿½ ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     private void Start()
     {
@@ -78,6 +79,15 @@ public class AmmoSystem: MonoBehaviour
         {
             // no rounds Animation and Sounds
             return false;
+        }
+    }
+
+    public void ReloadSound()
+    {
+        if (audioSource != null && reloadSoundClip != null)
+        {
+            audioSource.clip = reloadSoundClip;
+            audioSource.Play();
         }
     }
 }
