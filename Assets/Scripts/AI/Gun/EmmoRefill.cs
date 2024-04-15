@@ -19,7 +19,7 @@ public class EmmoRefill : MonoBehaviour
                     AmmoSystem ammo = child.gameObject.GetComponent<AmmoSystem>();
                   if (ammo != null)
                   {
-                      //ammo.AmmoLeft = ammo.maxRounds;
+                      ammo.AmmoLeft = 48;
                       // 소지가능 탄약 최대값 입력 요망(플레이어측)
                   }
                 }
