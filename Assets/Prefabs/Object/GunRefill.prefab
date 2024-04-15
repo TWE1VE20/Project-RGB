@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4604565589767028893}
   - component: {fileID: 1854865668199338310}
   m_Layer: 0
-  m_Name: GunRifill
+  m_Name: GunRefill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
