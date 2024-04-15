@@ -84,6 +84,7 @@ public class SecurityEnemy : EnemyAI, IStunable
             transform.localRotation = owner.initialLocalRotation;
             owner.addTargetRange = owner.idleRange;
             owner.agent.speed = owner.patrolSpeed;
+            AudioManager.Instance.PlaySfx(AudioManager.SFX.EnemyIdle);
         }
         public override void Update()
         {

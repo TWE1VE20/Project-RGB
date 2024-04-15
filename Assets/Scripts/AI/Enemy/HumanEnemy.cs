@@ -89,7 +89,6 @@ public class HumanEnemy : EnemyAI, IStunable
             owner.addTargetRange = owner.idleRange;
             owner.agent.speed = owner.patrolSpeed;
             AudioManager.Instance.PlaySfx(AudioManager.SFX.EnemyIdle);
-            owner.enemyIdle.loop = true;
         }
         public override void Update()
         {
@@ -335,7 +334,6 @@ public class HumanEnemy : EnemyAI, IStunable
             owner.addTargetRange = owner.battleRange;
             owner.agent.speed = 0f;
             owner.LaserOn();
-            AudioManager.Instance.PlaySfx(AudioManager.SFX.EnemyLockOn);
         }
 
         public override void Update()
@@ -376,7 +374,6 @@ public class HumanEnemy : EnemyAI, IStunable
         public override void Enter()
         {
             Debug.Log("Dead");
-            AudioManager.Instance.PlaySfx(AudioManager.SFX.EnemyDeath);
             owner.Dead();
             //Destroy(owner.gameObject);
         }

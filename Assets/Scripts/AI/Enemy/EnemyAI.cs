@@ -101,12 +101,6 @@ public class EnemyAI : MonoBehaviour, IDamagable
     private float currentRotationAngle = 0.0f; // ���� ȸ�� ����
     public Quaternion initialLocalRotation;
 
-    [Header("AudioSource")]
-    [SerializeField] protected AudioSource enemyIdle;
-    [SerializeField] protected AudioSource enemyDeath;
-    [SerializeField] protected AudioSource enemyLockon;
-    [SerializeField] protected AudioSource enemyShoot;
-
     [Header("deadDelay")]
     [SerializeField] protected float deadDelay;
     public float CosAngle
@@ -318,6 +312,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
     } // ����� ������
     public void LaserOn()
     {
+        AudioManager.Instance.PlaySfx(AudioManager.SFX.EnemyLockOn);
         playerDetecter2s = GetComponentsInChildren<PlayerDetecter2>();
         foreach (PlayerDetecter2 playerDetecter2 in playerDetecter2s)
         {
@@ -420,7 +415,7 @@ public class EnemyAI : MonoBehaviour, IDamagable
     private IEnumerator DeadCount()
     {
         deathCollider = GetComponentsInChildren<Collider>();
-
+        AudioManager.Instance.PlaySfx(AudioManager.SFX.EnemyDeath);
         foreach (Collider collider in deathCollider)
         {
             agent.speed = 0;

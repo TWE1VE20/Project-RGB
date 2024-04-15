@@ -85,6 +85,7 @@ public class HumanoidRobotEnemy : EnemyAI
         {
             owner.addTargetRange = owner.idleRange;
             owner.agent.speed = owner.patrolSpeed;
+            AudioManager.Instance.PlaySfx(AudioManager.SFX.EnemyIdle);
         }
         public override void Update()
         {
