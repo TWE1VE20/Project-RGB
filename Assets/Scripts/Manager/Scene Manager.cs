@@ -11,7 +11,8 @@ public class SceneManager : MonoBehaviour
     [SerializeField] Image loadingBar;
     [SerializeField] Image Shade;
 
-    public bool titleSkip; 
+    public bool titleSkip;
+    private bool loadingFill;
 
     private BaseScene curScene;
     public BaseScene GetCurScene()
@@ -47,6 +48,7 @@ public class SceneManager : MonoBehaviour
 
         loadingBar.gameObject.SetActive(true);
         loadingBar.fillAmount = 0;
+        loadingFill = true;
         loadingimage.gameObject.SetActive(true);
         BaseScene prevScene = GetCurScene();
         AsyncOperation oper = UnitySceneManager.LoadSceneAsync(sceneName);
@@ -54,10 +56,24 @@ public class SceneManager : MonoBehaviour
         while (oper.isDone == false)
         {
             Debug.Log(oper.progress);
-            if (loadingBar.fillAmount < 1)
+            if (loadingBar.fillAmount < 1 && loadingFill)
+            {
                 loadingBar.fillAmount += 0.5f * Time.unscaledDeltaTime;
-            else if (loadingBar.fillAmount > 0)
+                if (loadingBar.fillAmount >= 1)
+                {
+                    loadingFill = false;
+                    loadingBar.fillClockwise = false;
+                }
+            }
+            else if (loadingBar.fillAmount > 0 && !loadingFill)
+            {
                 loadingBar.fillAmount -= 0.5f * Time.unscaledDeltaTime;
+                if (loadingBar.fillAmount <= 0)
+                {
+                    loadingFill = true;
+                    loadingBar.fillClockwise = true;
+                }
+            }
             yield return new WaitForSeconds(Time.unscaledDeltaTime);
         }
 
