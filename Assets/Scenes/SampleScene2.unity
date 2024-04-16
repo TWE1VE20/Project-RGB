@@ -6501,11 +6501,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2889859273857279561, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.381327
+      value: -26.1
       objectReference: {fileID: 0}
     - target: {fileID: 2889859273857279561, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
       propertyPath: m_LocalPosition.y
       value: -2.500001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2889859273857279561, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 3031690604665139124, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6548,8 +6552,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3962211426651061742, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -33.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3962211426651061742, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.0000009536743
+      objectReference: {fileID: 0}
+    - target: {fileID: 5990289724712337852, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -36.06
       objectReference: {fileID: 0}
     - target: {fileID: 5990289724712337852, guid: 1d836759b910aff48bb607c364a93b2b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18289,37 +18301,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Patrol Drone2 Enemy Setup
       objectReference: {fileID: 0}
-    - target: {fileID: 264303092511941701, guid: 3a2d8f35a3d44ca4197f2fe303b87970, type: 3}
-      propertyPath: LaserRadiusOverLifeTime.AnimationCurve.m_Curve.Array.data[0].time
-      value: -0.0000012085075
-      objectReference: {fileID: 0}
-    - target: {fileID: 264303092511941701, guid: 3a2d8f35a3d44ca4197f2fe303b87970, type: 3}
-      propertyPath: LaserRadiusOverLifeTime.AnimationCurve.m_Curve.Array.data[1].time
-      value: 0.99816895
-      objectReference: {fileID: 0}
-    - target: {fileID: 264303092511941701, guid: 3a2d8f35a3d44ca4197f2fe303b87970, type: 3}
-      propertyPath: LaserRadiusOverLifeTime.AnimationCurve.m_Curve.Array.data[0].value
-      value: 1.0046387
-      objectReference: {fileID: 0}
-    - target: {fileID: 264303092511941701, guid: 3a2d8f35a3d44ca4197f2fe303b87970, type: 3}
-      propertyPath: LaserRadiusOverLifeTime.AnimationCurve.m_Curve.Array.data[1].value
-      value: 0.102939606
-      objectReference: {fileID: 0}
-    - target: {fileID: 264303092511941701, guid: 3a2d8f35a3d44ca4197f2fe303b87970, type: 3}
-      propertyPath: LaserRadiusOverLifeTime.AnimationCurve.m_Curve.Array.data[0].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 264303092511941701, guid: 3a2d8f35a3d44ca4197f2fe303b87970, type: 3}
-      propertyPath: LaserRadiusOverLifeTime.AnimationCurve.m_Curve.Array.data[1].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 264303092511941701, guid: 3a2d8f35a3d44ca4197f2fe303b87970, type: 3}
-      propertyPath: LaserRadiusOverLifeTime.AnimationCurve.m_Curve.Array.data[0].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 264303092511941701, guid: 3a2d8f35a3d44ca4197f2fe303b87970, type: 3}
-      propertyPath: LaserRadiusOverLifeTime.AnimationCurve.m_Curve.Array.data[1].outWeight
-      value: 0.33333334
+    - target: {fileID: 203085970550206608, guid: 3a2d8f35a3d44ca4197f2fe303b87970, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5101257355242517837, guid: 3a2d8f35a3d44ca4197f2fe303b87970, type: 3}
       propertyPath: m_LocalPosition.x

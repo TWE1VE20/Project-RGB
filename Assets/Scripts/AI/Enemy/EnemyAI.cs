@@ -24,6 +24,11 @@ public class EnemyAI : MonoBehaviour, IDamagable
     [SerializeField] protected float attackCooltime;
     [SerializeField] public Transform firstTarget;
     [SerializeField] protected Vector3 lostPosition;
+    [SerializeField] protected Transform attackPoint01;
+    [SerializeField] protected Transform attackPoint02;
+    [SerializeField] protected Transform attackPoint03;
+    [SerializeField] protected Transform attackPoint04;
+    [SerializeField] protected Transform attackPoint05;
 
     [Header("FindTarget")]
     private float preAngle;
@@ -196,12 +201,52 @@ public class EnemyAI : MonoBehaviour, IDamagable
         {
             //owner.StopCoroutine(AttackCoroutine());
             //RaycastHit hit; ���� �߻�
-            if (Physics.Raycast(viewPoint.position, viewPoint.forward, out RaycastHit hit, attackRange, targetLayerMask))
+            if (Physics.Raycast(attackPoint01.position, viewPoint.forward, out RaycastHit hit01, attackRange, targetLayerMask))
             {
                 // ���̰� IDamagable �������̽��� ������ ������Ʈ�� �浹�ߴٸ�
-                IDamagable damageable = hit.collider.gameObject.GetComponent<IDamagable>();
+                IDamagable damageable = hit01.collider.gameObject.GetComponent<IDamagable>();
                 // TakeDamage �Լ��� ȣ���Ͽ� ���ظ� �����ϴ�.
-                Debug.Log(hit.collider.gameObject.name);
+                Debug.Log(hit01.collider.gameObject.name);
+                damageable?.TakeDamage(deal, transform.position);
+                AudioManager.Instance.PlaySfx(AudioManager.SFX.EnemyShoot);
+                attackCost = 0;
+            }
+            if (Physics.Raycast(attackPoint02.position, viewPoint.forward, out RaycastHit hit02, attackRange, targetLayerMask))
+            {
+                // ���̰� IDamagable �������̽��� ������ ������Ʈ�� �浹�ߴٸ�
+                IDamagable damageable = hit02.collider.gameObject.GetComponent<IDamagable>();
+                // TakeDamage �Լ��� ȣ���Ͽ� ���ظ� �����ϴ�.
+                Debug.Log(hit02.collider.gameObject.name);
+                damageable?.TakeDamage(deal, transform.position);
+                AudioManager.Instance.PlaySfx(AudioManager.SFX.EnemyShoot);
+                attackCost = 0;
+            }
+            if (Physics.Raycast(attackPoint03.position, viewPoint.forward, out RaycastHit hit03, attackRange, targetLayerMask))
+            {
+                // ���̰� IDamagable �������̽��� ������ ������Ʈ�� �浹�ߴٸ�
+                IDamagable damageable = hit03.collider.gameObject.GetComponent<IDamagable>();
+                // TakeDamage �Լ��� ȣ���Ͽ� ���ظ� �����ϴ�.
+                Debug.Log(hit03.collider.gameObject.name);
+                damageable?.TakeDamage(deal, transform.position);
+                AudioManager.Instance.PlaySfx(AudioManager.SFX.EnemyShoot);
+                attackCost = 0;
+            }
+            if (Physics.Raycast(attackPoint04.position, viewPoint.forward, out RaycastHit hit04, attackRange, targetLayerMask))
+            {
+                // ���̰� IDamagable �������̽��� ������ ������Ʈ�� �浹�ߴٸ�
+                IDamagable damageable = hit04.collider.gameObject.GetComponent<IDamagable>();
+                // TakeDamage �Լ��� ȣ���Ͽ� ���ظ� �����ϴ�.
+                Debug.Log(hit04.collider.gameObject.name);
+                damageable?.TakeDamage(deal, transform.position);
+                AudioManager.Instance.PlaySfx(AudioManager.SFX.EnemyShoot);
+                attackCost = 0;
+            }
+            if (Physics.Raycast(attackPoint05.position, viewPoint.forward, out RaycastHit hit05, attackRange, targetLayerMask))
+            {
+                // ���̰� IDamagable �������̽��� ������ ������Ʈ�� �浹�ߴٸ�
+                IDamagable damageable = hit05.collider.gameObject.GetComponent<IDamagable>();
+                // TakeDamage �Լ��� ȣ���Ͽ� ���ظ� �����ϴ�.
+                Debug.Log(hit05.collider.gameObject.name);
                 damageable?.TakeDamage(deal, transform.position);
                 AudioManager.Instance.PlaySfx(AudioManager.SFX.EnemyShoot);
                 attackCost = 0;

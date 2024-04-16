@@ -353,18 +353,22 @@ public class HumanoidRobotEnemy : EnemyAI
         {
             if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
             {
+                owner.LaserOff();
+                owner.attackCost = 0f;
                 ChangeState(State.Die);
             }
             else if (firstTarget == null)
             {
                 Debug.Log("battle to Alert");
                 owner.LaserOff();
+                owner.attackCost = 0f;
                 ChangeState(State.Alert);
             }
             else if (Vector3.Distance(firstTarget.position, transform.position) >= attackRange)
             {
                 Debug.Log("battle to trace");
                 owner.LaserOff();
+                owner.attackCost = 0f;
                 ChangeState(State.Trace);
             }
             

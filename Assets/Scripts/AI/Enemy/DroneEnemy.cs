@@ -205,7 +205,7 @@ public class DroneEnemy : EnemyAI
             Debug.Log("Tracing");
             owner.ColorChange();
             owner.FindTarget();
-            owner.DirectionDrone();
+            owner.Direction();
             owner.Move();
         }
 
@@ -342,23 +342,26 @@ public class DroneEnemy : EnemyAI
             if (owner.haveColor.curColor == HaveColor.ThisColor.BLACK)
             {
                 owner.LaserOff();
+                owner.attackCost = 0f;
                 ChangeState(State.Die);
             }
             else if (firstTarget == null)
             {
                 owner.LaserOff();
+                owner.attackCost = 0f;
                 ChangeState(State.Alert);
             }
             else if (Vector3.Distance(firstTarget.position, transform.position) >= attackRange)
             {
                 owner.LaserOff();
+                owner.attackCost = 0f;
                 ChangeState(State.Trace);
             }
             
         }
         public override void LateUpdate()
         {
-            owner.DirectionDrone();
+            owner.Direction();
         }
     }
 
