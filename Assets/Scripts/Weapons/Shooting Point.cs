@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEditor.FilePathAttribute;
 
 public class ShootingPoint : MonoBehaviour
 {
@@ -53,7 +48,7 @@ public class ShootingPoint : MonoBehaviour
             // 명중한 물체가 어떤 반응을 할지 추가
             hitInfo.collider.gameObject.GetComponent<IBreakable>()?.Break(weaponHolder.weaponsList[weaponHolder.current].colorState);
             hitInfo.collider.gameObject.GetComponent<IDamagable>()?.TakeDamage(weaponHolder.weaponsList[weaponHolder.current].colorState);
-            if(particles != null)
+            if (particles != null)
                 Instantiate(particles[0], hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
         }
         else
@@ -97,7 +92,7 @@ public class ShootingPoint : MonoBehaviour
         }
     }
 
-    public void Reflect() 
+    public void Reflect()
     {
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, maxDistance))
         {
@@ -107,7 +102,7 @@ public class ShootingPoint : MonoBehaviour
                 Debug.Log(hitInfo.collider.gameObject.name);
                 Debug.Log(hitInfo.distance);
                 hitPoint.position = hitInfo.point;
-                Debug.DrawRay(transform.position, transform.forward * hitInfo.distance, new Color(1,0,1,1), 0.1f);
+                Debug.DrawRay(transform.position, transform.forward * hitInfo.distance, new Color(1, 0, 1, 1), 0.1f);
             }
             hitInfo.collider.gameObject.GetComponent<IStunable>()?.Stun();
         }
