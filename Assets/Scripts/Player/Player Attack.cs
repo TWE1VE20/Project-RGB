@@ -44,15 +44,21 @@ public class PlayerAttack : MonoBehaviour, IDamagable
                 }
                 else
                 {
-                    if(!NoDeath)
+                    if (!NoDeath)
+                    {
                         gameObject.GetComponent<PlayerController>().IsAlive = false;
+                        gameObject.GetComponent<PlayerController>().DeathSound();
+                    }
                     Debug.Log("Dead");
                 }
             }
             else
             {
                 if (!NoDeath)
+                {
                     gameObject.GetComponent<PlayerController>().IsAlive = false;
+                    gameObject.GetComponent<PlayerController>().DeathSound();
+                }
                 Debug.Log("Dead");
             }
         }
