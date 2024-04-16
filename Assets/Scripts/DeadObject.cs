@@ -32,6 +32,7 @@ public class DeadObject : MonoBehaviour
             PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
 
             playerController.IsAlive = false;
+            playerController.DeathSound();
         }
     }
 }

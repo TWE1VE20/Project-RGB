@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static AudioManager;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     [Header("Sound")]
     [SerializeField] AudioSource playerAudioSource;
     [SerializeField] AudioClip[] playerAudioClips;
+    [SerializeField] AudioManager audioManager;
     private IEnumerator soundCorutine;
     private bool isRunSound;
 
@@ -155,6 +157,10 @@ public class PlayerController : MonoBehaviour
 
     public void DeathSound()
     {
+        Debug.Log("Dead Sound");
+        audioManager.StopBgm(BGM.InGame);
+        if(soundCorutine != null)
+            StopCoroutine(soundCorutine);
         playerAudioSource.clip = playerAudioClips[2];
         playerAudioSource.loop = false;
         playerAudioSource.Play();
