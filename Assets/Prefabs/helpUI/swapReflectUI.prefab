@@ -65,11 +65,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1 : \uCD1D \uB4E4\uAE30\n2 : \uAC80 \uB4E4\uAE30\n\n\uAC80 \uB4E4\uACE0
-    \uACF5\uACA9 : \uACF5\uACA9 \uBC18\uC0AC"
+  m_text: "1 : \uCD1D \uB4E4\uAE30\n2 : \uAC80 \uB4E4\uAE30\n\n\uAC80\uC73C\uB85C
+    \uBC29\uC5B4 : Left Ctrl"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 74f89d6d49301b84f8fff746a92ff67f, type: 2}
-  m_sharedMaterial: {fileID: 3411443312353433583, guid: 74f89d6d49301b84f8fff746a92ff67f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 08c90b46ed4258f4ba62bf977911f24c, type: 2}
+  m_sharedMaterial: {fileID: 1621967364168113550, guid: 08c90b46ed4258f4ba62bf977911f24c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
