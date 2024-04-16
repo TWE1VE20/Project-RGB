@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour
     {
         if (IsAlive)
         {
-            if (!Manager.timeflow.Paused)
+            if (!Manager.timeflow.Paused && !Manager.Scene.loading)
                 pauseController.Paused();
             else
                 pauseController.PauseEnd();

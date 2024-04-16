@@ -13,6 +13,7 @@ public class SceneManager : MonoBehaviour
 
     public bool titleSkip;
     private bool loadingFill;
+    public bool loading { get; private set; }
 
     private BaseScene curScene;
     public BaseScene GetCurScene()
@@ -42,6 +43,7 @@ public class SceneManager : MonoBehaviour
 
     IEnumerator LoadingRoutine(string sceneName)
     {
+        loading = true;
         canvas.gameObject.SetActive(true);
         // Fade In
         Shade.color = new Color(Shade.color.r, Shade.color.g, Shade.color.b, 1f);
@@ -91,6 +93,7 @@ public class SceneManager : MonoBehaviour
             yield return null;
         }
         loadingimage.gameObject.SetActive(false);
+        loading = false;
     }
 
     private void Upadate()
@@ -108,8 +111,8 @@ public class SceneManager : MonoBehaviour
 
     public void ExitGame()
     {
-        Debug.Log("Exit");
         Application.Quit();
+        Debug.Log("Exit");
     }
 
     public void SetLoadingBarValue(float value)

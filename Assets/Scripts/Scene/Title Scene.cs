@@ -55,6 +55,9 @@ public class TitleScene : BaseScene
 
     private void Update()
     {
+        if (Manager.Scene.titleSkip)
+            skipIntro = true;
+
         if (!OpenEnd)
         {
 
@@ -107,6 +110,12 @@ public class TitleScene : BaseScene
         Manager.Scene.LoadScene("Game Scene");
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+        Debug.Log("Exit");
+    }
+
     public override IEnumerator LoadingRoutine()
     {
         yield return null;
@@ -115,6 +124,7 @@ public class TitleScene : BaseScene
 
     IEnumerator FirstOpening()
     {
+        Manager.Scene.titleSkip = true;
         Shade.gameObject.SetActive(true);
         LobbyIdle.SetActive(false);
         titleCanvas.gameObject.SetActive(false);
