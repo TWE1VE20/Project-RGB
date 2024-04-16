@@ -64,7 +64,7 @@ public class PlayerAttack : MonoBehaviour, IDamagable
 
     private void OnAttack(InputValue value)
     {
-        if (!Manager.timeflow.timeStop)
+        if (!Manager.timeflow.timeStop && !Manager.timeflow.Paused)
         {
             if (gameObject.GetComponent<PlayerController>().IsAlive)
             {
@@ -79,7 +79,7 @@ public class PlayerAttack : MonoBehaviour, IDamagable
 
     private void OnReload(InputValue value)
     {
-        if (!Manager.timeflow.timeStop)
+        if (!Manager.timeflow.timeStop && !Manager.timeflow.Paused)
             weaponHolder.Reload();
     }
 

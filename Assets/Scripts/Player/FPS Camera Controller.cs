@@ -46,7 +46,7 @@ public class FPSCameraController : MonoBehaviour
 
     void Update()
     {
-        if (!Manager.timeflow.timeStop || playerController.IsAlive)
+        if (!Manager.timeflow.timeStop && !Manager.timeflow.Paused && playerController.IsAlive)
         {
             // unscaledDeltaTime으로 TimeScale 즉 슬로우모션의 영향에서 벗어난다.
             xRotation -= inputDir.y * mouseSensitivity * Time.unscaledDeltaTime;
@@ -60,7 +60,7 @@ public class FPSCameraController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!Manager.timeflow.timeStop)
+        if (!Manager.timeflow.timeStop && !Manager.timeflow.Paused)
         {
             slowmotionZoom();
             if (!Zoom)

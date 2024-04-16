@@ -20,6 +20,11 @@ public class TitleScene : BaseScene
     [SerializeField] Light[] CellingLight;
     [SerializeField] float LightchangeSpeed;
 
+    [Header("Sounds")]
+    [SerializeField] AudioSource titleAudioSource;
+    [SerializeField] AudioClip titleTheme;
+    [SerializeField] AudioClip[] introTheme;
+
     public bool skipIntro;
 
     private LightColor curColor;
@@ -42,6 +47,9 @@ public class TitleScene : BaseScene
         else
         {
             OpenEnd = true;
+            titleAudioSource.loop = true;
+            titleAudioSource.clip = titleTheme;
+            titleAudioSource.Play();
         }
     }
 
@@ -118,6 +126,9 @@ public class TitleScene : BaseScene
             light.intensity = 0;
         foreach (Light light in CellingLight)
             light.intensity = 0.5f;
+        titleAudioSource.loop = false;
+        titleAudioSource.clip = introTheme[0];
+        titleAudioSource.Play();
         Shade.color = new Color(Shade.color.r, Shade.color.g, Shade.color.b, 1f);
         for (float t = 1f; t > 0f; t -= Time.deltaTime)
         {
@@ -139,7 +150,11 @@ public class TitleScene : BaseScene
             yield return null;
         }
         LobbyIdle.SetActive(true);
+        titleAudioSource.clip = introTheme[1];
+        titleAudioSource.Play();
         yield return new WaitForSeconds(3);
+        titleAudioSource.clip = introTheme[2];
+        titleAudioSource.Play();
         FloorLight.intensity = 1f;
         for (float t = 1f; t > 0f; t -= Time.deltaTime / 3)
         {
@@ -154,11 +169,24 @@ public class TitleScene : BaseScene
             mainCamera.fieldOfView = FOV;
             yield return null;
         }
-        foreach (Light light in WallLight)
-            light.intensity = 0.5f;
-        foreach (Light light in CellingLight)
-            light.intensity = 1f;
-        yield return new WaitForSeconds(1);
+        for(float t = 2f; t > 0f; t -= Time.deltaTime)
+        {
+            float lightIntensity = Mathf.Lerp(0.5f, 0f, t/2);
+            foreach (Light light in WallLight)
+                light.intensity = lightIntensity;
+            yield return null;
+        }
+        titleAudioSource.clip = introTheme[3];
+        titleAudioSource.Play();
+        CellingLight[0].intensity = 1f;
+        yield return new WaitForSeconds(0.7f);
+        titleAudioSource.clip = introTheme[4];
+        titleAudioSource.Play();
+        CellingLight[1].intensity = 1f;
+        yield return new WaitForSeconds(0.7f);
+        titleAudioSource.clip = titleTheme;
+        titleAudioSource.loop = true;
+        titleAudioSource.Play();
         OpenEnd = true;
         titleCanvas.gameObject.SetActive(true);
         for (float t = 1f; t > 0f; t -= Time.deltaTime)

@@ -977,6 +977,7 @@ GameObject:
   - component: {fileID: 140181221}
   - component: {fileID: 140181220}
   - component: {fileID: 140181219}
+  - component: {fileID: 140181222}
   m_Layer: 5
   m_Name: Option Button
   m_TagString: Untagged
@@ -1086,6 +1087,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 140181217}
   m_CullTransparentMesh: 1
+--- !u!95 &140181222
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140181217}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 09ed4e9bad8e3dc4cb8af7296e8fa52d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &145008137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10221,6 +10243,14 @@ MonoBehaviour:
   - {fileID: 878950490}
   - {fileID: 1547709864}
   LightchangeSpeed: 0.5
+  titleAudioSource: {fileID: 1496382588}
+  titleTheme: {fileID: 8300000, guid: c9f8037ece252d241a89cdde41ae1899, type: 3}
+  introTheme:
+  - {fileID: 8300000, guid: ea72ec06d1e44cc429b5e423eaf4a09f, type: 3}
+  - {fileID: 8300000, guid: 300cd4b568829bf4394e4da4035269c0, type: 3}
+  - {fileID: 8300000, guid: 3f364bd0816051f42bc988e99c063b41, type: 3}
+  - {fileID: 8300000, guid: edcbcccdb597a3440805a622f6f3cf49, type: 3}
+  - {fileID: 8300000, guid: 8f7a844b39b74b74ea75387bd4584921, type: 3}
   skipIntro: 0
 --- !u!4 &1496382587
 Transform:
@@ -10246,12 +10276,12 @@ AudioSource:
   m_GameObject: {fileID: 1496382585}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: e583e3b2649b0e0408419cdce4c6f49e, type: 2}
   m_audioClip: {fileID: 8300000, guid: c9f8037ece252d241a89cdde41ae1899, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -10345,6 +10375,7 @@ GameObject:
   - component: {fileID: 1501089011}
   - component: {fileID: 1501089010}
   - component: {fileID: 1501089009}
+  - component: {fileID: 1501089012}
   m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
@@ -10454,6 +10485,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501089007}
   m_CullTransparentMesh: 1
+--- !u!95 &1501089012
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501089007}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e2e8159245e3dc5418d0027456fb8ef0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1503492559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11290,6 +11342,7 @@ GameObject:
   - component: {fileID: 1583391387}
   - component: {fileID: 1583391386}
   - component: {fileID: 1583391385}
+  - component: {fileID: 1583391388}
   m_Layer: 5
   m_Name: Start Button
   m_TagString: Untagged
@@ -11411,6 +11464,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1583391383}
   m_CullTransparentMesh: 1
+--- !u!95 &1583391388
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583391383}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a200d95ae3759e842bfd376fd0b19e56, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1584441543
 PrefabInstance:
   m_ObjectHideFlags: 0

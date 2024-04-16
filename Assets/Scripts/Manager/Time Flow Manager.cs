@@ -23,6 +23,7 @@ public class TimeFlowManager : MonoBehaviour
     public bool Slow { get; private set; }  // 슬로우모션하고있어야 하는지 유무
     public bool SlowMotionEnable { get; private set; }
     public bool timeStop;
+    public bool Paused;
 
     // Real Time    실제 타임
     private int Rmin;
@@ -40,6 +41,7 @@ public class TimeFlowManager : MonoBehaviour
     void Start()
     {
         timeStop = false;
+        Paused = false;
 
         // 시간 관련
         slowFactor = 1f;
@@ -74,7 +76,7 @@ public class TimeFlowManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (timeStop)
+        if (timeStop || Paused)
             Pause();
         else
             SlowMotion();
@@ -169,7 +171,7 @@ public class TimeFlowManager : MonoBehaviour
 
     IEnumerator WaitForStart()
     {
-        yield return new WaitUntil(() => timeStop == false);
+        yield return new WaitUntil(() => timeStop == false && Paused == false);
         Time.timeScale = slowFactor;
     }
 }
