@@ -25,6 +25,7 @@ public class GameScene : BaseScene
     public void BackToTitle()
     {
         Debug.Log("Back To Title");
+        Manager.game.respawnPoint = new Vector3( 12.56f, 227f, 8.52f );
         Manager.Scene.LoadScene("Title");
     }
     public void Dead()
