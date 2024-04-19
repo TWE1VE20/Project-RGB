@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallDouble_B (4)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -231,6 +235,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 727838586fee4344fa2134678d9ed0c3, type: 3}
       propertyPath: m_Name
       value: deco_pipe_straight (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 727838586fee4344fa2134678d9ed0c3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -294,6 +302,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallDoor_double
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9b747de09b10f5840981c9f5d470691b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -350,6 +362,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
       propertyPath: m_Name
       value: floorTile_C_double (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -408,6 +424,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallDouble_B (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -465,6 +485,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallDouble_A (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 56fad775313be3645bf7c1211c52648d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -518,6 +542,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2923168295774609379, guid: 274d27211c2e750438cbf93626121993, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 2946208375767189446, guid: 274d27211c2e750438cbf93626121993, type: 3}
       propertyPath: m_Name
       value: deco_ceilingLigh_long (2)
@@ -525,6 +553,10 @@ PrefabInstance:
     - target: {fileID: 2946208375767189446, guid: 274d27211c2e750438cbf93626121993, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946208375767189446, guid: 274d27211c2e750438cbf93626121993, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -618,6 +650,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_deck_I
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -675,6 +711,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_B_double (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4f57dabb51892144b9ad50a72c681f80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -694,7 +734,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &107321999
 Transform:
@@ -779,6 +819,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_edge_noEdge (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -836,6 +880,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_C_double (24)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -892,6 +940,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 727838586fee4344fa2134678d9ed0c3, type: 3}
       propertyPath: m_Name
       value: deco_pipe_straight (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 727838586fee4344fa2134678d9ed0c3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -959,6 +1011,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
       propertyPath: m_Name
       value: floorTile_C_double (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1160,6 +1216,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_C_double (23)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1222,6 +1282,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_C_double (14)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1246,7 +1310,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &153229440
 Transform:
@@ -1325,6 +1389,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_vent
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bfe27ad23fe592e409b78f53f01edb7b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1382,6 +1450,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_T (5)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1401,7 +1473,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &166985552
 Transform:
@@ -1484,6 +1556,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_T (17)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1546,6 +1622,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_vent (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bfe27ad23fe592e409b78f53f01edb7b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1602,6 +1682,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 4f57dabb51892144b9ad50a72c681f80, type: 3}
       propertyPath: m_Name
       value: floorTile_B_double (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4f57dabb51892144b9ad50a72c681f80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1664,6 +1748,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
       propertyPath: m_Name
       value: floorTile_C_double (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1763,6 +1851,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_T (8)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1824,6 +1916,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
       propertyPath: m_Name
       value: wallDouble_B (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1892,6 +1988,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_I (6)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e51b5fb4b699d35468eeb878af907fb2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1953,6 +2053,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
       propertyPath: m_Name
       value: floorTile_C_double (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2016,6 +2120,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_edge_noEdge (19)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2077,6 +2185,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: e51b5fb4b699d35468eeb878af907fb2, type: 3}
       propertyPath: m_Name
       value: ceiling_flat_I (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e51b5fb4b699d35468eeb878af907fb2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2140,6 +2252,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_B_doubleRamp (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: eb2d8af3488e1db43a6c4d1781aed72b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2202,6 +2318,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_deck_I
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2258,6 +2378,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
       propertyPath: m_Name
       value: wallDouble_B (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2325,6 +2449,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
       propertyPath: m_Name
       value: wallDouble_B (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2401,6 +2529,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_pipe_curve_L
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 126908dc00045d74a84a08ffefbaa03a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2467,6 +2599,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
       propertyPath: m_Name
       value: ceiling_flat_T (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2642,6 +2778,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_angleOut_noEdge
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9b8ac6c67b918874a8c3a9a044ee79d2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2698,6 +2838,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: adb8a03a51d464243924706136f034e0, type: 3}
       propertyPath: m_Name
       value: doorDouble_top
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: adb8a03a51d464243924706136f034e0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2756,6 +2900,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_deck_I
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2812,6 +2960,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: e8d8599807954f84080257517784f192, type: 3}
       propertyPath: m_Name
       value: deco_crate_big (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e8d8599807954f84080257517784f192, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2875,6 +3027,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallDouble_A (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 56fad775313be3645bf7c1211c52648d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2937,6 +3093,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_C_double (12)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2993,6 +3153,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 834aaf28e8ac78b45a80e7bb92ebbe0e, type: 3}
       propertyPath: m_Name
       value: wallRamp_pillar (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 834aaf28e8ac78b45a80e7bb92ebbe0e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3051,6 +3215,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_deck_I (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3107,6 +3275,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
       propertyPath: m_Name
       value: ceiling_flat_T (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3165,6 +3337,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_C_double (6)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3221,6 +3397,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
       propertyPath: m_Name
       value: ceiling_flat_T (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3288,6 +3468,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
       propertyPath: m_Name
       value: floorTile_C_double (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3361,6 +3545,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_edge_noEdge (16)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3418,6 +3606,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallAngleStraightOut (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ed7e24a43ef14da4b9af8155fde97bbb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3474,6 +3666,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
       propertyPath: m_Name
       value: ceiling_edge_noEdge (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3536,6 +3732,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
       propertyPath: m_Name
       value: ceiling_edge_noEdge (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3614,6 +3814,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_X
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 1ebf882c4ea897343bfb7b34e7facb5e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3675,6 +3879,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: e51b5fb4b699d35468eeb878af907fb2, type: 3}
       propertyPath: m_Name
       value: ceiling_flat_I (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e51b5fb4b699d35468eeb878af907fb2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3748,6 +3956,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_B_double (9)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4f57dabb51892144b9ad50a72c681f80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3815,6 +4027,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_pipe_straight (5)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 727838586fee4344fa2134678d9ed0c3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3871,6 +4087,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 727838586fee4344fa2134678d9ed0c3, type: 3}
       propertyPath: m_Name
       value: deco_pipe_straight (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 727838586fee4344fa2134678d9ed0c3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4008,6 +4228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_T (18)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4070,6 +4294,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallRamp_pillar
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 834aaf28e8ac78b45a80e7bb92ebbe0e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4131,6 +4359,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
       propertyPath: m_Name
       value: ceiling_edge_noEdge (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4199,6 +4431,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_I (7)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e51b5fb4b699d35468eeb878af907fb2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4256,6 +4492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_I
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e51b5fb4b699d35468eeb878af907fb2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4274,6 +4514,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1466836772}
     m_Modifications:
+    - target: {fileID: 4813723920083278517, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5426443101705236501, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.276281
@@ -4321,6 +4565,10 @@ PrefabInstance:
     - target: {fileID: 9013321992355742214, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013321992355742214, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4384,6 +4632,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallDouble_B (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4440,6 +4692,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
       propertyPath: m_Name
       value: wallDouble_B (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4508,6 +4764,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_A_double (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c0534a94606f9304eac26b3971214d54, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4532,7 +4792,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &669371995
 Transform:
@@ -4606,6 +4866,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_pipe_curve_R
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 808d3d87ece915140bae522c2bff8ee3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4662,6 +4926,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 1ebf882c4ea897343bfb7b34e7facb5e, type: 3}
       propertyPath: m_Name
       value: ceiling_flat_X (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 1ebf882c4ea897343bfb7b34e7facb5e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4725,6 +4993,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stairs_long
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d0285c908c45f4c4a84868b9186581c5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4786,6 +5058,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: c0534a94606f9304eac26b3971214d54, type: 3}
       propertyPath: m_Name
       value: floorTile_A_double (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c0534a94606f9304eac26b3971214d54, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4849,6 +5125,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_A_double
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c0534a94606f9304eac26b3971214d54, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4905,6 +5185,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 3b6edb32b56b43f419b52e95b9546421, type: 3}
       propertyPath: m_Name
       value: floorTile_deck_X
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 3b6edb32b56b43f419b52e95b9546421, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4983,6 +5267,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_C_double (20)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5045,6 +5333,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_pipe_straight (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 727838586fee4344fa2134678d9ed0c3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5101,6 +5393,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: e51b5fb4b699d35468eeb878af907fb2, type: 3}
       propertyPath: m_Name
       value: ceiling_flat_I (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e51b5fb4b699d35468eeb878af907fb2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5169,6 +5465,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_pipe_wallConnector
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c8025c3f485c7424d8b8315d995f1db6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5225,6 +5525,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
       propertyPath: m_Name
       value: floorTile_C_double (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5288,6 +5592,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_crate_small
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c7e183d3d315f5041b4bf3b2ef2f93c8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5344,6 +5652,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 54b07a92829bdb147b44669d7beddc93, type: 3}
       propertyPath: m_Name
       value: doorDouble_bottom
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 54b07a92829bdb147b44669d7beddc93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5417,6 +5729,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallDouble_A
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 56fad775313be3645bf7c1211c52648d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5484,6 +5800,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_C_double (21)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5540,6 +5860,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 834aaf28e8ac78b45a80e7bb92ebbe0e, type: 3}
       propertyPath: m_Name
       value: wallRamp_pillar (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 834aaf28e8ac78b45a80e7bb92ebbe0e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5607,6 +5931,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: e51b5fb4b699d35468eeb878af907fb2, type: 3}
       propertyPath: m_Name
       value: ceiling_flat_I (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e51b5fb4b699d35468eeb878af907fb2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5711,6 +6039,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2923168295774609379, guid: 274d27211c2e750438cbf93626121993, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 2946208375767189446, guid: 274d27211c2e750438cbf93626121993, type: 3}
       propertyPath: m_Name
       value: deco_ceilingLigh_long (1)
@@ -5718,6 +6050,10 @@ PrefabInstance:
     - target: {fileID: 2946208375767189446, guid: 274d27211c2e750438cbf93626121993, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946208375767189446, guid: 274d27211c2e750438cbf93626121993, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5775,6 +6111,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: c0534a94606f9304eac26b3971214d54, type: 3}
       propertyPath: m_Name
       value: floorTile_A_double (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c0534a94606f9304eac26b3971214d54, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5951,7 +6291,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &901587311
 Transform:
@@ -6086,6 +6426,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_engine (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7a9f1cc61aae624469149b5bd10ae1f1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6142,6 +6486,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
       propertyPath: m_Name
       value: ceiling_edge_noEdge
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6200,6 +6548,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_T (16)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6257,6 +6609,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_C_double (10)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6313,6 +6669,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 9fd64f3ea1a73444f8cf719bceb82c50, type: 3}
       propertyPath: m_Name
       value: deco_tank
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9fd64f3ea1a73444f8cf719bceb82c50, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6381,6 +6741,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_handrail_straight (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 97b082a1a5dc354479f3dbd4f9a499df, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6442,6 +6806,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 4f57dabb51892144b9ad50a72c681f80, type: 3}
       propertyPath: m_Name
       value: floorTile_B_double (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4f57dabb51892144b9ad50a72c681f80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6505,6 +6873,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_edge_noEdge (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6567,6 +6939,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_I (8)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e51b5fb4b699d35468eeb878af907fb2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6624,6 +7000,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_deck_T
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4ee11999c9acf3d408d2b64cfe64dc65, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6680,6 +7060,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: ed7e24a43ef14da4b9af8155fde97bbb, type: 3}
       propertyPath: m_Name
       value: wallAngleStraightOut (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ed7e24a43ef14da4b9af8155fde97bbb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6742,6 +7126,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
       propertyPath: m_Name
       value: ceiling_flat_T (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6913,6 +7301,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallDouble_B (4)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6969,6 +7361,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
       propertyPath: m_Name
       value: floorTile_C_double (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7027,6 +7423,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_C_double (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7084,6 +7484,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallDouble_B (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7140,6 +7544,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
       propertyPath: m_Name
       value: ceiling_edge_noEdge (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7203,6 +7611,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_T (9)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7264,6 +7676,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: ac43be1f001c1b84280fe2f1b17026eb, type: 3}
       propertyPath: m_Name
       value: wallDouble_C
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ac43be1f001c1b84280fe2f1b17026eb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7471,6 +7887,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_edge_noEdge (17)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7537,6 +7957,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
       propertyPath: m_Name
       value: floorTile_deck_I (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7615,6 +8039,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_edge_noEdge (18)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7671,6 +8099,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 97b082a1a5dc354479f3dbd4f9a499df, type: 3}
       propertyPath: m_Name
       value: deco_handrail_straight (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 97b082a1a5dc354479f3dbd4f9a499df, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7734,6 +8166,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallDouble_C
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ac43be1f001c1b84280fe2f1b17026eb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7796,6 +8232,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_barrel
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 995a1a3fd51a0aa419451a6cc737a841, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7852,6 +8292,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
       propertyPath: m_Name
       value: floorTile_deck_I (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7915,6 +8359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_angleOut_noEdge (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9b8ac6c67b918874a8c3a9a044ee79d2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7972,6 +8420,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_B_double (5)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4f57dabb51892144b9ad50a72c681f80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8028,6 +8480,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 5fadf75dd10d3574c956d8a472421dc6, type: 3}
       propertyPath: m_Name
       value: floorTile_deck_O
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 5fadf75dd10d3574c956d8a472421dc6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8096,6 +8552,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_pipe_straight (4)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 727838586fee4344fa2134678d9ed0c3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8163,6 +8623,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_edge_noEdge (9)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8220,6 +8684,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_edge_noEdge (7)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8276,6 +8744,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: c0534a94606f9304eac26b3971214d54, type: 3}
       propertyPath: m_Name
       value: floorTile_A_double (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c0534a94606f9304eac26b3971214d54, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8376,6 +8848,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_pipe_straight (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 727838586fee4344fa2134678d9ed0c3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8433,6 +8909,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_C_double (17)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8489,6 +8969,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 834aaf28e8ac78b45a80e7bb92ebbe0e, type: 3}
       propertyPath: m_Name
       value: wallRamp_pillar (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 834aaf28e8ac78b45a80e7bb92ebbe0e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8551,6 +9035,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
       propertyPath: m_Name
       value: wallDouble_B (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8629,6 +9117,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: c7e183d3d315f5041b4bf3b2ef2f93c8, type: 3}
       propertyPath: m_Name
       value: deco_crate_small
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c7e183d3d315f5041b4bf3b2ef2f93c8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8762,6 +9254,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_angleOut_noEdge (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9b8ac6c67b918874a8c3a9a044ee79d2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8818,6 +9314,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: c0534a94606f9304eac26b3971214d54, type: 3}
       propertyPath: m_Name
       value: floorTile_A_double (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c0534a94606f9304eac26b3971214d54, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8881,6 +9381,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_T (15)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8937,6 +9441,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 4f57dabb51892144b9ad50a72c681f80, type: 3}
       propertyPath: m_Name
       value: floorTile_B_double (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4f57dabb51892144b9ad50a72c681f80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9004,6 +9512,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 727838586fee4344fa2134678d9ed0c3, type: 3}
       propertyPath: m_Name
       value: deco_pipe_straight (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 727838586fee4344fa2134678d9ed0c3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9082,6 +9594,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallDouble_B (5)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9143,6 +9659,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
       propertyPath: m_Name
       value: floorTile_deck_I (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9216,6 +9736,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_barrel
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 995a1a3fd51a0aa419451a6cc737a841, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9288,6 +9812,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_T (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9349,6 +9877,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
       propertyPath: m_Name
       value: ceiling_flat_T (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9417,6 +9949,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_deck_I (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9478,6 +10014,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
       propertyPath: m_Name
       value: ceiling_flat_T (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9551,6 +10091,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_vent (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bfe27ad23fe592e409b78f53f01edb7b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9607,6 +10151,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 4f57dabb51892144b9ad50a72c681f80, type: 3}
       propertyPath: m_Name
       value: floorTile_B_double
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4f57dabb51892144b9ad50a72c681f80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9665,6 +10213,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_corner_A
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bdc7b8133ea7d9f4499966b20b7b55aa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9689,7 +10241,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1407446135
 Transform:
@@ -9787,6 +10339,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: c0534a94606f9304eac26b3971214d54, type: 3}
       propertyPath: m_Name
       value: floorTile_A_double (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c0534a94606f9304eac26b3971214d54, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9888,6 +10444,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_deck_I (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9955,6 +10515,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_C_double (18)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9974,7 +10538,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1466836772
 Transform:
@@ -10062,6 +10626,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_pipe_straight (4)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 727838586fee4344fa2134678d9ed0c3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10119,6 +10687,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_pipe_straight (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 727838586fee4344fa2134678d9ed0c3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10175,6 +10747,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: ac43be1f001c1b84280fe2f1b17026eb, type: 3}
       propertyPath: m_Name
       value: wallDouble_C (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ac43be1f001c1b84280fe2f1b17026eb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10561,6 +11137,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_edge_noEdge (15)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10617,6 +11197,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 97b082a1a5dc354479f3dbd4f9a499df, type: 3}
       propertyPath: m_Name
       value: deco_handrail_straight
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 97b082a1a5dc354479f3dbd4f9a499df, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10680,6 +11264,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_crate_big
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e8d8599807954f84080257517784f192, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10742,6 +11330,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_T (12)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10798,6 +11390,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
       propertyPath: m_Name
       value: wallDouble_B (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10856,6 +11452,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_T
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10913,6 +11513,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_X (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 1ebf882c4ea897343bfb7b34e7facb5e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10932,7 +11536,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1539542727
 Transform:
@@ -11084,6 +11688,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_C_double (5)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11151,6 +11759,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_vent
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bfe27ad23fe592e409b78f53f01edb7b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11208,6 +11820,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_deck_I
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11264,6 +11880,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: e51b5fb4b699d35468eeb878af907fb2, type: 3}
       propertyPath: m_Name
       value: ceiling_flat_I (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e51b5fb4b699d35468eeb878af907fb2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11326,6 +11946,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
       propertyPath: m_Name
       value: floorTile_deck_I (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11539,6 +12163,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_T (11)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11595,6 +12223,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
       propertyPath: m_Name
       value: ceiling_edge_noEdge (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11792,6 +12424,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_edge_noEdge (10)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11854,6 +12490,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallDouble_C (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ac43be1f001c1b84280fe2f1b17026eb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11910,6 +12550,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 1ebf882c4ea897343bfb7b34e7facb5e, type: 3}
       propertyPath: m_Name
       value: ceiling_flat_X (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 1ebf882c4ea897343bfb7b34e7facb5e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11968,6 +12612,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_edge_noEdge (5)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11981,6 +12629,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1466836772}
     m_Modifications:
+    - target: {fileID: 4813723920083278517, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5426443101705236501, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.0237193
@@ -12029,6 +12681,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9013321992355742214, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12047,6 +12703,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1466836772}
     m_Modifications:
+    - target: {fileID: 4813723920083278517, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5426443101705236501, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.9237194
@@ -12094,6 +12754,10 @@ PrefabInstance:
     - target: {fileID: 9013321992355742214, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013321992355742214, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12157,6 +12821,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_C_double
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12213,6 +12881,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
       propertyPath: m_Name
       value: floorTile_C_double (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12286,6 +12958,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallDouble_C (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ac43be1f001c1b84280fe2f1b17026eb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12343,6 +13019,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallDouble_A (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 56fad775313be3645bf7c1211c52648d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12362,7 +13042,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1666804348
 Transform:
@@ -12458,6 +13138,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_T (10)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12530,6 +13214,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallRamp_pillar (4)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 834aaf28e8ac78b45a80e7bb92ebbe0e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12587,6 +13275,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_edge_noEdge (6)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12643,6 +13335,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 93ca94185d7bae84ea61b30fc3ab5800, type: 3}
       propertyPath: m_Name
       value: deco_screenDevice
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 93ca94185d7bae84ea61b30fc3ab5800, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12711,6 +13407,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_engine
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7a9f1cc61aae624469149b5bd10ae1f1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12767,6 +13467,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
       propertyPath: m_Name
       value: floorTile_deck_I (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12825,6 +13529,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_B_double (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4f57dabb51892144b9ad50a72c681f80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12881,6 +13589,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: eb2d8af3488e1db43a6c4d1781aed72b, type: 3}
       propertyPath: m_Name
       value: floorTile_B_doubleRamp
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: eb2d8af3488e1db43a6c4d1781aed72b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12944,6 +13656,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_T (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12963,7 +13679,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1771978209
 Transform:
@@ -13051,6 +13767,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_pipe_straight (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 727838586fee4344fa2134678d9ed0c3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13107,6 +13827,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
       propertyPath: m_Name
       value: wallDouble_B (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13170,6 +13894,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_B_doubleRamp (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: eb2d8af3488e1db43a6c4d1781aed72b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13226,6 +13954,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
       propertyPath: m_Name
       value: floorTile_C_double (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13288,6 +14020,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 21c3bff47092687418fd857593a37da7, type: 3}
       propertyPath: m_Name
       value: wallRamp_L
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 21c3bff47092687418fd857593a37da7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13356,6 +14092,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_I (5)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e51b5fb4b699d35468eeb878af907fb2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13417,6 +14157,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
       propertyPath: m_Name
       value: floorTile_C_double (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13484,6 +14228,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
       propertyPath: m_Name
       value: floorTile_deck_I (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13622,6 +14370,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_A_double (6)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c0534a94606f9304eac26b3971214d54, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13678,6 +14430,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
       propertyPath: m_Name
       value: ceiling_edge_noEdge (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13782,6 +14538,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_I (11)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e51b5fb4b699d35468eeb878af907fb2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13849,6 +14609,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallDouble_B (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13905,6 +14669,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
       propertyPath: m_Name
       value: ceiling_edge_noEdge (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13963,6 +14731,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallAngleStraightOut (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ed7e24a43ef14da4b9af8155fde97bbb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14020,6 +14792,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_I (4)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e51b5fb4b699d35468eeb878af907fb2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14076,6 +14852,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
       propertyPath: m_Name
       value: floorTile_deck_I (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e5c1726248b01e245be8e05f2fd7adef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14144,6 +14924,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_B_double (4)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4f57dabb51892144b9ad50a72c681f80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14201,6 +14985,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_T (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14257,6 +15045,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
       propertyPath: m_Name
       value: ceiling_flat_T (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14320,6 +15112,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_handrailStairs_long_A
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 5d85d256d6e49d146858a67b44d342dc, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14376,6 +15172,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
       propertyPath: m_Name
       value: floorTile_C_double (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14439,6 +15239,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_C_double (4)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7b82c45b5d77d48488f6d3c192405ee4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14496,6 +15300,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_edge_noEdge (12)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 049f6f50bbd569843a3718fe38f3c49f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14552,6 +15360,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 727838586fee4344fa2134678d9ed0c3, type: 3}
       propertyPath: m_Name
       value: deco_pipe_straight
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 727838586fee4344fa2134678d9ed0c3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14615,6 +15427,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floorTile_B_double (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4f57dabb51892144b9ad50a72c681f80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14653,6 +15469,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1466836772}
     m_Modifications:
+    - target: {fileID: 4813723920083278517, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5426443101705236501, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.0762806
@@ -14700,6 +15520,10 @@ PrefabInstance:
     - target: {fileID: 9013321992355742214, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013321992355742214, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14763,6 +15587,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallDouble_B
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 384436447899cc34dabbf562577e251e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14820,6 +15648,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_handrail_angle90
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 8e5e1b7c7ae12e74580301c060b3d2a7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14839,7 +15671,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2035194314
 Transform:
@@ -14920,6 +15752,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_barrel (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 995a1a3fd51a0aa419451a6cc737a841, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14933,6 +15769,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1466836772}
     m_Modifications:
+    - target: {fileID: 4813723920083278517, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5426443101705236501, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.0237193
@@ -14981,6 +15821,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9013321992355742214, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15020,7 +15864,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2095602354
 Transform:
@@ -15152,6 +15996,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deco_pipe_curve_R
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 808d3d87ece915140bae522c2bff8ee3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15171,7 +16019,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2133390654
 Transform:
@@ -15269,6 +16117,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ceiling_flat_T (6)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d27cda92985715943878c8161dc6cf4a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15325,6 +16177,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 4f57dabb51892144b9ad50a72c681f80, type: 3}
       propertyPath: m_Name
       value: floorTile_B_double (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4f57dabb51892144b9ad50a72c681f80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15387,6 +16243,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: ed7e24a43ef14da4b9af8155fde97bbb, type: 3}
       propertyPath: m_Name
       value: wallAngleStraightOut
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ed7e24a43ef14da4b9af8155fde97bbb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15451,9 +16311,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 2923168295774609379, guid: 274d27211c2e750438cbf93626121993, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 2946208375767189446, guid: 274d27211c2e750438cbf93626121993, type: 3}
       propertyPath: m_Name
       value: deco_ceilingLigh_long
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946208375767189446, guid: 274d27211c2e750438cbf93626121993, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6505279863033598589, guid: 274d27211c2e750438cbf93626121993, type: 3}
       propertyPath: m_Color.b
@@ -15491,6 +16359,10 @@ PrefabInstance:
     - target: {fileID: 4728158616669960514, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813723920083278517, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5426443101705236501, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15539,6 +16411,10 @@ PrefabInstance:
     - target: {fileID: 9013321992355742214, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013321992355742214, guid: 8edcb53a8e2c89345a5515f2562d46a4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
