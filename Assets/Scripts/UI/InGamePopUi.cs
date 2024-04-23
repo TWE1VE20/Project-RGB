@@ -7,7 +7,6 @@ public class InGamePopUi : MonoBehaviour
 {
     private void OnEnable()
     {
-        Cursor.lockState = CursorLockMode.None;
         Manager.timeflow.timeStop = true;
     }
 
@@ -15,7 +14,6 @@ public class InGamePopUi : MonoBehaviour
     {
         Manager.timeflow.timeStop = false;
         Debug.Log("Close UI");
-        Cursor.lockState = CursorLockMode.Locked;
         Destroy(gameObject, 0.1f);
     }
 }

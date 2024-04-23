@@ -169,7 +169,9 @@ public class TimeFlowManager : MonoBehaviour
 
     IEnumerator WaitForStart()
     {
+        Cursor.lockState = CursorLockMode.None;
         yield return new WaitUntil(() => timeStop == false && Paused == false);
         Time.timeScale = slowFactor;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
