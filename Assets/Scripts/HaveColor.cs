@@ -5,22 +5,22 @@ using UnityEngine;
 public class HaveColor : MonoBehaviour
 {
     // private bool[] ColorStat = new bool[] { false, false, false };
-    // ºñÆ®¸Ê ¹æ½ÄÀ¸·Î ±³Ã¼
+    // ë¹„íŠ¸ë§µ ë°©ì‹ìœ¼ë¡œ êµì²´
     private sbyte ColorStat = 0b000;
     public ThisColor curColor { get; private set; }
 
-    public enum ThisColor { BLACK = 0, RED = 4, GREEN = 2, BLUE = 1, YELLOW = 6, MAGENTA = 5, CYAN = 3, WHITE = 7}
+    public enum ThisColor { BLACK = 0, RED = 4, GREEN = 2, BLUE = 1, YELLOW = 6, MAGENTA = 5, CYAN = 3, WHITE = 7 }
 
     private void Start()
     {
         SetColor(curColor);
     }
 
-    /// <summary>ÇöÁ¦ º¸À¯ÁßÀÎ »ö ¼Ó¼ºÀ» ÁöÁ¤</summary>
-    /// <param name="haveColor">haveColor´Â HaveColor.ThisColorÀÇ »öÁß ÇÏ³ªÀÌ¸ç haveColorÀÇ »ö ¼Ó¼ºÀ¸·Î ÁöÁ¤ÇØÁİ´Ï´Ù.</param>
+    /// <summary>í˜„ì œ ë³´ìœ ì¤‘ì¸ ìƒ‰ ì†ì„±ì„ ì§€ì •</summary>
+    /// <param name="haveColor">haveColorëŠ” HaveColor.ThisColorì˜ ìƒ‰ì¤‘ í•˜ë‚˜ì´ë©° haveColorì˜ ìƒ‰ ì†ì„±ìœ¼ë¡œ ì§€ì •í•´ì¤ë‹ˆë‹¤.</param>
     public void SetColor(ThisColor haveColor)
     {
-        switch(haveColor)
+        switch (haveColor)
         {
             case ThisColor.BLACK:
                 this.ColorStat = 0b000;
@@ -56,11 +56,11 @@ public class HaveColor : MonoBehaviour
                 break;
         }
     }
-    /// <summary>ÁöÁ¤ÇÑ »ö ¼Ó¼ºÀ» ¹ş±é´Ï´Ù.</summary>
-    /// <param name="peelingColor">peelingColor´Â ¹ş±æ »öÀÔ´Ï´Ù. Weapons.Colors°ªÀ» ¹ŞÀ¸¸ç ÀÌ¿¡ ´ëÀÀÇÏ´Â »öÀ» ¹ş±é´Ï´Ù.</param>
+    /// <summary>ì§€ì •í•œ ìƒ‰ ì†ì„±ì„ ë²—ê¹ë‹ˆë‹¤.</summary>
+    /// <param name="peelingColor">peelingColorëŠ” ë²—ê¸¸ ìƒ‰ì…ë‹ˆë‹¤. Weapons.Colorsê°’ì„ ë°›ìœ¼ë©° ì´ì— ëŒ€ì‘í•˜ëŠ” ìƒ‰ì„ ë²—ê¹ë‹ˆë‹¤.</param>
     public void PeelColor(Weapons.Colors peelingColor)
     {
-        switch(peelingColor)
+        switch (peelingColor)
         {
             case Weapons.Colors.RED:
                 this.ColorStat &= ~(1 << 2); // RED
@@ -75,8 +75,8 @@ public class HaveColor : MonoBehaviour
         UpdateColor();
     }
     /// <summary>
-    /// ÇöÀç ¼Ó¼ºÀÌ °¡Áø »ö ¼Ó¼º¿¡ ´ëÀÀÇÏ´Â Color°ªÀ» ¹İÈ¯ÇÕ´Ï´Ù.
-    /// MaterialÀÇ »öÀÌ³ª Color¸¦ º¯È­½ÃÅ°´Âµ¥ µµ¿òÀÌ µË´Ï´Ù.
+    /// í˜„ì¬ ì†ì„±ì´ ê°€ì§„ ìƒ‰ ì†ì„±ì— ëŒ€ì‘í•˜ëŠ” Colorê°’ì„ ë°˜í™˜í•©ë‹ˆë‹¤.
+    /// Materialì˜ ìƒ‰ì´ë‚˜ Colorë¥¼ ë³€í™”ì‹œí‚¤ëŠ”ë° ë„ì›€ì´ ë©ë‹ˆë‹¤.
     /// </summary>
     public Color MaterialColor()
     {
@@ -102,7 +102,7 @@ public class HaveColor : MonoBehaviour
         return Color.black;
     }
     /// <summary>
-    /// ÇöÁ¦ ColorStat·Î curColor¸¦ °»½ÅÇÕ´Ï´Ù.
+    /// í˜„ì œ ColorStatë¡œ curColorë¥¼ ê°±ì‹ í•©ë‹ˆë‹¤.
     /// </summary>
     private void UpdateColor()
     {
@@ -169,10 +169,10 @@ public class HaveColor : MonoBehaviour
     }
 
     /*
-/// <summary>ÁöÁ¤µÈ RGB°ªÀ¸·Î »ö ¼Ó¼ºÀ» ÁöÁ¤ÇÕ´Ï´Ù.</summary>
-/// <param name="red">red´Â »¡°­(Red)¼Ó¼ºÀÌ¸ç ÀÌ¸¦ Áö´Ï´ÂÁö true/false·Î ÁöÁ¤ÇÕ´Ï´Ù.</param>
-/// <param name="green">green´Â ÃÊ·Ï(Green)¼Ó¼ºÀÌ¸ç ÀÌ¸¦ Áö´Ï´ÂÁö true/false·Î ÁöÁ¤ÇÕ´Ï´Ù.</param>
-/// <param name="blue">blue´Â ÆÄ¶û(Blue)¼Ó¼ºÀÌ¸ç ÀÌ¸¦ Áö´Ï´ÂÁö true/false·Î ÁöÁ¤ÇÕ´Ï´Ù.</param>
+/// <summary>ì§€ì •ëœ RGBê°’ìœ¼ë¡œ ìƒ‰ ì†ì„±ì„ ì§€ì •í•©ë‹ˆë‹¤.</summary>
+/// <param name="red">redëŠ” ë¹¨ê°•(Red)ì†ì„±ì´ë©° ì´ë¥¼ ì§€ë‹ˆëŠ”ì§€ true/falseë¡œ ì§€ì •í•©ë‹ˆë‹¤.</param>
+/// <param name="green">greenëŠ” ì´ˆë¡(Green)ì†ì„±ì´ë©° ì´ë¥¼ ì§€ë‹ˆëŠ”ì§€ true/falseë¡œ ì§€ì •í•©ë‹ˆë‹¤.</param>
+/// <param name="blue">blueëŠ” íŒŒë‘(Blue)ì†ì„±ì´ë©° ì´ë¥¼ ì§€ë‹ˆëŠ”ì§€ true/falseë¡œ ì§€ì •í•©ë‹ˆë‹¤.</param>
 public void ChangeColor(bool red, bool green, bool blue)
 {
     this.ColorStat[0] = red;
@@ -181,5 +181,5 @@ public void ChangeColor(bool red, bool green, bool blue)
     UpdateColor();
 }
 */
-    
+
 }
