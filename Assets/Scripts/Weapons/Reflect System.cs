@@ -14,7 +14,7 @@ public class ReflectSystem : MonoBehaviour
 
     public void Reflect()
     {
-        // �ݻ� �ִϸ��̼�
+        // 반사시스템
         audioSource.clip = reflectSoundClip;
         if (audioSource.clip != null)
             audioSource.Play();
